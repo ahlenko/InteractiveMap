@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.interactivemap.ui.screens.landings.SplashScreen
+import com.example.interactivemap.ui.screens.welcome.SplashScreen
 
 @Composable
 fun AppNavigationGraph (navHostController: NavHostController){

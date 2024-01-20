@@ -1,4 +1,4 @@
-package com.example.interactivemap.ui.screens.landings
+package com.example.interactivemap.ui.screens.welcome
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
