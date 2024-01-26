@@ -7,8 +7,12 @@ import androidx.room.RoomDatabase
 import com.example.interactivemap.logic.database.dao.LocalAccountDAO
 import com.example.interactivemap.logic.database.dao.MainScheduleDAO
 import com.example.interactivemap.logic.database.dao.ReserveScheduleDAO
+import com.example.interactivemap.logic.database.entity.LocalAccount
+import com.example.interactivemap.logic.database.entity.MainSchedule
+import com.example.interactivemap.logic.database.entity.ReserveSchedule
 
-@Database(entities = [], version = 1, exportSchema = false)
+@Database(entities = [LocalAccount::class, MainSchedule::class, ReserveSchedule::class],
+    version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun daoLocalAccount(): LocalAccountDAO
