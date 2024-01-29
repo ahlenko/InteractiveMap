@@ -34,6 +34,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
 import com.example.interactivemap.logic.navigation.NavigationScreen
+import com.example.interactivemap.logic.navigation.SettingsScreen
 import com.example.interactivemap.ui.resource.status.ScreenProgressBoll
 import com.example.interactivemap.ui.screens.welcome.onboarding.all_app.fragments.OnboardingFragmentFirst
 import com.example.interactivemap.ui.screens.welcome.onboarding.all_app.fragments.OnboardingFragmentSecond
@@ -51,7 +52,7 @@ fun ApplicationOnboarding(navHostController: NavHostController){
         { OnboardingFragmentFirst() },
         { OnboardingFragmentSecond() },
         { OnboardingFragmentThird() { navHostController.
-            navigate(NavigationScreen.route) { popUpTo(0) } } }) }
+            navigate(SettingsScreen.route) { popUpTo(0) } } }) }
 
     val pagerState = rememberPagerState(pageCount = {onboardingScreens.size})
 
@@ -67,7 +68,7 @@ fun ApplicationOnboarding(navHostController: NavHostController){
         Box(modifier = Modifier.padding(12.dp).padding(top = 16.dp).fillMaxWidth(),
             contentAlignment = Alignment.TopEnd){
             Text(stringResource(id = R.string.skip), modifier = Modifier.clickable {
-                navHostController.navigate(NavigationScreen.route) { popUpTo(0) } },
+                navHostController.navigate(SettingsScreen.route) { popUpTo(0) } },
                 style = MaterialTheme.typography.headlineSmall.copy(
                     color = MaterialTheme.colorScheme.onBackground,
                     fontWeight = FontWeight.Light, textAlign = TextAlign.Right)) }

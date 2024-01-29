@@ -20,7 +20,10 @@ private val LightColorScheme = lightColorScheme(
     tertiaryContainer = AppColorsLight.shadow,
     onTertiaryContainer = AppColorsLight.reShadow,
     onPrimary = AppColorsLight.onPrimary,
-    onPrimaryContainer = AppColorsLight.mountainGray
+    onPrimaryContainer = AppColorsLight.mountainGray,
+    onSecondary = AppColorsLight.gray,
+    onSecondaryContainer = AppColorsLight.mountainGray100,
+    onError = AppColorsLight.red
 )
 
 private val DarkColorScheme = darkColorScheme(

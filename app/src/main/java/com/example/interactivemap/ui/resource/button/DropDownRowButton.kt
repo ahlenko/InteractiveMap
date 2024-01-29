@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
@@ -19,14 +20,14 @@ import com.example.interactivemap.R
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun DropDownRowButton (textId: Int){
+fun DropDownRowButton (text: String){
     InteractiveMapTheme {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Text(
-                text = stringResource(id = textId),
+                text = text,
                 style = MaterialTheme.typography.headlineSmall
                     .copy(color = MaterialTheme.colorScheme.onPrimary)
             )
@@ -35,7 +36,7 @@ fun DropDownRowButton (textId: Int){
 
             Icon(
                 painter = painterResource(R.drawable.ic_dropdown), contentDescription = null,
-                tint = MaterialTheme.colorScheme.onBackground, modifier = Modifier.size(24.dp)
+                tint = MaterialTheme.colorScheme.onBackground, modifier = Modifier.size(24.dp).padding(end = 7.dp)
             )
         }
     }

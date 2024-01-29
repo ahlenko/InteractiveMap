@@ -5,14 +5,18 @@ import androidx.compose.material.Switch
 import androidx.compose.material.SwitchDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
-fun SwitchRowButton (state: Boolean){
+fun SwitchRowButton (state: MutableState<Boolean>){
     InteractiveMapTheme {
-        Switch(checked = state, onCheckedChange = {},
+        Switch(checked = state.value, onCheckedChange = {state.value = !state.value},
             colors = SwitchDefaults.colors(
                 checkedTrackColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 uncheckedTrackColor = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -26,5 +30,7 @@ fun SwitchRowButton (state: Boolean){
 @Preview
 @Composable
 fun SwitchRowButtonPreview(){
-    SwitchRowButton(true)
+    SwitchRowButton(remember {
+        mutableStateOf(true)
+    })
 }

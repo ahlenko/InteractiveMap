@@ -2,36 +2,23 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="DefaultHeaderPreview">
+      <entry key="EnterScreenPreview">
         <State />
       </entry>
-      <entry key="OnboardingFragmentFirstPreview">
+      <entry key="LandingPreview">
         <State />
       </entry>
-      <entry key="OnboardingFragmentSecondPreview">
+      <entry key="ScheduleLoaderPreview">
         <State />
       </entry>
-      <entry key="OnboardingFragmentThirdPreview">
+      <entry key="ScheduleViewerPreview">
         <State />
       </entry>
       <entry key="ScheduleViewerScreenPreview">
         <State />
       </entry>
       <entry key="app">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="LMF100TM9ded7f90" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-01-21T09:40:37.977116500Z" />
-        </State>
+        <State />
       </entry>
     </value>
   </component>

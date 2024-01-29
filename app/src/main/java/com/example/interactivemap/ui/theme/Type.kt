@@ -7,7 +7,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 val Typography = Typography(
-    displaySmall = TextStyle(fontFamily = Inter, fontSize = 22.sp),
+    displaySmall = TextStyle(fontFamily = Inter, fontSize = 21.sp),
     titleLarge = TextStyle(fontFamily = Metrophobic, fontSize = 18.sp),
     titleMedium = TextStyle(fontFamily = Montserrat, fontSize = 14.sp),
 

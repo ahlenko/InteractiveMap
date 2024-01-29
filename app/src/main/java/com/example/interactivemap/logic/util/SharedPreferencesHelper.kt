@@ -6,6 +6,14 @@ import android.content.SharedPreferences
 object SharedPreferencesHelper {
     private var sharedPreferences: SharedPreferences? = null
 
+    const val LANGUAGE_TYPE = "language_type"
+    const val DARK_MODE_STATE = "dark_theme"
+    const val ONLINE_EDUCATION = "online_education"
+    const val TRANSLATION_STATE = "translation_geo"
+    const val TRANSLATION_DISTANCE = "translation_distance"
+    const val UPDATE_INTERVAL = "update_interval"
+
+
     @JvmStatic
     fun loadSettingsHelper(context: Context, name: String) {
         sharedPreferences = context.getSharedPreferences(name, Context.MODE_PRIVATE)

@@ -24,4 +24,60 @@
     <string name="activity_description_full">\t\t\tЗареєстрований аккаунт викладача/студента забезпечує інших користувачів базовою контактною інформацією: номер телефону що можна приховати та Email.\n\t\t\tРозділ предметів дозволяє редагувати список дисциплін що викладається викладачем, а у випадку користувачів-студентів - переглядати даний список.\n\t\t\tНалаштування відображуваного у випадку “Невидимості” дозволяє повністю приховати обліковий запис з пошукової видачі.</string>
     <string name="activity_description">"Обліковий запис забезпечує можливість управління відображуваним статусом та приховування персональних даних "</string>
     <string name="activity">Активність та доступність</string>
+
+    <string name="settings">Налаштування</string>
+    <string name="general">Загальні</string>
+    <string name="language">Мова</string>
+    <string name="dark_theme">Темна тема</string>
+    <string name="online_education">Дистанційне навчання</string>
+    <string name="view_demo">Переглянути демо</string>
+    <string name="geolocation">Геолокація</string>
+    <string name="translation_geo">Трансляція геолокації</string>
+    <string name="point_view">Відображення</string>
+    <string name="update_interval">Інтервал оновлення</string>
+    <string name="to_main_page">До головної сторінки</string>
+    <string name="version">Version: 1.0.37 (93)</string>
+
+    <string name="account">Аккаунт</string>
+    <string name="user_not_auth">Користувача\nне авторизовано</string>
+    <string name="you_might">ви можете</string>
+    <string name="enter">Увійти</string>
+    <string name="or">або</string>
+    <string name="register">Зареєструватись</string>
+    <string name="authorization_preview">Переваги авторизації >></string>
+
+    <string name="enter_description">Введіть дані для входу</string>
+    <string name="enter_title">Вхід</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="return_back">Повернутись</string>
+
+    <string name="save">Зберегти</string>
+    <string name="load">Відновити</string>
+    <string name="create_schedule">Створити розклад занять</string>
+    <string name="edit_schedule">Внести зміни до розкладу</string>
+
+    <string name="change">Змінити</string>
+    <string name="signifier">Знамен..</string>
+    <string name="save_schedule">Зберегти розклад</string>
+    <string name="save_changes">Застосувати зміни</string>
+    <string name="add_read_data">Додати зчитані дані</string>
+
+    <string name="schedule">Розклад</string>
+    <string name="schedule_not_exist">Розклад занять\nне створено</string>
+    <string name="schedule_not_exist_text">Після створення чи відновлення на даній сторіці\nбуде відображатись розклад занять студента/викладача</string>
+    <string name="schedule_not_exist_description">Для того щоб спростити побудову\nмаршрутів на інтерактивній мапі університету\nрекомндовано створити розклад або відновити\nйого з файлу .json</string>
+
+
+    <string name="default_language">Українська</string>
+    <string-array name="language_variant">
+        <item>Українська</item>
+        <item>English</item>
+    </string-array>
+
+
+    <string name="distance"> м.</string>
+    <string name="time"> с.</string>
+
+
 </resources>
