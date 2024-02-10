@@ -2,19 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="EnterScreenPreview">
+      <entry key="AccountViewScreenPreview">
         <State />
       </entry>
-      <entry key="LandingPreview">
+      <entry key="CreatorScreenPreview">
         <State />
       </entry>
-      <entry key="ScheduleLoaderPreview">
+      <entry key="EditorScreenPreview">
         <State />
       </entry>
-      <entry key="ScheduleViewerPreview">
+      <entry key="LessonViewDialogPreview">
         <State />
       </entry>
-      <entry key="ScheduleViewerScreenPreview">
+      <entry key="TableViewerScreenPreview">
         <State />
       </entry>
       <entry key="app">

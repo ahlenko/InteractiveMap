@@ -24,11 +24,11 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 fun PasswordField (text: MutableState<String>, textStyle: TextStyle){
     InteractiveMapTheme {
         Box(modifier = Modifier.fillMaxSize()
-            .border(2.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(15.dp))
+            .border(2.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(10.dp))
         ) {
             BasicTextField(
                 visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.align(Alignment.Center).padding(start = 15.dp).fillMaxWidth(),
+                modifier = Modifier.align(Alignment.Center).padding(horizontal = 12.dp).fillMaxWidth(),
                 textStyle = textStyle, value = text.value, onValueChange = { text.value = it },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Password,

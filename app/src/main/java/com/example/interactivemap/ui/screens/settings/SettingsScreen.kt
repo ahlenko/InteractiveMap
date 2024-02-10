@@ -85,7 +85,6 @@ fun SettingsScreen(navHostController: NavHostController,
         }
     )
 
-    val fullScreen = true
     val spacerInterval = 4.dp
 
     InteractiveMapTheme {
@@ -127,7 +126,8 @@ fun SettingsScreen(navHostController: NavHostController,
                 horizontalArrangement = Arrangement.SpaceEvenly
                 ){
                 Box(modifier = Modifier.weight(1f)){
-                    IconTextRow(imageId = R.drawable.ic_language, textId = R.string.language) }
+                    IconTextRow(imageId = R.drawable.ic_language, textId = R.string.language,
+                        tint = MaterialTheme.colorScheme.onBackground) }
                 DropDownRowButton(text = languageSelected.value)
             }
 
@@ -140,7 +140,8 @@ fun SettingsScreen(navHostController: NavHostController,
                 horizontalArrangement = Arrangement.SpaceEvenly
             ){
                 Box(modifier = Modifier.weight(1f)){
-                IconTextRow(imageId = R.drawable.ic_theme, textId = R.string.dark_theme)}
+                IconTextRow(imageId = R.drawable.ic_theme, textId = R.string.dark_theme,
+                    tint = MaterialTheme.colorScheme.onBackground)}
                 SwitchRowButton(state = settingsViewModel.darkThemeSelected)
             }
 
@@ -154,7 +155,8 @@ fun SettingsScreen(navHostController: NavHostController,
                 horizontalArrangement = Arrangement.SpaceEvenly
             ){
                 Box(modifier = Modifier.weight(1f)){
-                IconTextRow(imageId = R.drawable.ic_distant, textId = R.string.online_education)}
+                IconTextRow(imageId = R.drawable.ic_distant, textId = R.string.online_education,
+                    tint = MaterialTheme.colorScheme.onBackground)}
                 SwitchRowButton(state = settingsViewModel.onlineEducation)
             }
 
@@ -168,7 +170,8 @@ fun SettingsScreen(navHostController: NavHostController,
                 horizontalArrangement = Arrangement.SpaceEvenly
             ){
                 Box(modifier = Modifier.weight(1f)){
-                IconTextRow(imageId = R.drawable.ic_demo, textId = R.string.view_demo)}
+                IconTextRow(imageId = R.drawable.ic_demo, textId = R.string.view_demo,
+                    tint = MaterialTheme.colorScheme.onBackground)}
                 Text(text = ">>", style = MaterialTheme.typography.headlineLarge
                     .copy(color = MaterialTheme.colorScheme.onPrimary),
                     modifier = Modifier.padding(end = 8.dp))
@@ -193,7 +196,8 @@ fun SettingsScreen(navHostController: NavHostController,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ){
                     Box(modifier = Modifier.weight(1f)){
-                    IconTextRow(imageId = R.drawable.ic_translation, textId = R.string.translation_geo)}
+                    IconTextRow(imageId = R.drawable.ic_translation, textId = R.string.translation_geo,
+                        tint = MaterialTheme.colorScheme.onBackground)}
                     SwitchRowButton(state = settingsViewModel.translationGeo)
                 }
 
@@ -207,7 +211,8 @@ fun SettingsScreen(navHostController: NavHostController,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ){
                     Box(modifier = Modifier.weight(1f)){
-                    IconTextRow(imageId = R.drawable.ic_map_view, textId = R.string.point_view)}
+                    IconTextRow(imageId = R.drawable.ic_map_view, textId = R.string.point_view,
+                        tint = MaterialTheme.colorScheme.onBackground)}
                     DropDownRowButton(text = distanceSelected.value)
                 }
 
@@ -221,7 +226,8 @@ fun SettingsScreen(navHostController: NavHostController,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ){
                     Box(modifier = Modifier.weight(1f)){
-                    IconTextRow(imageId = R.drawable.ic_interval, textId = R.string.update_interval)}
+                    IconTextRow(imageId = R.drawable.ic_interval, textId = R.string.update_interval,
+                        tint = MaterialTheme.colorScheme.onBackground)}
                     DropDownRowButton(text = intervalSelected.value)
                 }
             }

@@ -36,6 +36,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ui.dialogs.LessonViewDialog
 import com.example.interactivemap.ui.resource.button.IconButton
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
@@ -45,6 +46,15 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun OnboardingFragmentFirst(){
+    var showSheet by remember { mutableStateOf(false) }
+
+    if (showSheet) {
+        LessonViewDialog() {
+            showSheet = false
+        }
+    }
+
+
     InteractiveMapTheme {
         Column (modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
@@ -132,10 +142,10 @@ fun OnboardingFragmentFirst(){
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Box(modifier = Modifier
-                    .padding(bottom = 10.dp).size(50.dp).align(Alignment.CenterHorizontally)) {
-                    IconButton(buttonColor = Color.Transparent,size = 50.dp,
+                    .padding(bottom = 10.dp).size(65.dp).align(Alignment.CenterHorizontally)) {
+                    IconButton(buttonColor = Color.Transparent,size = 65.dp,
                         imageResourceId = R.drawable.ic_to_next_item, radius = 30.dp,
-                        iconColor = MaterialTheme.colorScheme.onBackground) {}
+                        iconColor = MaterialTheme.colorScheme.onBackground) {showSheet = true}
                 }
             }
         }

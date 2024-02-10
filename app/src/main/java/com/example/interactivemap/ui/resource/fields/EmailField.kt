@@ -24,10 +24,10 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 fun EmailField (text: MutableState<String>, textStyle: TextStyle){
     InteractiveMapTheme {
         Box(modifier = Modifier.fillMaxSize()
-                .border(2.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(15.dp))
+                .border(2.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(10.dp))
         ) {
             BasicTextField(
-                modifier = Modifier.align(Alignment.Center).padding(start = 15.dp).fillMaxWidth(),
+                modifier = Modifier.align(Alignment.Center).padding(horizontal = 12.dp).fillMaxWidth(),
                 value = text.value, onValueChange = { text.value = it },
                 textStyle = textStyle,
                 keyboardOptions = KeyboardOptions(

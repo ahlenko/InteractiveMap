@@ -1,5 +1,8 @@
 package com.example.interactivemap.ui.screens.schedule.viewer
 
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.ScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,19 +30,19 @@ import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
 import com.example.interactivemap.logic.navigation.LandingScreen
 import com.example.interactivemap.logic.navigation.NavigationScreen
-import com.example.interactivemap.ui.resource.controller.ScheduleEditor
-import com.example.interactivemap.ui.resource.controller.ScheduleLoader
+import com.example.interactivemap.ui.resource.schedule.ScheduleDayController
+import com.example.interactivemap.ui.resource.schedule.ScheduleLoader
 import com.example.interactivemap.ui.resource.header.DefaultHeader
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
-import com.example.interactivemap.ui.screens.schedule.editor.ScheduleEditorScreen
+import com.example.interactivemap.ui.resource.schedule.ScheduleContainer
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun ScheduleViewerScreen(navHostController: NavHostController,
     scheduleViewerViewModel: ScheduleViewerViewModel = viewModel(factory = ScheduleViewerViewModel.factory)
 ){
-    val scheduleExist = false
+    val scheduleExist = true
 
     InteractiveMapTheme {
         Column(
@@ -48,7 +51,10 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
             verticalArrangement = Arrangement.Top
         ) {
             Box(
-                modifier = Modifier.padding(15.dp).height(50.dp).fillMaxWidth()
+                modifier = Modifier
+                    .padding(15.dp)
+                    .height(50.dp)
+                    .fillMaxWidth()
                     .then(
                         ShadowMaterial.CustomShadow.createModifier
                             (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
@@ -66,21 +72,26 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
                     })
             }
 
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
             Text(text = "2-й Тиждень, Знаменник", Modifier.fillMaxWidth(),
                 style = MaterialTheme.typography.headlineMedium
                     .copy(color = MaterialTheme.colorScheme.onPrimary, textAlign = TextAlign.Center)
             )
 
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(6.dp))
 
-            Text(text = "Понеділок", Modifier.fillMaxWidth(),
-                style = MaterialTheme.typography.headlineLarge
-                    .copy(color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f), textAlign = TextAlign.Center)
-            )
+            Box(modifier = Modifier
+                .padding(10.dp)
+                .height(25.dp)
+                .fillMaxSize()){
+                ScheduleDayController(isActive = true, daySelected = 1)
+            }
 
-            Box(modifier = Modifier.weight(1f).padding(vertical = 20.dp, horizontal = 10.dp)){
+            Box(modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 10.dp)
+                .padding(top = 4.dp, bottom = 10.dp)){
                 if (!scheduleExist){
                     Column (modifier = Modifier.fillMaxSize(),
                         verticalArrangement = Arrangement.Top,
@@ -118,13 +129,16 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
                         )
                     }
                 } else {
-
+                    ScheduleContainer ()
                 }
             }
 
             Box(
-                Modifier.fillMaxWidth().padding(horizontal = 25.dp)
-                    .padding(bottom = 15.dp).height(115.dp)
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 25.dp)
+                    .padding(bottom = 15.dp)
+                    .height(115.dp)
             ) {
                 ScheduleLoader()
             }

@@ -23,7 +23,8 @@ private val LightColorScheme = lightColorScheme(
     onPrimaryContainer = AppColorsLight.mountainGray,
     onSecondary = AppColorsLight.gray,
     onSecondaryContainer = AppColorsLight.mountainGray100,
-    onError = AppColorsLight.red
+    onError = AppColorsLight.red,
+    onErrorContainer = AppColorsLight.pink
 )
 
 private val DarkColorScheme = darkColorScheme(

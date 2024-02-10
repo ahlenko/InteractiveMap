@@ -63,6 +63,71 @@
     <string name="save_changes">Застосувати зміни</string>
     <string name="add_read_data">Додати зчитані дані</string>
 
+    <string name="create">Створення</string>
+    <string name="edit">Редагування</string>
+    <string name="recover">Відновлення даних</string>
+
+    <string name="active">Активні</string>
+    <string name="not_at_place">Не на місці</string>
+    <string name="all_tutors">Всі викладачі</string>
+    <string name="clipped">Закріплені</string>
+
+    <string name="all_students">Всі студенти</string>
+    <string name="blocked">Заблоковані</string>
+    <string name="students">Студенти</string>
+    <string name="tutors">Викладачі</string>
+
+    <string name="registration">Реєстрація</string>
+    <string name="base_info">Базова інформація </string>
+    <string name="photo">Фото</string>
+    <string name="first_name">Ім’я</string>
+    <string name="last_name">Прізвище</string>
+    <string name="middle_name">По батькові</string>
+    <string name="identity_data">Ідентифікуючі дані</string>
+    <string name="phone_num">Телефон</string>
+    <string name="reg_num">Реєстрц. №</string>
+    <string name="student_num">№ студ. кв.</string>
+    <string name="date_to_enter">Дані для входу</string>
+
+    <string name="change_phone">Зміна номеру телефону</string>
+    <string name="old_phone">Старий номер</string>
+    <string name="new_phone">Новий номер</string>
+    <string name="change_email">Зміна Email</string>
+    <string name="old_email">Старий логін</string>
+    <string name="new_email">Новий логін</string>
+    <string name="change_password">Зміна паролю</string>
+    <string name="old_password">Старий пароль</string>
+    <string name="new_password">Новий пароль</string>
+    <string name="dismiss">Скасувати</string>
+
+    <string name="lesson_data">Дані заняття</string>
+    <string name="place_data">Розміщення</string>
+    <string name="lesson">Предмет</string>
+    <string name="tutor_">Викладач</string>
+    <string name="lider">LIDER</string>
+    <string name="kab">Кабінет</string>
+    <string name="link">Посилання</string>
+    <string name="specified_lesson">пара</string>
+    <string name="close_viewer">Завершити перегляд</string>
+
+    <string name="online">Онлайн</string>
+    <string name="not_disturb">Не турбувати</string>
+    <string name="invisible">Невидимість</string>
+    <string name="display_status">Відображуваний статус:</string>
+
+    <string name="add_lessons">Предмет що додається</string>
+    <string name="view_lessons">Перегляд предметів</string>
+    <string name="select_lesson">Вибір предметів</string>
+    <string name="confirm">Застосувати</string>
+    <string name="close">Приховати</string>
+
+
+
+    <string name="reg_rules">Умови використання >></string>
+    <string name="reg_rules_description"><![CDATA[Натискаючи <Зареєструватись> ви погоджуєтесь з\nумовами використання персональних даних]]></string>
+
+
+
     <string name="schedule">Розклад</string>
     <string name="schedule_not_exist">Розклад занять\nне створено</string>
     <string name="schedule_not_exist_text">Після створення чи відновлення на даній сторіці\nбуде відображатись розклад занять студента/викладача</string>
@@ -75,9 +140,50 @@
         <item>English</item>
     </string-array>
 
+    <string-array name="day_variant">
+        <item>Понеділок</item>
+        <item>Вівторок</item>
+        <item>Середа</item>
+        <item>Четвер</item>
+        <item>П\'ятниця</item>
+        <item>Субота</item>
+        <item>Неділя</item>
+    </string-array>
+
+    <string-array name="day_mini_variant">
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
+        <item>Нд</item>
+    </string-array>
+
+    <string-array name="week_types">
+        <item>чисельник</item>
+        <item>знаменник</item>
+    </string-array>
 
     <string name="distance"> м.</string>
     <string name="time"> с.</string>
+    <string name="users_list"><![CDATA[Список користувачів >]]></string>
+    <string name="phone_number">Зміна номеру телефону</string>
+    <string name="hide_number">Приховати номер</string>
+    <string name="reset_email">Зміна email</string>
+    <string name="group">Група</string>
+    <string name="reset_password">Зміна паролю</string>
+    <string name="delete_account">Видалити аккаунт</string>
+    <string name="lessons">Предмети</string>
+    <string name="user">Користувач</string>
+    <string name="users">Користувачі</string>
+    <string name="role">Роль</string>
+    <string name="student">Студент</string>
+    <string name="tutor">Викладач</string>
+    <string name="phone">Телефон</string>
+    <string name="clip">Закріпити</string>
+    <string name="block">Заблокувати</string>
+    <string name="search_on_map">Знайти на мапі</string>
 
 
 </resources>

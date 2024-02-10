@@ -92,9 +92,9 @@ fun OnboardingFragmentSecond(){
                     )
                 )
                 Spacer(modifier = Modifier.weight(1f))
-                Box(modifier = Modifier.padding(bottom = 10.dp).size(50.dp)
+                Box(modifier = Modifier.padding(bottom = 10.dp).size(65.dp)
                     .align(Alignment.CenterHorizontally)) {
-                    IconButton(buttonColor = Color.Transparent, size = 50.dp,
+                    IconButton(buttonColor = Color.Transparent, size = 65.dp,
                         imageResourceId = R.drawable.ic_to_next_item, radius = 30.dp,
                         iconColor = MaterialTheme.colorScheme.onBackground) {}
                 }
