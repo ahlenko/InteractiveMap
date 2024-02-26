@@ -1,6 +1,7 @@
 package com.example.interactivemap.ui.resource.button
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,13 +16,14 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun TextViewRowIcon (text: MutableState<String>, textStyle: TextStyle, iconId: Int){
+fun TextViewRowIcon (text: MutableState<String>, textStyle: TextStyle, iconId: Int, click: () -> Unit){
     InteractiveMapTheme {
         Row(horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
@@ -33,7 +35,7 @@ fun TextViewRowIcon (text: MutableState<String>, textStyle: TextStyle, iconId: I
                 text = text.value, style = textStyle,
             )
 
-            Icon(modifier = Modifier.padding(end = 5.dp).size(28.dp), tint = MaterialTheme.colorScheme.onBackground,
+            Icon(modifier = Modifier.padding(end = 5.dp).size(28.dp).clickable { }, tint = MaterialTheme.colorScheme.onBackground,
                 painter = painterResource(id = iconId), contentDescription = null)
         }
     }

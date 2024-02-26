@@ -24,7 +24,7 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 @Composable
 fun ScheduleRow (title: String, tutor: String, place: String, isSelected: Boolean){
     InteractiveMapTheme {
-        Box(modifier = Modifier.padding(3.dp).clip(RoundedCornerShape(15.dp))
+        Box(modifier = Modifier.padding(3.dp).clip(RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.onBackground.copy(alpha = if (isSelected) 0.3f else 0f))){
             Column (modifier = Modifier.fillMaxSize().padding(horizontal = 6.dp),
                 verticalArrangement = Arrangement.SpaceEvenly,

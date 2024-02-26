@@ -46,13 +46,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun OnboardingFragmentFirst(){
-    var showSheet by remember { mutableStateOf(false) }
 
-    if (showSheet) {
-        LessonViewDialog() {
-            showSheet = false
-        }
-    }
 
 
     InteractiveMapTheme {
@@ -142,10 +136,10 @@ fun OnboardingFragmentFirst(){
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Box(modifier = Modifier
-                    .padding(bottom = 10.dp).size(65.dp).align(Alignment.CenterHorizontally)) {
-                    IconButton(buttonColor = Color.Transparent,size = 65.dp,
+                    .padding(bottom = 10.dp).size(60.dp).align(Alignment.CenterHorizontally)) {
+                    IconButton(buttonColor = Color.Transparent,size = 60.dp,
                         imageResourceId = R.drawable.ic_to_next_item, radius = 30.dp,
-                        iconColor = MaterialTheme.colorScheme.onBackground) {showSheet = true}
+                        iconColor = MaterialTheme.colorScheme.onBackground) {}
                 }
             }
         }

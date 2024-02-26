@@ -2,17 +2,14 @@ package com.example.interactivemap.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 val Typography = Typography(
     displaySmall = TextStyle(fontFamily = Inter, fontSize = 21.sp),
     titleLarge = TextStyle(fontFamily = Metrophobic, fontSize = 18.sp),
     titleMedium = TextStyle(fontFamily = Montserrat, fontSize = 14.sp),
-
-
-    labelLarge = TextStyle(fontFamily = Inter, fontSize = 32.sp),
+    bodyMedium = TextStyle(fontFamily = Inter, fontSize = 23.sp),
+    displayLarge = TextStyle(fontFamily = Inter, fontSize = 33.sp),
     headlineLarge = TextStyle(fontFamily = Inter, fontSize = 20.sp),
     bodyLarge = TextStyle(fontFamily = Inter, fontSize = 18.sp),
     labelMedium = TextStyle(fontFamily = Inter, fontSize = 17.sp),

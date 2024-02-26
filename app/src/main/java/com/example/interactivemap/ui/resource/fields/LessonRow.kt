@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun LessonRow (isChecked: MutableState<Boolean>, text: String){
+fun LessonRow (text: String){
     InteractiveMapTheme {
         Box(modifier = Modifier.fillMaxWidth()
             .padding(vertical = 4.dp, horizontal = 5.dp).clip(RoundedCornerShape(5.dp))){

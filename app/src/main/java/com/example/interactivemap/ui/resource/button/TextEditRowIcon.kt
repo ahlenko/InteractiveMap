@@ -14,10 +14,9 @@ import androidx.compose.material.ContentAlpha
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.interactivemap.R
@@ -28,29 +27,25 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun TextEditRowIcon (text: MutableState<String>, textStyle: TextStyle, iconId: Int, onClick:()->Unit){
+fun TextEditRowIcon (text: StateFlow<String>, textStyle: TextStyle, iconId: Int, onClick:()->Unit, onTextEdit: (text:String)-> Unit){
     InteractiveMapTheme {
         Row(horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxSize()
-                .border(2.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(11.dp))
+            modifier = Modifier.fillMaxSize().border(2.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(11.dp))
         ) {
-            Box(modifier = Modifier
-                .padding(horizontal = 12.dp)
-                .weight(1f)) {
-                BasicTextField(
-                    value = text.value,
-                    onValueChange = { text.value = it },
-                    textStyle = textStyle,
+            Box(modifier = Modifier.padding(horizontal = 12.dp).weight(1f)) {
+                BasicTextField(value = text.collectAsState().value,
+                    onValueChange = {
+                        onTextEdit(it)
+                    }, textStyle = textStyle,
                 )
-                if (text.value.isEmpty()) {
-                    Text(
-                        text = stringResource(id = R.string.add_lessons),
-                        style = textStyle,
-                        color = Color.Gray,
+
+                if (text.collectAsState().value.isEmpty()) {
+                    Text(text = stringResource(id = R.string.add_lessons),
+                        style = textStyle, color = Color.Gray,
                         modifier = Modifier.alpha(ContentAlpha.medium)
                     )
                 }

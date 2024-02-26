@@ -28,8 +28,8 @@ fun ProfilePhotoUploader(){
                 .clip(RoundedCornerShape(200.dp)).background(MaterialTheme.colorScheme.onSecondaryContainer),
                 contentAlignment = Alignment.Center
             ){
-                Icon(painter = painterResource(id = R.drawable.ic_photo_not_enable), contentDescription = null,
-                    modifier = Modifier.size(40.dp), tint = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3F))
+                Icon(painter = painterResource(id = R.drawable.ic_photo_upload), contentDescription = null,
+                    modifier = Modifier.padding(start = 3.dp).size(44.dp), tint = MaterialTheme.colorScheme.onPrimary)
             }
         }
     }

@@ -11,6 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,8 +24,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
 import com.example.interactivemap.logic.navigation.AccOnboard
+import com.example.interactivemap.logic.navigation.EditorScreen
 import com.example.interactivemap.logic.navigation.LandingScreen
 import com.example.interactivemap.logic.navigation.NavigationScreen
+import com.example.interactivemap.ui.dialogs.LessonViewDialog
 import com.example.interactivemap.ui.resource.controller.UserFilter
 import com.example.interactivemap.ui.resource.header.DefaultHeader
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
@@ -32,6 +38,9 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 fun TableViewerScreen(navHostController: NavHostController,
     tableViewerViewModel: TableViewerViewModel = viewModel()
 ){
+
+
+
     InteractiveMapTheme {
         Column(modifier = Modifier.fillMaxSize().padding(15.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -46,9 +55,9 @@ fun TableViewerScreen(navHostController: NavHostController,
             ) {
                 DefaultHeader(titleId = R.string.users, leftImgId = R.drawable.ic_prew_page,
                     rightImgId = R.drawable.ic_account, onClickLeft = {
-                        navHostController.navigate(NavigationScreen.route) { popUpTo(0) }
+                        navHostController.navigate(EditorScreen.route) { popUpTo(0) }
                     }, onClickRight = {
-                        navHostController.navigate(AccOnboard.route) { popUpTo(0) } })
+                        navHostController.navigate(EditorScreen.route) { popUpTo(0) } })
             }
 
             Spacer(modifier = Modifier.height(20.dp))

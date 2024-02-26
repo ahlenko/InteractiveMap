@@ -25,6 +25,7 @@ fun ViewField (text: MutableState<String>, textStyle: TextStyle){
             Text(
                 modifier = Modifier.align(Alignment.Center).padding(horizontal = 12.dp).fillMaxWidth(),
                 text = text.value, style = textStyle,
+                maxLines = 1
             )
         }
     }

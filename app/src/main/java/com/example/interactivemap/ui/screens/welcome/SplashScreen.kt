@@ -23,6 +23,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
 import com.example.interactivemap.logic.navigation.AppOnboard
+import com.example.interactivemap.logic.navigation.NavigationScreen
+import com.example.interactivemap.logic.navigation.ScheduleViewer
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
@@ -62,8 +64,15 @@ fun SplashScreen(navHostController: NavHostController){
 fun NavigateToNextScreen(navController: NavHostController,
     splashViewModel: SplashScreenViewModel = viewModel()) {
     val loading = splashViewModel.loading.collectAsState()
-    if (!loading.value) { navController.navigate(AppOnboard.route) { popUpTo(0) }}
+    if (!loading.value) {
+        if (!splashViewModel.isSecondEnter)
+            navController.navigate(AppOnboard.route) { popUpTo(0) }
+        else if(!splashViewModel.onlineEducation)
+            navController.navigate(NavigationScreen.route) { popUpTo(0) }
+        else navController.navigate(ScheduleViewer.route) { popUpTo(0) }
+    }
 }
+
 @Preview
 @Composable
 fun SplashScreenPreview(){

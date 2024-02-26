@@ -25,7 +25,7 @@ fun BasicField (text: MutableState<String>, textStyle: TextStyle){
             BasicTextField(
                 modifier = Modifier.align(Alignment.Center).padding(horizontal = 12.dp).fillMaxWidth(),
                 value = text.value, onValueChange = { text.value = it },
-                textStyle = textStyle,
+                textStyle = textStyle, maxLines = 1
             )
         }
     }

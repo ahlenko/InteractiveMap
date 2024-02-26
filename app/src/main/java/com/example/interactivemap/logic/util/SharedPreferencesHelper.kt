@@ -2,8 +2,12 @@ package com.example.interactivemap.logic.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.interactivemap.logic.model.datamodel.ScheduleDay
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 object SharedPreferencesHelper {
+
     private var sharedPreferences: SharedPreferences? = null
 
     const val LANGUAGE_TYPE = "language_type"
@@ -12,11 +16,32 @@ object SharedPreferencesHelper {
     const val TRANSLATION_STATE = "translation_geo"
     const val TRANSLATION_DISTANCE = "translation_distance"
     const val UPDATE_INTERVAL = "update_interval"
+    const val SECOND_ENTER = "second_enter"
+    const val SCHEDULE_TYPE = "schedule_type"
+    const val AUTH_TOKEN = "auth_token"
 
+    const val SCHEDULE_MAIN = "schedule_main"
+    const val SCHEDULE_RESERVE = "schedule_reserve"
+
+    const val NAVIGATION_GRAPH = "navigation_graph"
+    const val MAP_LOCATION = "map_location"
 
     @JvmStatic
     fun loadSettingsHelper(context: Context, name: String) {
         sharedPreferences = context.getSharedPreferences(name, Context.MODE_PRIVATE)
+    }
+
+    fun convertScheduleListToJson(scheduleList: ArrayList<ScheduleDay>?): String? {
+        if (scheduleList == null) return null
+        val gson = Gson()
+        return gson.toJson(scheduleList)
+    }
+
+    fun loadScheduleFromJson(jsonString: String?): ArrayList<ScheduleDay>? {
+        if (jsonString == null) return null
+        val gson = Gson()
+        val type = object : TypeToken<ArrayList<ScheduleDay>>() {}.type
+        return gson.fromJson(jsonString, type)
     }
 
     @JvmStatic

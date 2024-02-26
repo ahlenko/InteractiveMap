@@ -12,7 +12,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
@@ -34,10 +36,9 @@ class MainActivity : ComponentActivity() {
         actionBar?.hide()
 
         setContent {
-            InteractiveMapTheme {
+            InteractiveMapTheme {}
                 Box (Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background))
                 AppNavigationGraph(rememberNavController())
             }
         }
     }
-}

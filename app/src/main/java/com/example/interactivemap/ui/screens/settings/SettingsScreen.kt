@@ -15,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -46,44 +47,46 @@ import com.maxkeppeler.sheets.list.models.ListSelection
 fun SettingsScreen(navHostController: NavHostController,
     settingsViewModel: SettingsViewModel = viewModel()
 ){
-    val languageSelected = settingsViewModel.languageSelected.collectAsState()
-    val distanceSelected = settingsViewModel.distanceSelected.collectAsState()
-    val intervalSelected = settingsViewModel.intervalSelected.collectAsState()
+    val pointsViewDistanceList by settingsViewModel.pointsViewDistanceList.collectAsState()
+    val updateIntervalList by settingsViewModel.updateIntervalList.collectAsState()
+    val languageList by settingsViewModel.languageList.collectAsState()
 
-    val pointsViewDistanceList = settingsViewModel.pointsViewDistanceList.collectAsState()
-    val updateIntervalList = settingsViewModel.updateIntervalList.collectAsState()
-    val languageList = settingsViewModel.languageList.collectAsState()
+    val languageSelected by settingsViewModel.languageSelected.collectAsState()
+    val distanceSelected by settingsViewModel.distanceSelected.collectAsState()
+    val intervalSelected by settingsViewModel.intervalSelected.collectAsState()
 
     val languageDialogState = rememberUseCaseState()
     val distanceDialogState = rememberUseCaseState()
     val timeIntervalDialogState = rememberUseCaseState()
 
-    ListDialog(
-        state = languageDialogState,
-        selection = ListSelection.Single( showRadioButtons = true,
-            options = languageList.value
-        ) { _, option ->
-            settingsViewModel.onLanguageChanged(option)
-        }
-    )
+    MaterialTheme{
+        ListDialog(
+            state = languageDialogState,
+            selection = ListSelection.Single( showRadioButtons = true,
+                options = languageList
+            ) { _, option ->
+                settingsViewModel.onLanguageChanged(option)
+            }
+        )
 
-    ListDialog(
-        state = distanceDialogState,
-        selection = ListSelection.Single(showRadioButtons = true,
-            options = pointsViewDistanceList.value
-        ) { _, option ->
-            settingsViewModel.onDistanceChanged(option)
-        }
-    )
+        ListDialog(
+            state = distanceDialogState,
+            selection = ListSelection.Single(showRadioButtons = true,
+                options = pointsViewDistanceList
+            ) { _, option ->
+                settingsViewModel.onDistanceChanged(option)
+            }
+        )
 
-    ListDialog(
-        state = timeIntervalDialogState,
-        selection = ListSelection.Single( showRadioButtons = true,
-            options = updateIntervalList.value
-        ) { _, option ->
-            settingsViewModel.onTimeIntervalChanged(option)
-        }
-    )
+        ListDialog(
+            state = timeIntervalDialogState,
+            selection = ListSelection.Single( showRadioButtons = true,
+                options = updateIntervalList
+            ) { _, option ->
+                settingsViewModel.onTimeIntervalChanged(option)
+            }
+        )
+    }
 
     val spacerInterval = 4.dp
 
@@ -102,7 +105,10 @@ fun SettingsScreen(navHostController: NavHostController,
             ){
                 DefaultHeader(titleId = R.string.settings, leftImgId = R.drawable.ic_prew_page,
                     rightImgId = R.drawable.ic_account, onClickLeft = {
-                        navHostController.navigate(NavigationScreen.route) { popUpTo(0) }
+                        navHostController.navigate(
+                            if (!settingsViewModel.onlineEducation)
+                                NavigationScreen.route
+                            else ScheduleViewer.route) { popUpTo(0) }
                     }, onClickRight = {
                         navHostController.navigate(LandingScreen.route) { popUpTo(0) }
                     })
@@ -128,7 +134,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 Box(modifier = Modifier.weight(1f)){
                     IconTextRow(imageId = R.drawable.ic_language, textId = R.string.language,
                         tint = MaterialTheme.colorScheme.onBackground) }
-                DropDownRowButton(text = languageSelected.value)
+                DropDownRowButton(text = languageSelected)
             }
 
             Spacer(modifier = Modifier.height(spacerInterval))
@@ -143,6 +149,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 IconTextRow(imageId = R.drawable.ic_theme, textId = R.string.dark_theme,
                     tint = MaterialTheme.colorScheme.onBackground)}
                 SwitchRowButton(state = settingsViewModel.darkThemeSelected)
+                {settingsViewModel.onSystemThemeChanged()}
             }
 
             Spacer(modifier = Modifier.height(spacerInterval))
@@ -158,6 +165,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 IconTextRow(imageId = R.drawable.ic_distant, textId = R.string.online_education,
                     tint = MaterialTheme.colorScheme.onBackground)}
                 SwitchRowButton(state = settingsViewModel.onlineEducation)
+                {settingsViewModel.onEducationTypeChanged()}
             }
 
             Spacer(modifier = Modifier.height(spacerInterval))
@@ -177,7 +185,7 @@ fun SettingsScreen(navHostController: NavHostController,
                     modifier = Modifier.padding(end = 8.dp))
             }
 
-            if (settingsViewModel.onlineEducation.value){
+            if (!settingsViewModel.onlineEducation){
                 Spacer(modifier = Modifier.height(spacerInterval))
 
                 Text(
@@ -199,6 +207,7 @@ fun SettingsScreen(navHostController: NavHostController,
                     IconTextRow(imageId = R.drawable.ic_translation, textId = R.string.translation_geo,
                         tint = MaterialTheme.colorScheme.onBackground)}
                     SwitchRowButton(state = settingsViewModel.translationGeo)
+                    {settingsViewModel.onTranslationStateChanged()}
                 }
 
                 Spacer(modifier = Modifier.height(spacerInterval))
@@ -213,7 +222,7 @@ fun SettingsScreen(navHostController: NavHostController,
                     Box(modifier = Modifier.weight(1f)){
                     IconTextRow(imageId = R.drawable.ic_map_view, textId = R.string.point_view,
                         tint = MaterialTheme.colorScheme.onBackground)}
-                    DropDownRowButton(text = distanceSelected.value)
+                    DropDownRowButton(text = distanceSelected)
                 }
 
                 Spacer(modifier = Modifier.height(spacerInterval))
@@ -228,7 +237,7 @@ fun SettingsScreen(navHostController: NavHostController,
                     Box(modifier = Modifier.weight(1f)){
                     IconTextRow(imageId = R.drawable.ic_interval, textId = R.string.update_interval,
                         tint = MaterialTheme.colorScheme.onBackground)}
-                    DropDownRowButton(text = intervalSelected.value)
+                    DropDownRowButton(text = intervalSelected)
                 }
             }
 

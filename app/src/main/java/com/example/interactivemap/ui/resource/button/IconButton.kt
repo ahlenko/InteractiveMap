@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 fun IconButton (buttonColor: Color, imageResourceId: Int, radius : Dp,
                    iconColor: Color, size: Dp, onClick: () -> Unit ){
     Box(modifier = Modifier.clip(RoundedCornerShape(radius)).fillMaxSize()
-            .clickable { onClick }) {
+            .clickable { onClick() }) {
         Box(modifier = Modifier.background(buttonColor).fillMaxSize(),
             contentAlignment = Alignment.Center){
             Icon(painterResource(id = imageResourceId),

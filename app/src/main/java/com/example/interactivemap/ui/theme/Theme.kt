@@ -24,11 +24,23 @@ private val LightColorScheme = lightColorScheme(
     onSecondary = AppColorsLight.gray,
     onSecondaryContainer = AppColorsLight.mountainGray100,
     onError = AppColorsLight.red,
-    onErrorContainer = AppColorsLight.pink
+    onErrorContainer = AppColorsLight.pink,
+    surfaceDim = AppColorsLight.dark
 )
 
 private val DarkColorScheme = darkColorScheme(
-
+    background = AppColorsLight.background,
+    onBackground = AppColorsLight.onBackground,
+    onTertiary = AppColorsLight.onTertiary,
+    tertiaryContainer = AppColorsLight.shadow,
+    onTertiaryContainer = AppColorsLight.reShadow,
+    onPrimary = AppColorsLight.onPrimary,
+    onPrimaryContainer = AppColorsLight.mountainGray,
+    onSecondary = AppColorsLight.gray,
+    onSecondaryContainer = AppColorsLight.mountainGray100,
+    onError = AppColorsLight.red,
+    onErrorContainer = AppColorsLight.pink,
+    surfaceDim = AppColorsLight.dark
 )
 
 @Composable
@@ -36,7 +48,7 @@ fun InteractiveMapTheme(darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true, content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> { val context = LocalContext.current
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> { LocalContext.current
             if (darkTheme) DarkColorScheme else LightColorScheme }
         darkTheme -> DarkColorScheme else -> LightColorScheme }
 

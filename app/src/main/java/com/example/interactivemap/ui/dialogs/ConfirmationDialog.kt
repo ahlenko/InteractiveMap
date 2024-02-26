@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,7 +29,7 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReSh
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun ConfirmationDialog(titleRes: Int, textRex: Int, dismissRes: Int, confirmRes: Int,
+fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes: Int,
                        onDismiss: () -> Unit, onConfirm: () -> Unit){
     val borderRadius = 15.dp
 
@@ -36,22 +37,24 @@ fun ConfirmationDialog(titleRes: Int, textRex: Int, dismissRes: Int, confirmRes:
         Dialog(onDismissRequest = { onDismiss() },
             properties = DialogProperties(usePlatformDefaultWidth = false)) {
             Card(modifier = Modifier.fillMaxWidth().padding(16.dp),
-                shape = RoundedCornerShape(20.dp)
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),
+                shape = RoundedCornerShape(16.dp)
             ){
                 Column (modifier = Modifier.fillMaxWidth().padding(14.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally ){
 
-                    Text(text = stringResource(id = titleRes), style = MaterialTheme.typography.headlineMedium)
+                    Text(text = stringResource(id = titleRes), style = MaterialTheme.typography
+                        .headlineMedium.copy(color = MaterialTheme.colorScheme.onPrimary))
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(18.dp))
 
-                    Text(text = stringResource(id = textRex), textAlign = TextAlign.Justify,
-                        style = MaterialTheme.typography.headlineSmall,
-                        modifier = Modifier.fillMaxWidth().padding(start = 8.dp)
+                    Text(text = stringResource(id = textRes), textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.headlineSmall.copy(color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f)),
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 5.dp)
                     )
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(18.dp))
 
                     Row (modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceEvenly,
@@ -71,7 +74,7 @@ fun ConfirmationDialog(titleRes: Int, textRex: Int, dismissRes: Int, confirmRes:
                             ) { onDismiss() }
                         }
 
-                        Spacer(modifier = Modifier.width(12.dp))
+                        Spacer(modifier = Modifier.width(20.dp))
 
                         Box(modifier = Modifier.height(40.dp).weight(1f)
                             .then(

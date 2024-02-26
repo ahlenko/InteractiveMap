@@ -4,7 +4,9 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -30,9 +32,9 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
 
     private var _index: Int = 0
 
-    val darkThemeSelected = mutableStateOf(false)
-    val onlineEducation = mutableStateOf(false)
-    val translationGeo = mutableStateOf(false)
+    var darkThemeSelected by mutableStateOf(false)
+    var onlineEducation by mutableStateOf(false)
+    var translationGeo by mutableStateOf(false)
 
     private val _languageSelected = MutableStateFlow("")
     private val _distanceSelected = MutableStateFlow("")
@@ -51,9 +53,9 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
         _distanceSelected.value = getDistanceString(SharedPreferencesRepository.geoTranslationDistance)
         _intervalSelected.value = getIntervalString(SharedPreferencesRepository.geoUpdateInterval)
         _languageSelected.value = _stringLanguage[SharedPreferencesRepository.languageType]
-        onlineEducation.value = SharedPreferencesRepository.onlineEducationSelected
-        darkThemeSelected.value = SharedPreferencesRepository.darkThemeSelected
-        translationGeo.value = SharedPreferencesRepository.translationGeoOn
+        onlineEducation = SharedPreferencesRepository.onlineEducationSelected
+        darkThemeSelected = SharedPreferencesRepository.darkThemeSelected
+        translationGeo = SharedPreferencesRepository.translationGeoOn
     }
 
     private fun insertListOptions() {
@@ -78,21 +80,21 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
     }
 
     fun onSystemThemeChanged(){
-        darkThemeSelected.value = !darkThemeSelected.value
+        darkThemeSelected = !darkThemeSelected
         SharedPreferencesRepository
-            .darkThemeSelected = darkThemeSelected.value
+            .darkThemeSelected = darkThemeSelected
     }
 
     fun onEducationTypeChanged(){
-        onlineEducation.value = !onlineEducation.value
+        onlineEducation = !onlineEducation
         SharedPreferencesRepository
-            .onlineEducationSelected = onlineEducation.value
+            .onlineEducationSelected = onlineEducation
     }
 
     fun onTranslationStateChanged(){
-        translationGeo.value = !translationGeo.value
+        translationGeo = !translationGeo
         SharedPreferencesRepository
-            .translationGeoOn = translationGeo.value
+            .translationGeoOn = translationGeo
     }
 
     fun onLanguageChanged(option: ListOption) {

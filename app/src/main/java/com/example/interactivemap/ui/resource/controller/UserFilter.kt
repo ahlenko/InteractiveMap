@@ -3,9 +3,12 @@ package com.example.interactivemap.ui.resource.controller
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -35,7 +38,7 @@ fun UserFilter(isStudentType: Boolean, isFullView: Boolean){
                 .background(MaterialTheme.colorScheme.onPrimaryContainer)
                 .padding(10.dp)
         ) {
-            Row (
+            Row (modifier = Modifier.height(50.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically)
             {
@@ -53,9 +56,12 @@ fun UserFilter(isStudentType: Boolean, isFullView: Boolean){
                     )
                 )
 
-                IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                    imageResourceId = R.drawable.ic_filter, radius = 30.dp,
-                    iconColor = MaterialTheme.colorScheme.onPrimary) {}
+                Box(modifier = Modifier.aspectRatio(1f).height(IntrinsicSize.Max)){
+                    IconButton(buttonColor = Color.Transparent, size = 30.dp,
+                        imageResourceId = R.drawable.ic_filter, radius = 30.dp,
+                        iconColor = MaterialTheme.colorScheme.onPrimary) {}
+                }
+
             }
 
 
@@ -68,10 +74,10 @@ fun UserFilter(isStudentType: Boolean, isFullView: Boolean){
                         modifier = Modifier.weight(1f).padding(start = 20.dp),
                         verticalArrangement = Arrangement.SpaceEvenly,
                         horizontalAlignment = Alignment.CenterHorizontally){
-                        RadioRowButton(checked = false, textId = R.string.active)
+                        RadioRowButton(checked = false, textId = R.string.active){}
                         Spacer(modifier = Modifier.height(25.dp))
                         RadioRowButton(checked = false, textId = if (isStudentType) R.string.all_students
-                        else R.string.all_tutors)
+                        else R.string.all_tutors){}
                     }
 
                     Column (
@@ -79,9 +85,9 @@ fun UserFilter(isStudentType: Boolean, isFullView: Boolean){
                         verticalArrangement = Arrangement.SpaceEvenly,
                         horizontalAlignment = Alignment.CenterHorizontally){
                         RadioRowButton(checked = false, textId = if (isStudentType) R.string.not_at_place
-                        else R.string.blocked)
+                        else R.string.blocked){}
                         Spacer(modifier = Modifier.height(25.dp))
-                        RadioRowButton(checked = true, textId = R.string.clipped)
+                        RadioRowButton(checked = true, textId = R.string.clipped){}
                     }
                 }
             }

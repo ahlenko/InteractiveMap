@@ -14,6 +14,9 @@ object AppOnboard : NavigationDestinations {
 object ScheduleViewer : NavigationDestinations {
     override val route = "ScheduleViewer" }
 
+object ScheduleEditor : NavigationDestinations {
+    override val route = "ScheduleEditor" }
+
 object LandingScreen : NavigationDestinations {
     override val route = "LandingScreen" }
 
@@ -36,3 +39,7 @@ object CreatorScreen : NavigationDestinations {
     override val route = "CreatorScreen" }
 object EditorScreen : NavigationDestinations {
     override val route = "EditorScreen" }
+
+
+object TableScreen : NavigationDestinations {
+    override val route = "TableScreen" }

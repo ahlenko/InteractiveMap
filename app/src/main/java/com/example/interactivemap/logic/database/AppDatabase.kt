@@ -5,21 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.interactivemap.logic.database.dao.LocalAccountDAO
-import com.example.interactivemap.logic.database.dao.MainScheduleDAO
-import com.example.interactivemap.logic.database.dao.ReserveScheduleDAO
 import com.example.interactivemap.logic.database.entity.LocalAccount
-import com.example.interactivemap.logic.database.entity.MainSchedule
-import com.example.interactivemap.logic.database.entity.ReserveSchedule
 
-@Database(entities = [LocalAccount::class, MainSchedule::class, ReserveSchedule::class],
-    version = 1, exportSchema = false)
+@Database(entities = [LocalAccount::class],
+    version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun daoLocalAccount(): LocalAccountDAO
-
-    abstract fun daoMainSchedule(): MainScheduleDAO
-
-    abstract fun daoReserveSchedule(): ReserveScheduleDAO
 
     companion object {
         @Volatile

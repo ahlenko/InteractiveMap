@@ -29,6 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
 import com.example.interactivemap.logic.navigation.AccountCreator
 import com.example.interactivemap.logic.navigation.AppOnboard
+import com.example.interactivemap.logic.navigation.LandingScreen
 import com.example.interactivemap.logic.navigation.NavigationScreen
 import com.example.interactivemap.ui.resource.status.ScreenProgressBoll
 import com.example.interactivemap.ui.screens.welcome.onboarding.account.fragments.OnboardingFragmentFirst
@@ -45,8 +46,8 @@ fun AccountOnboarding(navHostController: NavHostController){
     val onboardingScreens: List<@Composable () -> Unit> = remember { listOf(
             { OnboardingFragmentFirst() },
             { OnboardingFragmentSecond() },
-            { OnboardingFragmentThird() { navHostController
-                .navigate(NavigationScreen.route) { popUpTo(0) } } }) }
+            { OnboardingFragmentThird { navHostController
+                .navigate(AccountCreator.route) { popUpTo(0) } } }) }
 
     val pagerState = rememberPagerState(pageCount = {onboardingScreens.size})
 
@@ -62,7 +63,7 @@ fun AccountOnboarding(navHostController: NavHostController){
         Box(modifier = Modifier.padding(12.dp).padding(top = 16.dp).fillMaxWidth(),
             contentAlignment = Alignment.TopEnd){
             Text(stringResource(id = R.string.skip), modifier = Modifier.clickable {
-                navHostController.navigate(AccountCreator.route) { popUpTo(0) } },
+                navHostController.navigate(LandingScreen.route) { popUpTo(0) } },
                 style = MaterialTheme.typography.headlineSmall.copy(
                     color = MaterialTheme.colorScheme.onBackground,
                     fontWeight = FontWeight.Light, textAlign = TextAlign.Right)) }

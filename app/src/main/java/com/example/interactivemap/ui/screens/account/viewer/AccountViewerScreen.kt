@@ -127,13 +127,13 @@ fun AccountViewerScreen(navHostController: NavHostController,
                         horizontalArrangement = Arrangement.SpaceEvenly){
 
                         Box(modifier = Modifier.weight(1f)){
-                            RadioRowButton(checked = isStudent, textId = R.string.student)
+                            RadioRowButton(checked = isStudent, textId = R.string.student){}
                         }
 
                         Spacer(modifier = Modifier.width(25.dp))
 
                         Box(modifier = Modifier.weight(1f)){
-                            RadioRowButton(checked = !isStudent, textId = R.string.tutor)
+                            RadioRowButton(checked = !isStudent, textId = R.string.tutor){}
                         }
                     }
                 }
@@ -171,7 +171,7 @@ fun AccountViewerScreen(navHostController: NavHostController,
                             TextViewRowIcon(iconId = R.drawable.ic_list, text = remember {
                                 mutableStateOf("")
                             }, textStyle = MaterialTheme.typography.headlineLarge
-                                .copy(color = MaterialTheme.colorScheme.onPrimary))
+                                .copy(color = MaterialTheme.colorScheme.onPrimary)){}
                         }
                     }
                 }

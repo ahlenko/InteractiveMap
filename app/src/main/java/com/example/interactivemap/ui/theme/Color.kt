@@ -18,6 +18,8 @@ object AppColorsLight {
     val mountainGray100 = Color(0xFFD9D9D9)
     val red = Color(0xFFD64242)
     val pink = Color(0xFFD0899E)
+
+    val dark = Color(0xEB2F1408)
 }
 
 object AppColorsDark {

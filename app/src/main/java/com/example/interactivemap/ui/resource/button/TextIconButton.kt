@@ -34,7 +34,7 @@ fun TextIconButton (text: String, textStyle: TextStyle, buttonColor: Color, imag
     InteractiveMapTheme {
         Box(modifier = Modifier
             .clip(RoundedCornerShape(radius))
-            .clickable { onClick }) {
+            .clickable { onClick() }) {
             Row(modifier = Modifier.background(buttonColor).fillMaxSize(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center){

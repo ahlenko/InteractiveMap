@@ -71,16 +71,16 @@ fun SubjectViewDialog(onDismiss: () -> Unit){
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             item {
-                                LessonRow(remember { mutableStateOf(false) },"Економіка програмного забезпеч...")
+                                LessonRow("Економіка програмного забезпеч...")
                             }
                             item {
-                                LessonRow(remember { mutableStateOf(true) },"Проектний практикум")
+                                LessonRow("Проектний практикум")
                             }
                             item {
-                                LessonRow(remember { mutableStateOf(false) },"Основи програмування")
+                                LessonRow("Основи програмування")
                             }
                             item {
-                                LessonRow(remember { mutableStateOf(false) },"Архітектура комп’ютера")
+                                LessonRow("Архітектура комп’ютера")
                             }
                         }
                     }

@@ -14,9 +14,9 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
-fun SwitchRowButton (state: MutableState<Boolean>){
+fun SwitchRowButton (state: Boolean, onChanged:()->Unit){
     InteractiveMapTheme {
-        Switch(checked = state.value, onCheckedChange = {state.value = !state.value},
+        Switch(checked = state, onCheckedChange = {onChanged()},
             colors = SwitchDefaults.colors(
                 checkedTrackColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 uncheckedTrackColor = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -30,7 +30,5 @@ fun SwitchRowButton (state: MutableState<Boolean>){
 @Preview
 @Composable
 fun SwitchRowButtonPreview(){
-    SwitchRowButton(remember {
-        mutableStateOf(true)
-    })
+    SwitchRowButton(true){}
 }

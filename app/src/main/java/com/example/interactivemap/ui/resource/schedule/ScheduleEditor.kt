@@ -25,14 +25,13 @@ import com.example.interactivemap.ui.resource.button.IconButton
 import com.example.interactivemap.ui.resource.button.TextIconButton
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
+import com.example.interactivemap.ui.screens.schedule.editor.ScheduleEditorViewModel
+import com.example.interactivemap.ui.screens.schedule.viewer.ScheduleViewerViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun ScheduleEditor(){
+fun ScheduleEditor(viewerViewModel: ScheduleEditorViewModel){
     val borderRadius = 18.dp
-    val editorType = 0
-    val isItemSelected = false
-    val isItemDoubled = false
 
     InteractiveMapTheme {
         Column (modifier = Modifier.fillMaxSize(),
@@ -44,13 +43,13 @@ fun ScheduleEditor(){
                             (borderRadius, MaterialTheme.colorScheme.tertiaryContainer))
                     .then(ShadowMaterial.CustomReShadow.createModifier
                             (borderRadius, MaterialTheme.colorScheme.onTertiaryContainer))
-                    .alpha(if (isItemSelected) 1f else 0.7f)
+                    .alpha(if (viewerViewModel.deleteEnable) 1f else 0.7f)
                 ){
                     IconButton(
                         buttonColor = MaterialTheme.colorScheme.onError, radius = borderRadius,
                         imageResourceId = R.drawable.ic_trashbox, size = 28.dp,
                         iconColor = MaterialTheme.colorScheme.background,
-                    ){}
+                    ){if (viewerViewModel.deleteEnable) viewerViewModel.onDeleteButtonClick() }
                 }
 
                 Spacer(modifier = Modifier.width(15.dp))
@@ -60,7 +59,7 @@ fun ScheduleEditor(){
                         (borderRadius, MaterialTheme.colorScheme.tertiaryContainer))
                     .then(ShadowMaterial.CustomReShadow.createModifier
                         (borderRadius, MaterialTheme.colorScheme.onTertiaryContainer))
-                    .alpha(if (isItemDoubled && isItemSelected) 1f else 0.7f)
+                    .alpha(if (viewerViewModel.addDoubleEnable) 1f else 0.7f)
                 ){
                     TextIconButton(
                         buttonColor = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -69,7 +68,7 @@ fun ScheduleEditor(){
                         iconColor = MaterialTheme.colorScheme.onBackground,
                         textStyle = MaterialTheme.typography.headlineLarge.copy(
                             color = MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Light)
-                    ){}
+                    ){if (viewerViewModel.addDoubleEnable) viewerViewModel.onDoubleButtonClick() }
                 }
 
                 Spacer(modifier = Modifier.width(15.dp))
@@ -79,7 +78,7 @@ fun ScheduleEditor(){
                         (borderRadius, MaterialTheme.colorScheme.tertiaryContainer))
                     .then(ShadowMaterial.CustomReShadow.createModifier
                         (borderRadius, MaterialTheme.colorScheme.onTertiaryContainer))
-                    .alpha(if (isItemSelected) 1f else 0.7f)
+                    .alpha(if (viewerViewModel.editEnable) 1f else 0.7f)
                 ){
                     TextIconButton(
                         buttonColor = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -88,7 +87,7 @@ fun ScheduleEditor(){
                         iconColor = MaterialTheme.colorScheme.onBackground,
                         textStyle = MaterialTheme.typography.headlineLarge.copy(
                             color = MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Light)
-                    ){}
+                    ){ if (viewerViewModel.editEnable) viewerViewModel.onChangeClick()}
                 }
             }
 
@@ -102,7 +101,7 @@ fun ScheduleEditor(){
             ){
                 TextIconButton(
                     buttonColor = MaterialTheme.colorScheme.onBackground,
-                    text = stringResource(when (editorType) {
+                    text = stringResource(when (viewerViewModel.scheduleType) {
                         0 -> R.string.save_schedule
                         1 -> R.string.save_changes
                         else -> R.string.add_read_data
@@ -111,7 +110,7 @@ fun ScheduleEditor(){
                     iconColor = MaterialTheme.colorScheme.background,
                     textStyle = MaterialTheme.typography.headlineLarge.copy(
                         color = MaterialTheme.colorScheme.background, fontWeight = FontWeight.Light)
-                ){}
+                ){viewerViewModel.onSaveClick()}
             }
         }
     }
