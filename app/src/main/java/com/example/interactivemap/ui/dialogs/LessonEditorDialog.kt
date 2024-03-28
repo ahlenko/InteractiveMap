@@ -44,7 +44,6 @@ import com.example.interactivemap.ui.resource.button.DefaultButton
 import com.example.interactivemap.ui.resource.button.IconButton
 import com.example.interactivemap.ui.resource.button.TextIconButton
 import com.example.interactivemap.ui.resource.fields.BasicField
-import com.example.interactivemap.ui.resource.fields.SearchField
 import com.example.interactivemap.ui.resource.fields.ViewField
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
@@ -122,13 +121,8 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, viewMo
                                 .height(38.dp)
                         ) {
                             LocalSoftwareKeyboardController.current?.let {
-                                SearchField(
+                                BasicField(
                                     text = name,
-                                    searchRes = remember {
-                                        mutableStateOf("")
-                                    },
-                                    getSearchRes = {},
-                                    keyboardController = it,
                                     textStyle = MaterialTheme.typography.bodySmall
                                         .copy(color = MaterialTheme.colorScheme.onPrimary)
                                 )
@@ -156,13 +150,8 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, viewMo
                                 .height(38.dp)
                         ) {
                             LocalSoftwareKeyboardController.current?.let {
-                                SearchField(
+                                BasicField(
                                     text = tutor,
-                                    searchRes = remember {
-                                        mutableStateOf("")
-                                    },
-                                    getSearchRes = {},
-                                    keyboardController = it,
                                     textStyle = MaterialTheme.typography.bodySmall
                                         .copy(color = MaterialTheme.colorScheme.onPrimary)
                                 )

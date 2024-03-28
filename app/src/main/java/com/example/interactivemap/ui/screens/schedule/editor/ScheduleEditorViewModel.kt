@@ -14,13 +14,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
-import com.example.interactivemap.logic.database.AppDatabase
-import com.example.interactivemap.logic.model.datamodel.Lesson
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.screens.schedule.DefScheduleViewModel
-import com.example.interactivemap.ui.screens.schedule.viewer.ScheduleViewerViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.time.LocalDate

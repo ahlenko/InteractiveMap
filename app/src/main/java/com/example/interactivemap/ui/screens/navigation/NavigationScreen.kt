@@ -83,7 +83,7 @@ fun NavigationScreen(navHostController: NavHostController,
         ) {
             SearchHeader(
                 remember { mutableStateOf("") }, leftImgId = R.drawable.ic_search, searchResult = searchRes,
-                rightImgId = R.drawable.ic_translation, onClickRight = {}, onChange = {}){}
+                rightImgId = R.drawable.ic_transparent, onClickRight = {}, onChange = {}){}
 
 //            Box(modifier = Modifier.padding(15.dp).fillMaxWidth()){
 //                HeaderMapNavigation(locationStart ="Новий. к: ауд. 3227", locationEnd ="СК: Легка атлетика")
