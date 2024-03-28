@@ -27,7 +27,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
 import com.example.interactivemap.logic.navigation.AppOnboard
-import com.example.interactivemap.logic.navigation.LandingScreen
 import com.example.interactivemap.logic.navigation.NavigationScreen
 import com.example.interactivemap.logic.navigation.ScheduleViewer
 import com.example.interactivemap.ui.resource.button.DropDownRowButton
@@ -47,17 +46,9 @@ import com.maxkeppeler.sheets.list.models.ListSelection
 fun SettingsScreen(navHostController: NavHostController,
     settingsViewModel: SettingsViewModel = viewModel()
 ){
-    val pointsViewDistanceList by settingsViewModel.pointsViewDistanceList.collectAsState()
-    val updateIntervalList by settingsViewModel.updateIntervalList.collectAsState()
     val languageList by settingsViewModel.languageList.collectAsState()
-
     val languageSelected by settingsViewModel.languageSelected.collectAsState()
-    val distanceSelected by settingsViewModel.distanceSelected.collectAsState()
-    val intervalSelected by settingsViewModel.intervalSelected.collectAsState()
-
     val languageDialogState = rememberUseCaseState()
-    val distanceDialogState = rememberUseCaseState()
-    val timeIntervalDialogState = rememberUseCaseState()
 
     MaterialTheme{
         ListDialog(
@@ -66,24 +57,6 @@ fun SettingsScreen(navHostController: NavHostController,
                 options = languageList
             ) { _, option ->
                 settingsViewModel.onLanguageChanged(option)
-            }
-        )
-
-        ListDialog(
-            state = distanceDialogState,
-            selection = ListSelection.Single(showRadioButtons = true,
-                options = pointsViewDistanceList
-            ) { _, option ->
-                settingsViewModel.onDistanceChanged(option)
-            }
-        )
-
-        ListDialog(
-            state = timeIntervalDialogState,
-            selection = ListSelection.Single( showRadioButtons = true,
-                options = updateIntervalList
-            ) { _, option ->
-                settingsViewModel.onTimeIntervalChanged(option)
             }
         )
     }
@@ -104,13 +77,13 @@ fun SettingsScreen(navHostController: NavHostController,
                         (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
             ){
                 DefaultHeader(titleId = R.string.settings, leftImgId = R.drawable.ic_prew_page,
-                    rightImgId = R.drawable.ic_account, onClickLeft = {
+                    rightImgId = R.drawable.ic_schedule_mini, onClickLeft = {
                         navHostController.navigate(
                             if (!settingsViewModel.onlineEducation)
                                 NavigationScreen.route
                             else ScheduleViewer.route) { popUpTo(0) }
                     }, onClickRight = {
-                        navHostController.navigate(LandingScreen.route) { popUpTo(0) }
+                        navHostController.navigate(ScheduleViewer.route) { popUpTo(0) }
                     })
             }
 
@@ -183,62 +156,6 @@ fun SettingsScreen(navHostController: NavHostController,
                 Text(text = ">>", style = MaterialTheme.typography.headlineLarge
                     .copy(color = MaterialTheme.colorScheme.onPrimary),
                     modifier = Modifier.padding(end = 8.dp))
-            }
-
-            if (!settingsViewModel.onlineEducation){
-                Spacer(modifier = Modifier.height(spacerInterval))
-
-                Text(
-                    text = stringResource(id = R.string.geolocation), Modifier.fillMaxWidth(),
-                    style = MaterialTheme.typography.headlineMedium
-                        .copy(color = MaterialTheme.colorScheme.onPrimary, textAlign = TextAlign.Center),
-                )
-
-                Spacer(modifier = Modifier.height(spacerInterval))
-
-                Row (modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-                    .clickable { settingsViewModel.onTranslationStateChanged() },
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ){
-                    Box(modifier = Modifier.weight(1f)){
-                    IconTextRow(imageId = R.drawable.ic_translation, textId = R.string.translation_geo,
-                        tint = MaterialTheme.colorScheme.onBackground)}
-                    SwitchRowButton(state = settingsViewModel.translationGeo)
-                    {settingsViewModel.onTranslationStateChanged()}
-                }
-
-                Spacer(modifier = Modifier.height(spacerInterval))
-
-                Row (modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-                    .clickable { distanceDialogState.show() },
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ){
-                    Box(modifier = Modifier.weight(1f)){
-                    IconTextRow(imageId = R.drawable.ic_map_view, textId = R.string.point_view,
-                        tint = MaterialTheme.colorScheme.onBackground)}
-                    DropDownRowButton(text = distanceSelected)
-                }
-
-                Spacer(modifier = Modifier.height(spacerInterval))
-
-                Row (modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-                    .clickable { timeIntervalDialogState.show() },
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ){
-                    Box(modifier = Modifier.weight(1f)){
-                    IconTextRow(imageId = R.drawable.ic_interval, textId = R.string.update_interval,
-                        tint = MaterialTheme.colorScheme.onBackground)}
-                    DropDownRowButton(text = intervalSelected)
-                }
             }
 
             Spacer(modifier = Modifier.weight(1f))

@@ -24,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.interactivemap.R
-import com.example.interactivemap.logic.navigation.LandingScreen
 import com.example.interactivemap.logic.navigation.ScheduleViewer
+import com.example.interactivemap.logic.navigation.SettingsScreen
 import com.example.interactivemap.ui.dialogs.ConfirmationDialog
 import com.example.interactivemap.ui.dialogs.LessonEditorDialog
 import com.example.interactivemap.ui.resource.schedule.ScheduleDayController
@@ -85,10 +85,10 @@ fun ScheduleEditorScreen(navHostController: NavHostController,
                         (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
             ) {
                 DefaultHeader(titleId = R.string.schedule, leftImgId = R.drawable.ic_prew_page,
-                    rightImgId = R.drawable.ic_account, onClickLeft = {
+                    rightImgId = R.drawable.ic_settings, onClickLeft = {
                         navHostController.navigate (ScheduleViewer.route) { popUpTo(0) }
                         }, onClickRight = {
-                            navHostController.navigate(LandingScreen.route) { popUpTo(0) }
+                            navHostController.navigate(SettingsScreen.route) { popUpTo(0) }
                         }
                 )
             }

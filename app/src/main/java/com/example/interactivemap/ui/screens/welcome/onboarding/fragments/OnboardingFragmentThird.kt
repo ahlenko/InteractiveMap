@@ -1,7 +1,6 @@
-package com.example.interactivemap.ui.screens.welcome.onboarding.all_app.fragments
+package com.example.interactivemap.ui.screens.welcome.onboarding.fragments
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,7 +23,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
 import com.example.interactivemap.ui.resource.button.DefaultButton
 import com.example.interactivemap.ui.resource.material.ShadowMaterial

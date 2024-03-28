@@ -37,12 +37,6 @@ object SharedPreferencesRepository {
             saveBoolean(SharedPreferencesHelper.ONLINE_EDUCATION, onlineEducationSelected)
         }
 
-    var translationGeoOn: Boolean
-        get() = loadBoolean(SharedPreferencesHelper.TRANSLATION_STATE)
-        set(translationGeoOn) {
-            saveBoolean(SharedPreferencesHelper.TRANSLATION_STATE, translationGeoOn)
-        }
-
     var isSecondEnter: Boolean
         get() = loadBoolean(SharedPreferencesHelper.SECOND_ENTER)
         set(isSecondEnter) {
@@ -81,17 +75,5 @@ object SharedPreferencesRepository {
         get() = loadString(SharedPreferencesHelper.NAVIGATION_GRAPH)
         set(navigationGraph) {
             saveString(SharedPreferencesHelper.NAVIGATION_GRAPH, navigationGraph)
-        }
-
-    var geoTranslationDistance: Int
-        get() = loadInt(SharedPreferencesHelper.TRANSLATION_DISTANCE)
-        set(geoTranslationDistance) {
-            saveInt(SharedPreferencesHelper.TRANSLATION_DISTANCE, geoTranslationDistance)
-        }
-
-    var geoUpdateInterval: Int
-        get() = loadInt(SharedPreferencesHelper.UPDATE_INTERVAL)
-        set(geoUpdateInterval) {
-            saveInt(SharedPreferencesHelper.UPDATE_INTERVAL, geoUpdateInterval)
         }
 }

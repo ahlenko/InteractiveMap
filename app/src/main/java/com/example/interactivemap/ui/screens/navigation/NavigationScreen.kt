@@ -22,18 +22,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
-import com.example.interactivemap.logic.navigation.AccOnboard
-import com.example.interactivemap.logic.navigation.AccountCreator
-import com.example.interactivemap.logic.navigation.LandingScreen
 import com.example.interactivemap.logic.navigation.ScheduleViewer
 import com.example.interactivemap.logic.navigation.SettingsScreen
 import com.example.interactivemap.ui.resource.controller.BottomNavigation
 import com.example.interactivemap.ui.resource.controller.FloorController
-import com.example.interactivemap.ui.resource.controller.HeaderMapNavigation
 import com.example.interactivemap.ui.resource.controller.PlacesController
 import com.example.interactivemap.ui.resource.header.DefaultHeader
 import com.example.interactivemap.ui.resource.header.SearchHeader
@@ -88,9 +83,7 @@ fun NavigationScreen(navHostController: NavHostController,
         ) {
             SearchHeader(
                 remember { mutableStateOf("") }, leftImgId = R.drawable.ic_search, searchResult = searchRes,
-                rightImgId = R.drawable.ic_account, onClickRight = {
-                    navHostController.navigate(LandingScreen.route)
-                }, onChange = {}){}
+                rightImgId = R.drawable.ic_translation, onClickRight = {}, onChange = {}){}
 
 //            Box(modifier = Modifier.padding(15.dp).fillMaxWidth()){
 //                HeaderMapNavigation(locationStart ="Новий. к: ауд. 3227", locationEnd ="СК: Легка атлетика")

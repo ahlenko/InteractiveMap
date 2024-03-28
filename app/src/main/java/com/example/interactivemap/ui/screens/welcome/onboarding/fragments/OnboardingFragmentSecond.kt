@@ -1,7 +1,6 @@
-package com.example.interactivemap.ui.screens.welcome.onboarding.account.fragments
+package com.example.interactivemap.ui.screens.welcome.onboarding.fragments
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,17 +42,17 @@ fun OnboardingFragmentSecond(){
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.padding(12.dp).padding(top = 12.dp).fillMaxWidth()){
                 Text(
-                    stringResource(id = R.string.information), modifier = Modifier,
+                    stringResource(id = R.string.schedule_lessons), modifier = Modifier,
                     style = MaterialTheme.typography.headlineLarge.copy(
                         color = MaterialTheme.colorScheme.onBackground,
                         fontWeight = FontWeight.Light, textAlign = TextAlign.Left))
             }
 
-            Box(modifier = Modifier.fillMaxSize().weight(1f)){
-                Box(modifier = Modifier.align(Alignment.BottomStart).padding(bottom = 86.dp, start = 36.dp)
-                    .fillMaxWidth(0.74f).fillMaxHeight(0.43f)){
-                    Image(painter = painterResource(id = R.drawable.img_users_list),
-                        modifier = Modifier.rotate(-21.5f).fillMaxSize()
+            Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 8.dp)){
+                Box(modifier = Modifier.align(Alignment.BottomStart).padding(bottom = 60.dp, start = 30.dp)
+                    .fillMaxWidth(0.78f).fillMaxHeight(0.38f)){
+                    Image(painter = painterResource(id = R.drawable.img_schedule_loader),
+                        modifier = Modifier.rotate(-13f).fillMaxSize()
                             .then(ShadowMaterial.CustomShadow.createModifier
                                 (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
                             .then(ShadowMaterial.CustomReShadow.createModifier
@@ -61,10 +60,21 @@ fun OnboardingFragmentSecond(){
                         contentDescription = null)
                 }
 
-                Box(modifier = Modifier.align(Alignment.TopEnd).padding(top = 40.dp, end = 33.dp)
-                    .fillMaxWidth(0.78f).fillMaxHeight(0.44f)){
-                    Image(painter = painterResource(id = R.drawable.img_user_view),
-                        modifier = Modifier.rotate(17.89f).fillMaxSize()
+                Box(modifier = Modifier.align(Alignment.CenterEnd).padding(end = 30.dp, bottom = 70.dp)
+                    .fillMaxWidth(0.85f).fillMaxHeight(0.39f)){
+                    Image(painter = painterResource(id = R.drawable.img_schedule_sample),
+                        modifier = Modifier.rotate(18.57f).fillMaxSize()
+                            .then(ShadowMaterial.CustomShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
+                            .then(ShadowMaterial.CustomReShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)),
+                        contentDescription = null)
+                }
+
+                Box(modifier = Modifier.align(Alignment.TopStart).padding(top = 25.dp, start = 25.dp)
+                    .fillMaxWidth(0.80f).fillMaxHeight(0.26f)){
+                    Image(painter = painterResource(id = R.drawable.img_schedule_header),
+                        modifier = Modifier.rotate(-17.4f).fillMaxSize()
                             .then(ShadowMaterial.CustomShadow.createModifier
                                 (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
                             .then(ShadowMaterial.CustomReShadow.createModifier
@@ -76,7 +86,8 @@ fun OnboardingFragmentSecond(){
             Column (modifier = Modifier.fillMaxHeight(0.42f),
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
-                Text(stringResource(id = R.string.information_description),
+                Text(
+                    stringResource(id = R.string.schedule_description),
                     modifier = Modifier.padding(horizontal = 20.dp),
                     style = MaterialTheme.typography.headlineMedium.copy(
                         color = MaterialTheme.colorScheme.onBackground,
@@ -84,7 +95,8 @@ fun OnboardingFragmentSecond(){
                     )
                 )
                 Spacer(modifier = Modifier.height(20.dp))
-                Text(stringResource(id = R.string.information_description_full),
+                Text(
+                    stringResource(id = R.string.schedule_description_full),
                     modifier = Modifier.padding(horizontal = 20.dp),
                     style = MaterialTheme.typography.titleSmall.copy(
                         color = MaterialTheme.colorScheme.onPrimary,

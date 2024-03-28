@@ -29,12 +29,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
-import com.example.interactivemap.logic.navigation.AppOnboard
-import com.example.interactivemap.logic.navigation.LandingScreen
 import com.example.interactivemap.logic.navigation.NavigationScreen
 import com.example.interactivemap.logic.navigation.ScheduleEditor
 import com.example.interactivemap.logic.navigation.ScheduleViewer
 import com.example.interactivemap.logic.navigation.SettingsScreen
+import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.dialogs.LessonViewDialog
 import com.example.interactivemap.ui.resource.schedule.ScheduleDayController
 import com.example.interactivemap.ui.resource.schedule.ScheduleLoader
@@ -67,23 +66,16 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
                     .then(ShadowMaterial.CustomReShadow.createModifier
                             (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
             ) {
-                if (!scheduleViewerViewModel.onlineEducation.value){
+
                     DefaultHeader(titleId = R.string.schedule, leftImgId = R.drawable.ic_prew_page,
-                        rightImgId = R.drawable.ic_account, onClickLeft = {
-                            navHostController.navigate (NavigationScreen.route) { popUpTo(0) }
-                        }, onClickRight = {
-                            navHostController.navigate(LandingScreen.route) { popUpTo(0) }
-                        }
-                    )
-                } else {
-                    DefaultHeader(titleId = R.string.schedule, leftImgId = R.drawable.ic_account,
                         rightImgId = R.drawable.ic_settings, onClickLeft = {
-                            navHostController.navigate (LandingScreen.route) { popUpTo(0) }
+                            SharedPreferencesRepository.onlineEducationSelected = false
+                            navHostController.navigate (NavigationScreen.route) { popUpTo(0) }
                         }, onClickRight = {
                             navHostController.navigate(SettingsScreen.route) { popUpTo(0) }
                         }
                     )
-                }
+
             }
 
             Spacer(modifier = Modifier.height(12.dp))
