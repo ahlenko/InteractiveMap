@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.Lesson
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
@@ -21,10 +22,13 @@ class SplashScreenViewModel : ViewModel() {
     private val _loading = MutableStateFlow(true)
     var onlineEducation by mutableStateOf(false)
     var isSecondEnter by mutableStateOf(false)
+    var isLinkExist by mutableStateOf(false)
+    var isFromMassage by mutableStateOf(false)
 
     val loading = _loading.asStateFlow()
 
     init {
+        checkStartLink()
         if (SharedPreferencesRepository.mainSchedule == null ||
             SharedPreferencesRepository.mainSchedule?.isEmpty() == true){
             fillEmptyItems()
@@ -40,6 +44,15 @@ class SplashScreenViewModel : ViewModel() {
             _loading.value = false
         }
     }
+
+    private fun checkStartLink(){
+        isLinkExist = SharedPreferencesRepository.linkList?.isNotEmpty() ?: false
+        if (isLinkExist){
+            isFromMassage = ThisApplication.getInstance().isFromMassage()
+        }
+
+    }
+
     private fun fillEmptyItems() {
         val emptyLessonData = LessonData("", "", 0, "", "", false)
 

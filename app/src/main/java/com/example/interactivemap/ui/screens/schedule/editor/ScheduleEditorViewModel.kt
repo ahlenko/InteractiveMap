@@ -2,6 +2,7 @@ package com.example.interactivemap.ui.screens.schedule.editor
 
 import android.app.Application
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -11,15 +12,20 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
+import com.example.interactivemap.logic.network.ApiFactory
+import com.example.interactivemap.logic.network.ApiService
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.screens.schedule.DefScheduleViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.Calendar
 
@@ -32,6 +38,8 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
 
     private val _toBackScreen = MutableStateFlow(false)
     val toBackScreen = _toBackScreen.asStateFlow()
+
+    private var apiService: ApiService? = null
 
     var showSheet by mutableStateOf(false)
     var showReserveInfo by mutableStateOf(false)
@@ -58,9 +66,36 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     private var _selectedId = 0
     private var _selectedType = 0
 
+    private lateinit var _link: String
+    private lateinit var _route: String
+
     init {
+        fetchScheduleApiBaseUrl()
         loadScheduleData()
         loadSelectedOptions()
+    }
+
+    private fun fetchScheduleApiBaseUrl(){
+        if (ThisApplication.getInstance().isFromMassage() && SharedPreferencesRepository.linkList?.isNotEmpty() == true){
+            if (SharedPreferencesRepository.linkList != null){
+                ThisApplication.getInstance().setFromMassage(false)
+                _link = SharedPreferencesRepository.linkList!![0]
+                val startIndex = _link.indexOf("://") + "://".length
+                val endIndex = _link.indexOf("/", startIndex)
+                _link = _link.substring(0, endIndex)
+                SharedPreferencesRepository.baseUrl = _link
+                _route = SharedPreferencesRepository.linkList!![0].replace("$_link/stud/", "")
+                fetchScheduleApiData()
+            }
+        }
+    }
+
+    private fun fetchScheduleApiData(){
+        apiService = ApiFactory.getApiService(_link)
+        viewModelScope.launch (Dispatchers.IO){
+            val remoteSchedule = apiService?.getSchedule("$_route/23/2")
+            remoteSchedule?.size
+        }
     }
 
     fun onDeleteButtonClick(){

@@ -7,7 +7,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 object SharedPreferencesHelper {
-
     private var sharedPreferences: SharedPreferences? = null
 
     const val LANGUAGE_TYPE = "language_type"
@@ -16,12 +15,14 @@ object SharedPreferencesHelper {
     const val SECOND_ENTER = "second_enter"
     const val SCHEDULE_TYPE = "schedule_type"
     const val AUTH_TOKEN = "auth_token"
+    const val BASE_URL_KEY = "base_url_key"
 
     const val SCHEDULE_MAIN = "schedule_main"
     const val SCHEDULE_RESERVE = "schedule_reserve"
 
     const val NAVIGATION_GRAPH = "navigation_graph"
     const val MAP_LOCATION = "map_location"
+    const val LINK_LIST = "linkList"
 
     @JvmStatic
     fun loadSettingsHelper(context: Context, name: String) {

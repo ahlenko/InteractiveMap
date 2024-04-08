@@ -65,15 +65,21 @@ object SharedPreferencesRepository {
             saveString(SharedPreferencesHelper.MAP_LOCATION, locationList)
         }
 
-    var authToken: String?
-        get() = loadString(SharedPreferencesHelper.AUTH_TOKEN)
-        set(authToken) {
-            saveString(SharedPreferencesHelper.AUTH_TOKEN, authToken)
-        }
-
     var navigationGraph: String?
         get() = loadString(SharedPreferencesHelper.NAVIGATION_GRAPH)
         set(navigationGraph) {
             saveString(SharedPreferencesHelper.NAVIGATION_GRAPH, navigationGraph)
+        }
+
+    var baseUrl: String?
+        get() = loadString(SharedPreferencesHelper.BASE_URL_KEY)
+        set(baseUrl) {
+            saveString(SharedPreferencesHelper.BASE_URL_KEY, baseUrl)
+        }
+
+    var linkList: List<String>?
+        get() = JSONLoadSaveHelper.loadStringList(SharedPreferencesHelper.LINK_LIST)
+        set(value) {
+            JSONLoadSaveHelper.saveStringList(SharedPreferencesHelper.LINK_LIST, value)
         }
 }
