@@ -9,5 +9,5 @@ import kotlinx.coroutines.flow.StateFlow
 
 data class Lesson (
     @field:Json(name = "index") val index: Int,
-    @field:Json(name = "lessonData") val lessonData: ArrayList<LessonData>
+    @field:Json(name = "lessonData") var lessonData: ArrayList<LessonData>
 )

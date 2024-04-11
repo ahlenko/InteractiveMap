@@ -2,36 +2,11 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="BottomNavigationPreview">
-        <State />
-      </entry>
-      <entry key="LessonEditorDialogPreview">
-        <State />
-      </entry>
-      <entry key="NavigationScreenPreview">
-        <State />
-      </entry>
-      <entry key="StatusChangerDialogPreview">
-        <State />
-      </entry>
-      <entry key="SubjectEditorDialogPreview">
+      <entry key="ScheduleViewerPreview">
         <State />
       </entry>
       <entry key="app">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="LMF100TM9ded7f90" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-08T17:08:33.379289200Z" />
-        </State>
+        <State />
       </entry>
     </value>
   </component>

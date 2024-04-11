@@ -18,6 +18,7 @@ import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
+import com.example.interactivemap.logic.model.datamodel.ScheduleResponse
 import com.example.interactivemap.logic.network.ApiFactory
 import com.example.interactivemap.logic.network.ApiService
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
@@ -26,6 +27,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDate
 import java.util.Calendar
 
@@ -92,9 +94,25 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
 
     private fun fetchScheduleApiData(){
         apiService = ApiFactory.getApiService(_link)
-        viewModelScope.launch (Dispatchers.IO){
-            val remoteSchedule = apiService?.getSchedule("$_route/23/2")
-            remoteSchedule?.size
+        viewModelScope.launch {
+            var remoteSchedule: List<ScheduleResponse>
+            withContext(Dispatchers.IO){
+                remoteSchedule = apiService?.getSchedule("$_route/23/2")!!
+            }
+            withContext(Dispatchers.Main){
+                remoteSchedule.forEach {
+                    val tempLesson = scheduleData.value[it.day].lessons[it.lesson].lessonData
+                    if (it.week == "чис") {
+                        tempLesson[0].tutor = it.pib
+                        tempLesson[1].name = it.lessonName
+                    } else {
+                        tempLesson.add(_clearItem)
+                        tempLesson[1].tutor = it.pib
+                        tempLesson[1].name = it.lessonName
+                    }
+                    scheduleData.value[it.day].lessons[it.lesson].lessonData = tempLesson
+                }
+            }
         }
     }
 
@@ -144,10 +162,12 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     }
 
     private fun loadScheduleData() {
-        if (SharedPreferencesRepository.scheduleType == 2)
-            _scheduleData.value = SharedPreferencesRepository.reserveSchedule!!
-        else { _scheduleData.value = SharedPreferencesRepository.mainSchedule!!
-            if (SharedPreferencesRepository.reserveSchedule != null) showReserveCopy = true
+        if (!ThisApplication.getInstance().isFromMassage()){
+            if (SharedPreferencesRepository.scheduleType == 2)
+                _scheduleData.value = SharedPreferencesRepository.reserveSchedule!!
+            else { _scheduleData.value = SharedPreferencesRepository.mainSchedule!!
+                if (SharedPreferencesRepository.reserveSchedule != null) showReserveCopy = true
+            }
         }
     }
 

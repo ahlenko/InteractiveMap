@@ -56,7 +56,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
-    implementation(platform("androidx.compose:compose-bom:2024.02.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.04.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
@@ -66,12 +66,12 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2024.02.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2024.04.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    implementation("androidx.compose.material:material:1.6.1")
-    implementation ("androidx.compose.foundation:foundation:1.6.1")
+    implementation("androidx.compose.material:material:1.6.5")
+    implementation ("androidx.compose.foundation:foundation:1.6.5")
 
     implementation ("com.jakewharton.threetenabp:threetenabp:1.3.0")
 
@@ -82,8 +82,6 @@ dependencies {
     // Dialog dependency
     implementation ("com.maxkeppeler.sheets-compose-dialogs:core:1.2.1")
     implementation ("com.maxkeppeler.sheets-compose-dialogs:list:1.2.1")
-    implementation ("com.maxkeppeler.sheets-compose-dialogs:calendar:1.2.1")
-
 
     // Google maps dependency
     implementation ("com.google.maps.android:maps-compose:2.7.2")
@@ -99,15 +97,6 @@ dependencies {
     implementation ("androidx.legacy:legacy-support-v4:1.0.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
-    // SignalR dependency
-    implementation ("com.microsoft.signalr:signalr:7.0.0")
-    implementation ("org.slf4j:slf4j-jdk14:1.7.25")
-
-    // Room dependency
-    implementation("androidx.room:room-common:2.6.1")
-    implementation ("androidx.room:room-runtime:2.6.1")
-    ksp ("androidx.room:room-compiler:2.6.1")
-    implementation ("androidx.room:room-ktx:2.6.1")
 
     // GSON dependency
     implementation("com.google.code.gson:gson:2.10.1")

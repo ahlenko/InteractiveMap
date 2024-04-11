@@ -6,10 +6,10 @@ import com.google.gson.annotations.SerializedName
 data class ScheduleResponse(
     @SerializedName("end") val end: String,
     @SerializedName("strt") val start: String,
-    @SerializedName("День") val day: String,
+    @SerializedName("День") val day: Int,
     @SerializedName("ПІБ") val pib: String,
-    @SerializedName("Пара") val lesson: String,
-    @SerializedName("Парн") val twin: String,
+    @SerializedName("Пара") val lesson: Int,
+    @SerializedName("Парн") val twin: Int,
     @SerializedName("Предмет") val lessonName: String,
     @SerializedName("Тижд") val week: String
 )
