@@ -1,5 +1,6 @@
 package com.example.interactivemap.ui.screens.schedule.editor
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -37,6 +39,7 @@ import com.example.interactivemap.ui.resource.schedule.ScheduleContainer
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 import kotlinx.coroutines.delay
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ScheduleEditorScreen(navHostController: NavHostController,
@@ -73,63 +76,86 @@ fun ScheduleEditorScreen(navHostController: NavHostController,
         scheduleEditorViewModel.onDeleteElement() }}
 
     InteractiveMapTheme {
-        ReturnBack(navHostController, scheduleEditorViewModel)
-        Column(modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
-        ) {
-            Box(modifier = Modifier.padding(15.dp).height(50.dp).fillMaxWidth()
-                .then(ShadowMaterial.CustomShadow.createModifier
-                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
-                .then(ShadowMaterial.CustomReShadow.createModifier
-                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
+        Scaffold (containerColor = MaterialTheme.colorScheme.background) { _ ->
+            ReturnBack(navHostController, scheduleEditorViewModel)
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Top
             ) {
-                DefaultHeader(titleId = R.string.schedule, leftImgId = R.drawable.ic_prew_page,
-                    rightImgId = R.drawable.ic_settings, onClickLeft = {
-                        navHostController.navigate (ScheduleViewer.route) { popUpTo(0) }
+                Box(
+                    modifier = Modifier.padding(15.dp).height(50.dp).fillMaxWidth()
+                        .then(
+                            ShadowMaterial.CustomShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
+                        )
+                        .then(
+                            ShadowMaterial.CustomReShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
+                        )
+                ) {
+                    DefaultHeader(titleId = R.string.schedule, leftImgId = R.drawable.ic_prew_page,
+                        rightImgId = R.drawable.ic_settings, onClickLeft = {
+                            navHostController.navigate(ScheduleViewer.route) { popUpTo(0) }
                         }, onClickRight = {
                             navHostController.navigate(SettingsScreen.route) { popUpTo(0) }
                         }
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Text(
+                    text = stringResource(
+                        id = when (scheduleEditorViewModel.scheduleType) {
+                            0 -> R.string.create
+                            1 -> R.string.edit
+                            else -> R.string.recover
+                        }
+                    ), Modifier.fillMaxWidth(),
+                    style = MaterialTheme.typography.headlineMedium
+                        .copy(
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            textAlign = TextAlign.Center
+                        )
                 )
-            }
 
-            Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(6.dp))
 
-            Text(text = stringResource(
-                id = when (scheduleEditorViewModel.scheduleType){
-                    0 -> R.string.create 1 -> R.string.edit else -> R.string.recover }
-            ), Modifier.fillMaxWidth(),
-                style = MaterialTheme.typography.headlineMedium
-                    .copy(color = MaterialTheme.colorScheme.onPrimary, textAlign = TextAlign.Center)
-            )
+                Box(
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .height(25.dp)
+                        .fillMaxSize()
+                ) {
+                    ScheduleDayController(scheduleEditorViewModel)
+                }
 
-            Spacer(modifier = Modifier.height(6.dp))
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(horizontal = 10.dp)
+                        .padding(top = 4.dp, bottom = 10.dp)
+                ) {
+                    ScheduleContainer(
+                        scheduleData.value[scheduleEditorViewModel.currentDay],
+                        scheduleEditorViewModel
+                    )
+                }
 
-            Box(modifier = Modifier
-                .padding(10.dp)
-                .height(25.dp)
-                .fillMaxSize()){
-                ScheduleDayController(scheduleEditorViewModel)
-            }
+                if (scheduleEditorViewModel.areUpdate) {
+                    Spacer(modifier = Modifier.height(1.dp))
+                }
 
-            Box(modifier = Modifier
-                .weight(1f)
-                .padding(horizontal = 10.dp)
-                .padding(top = 4.dp, bottom = 10.dp)){
-               ScheduleContainer(scheduleData.value[scheduleEditorViewModel.currentDay], scheduleEditorViewModel)
-            }
-
-            if (scheduleEditorViewModel.areUpdate){
-                Spacer(modifier = Modifier.height(1.dp))
-            }
-
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 25.dp)
-                    .padding(bottom = 15.dp)
-                    .height(115.dp)) {
-                ScheduleEditor(scheduleEditorViewModel)
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 25.dp)
+                        .padding(bottom = 15.dp)
+                        .height(115.dp)
+                ) {
+                    ScheduleEditor(scheduleEditorViewModel)
+                }
             }
         }
     }

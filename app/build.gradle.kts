@@ -82,6 +82,7 @@ dependencies {
     // Dialog dependency
     implementation ("com.maxkeppeler.sheets-compose-dialogs:core:1.2.1")
     implementation ("com.maxkeppeler.sheets-compose-dialogs:list:1.2.1")
+    implementation ("com.maxkeppeler.sheets-compose-dialogs:calendar:1.2.1")
 
     // Google maps dependency
     implementation ("com.google.maps.android:maps-compose:2.7.2")
@@ -93,10 +94,9 @@ dependencies {
     implementation ("com.squareup.okhttp3:okhttp:4.10.0")
 
     // Glide dependency
-    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation ("androidx.legacy:legacy-support-v4:1.0.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
-
 
     // GSON dependency
     implementation("com.google.code.gson:gson:2.10.1")

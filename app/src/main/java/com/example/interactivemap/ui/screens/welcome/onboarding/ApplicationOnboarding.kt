@@ -1,5 +1,6 @@
 package com.example.interactivemap.ui.screens.welcome.onboarding
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
@@ -35,6 +37,7 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 
 @OptIn(ExperimentalFoundationApi::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ApplicationOnboarding(navHostController: NavHostController){
     val state = remember { mutableIntStateOf(0) }
@@ -49,22 +52,36 @@ fun ApplicationOnboarding(navHostController: NavHostController){
     val pagerState = rememberPagerState(pageCount = {onboardingScreens.size})
 
     InteractiveMapTheme {
-        Box(Modifier.fillMaxSize()) {
-            Box(modifier = Modifier.padding(end = 12.dp).height(54.dp).width(8.dp).align(Alignment.CenterEnd)
-            ) { ScreenProgressBoll(state) } }
+        Scaffold (containerColor = MaterialTheme.colorScheme.background) { _ ->
+            Box(Modifier.fillMaxSize()) {
+                Box(
+                    modifier = Modifier.padding(end = 12.dp).height(54.dp).width(8.dp)
+                        .align(Alignment.CenterEnd)
+                ) { ScreenProgressBoll(state) }
+            }
 
-        VerticalPager(state = pagerState, modifier = Modifier.fillMaxSize()
-        ) { page -> onboardingScreens[page]()
-            state.intValue = pagerState.currentPage }
+            VerticalPager(
+                state = pagerState, modifier = Modifier.fillMaxSize()
+            ) { page ->
+                onboardingScreens[page]()
+                state.intValue = pagerState.currentPage
+            }
 
-        Box(modifier = Modifier.padding(12.dp).padding(top = 16.dp).fillMaxWidth(),
-            contentAlignment = Alignment.TopEnd){
-            Text(stringResource(id = R.string.skip), modifier = Modifier.clickable {
-                    SharedPreferencesRepository.isSecondEnter = true
-                    navHostController.navigate(NavigationScreen.route) { popUpTo(0) }
-                }, style = MaterialTheme.typography.headlineSmall.copy(
-                    color = MaterialTheme.colorScheme.onBackground,
-                    fontWeight = FontWeight.Light, textAlign = TextAlign.Right)) }
+            Box(
+                modifier = Modifier.padding(12.dp).padding(top = 16.dp).fillMaxWidth(),
+                contentAlignment = Alignment.TopEnd
+            ) {
+                Text(
+                    stringResource(id = R.string.skip), modifier = Modifier.clickable {
+                        SharedPreferencesRepository.isSecondEnter = true
+                        navHostController.navigate(NavigationScreen.route) { popUpTo(0) }
+                    }, style = MaterialTheme.typography.headlineSmall.copy(
+                        color = MaterialTheme.colorScheme.onBackground,
+                        fontWeight = FontWeight.Light, textAlign = TextAlign.Right
+                    )
+                )
+            }
+        }
     }
 }
 

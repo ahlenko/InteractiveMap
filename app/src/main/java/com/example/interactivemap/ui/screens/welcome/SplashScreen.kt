@@ -1,5 +1,6 @@
 package com.example.interactivemap.ui.screens.welcome
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -28,36 +30,44 @@ import com.example.interactivemap.logic.navigation.ScheduleEditor
 import com.example.interactivemap.logic.navigation.ScheduleViewer
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SplashScreen(navHostController: NavHostController){
     NavigateToNextScreen(navHostController)
     InteractiveMapTheme {
-        Column (Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Column (Modifier.weight(1f).fillMaxWidth().padding(bottom = 25.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+        Scaffold (containerColor = MaterialTheme.colorScheme.background){ _ ->
+            Column (Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ){
-                Icon(painter = painterResource(id = R.drawable.ic_logo),
-                    tint = MaterialTheme.colorScheme.onBackground,
-                    modifier = Modifier.size(175.dp), contentDescription = null)
-                Text(stringResource(id = R.string.un_name),
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Normal),
-                    modifier = Modifier.padding(top = 10.dp))
-                Text(stringResource(id = R.string.app_description),
+                Column (
+                    Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .padding(bottom = 25.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ){
+                    Icon(painter = painterResource(id = R.drawable.ic_logo),
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.size(175.dp), contentDescription = null)
+                    Text(stringResource(id = R.string.un_name),
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Normal),
+                        modifier = Modifier.padding(top = 10.dp))
+                    Text(stringResource(id = R.string.app_description),
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Normal),
+                        modifier = Modifier.padding(top = 20.dp))
+                }
+
+                Text(stringResource(id = R.string.un_site),
                     style = MaterialTheme.typography.titleMedium.copy(
                         MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Normal),
-                    modifier = Modifier.padding(top = 20.dp))
+                    modifier = Modifier.padding(vertical = 10.dp))
             }
-
-            Text(stringResource(id = R.string.un_site),
-                style = MaterialTheme.typography.titleMedium.copy(
-                    MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Normal),
-                modifier = Modifier.padding(vertical = 10.dp))
         }
+
     }
 }
 

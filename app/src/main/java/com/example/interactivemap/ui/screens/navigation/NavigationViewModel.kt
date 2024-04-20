@@ -8,6 +8,4 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 class NavigationViewModel(application: Application): AndroidViewModel(application) {
 
-
-
 }

@@ -29,18 +29,18 @@ private val LightColorScheme = lightColorScheme(
 )
 
 private val DarkColorScheme = darkColorScheme(
-    background = AppColorsLight.background,
-    onBackground = AppColorsLight.onBackground,
-    onTertiary = AppColorsLight.onTertiary,
-    tertiaryContainer = AppColorsLight.shadow,
-    onTertiaryContainer = AppColorsLight.reShadow,
-    onPrimary = AppColorsLight.onPrimary,
-    onPrimaryContainer = AppColorsLight.mountainGray,
-    onSecondary = AppColorsLight.gray,
-    onSecondaryContainer = AppColorsLight.mountainGray100,
-    onError = AppColorsLight.red,
-    onErrorContainer = AppColorsLight.pink,
-    surfaceDim = AppColorsLight.dark
+    background = AppColorsDark.background,
+    onBackground = AppColorsDark.onBackground,
+    onTertiary = AppColorsDark.onTertiary,
+    tertiaryContainer = AppColorsDark.shadow,
+    onTertiaryContainer = AppColorsDark.reShadow,
+    onPrimary = AppColorsDark.onPrimary,
+    onPrimaryContainer = AppColorsDark.mountainGray,
+    onSecondary = AppColorsDark.gray,
+    onSecondaryContainer = AppColorsDark.mountainGray100,
+    onError = AppColorsDark.red,
+    onErrorContainer = AppColorsDark.pink,
+    surfaceDim = AppColorsDark.dark
 )
 
 @Composable

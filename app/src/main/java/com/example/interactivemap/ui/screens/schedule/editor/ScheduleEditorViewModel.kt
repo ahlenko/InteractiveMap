@@ -16,6 +16,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
+import com.example.interactivemap.logic.model.datamodel.Lesson
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
 import com.example.interactivemap.logic.model.datamodel.ScheduleResponse
@@ -73,14 +74,12 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
 
     init {
         fetchScheduleApiBaseUrl()
-        loadScheduleData()
         loadSelectedOptions()
     }
 
     private fun fetchScheduleApiBaseUrl(){
         if (ThisApplication.getInstance().isFromMassage() && SharedPreferencesRepository.linkList?.isNotEmpty() == true){
             if (SharedPreferencesRepository.linkList != null){
-                ThisApplication.getInstance().setFromMassage(false)
                 _link = SharedPreferencesRepository.linkList!![0]
                 val startIndex = _link.indexOf("://") + "://".length
                 val endIndex = _link.indexOf("/", startIndex)
@@ -89,41 +88,67 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
                 _route = SharedPreferencesRepository.linkList!![0].replace("$_link/stud/", "")
                 fetchScheduleApiData()
             }
+        } else  loadScheduleData()
+    }
+
+    private fun fillEmptyItems() {
+        _scheduleData.value = arrayListOf()
+        for (dayIndex in 0 until 7) {
+            val lessons = ArrayList<Lesson>()
+            for (lessonIndex in 0 until 6) {
+                val emptyLessonData = LessonData("", "", 0, "", "", false)
+                val lesson = Lesson(lessonIndex, arrayListOf(emptyLessonData))
+                lessons.add(lesson)
+            }
+            _scheduleData.value.add(ScheduleDay(dayIndex, lessons))
         }
     }
 
-    private fun fetchScheduleApiData(){
+    private fun fetchScheduleApiData(){ fillEmptyItems()
         apiService = ApiFactory.getApiService(_link)
         viewModelScope.launch {
             var remoteSchedule: List<ScheduleResponse>
-            withContext(Dispatchers.IO){
-                remoteSchedule = apiService?.getSchedule("$_route/23/2")!!
+            withContext(Dispatchers.IO) {
+                remoteSchedule = apiService?.getSchedule("$_route/23/1")!!
             }
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
+                var prevData: ScheduleResponse? = null
                 remoteSchedule.forEach {
-                    val tempLesson = scheduleData.value[it.day].lessons[it.lesson].lessonData
+                    val tempLesson = _scheduleData.value[it.day].lessons[it.lesson-1].lessonData.toMutableList()
                     if (it.week == "чис") {
                         tempLesson[0].tutor = it.pib
-                        tempLesson[1].name = it.lessonName
+                        tempLesson[0].name = it.lessonName
                     } else {
-                        tempLesson.add(_clearItem)
-                        tempLesson[1].tutor = it.pib
-                        tempLesson[1].name = it.lessonName
+                        if (prevData != null) {
+                            if (!(prevData!!.day == it.day && prevData!!.lesson == it.lesson)){
+                                val emptyLessonData = LessonData("", "", 0, "", "", false)
+                                tempLesson.add(emptyLessonData)
+                                tempLesson[1].tutor = it.pib
+                                tempLesson[1].name = it.lessonName
+                            }
+                        } else {
+                            val emptyLessonData = LessonData("", "", 0, "", "", false)
+                            tempLesson.add(emptyLessonData)
+                            tempLesson[1].tutor = it.pib
+                            tempLesson[1].name = it.lessonName
+                        }
                     }
-                    scheduleData.value[it.day].lessons[it.lesson].lessonData = tempLesson
+                    _scheduleData.value[it.day].lessons[it.lesson-1].lessonData = tempLesson as ArrayList<LessonData>
+                    prevData = it
                 }
             }
         }
     }
 
     fun onDeleteButtonClick(){
-        showDeleteAgree = true
+       showDeleteAgree = true
     }
 
     fun onDoubleButtonClick(){ clearSelection()
         addDoubleEnable = false
         _selectedType = 1
-        _scheduleData.value[currentDay].lessons[_selectedId].lessonData.add(_clearItem)
+        val emptyLessonData = LessonData("", "", 0, "", "", false)
+        _scheduleData.value[currentDay].lessons[_selectedId].lessonData.add(emptyLessonData)
         _scheduleData.value[currentDay].lessons[_selectedId].lessonData[_selectedType].selected = true
         lessonDescription = _dayArray[currentDay] + ", " +  getDayNumberByIndex(_selectedId) + " пара, " + _weekTypesArray2[_selectedType]
         selectedData = _scheduleData.value[currentDay].lessons[_selectedId].lessonData[_selectedType]
@@ -168,7 +193,7 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
             else { _scheduleData.value = SharedPreferencesRepository.mainSchedule!!
                 if (SharedPreferencesRepository.reserveSchedule != null) showReserveCopy = true
             }
-        }
+        } else ThisApplication.getInstance().setFromMassage(false)
     }
 
     fun onRecoverDismiss(){
@@ -183,7 +208,8 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
         _toBackScreen.value = true
     }
 
-    fun onSaveClick() { clearSelection()
+    fun onSaveClick() {
+        clearSelection()
         SharedPreferencesRepository.reserveSchedule = null
         SharedPreferencesRepository.mainSchedule = _scheduleData.value
         _toBackScreen.value = true

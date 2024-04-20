@@ -1,5 +1,6 @@
 package com.example.interactivemap.ui.screens.navigation
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -7,12 +8,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -35,6 +36,7 @@ import com.example.interactivemap.ui.resource.header.SearchHeader
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.google.android.gms.maps.GoogleMapOptions
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
@@ -44,6 +46,7 @@ import com.google.maps.android.compose.MapType
 import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.rememberCameraPositionState
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun NavigationScreen(navHostController: NavHostController,
 
@@ -71,62 +74,88 @@ fun NavigationScreen(navHostController: NavHostController,
     }
 
     InteractiveMapTheme {
-        GoogleMap(
-            properties = MapProperties(minZoomPreference = 13f),
-            uiSettings = MapUiSettings(zoomControlsEnabled = false),
-            modifier = Modifier.fillMaxSize(), cameraPositionState = cameraPositionState
-        )
+        Scaffold (containerColor = MaterialTheme.colorScheme.background) {  _ ->
 
-        Column(modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceEvenly
-        ) {
-            SearchHeader(
-                remember { mutableStateOf("") }, leftImgId = R.drawable.ic_search, searchResult = searchRes,
-                rightImgId = R.drawable.ic_transparent, onClickRight = {}, onChange = {}){}
+            GoogleMap(
+
+                properties = MapProperties(minZoomPreference = 13f),
+                uiSettings = MapUiSettings(zoomControlsEnabled = false),
+                modifier = Modifier.fillMaxSize(), cameraPositionState = cameraPositionState,
+
+            )
+
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
+                SearchHeader(
+                    remember { mutableStateOf("") },
+                    leftImgId = R.drawable.ic_search,
+                    searchResult = searchRes,
+                    rightImgId = R.drawable.ic_transparent,
+                    onClickRight = {},
+                    onChange = {}) {}
 
 //            Box(modifier = Modifier.padding(15.dp).fillMaxWidth()){
 //                HeaderMapNavigation(locationStart ="Новий. к: ауд. 3227", locationEnd ="СК: Легка атлетика")
 //            }
 
-            Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = Modifier.weight(1f))
 
-            Row (modifier = Modifier.padding(horizontal = 15.dp).height(140.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceEvenly){
-
-                Box(modifier = Modifier.width(46.dp).fillMaxHeight()
-                    .then(ShadowMaterial.CustomShadow.createModifier
-                            (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
-                    .then(ShadowMaterial.CustomReShadow.createModifier
-                            (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
-                    .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
+                Row(
+                    modifier = Modifier.padding(horizontal = 15.dp).height(140.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    PlacesController(
-                        placeType = remember { mutableIntStateOf(1) }
-                    )
+
+                    Box(
+                        modifier = Modifier.width(46.dp).fillMaxHeight()
+                            .then(
+                                ShadowMaterial.CustomShadow.createModifier
+                                    (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
+                            )
+                            .then(
+                                ShadowMaterial.CustomReShadow.createModifier
+                                    (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
+                            )
+                            .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
+                    ) {
+                        PlacesController(
+                            placeType = remember { mutableIntStateOf(1) }
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.weight(1f))
+
+                    Box(
+                        modifier = Modifier.width(46.dp).fillMaxHeight()
+                            .then(
+                                ShadowMaterial.CustomShadow.createModifier
+                                    (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
+                            )
+                            .then(
+                                ShadowMaterial.CustomReShadow.createModifier
+                                    (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
+                            )
+                            .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
+                    ) {
+                        FloorController(
+                            floor = remember { mutableIntStateOf(1) },
+                            maxFloor = remember { mutableIntStateOf(5) },
+                            minFloor = remember { mutableIntStateOf(-1) }
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Box(modifier = Modifier.width(46.dp).fillMaxHeight()
-                    .then(ShadowMaterial.CustomShadow.createModifier
-                            (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
-                    .then(ShadowMaterial.CustomReShadow.createModifier
-                            (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
-                    .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
-                ) {
-                    FloorController(
-                        floor = remember { mutableIntStateOf(1) },
-                        maxFloor = remember { mutableIntStateOf(5) },
-                        minFloor = remember { mutableIntStateOf(-1) }
-                    )
-                }
+                BottomNavigation(
+                    state = remember { mutableIntStateOf(0) },
+                    clickers,
+                    clickersCenter
+                )
             }
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            BottomNavigation(state = remember { mutableIntStateOf(0) }, clickers, clickersCenter)
         }
     }
 }
