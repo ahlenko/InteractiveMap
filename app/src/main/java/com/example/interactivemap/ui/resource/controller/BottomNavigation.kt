@@ -2,6 +2,7 @@ package com.example.interactivemap.ui.resource.controller
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -95,15 +96,14 @@ fun BottomNavigation(state: MutableState<Int>, clickers: ArrayList<() -> Unit>, 
                     }
 
                     Box(modifier = Modifier.padding(bottom = 5.dp, start = 3.dp).align(Alignment.Center)){
-                        Image(modifier = Modifier.height(125.dp).width(90.dp),
+                        Image(modifier = Modifier.height(125.dp).width(90.dp).clickable { onClickCenter[state.value]() },
                             painter = painterResource(id = R.drawable.button_create_route), contentDescription = null
                         )
                         Box(modifier = Modifier.align(Alignment.TopCenter).
                         padding(top = 28.dp, end = 3.dp).size(40.dp)){
                             IconButton(buttonColor = Color.Transparent, size = 40.dp,
                                 imageResourceId = R.drawable.ic_navigate, radius = 15.dp,
-                                iconColor = MaterialTheme.colorScheme.surfaceDim)
-                            { onClickCenter[state.value]() }
+                                iconColor = MaterialTheme.colorScheme.surfaceDim) {  }
                         }
                     }
                 }
@@ -179,6 +179,6 @@ fun BottomNavigationPreview(){
     clickersCenter.add { /* обробник 3 */ }
 
     BottomNavigation(state = remember {
-        mutableIntStateOf(0)
+        mutableIntStateOf(1)
     }, clickers,  clickersCenter)
 }

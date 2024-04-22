@@ -25,26 +25,29 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
-fun PlacesController(placeType: MutableState<Int>){
+fun PlacesController(placeType: MutableState<Int>,  coroutineScope: CoroutineScope, onChange: () -> Unit){
     InteractiveMapTheme {
-        Box(
-            modifier = Modifier.clip(RoundedCornerShape(15.dp))
-                .background(MaterialTheme.colorScheme.onPrimaryContainer)
-                .fillMaxSize()
-        ){
+        Box(modifier = Modifier.clip(RoundedCornerShape(15.dp))
+                .background(MaterialTheme.colorScheme.onPrimaryContainer).fillMaxSize()){
             Column (modifier = Modifier.fillMaxSize()
                 .padding(horizontal = 5.dp, vertical = 10.dp),
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.CenterHorizontally){
+
                 Text(text = stringResource(id = R.string.sk),
                     style = MaterialTheme.typography.bodyMedium.copy(
                         color = MaterialTheme.colorScheme.onBackground.copy(
                             alpha = if(placeType.value == 0) 1f else 0.5f),
                         fontWeight = FontWeight.Medium),
                     modifier = Modifier.weight(1f).clickable
-                        { if (placeType.value != 0) placeType.value = 0 }
+                        { if (placeType.value != 0) {
+                            coroutineScope.launch { onChange() }
+                            placeType.value = 0
+                        } }
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -55,7 +58,10 @@ fun PlacesController(placeType: MutableState<Int>){
                             alpha = if(placeType.value == 1) 1f else 0.5f),
                         fontWeight = FontWeight.Medium),
                     modifier = Modifier.weight(1f).clickable
-                        { if (placeType.value != 1) placeType.value = 1 }
+                        { if (placeType.value != 1) {
+                            coroutineScope.launch { onChange() }
+                            placeType.value = 1
+                        } }
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -66,15 +72,12 @@ fun PlacesController(placeType: MutableState<Int>){
                             alpha = if(placeType.value == 2) 1f else 0.5f),
                         fontWeight = FontWeight.Medium),
                     modifier = Modifier.weight(1f).clickable
-                        { if (placeType.value != 2) placeType.value = 2 }
+                        { if (placeType.value != 2) {
+                            coroutineScope.launch { onChange() }
+                            placeType.value = 2
+                        } }
                 )
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun PlacesControllerPreview(){
-    PlacesController(remember { mutableIntStateOf(1) })
 }
