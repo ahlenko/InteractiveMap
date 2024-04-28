@@ -2,10 +2,12 @@ package com.example.interactivemap.ui.screens.navigation
 
 import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,6 +39,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -96,9 +99,16 @@ fun NavigationScreen( navHostController: NavHostController,
     clickers.add { coroutineScope.launch { cameraPositionState.animate(
             CameraUpdateFactory.newCameraPosition(
                 viewModel.baseCameraPosition), Constants.DURATION_ANIM) } }
-    clickers.add { /* обробник 2 */ }
-    clickers.add { navHostController.navigate(ScheduleViewer.route)}
-    clickers.add { navHostController.navigate(SettingsScreen.route)}
+    clickers.add {
+        viewModel.logPosition(cameraPositionState.position) }
+
+    clickers.add {
+        viewModel.removeLast()
+        //navHostController.navigate(ScheduleViewer.route)
+    }
+    clickers.add {
+        //navHostController.navigate(SettingsScreen.route)
+    }
 
     var navigationOpen by remember { mutableStateOf(false) }
     var navigate by remember { mutableStateOf(false) }
@@ -109,7 +119,7 @@ fun NavigationScreen( navHostController: NavHostController,
     clickersCenter.add { navigationOpen = false }
     clickersCenter.add { navigate = false }
 
-    val floor = remember { mutableIntStateOf(1) }
+    val floor = remember { mutableIntStateOf(3) }
     val maxFloor = remember { mutableIntStateOf(5) }
     val minFloor = remember { mutableIntStateOf(0) }
 
@@ -132,37 +142,36 @@ fun NavigationScreen( navHostController: NavHostController,
                 )
 
                 // New Floors
-                GroundOverlay(
-                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 0, image = viewModel.drawFloor0New,
-                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-                )
-
-                GroundOverlay(
-                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 1, image = viewModel.drawFloor1New,
-                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-                )
-
-                GroundOverlay(
-                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 2, image = viewModel.drawFloor2New,
-                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-
-                )
-
-                GroundOverlay(
-                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 3, image = viewModel.drawFloor3New,
-                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-
-                )
-
-                GroundOverlay(
-                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 4, image = viewModel.drawFloor4New,
-                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-                )
-
-                GroundOverlay(
-                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 5,  image = viewModel.drawFloor5New,
-                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-                )
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 0, image = viewModel.drawFloor0New,
+//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+//                )
+//
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 3, image = viewModel.drawFloor1New,
+//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+//                )
+//
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 2, image = viewModel.drawFloor2New,
+//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+//
+//                )
+//
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 3, image = viewModel.drawFloor3New,
+//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+//                )
+//
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 4, image = viewModel.drawFloor4New,
+//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+//                )
+//
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 5,  image = viewModel.drawFloor5New,
+//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+//                )
 
                 // Old Floors
                 GroundOverlay(
@@ -187,15 +196,15 @@ fun NavigationScreen( navHostController: NavHostController,
 
                 // SK Floors
 
-                GroundOverlay(
-                    bearing = Constants.BEARING_SK, visible = floor.intValue == 1, image = viewModel.drawFloor1Sk,
-                    position = GroundOverlayPosition.create(Constants.skLocation, Constants.SIZE_SK)
-                )
-
-                GroundOverlay(
-                    bearing = Constants.BEARING_SK, visible = floor.intValue == 2, image = viewModel.drawFloor2Sk,
-                    position = GroundOverlayPosition.create(Constants.skLocation, Constants.SIZE_SK),
-                )
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_SK, visible = floor.intValue == 1, image = viewModel.drawFloor1Sk,
+//                    position = GroundOverlayPosition.create(Constants.skLocation, Constants.SIZE_SK)
+//                )
+//
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_SK, visible = floor.intValue == 2, image = viewModel.drawFloor2Sk,
+//                    position = GroundOverlayPosition.create(Constants.skLocation, Constants.SIZE_SK),
+//                )
             }
 
             Column(modifier = Modifier.fillMaxSize(),
@@ -208,23 +217,33 @@ fun NavigationScreen( navHostController: NavHostController,
                     onClickRight = {}, onChange = {}) {}
 
                 if (navigationOpen){
-                    Box(modifier = Modifier.padding(15.dp).fillMaxWidth()){
+                    Box(modifier = Modifier
+                        .padding(15.dp)
+                        .fillMaxWidth()){
                         HeaderMapNavigation(locationStart ="Новий. к: ауд. 3227", locationEnd ="СК: Легка атлетика")
                     }
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Row(modifier = Modifier.padding(horizontal = 15.dp).height(140.dp),
+                Row(modifier = Modifier
+                    .padding(horizontal = 15.dp)
+                    .height(140.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Box(modifier = Modifier.width(46.dp).fillMaxHeight()
-                            .then(ShadowMaterial.CustomShadow.createModifier
-                                    (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
-                            .then(ShadowMaterial.CustomReShadow.createModifier
-                                    (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
-                            .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
+                    Box(modifier = Modifier
+                        .width(46.dp)
+                        .fillMaxHeight()
+                        .then(
+                            ShadowMaterial.CustomShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
+                        )
+                        .then(
+                            ShadowMaterial.CustomReShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
+                        )
+                        .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
                     ) {
                         PlacesController(placeType = camPosition, coroutineScope = coroutineScope) {
                             coroutineScope.launch{
@@ -247,13 +266,25 @@ fun NavigationScreen( navHostController: NavHostController,
                     }
 
                     Spacer(modifier = Modifier.weight(1f))
+                    
+                    Box(modifier = Modifier.padding(bottom = 18.dp).height(34.dp).width(18.dp)){
+                        Image(painter = painterResource(id = R.drawable.map_pointer), contentDescription = null)
+                    }
 
-                    Box(modifier = Modifier.width(46.dp).fillMaxHeight()
-                            .then(ShadowMaterial.CustomShadow.createModifier
-                                    (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
-                            .then(ShadowMaterial.CustomReShadow.createModifier
-                                    (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
-                            .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
+                    Spacer(modifier = Modifier.weight(1f))
+
+                    Box(modifier = Modifier
+                        .width(46.dp)
+                        .fillMaxHeight()
+                        .then(
+                            ShadowMaterial.CustomShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
+                        )
+                        .then(
+                            ShadowMaterial.CustomReShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
+                        )
+                        .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
                     ) { FloorController(floor, maxFloor, minFloor) }
                 }
 

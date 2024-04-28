@@ -1,6 +1,7 @@
 package com.example.interactivemap.ui.screens.navigation
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -40,30 +41,52 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
         GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.background)
     }
 
-    val drawFloor0New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_0)
+    var positionNum = 202
+
+    fun removeLast(){
+        positionNum--
     }
 
-    val drawFloor1New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_1)
+    fun logPosition(position: CameraPosition) {
+        Log.d(
+            "CamPosition",
+            "            NavModel(\n" +
+                    "                id = " + positionNum + ", name = \"\",\n" +
+                    "                location = LatLng("+ position.target.latitude +", "+ position.target.longitude +"),\n" +
+                    "                locationIndex = OLD, floorIndex = 4,\n" +
+                    "                connexionWith = listOf(" + (positionNum - 1) + ", "+ (positionNum + 1) +"),\n" +
+                    "                connexionFloor = listOf(),\n" +
+                    "                connectedLocIndex = OLD\n" +
+                    "           ),\n"
+        )
+        positionNum++
     }
 
-    val drawFloor2New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_2)
-    }
 
-    val drawFloor3New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_3)
-    }
-
-    val drawFloor4New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_4)
-    }
-
-    val drawFloor5New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_5)
-    }
-
+//    val drawFloor0New: BitmapDescriptor by lazy {
+//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_0)
+//    }
+//
+//    val drawFloor1New: BitmapDescriptor by lazy {
+//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_1)
+//    }
+//
+//    val drawFloor2New: BitmapDescriptor by lazy {
+//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_2)
+//    }
+//
+//    val drawFloor3New: BitmapDescriptor by lazy {
+//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_3)
+//    }
+//
+//    val drawFloor4New: BitmapDescriptor by lazy {
+//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_4)
+//    }
+//
+//    val drawFloor5New: BitmapDescriptor by lazy {
+//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_5)
+//    }
+//
     val drawFloor1Old: BitmapDescriptor by lazy {
         GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_1)
     }
@@ -79,12 +102,12 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     val drawFloor4Old: BitmapDescriptor by lazy {
         GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_4)
     }
-
-    val drawFloor1Sk: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_1)
-    }
-
-    val drawFloor2Sk: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_2)
-    }
+//
+//    val drawFloor1Sk: BitmapDescriptor by lazy {
+//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_1)
+//    }
+//
+//    val drawFloor2Sk: BitmapDescriptor by lazy {
+//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_2)
+//    }
 }

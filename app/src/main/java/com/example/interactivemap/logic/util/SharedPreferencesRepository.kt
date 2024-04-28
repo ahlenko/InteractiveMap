@@ -59,18 +59,6 @@ object SharedPreferencesRepository {
             saveString(SCHEDULE_RESERVE, convertScheduleListToJson(reserveSchedule))
         }
 
-    var locationList: String?
-        get() = loadString(SharedPreferencesHelper.MAP_LOCATION)
-        set(locationList) {
-            saveString(SharedPreferencesHelper.MAP_LOCATION, locationList)
-        }
-
-    var navigationGraph: String?
-        get() = loadString(SharedPreferencesHelper.NAVIGATION_GRAPH)
-        set(navigationGraph) {
-            saveString(SharedPreferencesHelper.NAVIGATION_GRAPH, navigationGraph)
-        }
-
     var baseUrl: String?
         get() = loadString(SharedPreferencesHelper.BASE_URL_KEY)
         set(baseUrl) {
