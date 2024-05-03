@@ -1,4 +1,4 @@
-package com.example.interactivemap.logic.model
+package com.example.interactivemap.logic.model.navigation.models
 
 data class FloorModel(
     val number: Int,    // Поверх

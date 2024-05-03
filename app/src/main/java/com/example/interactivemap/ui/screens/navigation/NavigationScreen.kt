@@ -119,7 +119,7 @@ fun NavigationScreen( navHostController: NavHostController,
     clickersCenter.add { navigationOpen = false }
     clickersCenter.add { navigate = false }
 
-    val floor = remember { mutableIntStateOf(3) }
+    val floor = remember { mutableIntStateOf(1) }
     val maxFloor = remember { mutableIntStateOf(5) }
     val minFloor = remember { mutableIntStateOf(0) }
 
@@ -142,57 +142,57 @@ fun NavigationScreen( navHostController: NavHostController,
                 )
 
                 // New Floors
-//                GroundOverlay(
-//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 0, image = viewModel.drawFloor0New,
-//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-//                )
-//
-//                GroundOverlay(
-//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 3, image = viewModel.drawFloor1New,
-//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-//                )
-//
-//                GroundOverlay(
-//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 2, image = viewModel.drawFloor2New,
-//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-//
-//                )
-//
-//                GroundOverlay(
-//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 3, image = viewModel.drawFloor3New,
-//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-//                )
-//
-//                GroundOverlay(
-//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 4, image = viewModel.drawFloor4New,
-//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-//                )
-//
-//                GroundOverlay(
-//                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 5,  image = viewModel.drawFloor5New,
-//                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
-//                )
+                GroundOverlay(
+                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 0, image = viewModel.drawFloor0New,
+                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+                )
+
+                GroundOverlay(
+                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 1, image = viewModel.drawFloor1New,
+                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+                )
+
+                GroundOverlay(
+                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 2, image = viewModel.drawFloor2New,
+                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+
+                )
+
+                GroundOverlay(
+                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 3, image = viewModel.drawFloor3New,
+                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+                )
+
+                GroundOverlay(
+                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 4, image = viewModel.drawFloor4New,
+                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+                )
+
+                GroundOverlay(
+                    bearing = Constants.BEARING_NEW, visible = floor.intValue == 5,  image = viewModel.drawFloor5New,
+                    position = GroundOverlayPosition.create(Constants.newLocation, Constants.SIZE_NEW)
+                )
 
                 // Old Floors
-                GroundOverlay(
-                    bearing = Constants.BEARING_OLD, visible = floor.intValue == 1, image = viewModel.drawFloor1Old,
-                    position = GroundOverlayPosition.create(Constants.oldLocation, Constants.SIZE_OLD)
-                )
-
-                GroundOverlay(
-                    bearing = Constants.BEARING_OLD, visible = floor.intValue == 2, image = viewModel.drawFloor2Old,
-                    position = GroundOverlayPosition.create(Constants.oldLocation, Constants.SIZE_OLD)
-                )
-
-                GroundOverlay(
-                    bearing = Constants.BEARING_OLD, visible = floor.intValue == 3, image = viewModel.drawFloor3Old,
-                    position = GroundOverlayPosition.create(Constants.oldLocation, Constants.SIZE_OLD)
-                )
-
-                GroundOverlay(
-                    bearing = Constants.BEARING_OLD, visible = floor.intValue == 4, image = viewModel.drawFloor4Old,
-                    position = GroundOverlayPosition.create(Constants.oldLocation, Constants.SIZE_OLD)
-                )
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_OLD, visible = floor.intValue == 1, image = viewModel.drawFloor1Old,
+//                    position = GroundOverlayPosition.create(Constants.oldLocation, Constants.SIZE_OLD)
+//                )
+//
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_OLD, visible = floor.intValue == 2, image = viewModel.drawFloor2Old,
+//                    position = GroundOverlayPosition.create(Constants.oldLocation, Constants.SIZE_OLD)
+//                )
+//
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_OLD, visible = floor.intValue == 3, image = viewModel.drawFloor3Old,
+//                    position = GroundOverlayPosition.create(Constants.oldLocation, Constants.SIZE_OLD)
+//                )
+//
+//                GroundOverlay(
+//                    bearing = Constants.BEARING_OLD, visible = floor.intValue == 4, image = viewModel.drawFloor4Old,
+//                    position = GroundOverlayPosition.create(Constants.oldLocation, Constants.SIZE_OLD)
+//                )
 
                 // SK Floors
 

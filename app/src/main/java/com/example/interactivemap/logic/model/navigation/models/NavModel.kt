@@ -1,4 +1,4 @@
-package com.example.interactivemap.logic.model
+package com.example.interactivemap.logic.model.navigation.models
 
 import com.google.android.gms.maps.model.LatLng
 
