@@ -86,28 +86,28 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     val drawFloor5New: BitmapDescriptor by lazy {
         GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_5)
     }
-//
-//    val drawFloor1Old: BitmapDescriptor by lazy {
-//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_1)
-//    }
-//
-//    val drawFloor2Old: BitmapDescriptor by lazy {
-//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_2)
-//    }
-//
-//    val drawFloor3Old: BitmapDescriptor by lazy {
-//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_3)
-//    }
-//
-//    val drawFloor4Old: BitmapDescriptor by lazy {
-//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_4)
-//    }
-//
-//    val drawFloor1Sk: BitmapDescriptor by lazy {
-//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_1)
-//    }
-//
-//    val drawFloor2Sk: BitmapDescriptor by lazy {
-//        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_2)
-//    }
+
+    val drawFloor1Old: BitmapDescriptor by lazy {
+        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_1)
+    }
+
+    val drawFloor2Old: BitmapDescriptor by lazy {
+        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_2)
+    }
+
+    val drawFloor3Old: BitmapDescriptor by lazy {
+        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_3)
+    }
+
+    val drawFloor4Old: BitmapDescriptor by lazy {
+        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_4)
+    }
+
+    val drawFloor1Sk: BitmapDescriptor by lazy {
+        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_1)
+    }
+
+    val drawFloor2Sk: BitmapDescriptor by lazy {
+        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_2)
+    }
 }
