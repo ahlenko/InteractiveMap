@@ -68,6 +68,12 @@
     <string name="restore">Відновити</string>
     <string name="delete">Видалити</string>
 
+    <string name="permission">Переконайтесь що ви надали дозвіл на доступ до геолокації</string>
+    <string name="permission_description">Для продовження роботи надайте застосунку дозвіл на доступ до служб геолокації</string>
+    <string name="permission_grant">Надати</string>
+    <string name="permission_denied">Відмовити</string>
+    <string name="permission_check">Перевірити</string>
+
     <string name="sk">СК</string>
     <string name="s">С</string>
     <string name="n">Н</string>

@@ -52,7 +52,7 @@ fun PlacesController(placeType: MutableState<Int>,  coroutineScope: CoroutineSco
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                Text(text = stringResource(id = R.string.s),
+                Text(text = stringResource(id = R.string.n),
                     style = MaterialTheme.typography.bodyMedium.copy(
                         color = MaterialTheme.colorScheme.onBackground.copy(
                             alpha = if(placeType.value == 1) 1f else 0.5f),
@@ -66,7 +66,7 @@ fun PlacesController(placeType: MutableState<Int>,  coroutineScope: CoroutineSco
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                Text(text = stringResource(id = R.string.n),
+                Text(text = stringResource(id = R.string.s),
                     style = MaterialTheme.typography.bodyMedium.copy(
                         color = MaterialTheme.colorScheme.onBackground.copy(
                             alpha = if(placeType.value == 2) 1f else 0.5f),

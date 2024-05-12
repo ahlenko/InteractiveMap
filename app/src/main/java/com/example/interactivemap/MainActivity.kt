@@ -6,19 +6,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.logic.navigation.AppNavigationGraph
@@ -27,6 +21,8 @@ import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 class MainActivity : ComponentActivity() {
+    private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
+    private val ifFirstStart = true
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +52,19 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             InteractiveMapTheme {}
-                Box (Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background))
+                Box (Modifier.fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background))
                 AppNavigationGraph(rememberNavController())
-            }
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        ThisApplication.getInstance().stopForegroundService()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(!ifFirstStart) ThisApplication.getInstance().startForegroundService()
+    }
+}

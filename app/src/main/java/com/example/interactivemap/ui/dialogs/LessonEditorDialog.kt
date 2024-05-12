@@ -69,16 +69,23 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, viewMo
         ModalBottomSheet(
             containerColor = Color.Transparent,
             shape = RoundedCornerShape(borderRadius),
-            dragHandle = { }, modifier = Modifier.fillMaxWidth().padding(6.dp),
+            dragHandle = { }, modifier = Modifier
+                .fillMaxWidth()
+                .padding(6.dp),
             onDismissRequest = { onDismiss() },
             sheetState = modalBottomSheetState,
         ) {
-            Card(modifier = Modifier.fillMaxWidth().padding(bottom = 14.dp),
+            Card(modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 14.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Box(
-                    modifier = Modifier.padding(top = 12.dp).height(4.dp).width(60.dp)
+                    modifier = Modifier
+                        .padding(top = 12.dp)
+                        .height(4.dp)
+                        .width(60.dp)
                         .align(Alignment.CenterHorizontally)
                         .clip(RoundedCornerShape(100.dp))
                         .background(MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.4f))
@@ -104,16 +111,23 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, viewMo
                     Spacer(modifier = Modifier.height(6.dp))
 
                     Row(
-                        modifier = Modifier.fillMaxWidth().height(50.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        Text(
-                            modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.lesson),
-                            style = MaterialTheme.typography.headlineSmall
-                                .copy(color = MaterialTheme.colorScheme.onPrimary)
-                        )
+                        Row (modifier = Modifier.weight(1f)){
+                            Text(text = stringResource(R.string.lesson),
+                                style = MaterialTheme.typography.headlineSmall
+                                    .copy(color = MaterialTheme.colorScheme.onPrimary)
+                            )
+
+                            Text(text = "*",
+                                style = MaterialTheme.typography.headlineSmall
+                                    .copy(color = MaterialTheme.colorScheme.onError)
+                            )
+                        }
 
                         Box(
                             modifier = Modifier
@@ -137,12 +151,18 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, viewMo
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        Text(
-                            modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.tutor_),
-                            style = MaterialTheme.typography.headlineSmall
-                                .copy(color = MaterialTheme.colorScheme.onPrimary)
-                        )
+                        Row (modifier = Modifier.weight(1f)){
+                            Text(text = stringResource(R.string.tutor_),
+                                style = MaterialTheme.typography.headlineSmall
+                                    .copy(color = MaterialTheme.colorScheme.onPrimary)
+                            )
+
+                            Text(text = "*",
+                                style = MaterialTheme.typography.headlineSmall
+                                    .copy(color = MaterialTheme.colorScheme.onError)
+                            )
+                        }
+
 
                         Box(
                             modifier = Modifier
@@ -319,9 +339,6 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, viewMo
                                 if (viewModel.checkFields(
                                         locationIndex.value,
                                         link.value,
-                                        lidLink.value,
-                                        tutor.value,
-                                        name.value
                                     )
                                 ) {
                                     viewModel.onDataChanged(

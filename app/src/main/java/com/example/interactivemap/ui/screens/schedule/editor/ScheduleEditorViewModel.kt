@@ -269,8 +269,8 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
         addDoubleEnable = false
     }
 
-    fun checkFields(locationIndex: String, link: String, lidLink: String, tutor: String, name: String): Boolean {
-        return locationIndex.isNotEmpty() && link.isNotEmpty() && lidLink.isNotEmpty() && tutor.isNotEmpty() && name.isNotEmpty();
+    fun checkFields(tutor: String, name: String): Boolean {
+        return tutor.isNotEmpty() && name.isNotEmpty();
     }
 
     companion object{

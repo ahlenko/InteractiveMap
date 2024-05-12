@@ -82,7 +82,13 @@ class ScheduleViewerViewModel(application: Application, override var dayOfWeek: 
     }
 
     private fun checkScheduleExist():Boolean {
-        scheduleData.value[currentDay].lessons.forEach { elem -> elem.lessonData.forEach{if (it != _clearItem) return true} }
+        scheduleData.value.forEach{
+            day -> day.lessons.forEach {
+                elem -> elem.lessonData.forEach {
+                    if (it != _clearItem) return true
+                }
+            }
+        }
         return false
     }
 

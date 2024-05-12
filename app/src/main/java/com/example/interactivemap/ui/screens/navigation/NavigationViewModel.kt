@@ -1,113 +1,119 @@
 package com.example.interactivemap.ui.screens.navigation
 
 import android.app.Application
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.location.Location
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
-import com.example.interactivemap.R
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.Constants
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphNew
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphOld
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphSk
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphYard
+import com.example.interactivemap.logic.model.navigation.models.NavModel
+import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_LOCATION_DATA
+import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_LOCATION_PROVIDERS_STATE
+import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_LOCATION_PROVIDERS_STATE_GPS_OFF
+import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_LOCATION_PROVIDERS_STATE_GPS_ON
+import com.example.interactivemap.logic.service.LocationServiceConstants.ACTION
 import com.example.interactivemap.logic.util.GoogleMapUtil
-import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
-class NavigationViewModel(application: Application): AndroidViewModel(application) {
+class NavigationViewModel(application: Application): AndroidViewModel(application)  {
+    private var broadcastReceiver: BroadcastReceiver? = null
+    private val _movementState = MutableStateFlow(false)
+    val movementState = _movementState.asStateFlow()
+    private val _loading = MutableStateFlow(true)
+    val loading = _loading.asStateFlow()
 
-    val baseCameraPosition: CameraPosition by lazy {
-        CameraPosition.Builder().target(Constants.baseLocation).zoom(16f).build()
+    private val _foundNearestPoint = MutableStateFlow(LatLng(0.0,0.0))
+    val foundNearestPoint = _foundNearestPoint.asStateFlow()
+
+    private val _movedCameraPosition = MutableStateFlow(
+        CameraPosition.Builder().target(Constants.baseLocation).zoom(Constants.ZOOM_BASE).build())
+    val movedCameraPosition = _movedCameraPosition.asStateFlow()
+
+    fun disableLoadingState(){
+        _loading.value = false
     }
 
-    val skCameraPosition: CameraPosition by lazy {
-        CameraPosition.Builder().target(Constants.skLocation).zoom(19f).bearing(Constants.BEARING_SK - 40f).build()
+    fun rememberLastCameraPosition(position: CameraPosition){
+        ThisApplication.getInstance().setLastCameraState(position)
     }
 
-    val oldCameraPosition: CameraPosition by lazy {
-        CameraPosition.Builder().target(Constants.oldLocation).zoom(18f).bearing(Constants.BEARING_OLD - 40f).build()
+    fun setMovementObserverState(enable: Boolean){ _movementState.value = enable
+        if (enable) setBroadcastReceiver() else stopBroadcastReceiver()
     }
 
-    val newCameraPosition: CameraPosition by lazy {
-        CameraPosition.Builder().target(Constants.newLocation).zoom(17f).bearing(Constants.BEARING_NEW - 40f).build()
+    private fun setBroadcastReceiver() {
+        if (broadcastReceiver != null) {
+            LocalBroadcastManager.getInstance(getApplication())
+                .unregisterReceiver(broadcastReceiver!!)
+            broadcastReceiver = null
+        }
+        broadcastReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                val intentExtraKey = intent.getIntExtra("key", 0)
+                val intentExtraValue = intent.getIntExtra("value", 0)
+                val locationData = intent.getParcelableExtra<Location>("location")
+                if (intentExtraKey > 0) {
+                    when (intentExtraKey) { BROADCAST_LOCATION_PROVIDERS_STATE ->
+                        if (intentExtraValue == BROADCAST_LOCATION_PROVIDERS_STATE_GPS_OFF) {
+                            //showLocationErrorDialog()
+                        } else if (intentExtraValue == BROADCAST_LOCATION_PROVIDERS_STATE_GPS_ON) {
+                            //hideLocationErrorDialog()
+                        }
+
+                        BROADCAST_LOCATION_DATA -> locationData?.let { locationChanged(it) } else -> {}
+                    }
+                }
+            }
+        }
+        LocalBroadcastManager.getInstance(getApplication())
+            .registerReceiver(broadcastReceiver!!, IntentFilter(ACTION))
     }
 
-    val drawBackground: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.background)
+    private fun locationChanged(location: Location) {
+        _movedCameraPosition.value = CameraPosition.Builder().target(
+            LatLng(location.latitude, location.longitude)).zoom(Constants.ZOOM_BASE + 1f).build()
     }
 
-    var positionNum = 147
-
-    fun removeLast(){
-        positionNum--
+    private fun stopBroadcastReceiver() {
+        if (broadcastReceiver != null) {
+            LocalBroadcastManager.getInstance(getApplication())
+                .unregisterReceiver(broadcastReceiver!!)
+            broadcastReceiver = null
+        }
     }
 
-    fun logPosition(position: CameraPosition) {
-        Log.d(
-            "CamPosition",
-            "            NavModel(\n" +
-                    "                id = " + positionNum + ", name = \"\",\n" +
-                    "                location = LatLng("+ position.target.latitude +", "+ position.target.longitude +"),\n" +
-                    "                locationIndex = NEW, floorIndex = 5,\n" +
-                    "                connexionWith = listOf(" + (positionNum - 1) + ", "+ (positionNum + 1) +"),\n" +
-                    "                connexionFloor = listOf(),\n" +
-                    "                connectedLocIndex = NEW\n" +
-                    "           ),\n"
-        )
-        positionNum++
-    }
+    fun findLocationByLatLng(latLng: LatLng, floor: Int) {
+        val resultList: ArrayList<NavModel?> = arrayListOf(
+            GoogleMapUtil.findNearestLocation(NavGraphYard.navGraphYard, latLng))
 
+        when (floor){
+            0 -> { resultList.add(GoogleMapUtil.findNearestLocation(NavGraphOld.navGraphOld0, latLng)) }
+            1 -> { resultList.add(GoogleMapUtil.findNearestLocation(NavGraphOld.navGraphOld1, latLng))
+                resultList.add(GoogleMapUtil.findNearestLocation(NavGraphNew.navGraphNew1, latLng))
+                resultList.add(GoogleMapUtil.findNearestLocation(NavGraphSk.navGraphSk1, latLng)) }
+            2 -> { resultList.add(GoogleMapUtil.findNearestLocation(NavGraphOld.navGraphOld2, latLng))
+                resultList.add(GoogleMapUtil.findNearestLocation(NavGraphNew.navGraphNew2, latLng))
+                resultList.add(GoogleMapUtil.findNearestLocation(NavGraphSk.navGraphSk2, latLng)) }
+            3 -> { resultList.add(GoogleMapUtil.findNearestLocation(NavGraphOld.navGraphOld3, latLng))
+                resultList.add(GoogleMapUtil.findNearestLocation(NavGraphNew.navGraphNew3, latLng)) }
+            4 -> { resultList.add(GoogleMapUtil.findNearestLocation(NavGraphOld.navGraphOld4, latLng))
+                resultList.add(GoogleMapUtil.findNearestLocation(NavGraphNew.navGraphNew4, latLng)) }
+            5 -> { resultList.add(GoogleMapUtil.findNearestLocation(NavGraphOld.navGraphOld5, latLng)) }
+        }
 
-    val drawFloor0New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_0)
-    }
-
-    val drawFloor1New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_1)
-    }
-
-    val drawFloor2New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_2)
-    }
-
-    val drawFloor3New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_3)
-    }
-
-    val drawFloor4New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_4)
-    }
-
-    val drawFloor5New: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.new_5)
-    }
-
-    val drawFloor1Old: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_1)
-    }
-
-    val drawFloor2Old: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_2)
-    }
-
-    val drawFloor3Old: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_3)
-    }
-
-    val drawFloor4Old: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.old_4)
-    }
-
-    val drawFloor1Sk: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_1)
-    }
-
-    val drawFloor2Sk: BitmapDescriptor by lazy {
-        GoogleMapUtil.drawableToBitmapDescriptor(getApplication(), R.drawable.sk_2)
+        val result = GoogleMapUtil.findNearestLocation(resultList.filterNotNull().toList(), latLng)
+        if (result != null){ _foundNearestPoint.value = result.location }
     }
 }

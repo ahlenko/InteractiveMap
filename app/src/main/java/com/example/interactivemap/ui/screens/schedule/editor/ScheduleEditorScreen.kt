@@ -54,14 +54,14 @@ fun ScheduleEditorScreen(navHostController: NavHostController,
 
     if (scheduleEditorViewModel.showReserveInfo) { ConfirmationDialog(
         titleRes = R.string.info, textRes = R.string.onEditDismiss,
-        dismissRes = R.string.dismiss, confirmRes = R.string.exit,
+        dismissRes = R.string.dismiss, confirmRes = R.string.exit, reverseColors = false,
         onDismiss = { scheduleEditorViewModel.showReserveInfo = false })
     { scheduleEditorViewModel.showReserveInfo = false
         scheduleEditorViewModel.onMoveOut() }}
 
     if (scheduleEditorViewModel.showReserveCopy) { ConfirmationDialog(
         titleRes = R.string.info, textRes = R.string.onFindReserveCopy,
-        dismissRes = R.string.restore, confirmRes = R.string.delete,
+        dismissRes = R.string.restore, confirmRes = R.string.delete, reverseColors = false,
         onDismiss = { scheduleEditorViewModel.showReserveCopy = false
             scheduleEditorViewModel.onRecoverAgree() })
     { scheduleEditorViewModel.showReserveCopy = false
@@ -70,7 +70,7 @@ fun ScheduleEditorScreen(navHostController: NavHostController,
 
     if (scheduleEditorViewModel.showDeleteAgree) { ConfirmationDialog(
         titleRes = R.string.confirmation, textRes = R.string.onDeleteLesson,
-        dismissRes = R.string.dismiss, confirmRes = R.string.delete,
+        dismissRes = R.string.dismiss, confirmRes = R.string.delete, reverseColors = false,
         onDismiss = { scheduleEditorViewModel.showDeleteAgree = false })
     { scheduleEditorViewModel.showDeleteAgree = false
         scheduleEditorViewModel.onDeleteElement() }}
