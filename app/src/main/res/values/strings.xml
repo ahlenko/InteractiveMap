@@ -74,6 +74,8 @@
     <string name="permission_denied">Відмовити</string>
     <string name="permission_check">Перевірити</string>
 
+    <string name="location_not_found">Локацію ще не визнано, зачекайте</string>
+
     <string name="sk">СК</string>
     <string name="s">С</string>
     <string name="n">Н</string>

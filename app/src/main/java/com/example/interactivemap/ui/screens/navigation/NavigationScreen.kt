@@ -82,13 +82,13 @@ fun NavigationScreen( navHostController: NavHostController,
     var locationMarkerStateVisible by remember { mutableStateOf(false) }
 
     val clickers: ArrayList<() -> Unit> = ArrayList()
-    clickers.add { coroutineScope.launch { cameraPositionState.animate(
+    clickers.add { viewModel.disableMovementObserver()
+        coroutineScope.launch { cameraPositionState.animate(
             CameraUpdateFactory.newCameraPosition(
                 Constants.baseCameraPosition), Constants.DURATION_ANIM) } }
-    clickers.add { viewModel.setMovementObserverState(!movementState)
+    clickers.add { viewModel.setMovementObserver()
         coroutineScope.launch { cameraPositionState.animate(
-                CameraUpdateFactory.newCameraPosition(movedCameraPosition),
-            Constants.DURATION_ANIM) } }
+                CameraUpdateFactory.newCameraPosition(movedCameraPosition), Constants.DURATION_ANIM) } }
     clickers.add { viewModel.rememberLastCameraPosition(cameraPositionState.position)
         navHostController.navigate(ScheduleViewer.route) }
     clickers.add { viewModel.rememberLastCameraPosition(cameraPositionState.position)
@@ -128,6 +128,7 @@ fun NavigationScreen( navHostController: NavHostController,
     }
 
     LaunchedEffect (floor.intValue){
+        viewModel.disableMovementObserver()
         locationMarkerStateVisible = false
     }
 
@@ -140,11 +141,12 @@ fun NavigationScreen( navHostController: NavHostController,
                 cameraPositionState = cameraPositionState,
                 onMapLoaded = { viewModel.disableLoadingState() },
                 onMapClick = { latLng ->  locationMarkerStateVisible = false
+                    viewModel.disableMovementObserver()
                     viewModel.findLocationByLatLng(latLng, floor = floor.intValue) }
             ) {
                 if (!loading){
                     Marker(state = locationMarkerState,
-                        visible = locationMarkerStateVisible
+                        visible = locationMarkerStateVisible,
                     )
                     
                     Polygon(points = Constants.mapRedZone, holes = listOf(Constants.mapBorder),
@@ -259,35 +261,26 @@ fun NavigationScreen( navHostController: NavHostController,
                     onClickRight = {}, onChange = {}) {}
 
                 if (navigationOpen){
-                    Box(modifier = Modifier
-                        .padding(15.dp)
-                        .fillMaxWidth()){
+                    Box(modifier = Modifier.padding(15.dp).fillMaxWidth()){
                         HeaderMapNavigation(locationStart ="Новий. к: ауд. 3227", locationEnd ="СК: Легка атлетика")
                     }
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Row(modifier = Modifier
-                    .padding(horizontal = 15.dp)
-                    .height(140.dp),
+                Row(modifier = Modifier.padding(horizontal = 15.dp).height(140.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Box(modifier = Modifier
-                        .width(46.dp)
-                        .fillMaxHeight()
-                        .then(
-                            ShadowMaterial.CustomShadow.createModifier
-                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                        )
-                        .then(
-                            ShadowMaterial.CustomReShadow.createModifier
-                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                        )
+                    Box(modifier = Modifier.width(46.dp).fillMaxHeight()
+                        .then(ShadowMaterial.CustomShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
+                        .then(ShadowMaterial.CustomReShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
                         .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
                     ) {
                         PlacesController(placeType = camPosition, coroutineScope = coroutineScope) {
+                            viewModel.disableMovementObserver()
                             coroutineScope.launch{
                                 when (camPosition.intValue){
                                     0 -> { if (floor.intValue != 1 || floor.intValue != 2) floor.intValue = 1
@@ -305,35 +298,24 @@ fun NavigationScreen( navHostController: NavHostController,
 
                     Spacer(modifier = Modifier.weight(1f))
                     
-                    Box(modifier = Modifier
-                        .padding(top = 19.dp, start = 1.dp)
-                        .height(40.dp)
-                        .width(24.dp)){
+                    Box(modifier = Modifier.padding(top = 19.dp, start = 1.dp).height(40.dp).width(24.dp)){
                         Image(painter = painterResource(id = R.drawable.map_pointer), contentDescription = null)
                     }
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    Box(modifier = Modifier
-                        .width(46.dp)
-                        .fillMaxHeight()
-                        .then(
-                            ShadowMaterial.CustomShadow.createModifier
-                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                        )
-                        .then(
-                            ShadowMaterial.CustomReShadow.createModifier
-                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                        )
+                    Box(modifier = Modifier.width(46.dp).fillMaxHeight()
+                        .then(ShadowMaterial.CustomShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
+                        .then(ShadowMaterial.CustomReShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
                         .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
                     ) { FloorController(floor, maxFloor, minFloor) }
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                BottomNavigation(
-                    state = remember { mutableIntStateOf(0) }, clickers, clickersCenter
-                )
+                BottomNavigation(state = remember { mutableIntStateOf(0) }, clickers, clickersCenter)
             }
         }
     }

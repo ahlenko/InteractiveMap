@@ -7,8 +7,10 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.location.Location
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.Constants
 import com.example.interactivemap.logic.model.navigation.graph.NavGraphNew
@@ -34,12 +36,18 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     private val _loading = MutableStateFlow(true)
     val loading = _loading.asStateFlow()
 
+    private val _activateGPSDialogShown = MutableStateFlow(true)
+    val activateGPSDialogShown = _activateGPSDialogShown.asStateFlow()
+
     private val _foundNearestPoint = MutableStateFlow(LatLng(0.0,0.0))
     val foundNearestPoint = _foundNearestPoint.asStateFlow()
 
-    private val _movedCameraPosition = MutableStateFlow(
-        CameraPosition.Builder().target(Constants.baseLocation).zoom(Constants.ZOOM_BASE).build())
+    private val _movedCameraPosition = MutableStateFlow(Constants.baseCameraPosition)
     val movedCameraPosition = _movedCameraPosition.asStateFlow()
+
+    init {
+        setBroadcastReceiver()
+    }
 
     fun disableLoadingState(){
         _loading.value = false
@@ -49,8 +57,15 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
         ThisApplication.getInstance().setLastCameraState(position)
     }
 
-    fun setMovementObserverState(enable: Boolean){ _movementState.value = enable
-        if (enable) setBroadcastReceiver() else stopBroadcastReceiver()
+    fun setMovementObserver(){
+        _movementState.value = true
+        if (_movedCameraPosition.value == Constants.baseCameraPosition && broadcastReceiver != null) { _movementState.value = false
+            Toast.makeText(getApplication(), getApplication<ThisApplication>().getText(R.string.location_not_found), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun disableMovementObserver(){
+        _movementState.value = false
     }
 
     private fun setBroadcastReceiver() {
@@ -67,9 +82,9 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
                 if (intentExtraKey > 0) {
                     when (intentExtraKey) { BROADCAST_LOCATION_PROVIDERS_STATE ->
                         if (intentExtraValue == BROADCAST_LOCATION_PROVIDERS_STATE_GPS_OFF) {
-                            //showLocationErrorDialog()
+                            _activateGPSDialogShown.value = true
                         } else if (intentExtraValue == BROADCAST_LOCATION_PROVIDERS_STATE_GPS_ON) {
-                            //hideLocationErrorDialog()
+                            _activateGPSDialogShown.value = false
                         }
 
                         BROADCAST_LOCATION_DATA -> locationData?.let { locationChanged(it) } else -> {}
