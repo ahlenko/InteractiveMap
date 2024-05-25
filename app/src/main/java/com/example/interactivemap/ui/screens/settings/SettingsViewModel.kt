@@ -21,15 +21,8 @@ import kotlinx.coroutines.flow.asStateFlow
 class SettingsViewModel(application: Application): AndroidViewModel(application) {
     private val _stringLanguage = getApplication<Application>()
         .resources.getStringArray(R.array.language_variant)
-
-    private val _pointsViewDistanceList = MutableStateFlow(arrayListOf<ListOption>())
-    private val _updateIntervalList = MutableStateFlow(arrayListOf<ListOption>())
     private val _languageList = MutableStateFlow(arrayListOf<ListOption>())
-
-    val pointsViewDistanceList = _pointsViewDistanceList.asStateFlow()
-    val updateIntervalList = _updateIntervalList.asStateFlow()
     val languageList = _languageList.asStateFlow()
-
 
     var darkThemeSelected by mutableStateOf(false)
     var onlineEducation by mutableStateOf(false)

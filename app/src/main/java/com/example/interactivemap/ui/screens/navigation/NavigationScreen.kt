@@ -135,10 +135,10 @@ fun NavigationScreen( navHostController: NavHostController,
     InteractiveMapTheme {
         Scaffold (containerColor = MaterialTheme.colorScheme.background) {  _ ->
             GoogleMap(modifier = Modifier.fillMaxSize(),
+                cameraPositionState = cameraPositionState,
                 properties = MapProperties(minZoomPreference = Constants.ZOOM_MIN,
                     isMyLocationEnabled = true, mapStyleOptions = MapStyleOptions(getMapStyleWithoutLabels())),
                 uiSettings = MapUiSettings(zoomControlsEnabled = false),
-                cameraPositionState = cameraPositionState,
                 onMapLoaded = { viewModel.disableLoadingState() },
                 onMapClick = { latLng ->  locationMarkerStateVisible = false
                     viewModel.disableMovementObserver()
