@@ -1184,95 +1184,95 @@ object NavGraphOld {
                 location = LatLng(48.43417587148535, 35.0475350394845),
                 connexionWith = listOf(PointModel(501,39)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
-            ), // last
+            ), //las
             NavModel(
                 id = 501 ,number = 39, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43417587148535, 35.047589018940926),
-                connexionWith = listOf(PointModel(500,38), PointModel(502,40)),
+                connexionWith = listOf(PointModel(500,38), PointModel(502,40), PointModel(520,58), PointModel(545,83)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 502 ,number = 40, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43420345515638, 35.047591365873814),
-                connexionWith = listOf(PointModel(501,39), PointModel(503,41)),
+                connexionWith = listOf(PointModel(501,39), PointModel(503,41), PointModel(505,43), PointModel(508,46)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 503 ,number = 41, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43420367760526, 35.04755012691021),
-                connexionWith = listOf(PointModel(502,40), PointModel(504,42)),
+                connexionWith = listOf(PointModel(502,40), PointModel(504,42), PointModel(506,44)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 504 ,number = 42, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434206346991985, 35.04750285297632),
-                connexionWith = listOf(PointModel(503,41), PointModel(505,43)),
+                connexionWith = listOf(PointModel(503,41)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 505 ,number = 43, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43423504289031, 35.0475937128067),
-                connexionWith = listOf(PointModel(504,42), PointModel(506,44)),
+                connexionWith = listOf(PointModel(502,40), PointModel(506,44), PointModel(507,45), PointModel(511,49)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 506 ,number = 44, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434236155134094, 35.04755079746246),
-                connexionWith = listOf(PointModel(505,43), PointModel(507,45)),
+                connexionWith = listOf(PointModel(505,43)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 507 ,number = 45, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43434849163191, 35.047605112195015),
-                connexionWith = listOf(PointModel(506,44), PointModel(508,46)),
+                connexionWith = listOf(PointModel(505,43)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 508 ,number = 46, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43419566944431, 35.04777979105711),
-                connexionWith = listOf(PointModel(507,45), PointModel(509,47)),
+                connexionWith = listOf(PointModel(502,40), PointModel(509,47), PointModel(512,50)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 509 ,number = 47, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434233485748955, 35.04778549075127),
-                connexionWith = listOf(PointModel(508,46), PointModel(510,48)),
+                connexionWith = listOf(PointModel(508,46)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 510 ,number = 48, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434226589836676, 35.04774995148182),
-                connexionWith = listOf(PointModel(509,47), PointModel(511,49)),
+                connexionWith = listOf(PointModel(511,49)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 511 ,number = 49, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43423081636365, 35.04768390208483),
-                connexionWith = listOf(PointModel(510,48), PointModel(512,50)),
+                connexionWith = listOf(PointModel(505,43), PointModel(510,48)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 512 ,number = 50, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434194557199625, 35.047852881252766),
-                connexionWith = listOf(PointModel(511,49), PointModel(513,51)),
+                connexionWith = listOf(PointModel(508,46), PointModel(513,51), PointModel(514,52)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 513 ,number = 51, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43422747963186, 35.04785791039467),
-                connexionWith = listOf(PointModel(512,50), PointModel(514,52)),
+                connexionWith = listOf(PointModel(512,50)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 514 ,number = 52, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43418944087377, 35.04793267697096),
-                connexionWith = listOf(PointModel(513,51), PointModel(515,53)),
+                connexionWith = listOf(PointModel(513,51)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 515 ,number = 53, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4342619591833, 35.048061423003674),
-                connexionWith = listOf(PointModel(514,52), PointModel(516,54)),
+                connexionWith = listOf(PointModel(516,54)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1284,199 +1284,199 @@ object NavGraphOld {
             NavModel(
                 id = 517 ,number = 55, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43421346535587, 35.047997049987316),
-                connexionWith = listOf(PointModel(516,54), PointModel(518,56)),
+                connexionWith = listOf(PointModel(516,54), PointModel(518,56), PointModel(519,57)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 518 ,number = 56, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43418365720045, 35.047995038330555),
-                connexionWith = listOf(PointModel(517,55), PointModel(519,57)),
+                connexionWith = listOf(PointModel(517,55)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 519 ,number = 57, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43421524494669, 35.04792496562004),
-                connexionWith = listOf(PointModel(518,56), PointModel(520,58)),
+                connexionWith = listOf(PointModel(517,55)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 520 ,number = 58, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43411047143126, 35.04758331924677),
-                connexionWith = listOf(PointModel(519,57), PointModel(521,59)),
+                connexionWith = listOf(PointModel(501,39), PointModel(521,59), PointModel(546,84)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 521 ,number = 59, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43404751823847, 35.04757929593325),
-                connexionWith = listOf(PointModel(520,58), PointModel(522,60)),
+                connexionWith = listOf(PointModel(520,58), PointModel(522,60), PointModel(543,81), PointModel(547,85)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 522 ,number = 60, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43400592014956, 35.04757326096296),
-                connexionWith = listOf(PointModel(521,59), PointModel(523,61)),
+                connexionWith = listOf(PointModel(521,59), PointModel(523,61), PointModel(542,80), PointModel(548,86)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 523 ,number = 61, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43396187507711, 35.04757024347782),
-                connexionWith = listOf(PointModel(522,60), PointModel(524,62)),
+                connexionWith = listOf(PointModel(522,60), PointModel(524,62), PointModel(541,79), PointModel(549,87)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 524 ,number = 62, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43390537275654, 35.04756823182106),
-                connexionWith = listOf(PointModel(523,61), PointModel(525,63)),
+                connexionWith = listOf(PointModel(523,61), PointModel(525,63), PointModel(539,77), PointModel(551,89)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 525 ,number = 63, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43381617014615, 35.047555826604366),
-                connexionWith = listOf(PointModel(524,62), PointModel(526,64)),
+                connexionWith = listOf(PointModel(524,62), PointModel(526,64), PointModel(538,76), PointModel(553,91)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 526 ,number = 64, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43378636175766, 35.047551803290844),
-                connexionWith = listOf(PointModel(525,63), PointModel(527,65)),
+                connexionWith = listOf(PointModel(525,63), PointModel(527,65), PointModel(537,75), PointModel(554,92)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 527 ,number = 65, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43376233707361, 35.04754811525345),
-                connexionWith = listOf(PointModel(526,64), PointModel(528,66)),
+                connexionWith = listOf(PointModel(526,64), PointModel(528,66), PointModel(555,93)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 528 ,number = 66, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433719404045114, 35.04754442721605),
-                connexionWith = listOf(PointModel(527,65), PointModel(529,67)),
+                connexionWith = listOf(PointModel(527,65), PointModel(529,67), PointModel(556,94)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 529 ,number = 67, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433708281492954, 35.04754275083542),
-                connexionWith = listOf(PointModel(528,66), PointModel(530,68)),
+                connexionWith = listOf(PointModel(528,66), PointModel(530,68), PointModel(536,74)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 530 ,number = 68, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43367958529713, 35.04754241555929),
-                connexionWith = listOf(PointModel(529,67), PointModel(531,69)),
+                connexionWith = listOf(PointModel(529,67), PointModel(531,69), PointModel(535,73), PointModel(557,95)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 531 ,number = 69, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433646884961206, 35.04753973335028),
-                connexionWith = listOf(PointModel(530,68), PointModel(532,70)),
+                connexionWith = listOf(PointModel(530,68), PointModel(532,70), PointModel(534,72), PointModel(558,96)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 532 ,number = 70, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433594163967136, 35.04753269255161),
-                connexionWith = listOf(PointModel(531,69), PointModel(533,71)),
+                connexionWith = listOf(PointModel(531,69), PointModel(533,71), PointModel(559,97)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 533 ,number = 71, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43358838022608, 35.047621205449104),
-                connexionWith = listOf(PointModel(532,70), PointModel(534,72)),
+                connexionWith = listOf(PointModel(532,70)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 534 ,number = 72, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43363954406658, 35.047616846859455),
-                connexionWith = listOf(PointModel(533,71), PointModel(535,73)),
+                connexionWith = listOf(PointModel(531,69)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 535 ,number = 73, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433675136273074, 35.04762154072523),
-                connexionWith = listOf(PointModel(534,72), PointModel(536,74)),
+                connexionWith = listOf(PointModel(530,68)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 536 ,number = 74, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43370383247141, 35.0476248934865),
-                connexionWith = listOf(PointModel(535,73), PointModel(537,75)),
+                connexionWith = listOf(PointModel(529,67)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 537 ,number = 75, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43378258009519, 35.04762623459101),
-                connexionWith = listOf(PointModel(536,74), PointModel(538,76)),
+                connexionWith = listOf(PointModel(526,64), PointModel(538,76)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 538 ,number = 76, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433811721134056, 35.04763092845678),
-                connexionWith = listOf(PointModel(537,75), PointModel(539,77)),
+                connexionWith = listOf(PointModel(525,63), PointModel(537,75)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 539 ,number = 77, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43390314825444, 35.047598741948605),
-                connexionWith = listOf(PointModel(538,76), PointModel(540,78)),
+                connexionWith = listOf(PointModel(524,62), PointModel(540,78)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 540 ,number = 78, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43387511951969, 35.04759639501572),
-                connexionWith = listOf(PointModel(539,77), PointModel(541,79)),
+                connexionWith = listOf(PointModel(539,77)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 541 ,number = 79, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4339587607776, 35.047638304531574),
-                connexionWith = listOf(PointModel(540,78), PointModel(542,80)),
+                connexionWith = listOf(PointModel(523,61)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 542 ,number = 80, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434003250752305, 35.04763897508383),
-                connexionWith = listOf(PointModel(541,79), PointModel(543,81)),
+                connexionWith = listOf(PointModel(522,60)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 543 ,number = 81, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43404395904504, 35.04764333367348),
-                connexionWith = listOf(PointModel(542,80), PointModel(544,82)),
+                connexionWith = listOf(PointModel(521,59)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 544 ,number = 82, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43408733669809, 35.04762522876263),
-                connexionWith = listOf(PointModel(543,81), PointModel(545,83)),
+                connexionWith = listOf(PointModel(545,83)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 545 ,number = 83, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43417120005569, 35.047632940113544),
-                connexionWith = listOf(PointModel(544,82), PointModel(546,84)),
+                connexionWith = listOf(PointModel(501,39), PointModel(544,82)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 546 ,number = 84, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434114030620066, 35.04751022905111),
-                connexionWith = listOf(PointModel(545,83), PointModel(547,85)),
+                connexionWith = listOf(PointModel(520,58)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 547 ,number = 85, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434050854982104, 35.04750452935696),
-                connexionWith = listOf(PointModel(546,84), PointModel(548,86)),
+                connexionWith = listOf(PointModel(521,59)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 548 ,number = 86, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43400569769978, 35.047498159110546),
-                connexionWith = listOf(PointModel(547,85), PointModel(549,87)),
+                connexionWith = listOf(PointModel(522,60)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 549 ,number = 87, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43396432202657, 35.047535710036755),
-                connexionWith = listOf(PointModel(548,86), PointModel(550,88)),
+                connexionWith = listOf(PointModel(523,61), PointModel(550,88)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1488,61 +1488,61 @@ object NavGraphOld {
             NavModel(
                 id = 551 ,number = 89, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43390692990795, 35.04752900451422),
-                connexionWith = listOf(PointModel(550,88), PointModel(552,90)),
+                connexionWith = listOf(PointModel(524,62), PointModel(550,88)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 552 ,number = 90, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43384597851717, 35.047519616782665),
-                connexionWith = listOf(PointModel(551,89), PointModel(553,91)),
+                connexionWith = listOf(PointModel(553,91)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 553 ,number = 91, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43381750484972, 35.0475162640214),
-                connexionWith = listOf(PointModel(552,90), PointModel(554,92)),
+                connexionWith = listOf(PointModel(525,63), PointModel(552,90)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 554 ,number = 92, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433790365870564, 35.04748173058033),
-                connexionWith = listOf(PointModel(553,91), PointModel(555,93)),
+                connexionWith = listOf(PointModel(526,64)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 555 ,number = 93, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433763449327756, 35.04750721156597),
-                connexionWith = listOf(PointModel(554,92), PointModel(556,94)),
+                connexionWith = listOf(PointModel(527,65), PointModel(556,94)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 556 ,number = 94, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43372029384918, 35.04750318825245),
-                connexionWith = listOf(PointModel(555,93), PointModel(557,95)),
+                connexionWith = listOf(PointModel(528,66), PointModel(555,93)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 557 ,number = 95, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43367780568755, 35.047479048371315),
-                connexionWith = listOf(PointModel(556,94), PointModel(558,96)),
+                connexionWith = listOf(PointModel(530,68)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 558 ,number = 96, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43364777476654, 35.047474689781666),
-                connexionWith = listOf(PointModel(557,95), PointModel(559,97)),
+                connexionWith = listOf(PointModel(531,69)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 559 ,number = 97, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43359594357964, 35.04746798425913),
-                connexionWith = listOf(PointModel(558,96), PointModel(560,98)),
+                connexionWith = listOf(PointModel(532,70)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 560 ,number = 98, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43418810617998, 35.046864822506905),
-                connexionWith = listOf(PointModel(559,97), PointModel(561,99)),
+                connexionWith = listOf(PointModel(561,99), PointModel(563,101)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1554,13 +1554,13 @@ object NavGraphOld {
             NavModel(
                 id = 562 ,number = 100, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4342399367628, 35.04682660102844),
-                connexionWith = listOf(PointModel(561,99), PointModel(563,101)),
+                connexionWith = listOf(PointModel(561,99)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 563 ,number = 101, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43422836942702, 35.04687286913395),
-                connexionWith = listOf(PointModel(562,100), PointModel(564,102)),
+                connexionWith = listOf(PointModel(560,98), PointModel(564,102), PointModel(566,104)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1572,25 +1572,25 @@ object NavGraphOld {
             NavModel(
                 id = 565 ,number = 103, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43428709587377, 35.04683297127485),
-                connexionWith = listOf(PointModel(564,102), PointModel(566,104)),
+                connexionWith = listOf(PointModel(564,102)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 566 ,number = 104, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43423081636365, 35.0469134375453),
-                connexionWith = listOf(PointModel(565,103), PointModel(567,105)),
+                connexionWith = listOf(PointModel(563,101), PointModel(567,105), PointModel(568,106), PointModel(576,114)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 567 ,number = 105, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434388309855656, 35.04692751914263),
-                connexionWith = listOf(PointModel(566,104), PointModel(568,106)),
+                connexionWith = listOf(PointModel(566,104)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 568 ,number = 106, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43422236330931, 35.047089122235775),
-                connexionWith = listOf(PointModel(567,105), PointModel(569,107)),
+                connexionWith = listOf(PointModel(566,104), PointModel(569,107)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1602,19 +1602,19 @@ object NavGraphOld {
             NavModel(
                 id = 570 ,number = 108, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43424950205773, 35.0472292676568),
-                connexionWith = listOf(PointModel(569,107), PointModel(571,109)),
+                connexionWith = listOf(PointModel(569,107), PointModel(571,109), PointModel(572,110)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 571 ,number = 109, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43421791433278, 35.04722557961941),
-                connexionWith = listOf(PointModel(570,108), PointModel(572,110)),
+                connexionWith = listOf(PointModel(570,108)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 572 ,number = 110, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43424594287845, 35.04728827625513),
-                connexionWith = listOf(PointModel(571,109), PointModel(573,111)),
+                connexionWith = listOf(PointModel(570,108), PointModel(573,111), PointModel(575,113)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1626,55 +1626,55 @@ object NavGraphOld {
             NavModel(
                 id = 574 ,number = 112, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43421657963975, 35.04731711000204),
-                connexionWith = listOf(PointModel(573,111), PointModel(575,113)),
+                connexionWith = listOf(PointModel(573,111)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 575 ,number = 113, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43421391025359, 35.0472829118371),
-                connexionWith = listOf(PointModel(574,112), PointModel(576,114)),
+                connexionWith = listOf(PointModel(572,110)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 576 ,number = 114, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43420011842277, 35.046911761164665),
-                connexionWith = listOf(PointModel(575,113), PointModel(577,115)),
+                connexionWith = listOf(PointModel(566,104), PointModel(577,115), PointModel(597,135)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 577 ,number = 115, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43414027962961, 35.04690606147051),
-                connexionWith = listOf(PointModel(576,114), PointModel(578,116)),
+                connexionWith = listOf(PointModel(576,114), PointModel(578,116), PointModel(598,136)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 578 ,number = 116, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434076881574846, 35.04689868539572),
-                connexionWith = listOf(PointModel(577,115), PointModel(579,117)),
+                connexionWith = listOf(PointModel(577,115), PointModel(579,117), PointModel(596,134), PointModel(602,140)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 579 ,number = 117, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43404351414582, 35.04689700901508),
-                connexionWith = listOf(PointModel(578,116), PointModel(580,118)),
+                connexionWith = listOf(PointModel(578,116), PointModel(580,118), PointModel(595,133)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 580 ,number = 118, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434028610020455, 35.046894662082195),
-                connexionWith = listOf(PointModel(579,117), PointModel(581,119)),
+                connexionWith = listOf(PointModel(579,117), PointModel(581,119), PointModel(603,141)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 581 ,number = 119, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433912268712405, 35.04688359797001),
-                connexionWith = listOf(PointModel(580,118), PointModel(582,120)),
+                connexionWith = listOf(PointModel(580,118), PointModel(582,120), PointModel(604,142)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 582 ,number = 120, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43390270335402, 35.046882927417755),
-                connexionWith = listOf(PointModel(581,119), PointModel(583,121)),
+                connexionWith = listOf(PointModel(581,119), PointModel(583,121), PointModel(594,132)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1686,37 +1686,37 @@ object NavGraphOld {
             NavModel(
                 id = 584 ,number = 122, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43384798057133, 35.04698820412159),
-                connexionWith = listOf(PointModel(583,121), PointModel(585,123)),
+                connexionWith = listOf(PointModel(583,121)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 585 ,number = 123, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4338595479937, 35.04674781113863),
-                connexionWith = listOf(PointModel(584,122), PointModel(586,124)),
+                connexionWith = listOf(PointModel(583,121)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 586 ,number = 124, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43379392508179, 35.046872198581696),
-                connexionWith = listOf(PointModel(585,123), PointModel(587,125)),
+                connexionWith = listOf(PointModel(583,121), PointModel(587,125), PointModel(593,131), PointModel(605,143)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 587 ,number = 125, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433746987963936, 35.046869181096554),
-                connexionWith = listOf(PointModel(586,124), PointModel(588,126)),
+                connexionWith = listOf(PointModel(586,124), PointModel(588,126), PointModel(606,144)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 588 ,number = 126, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43370672433544, 35.046864822506905),
-                connexionWith = listOf(PointModel(587,125), PointModel(589,127)),
+                connexionWith = listOf(PointModel(587,125), PointModel(589,127), PointModel(607,145)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 589 ,number = 127, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43365111153643, 35.046859793365),
-                connexionWith = listOf(PointModel(588,126), PointModel(590,128)),
+                connexionWith = listOf(PointModel(588,126), PointModel(590,128), PointModel(608,146)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1728,115 +1728,115 @@ object NavGraphOld {
             NavModel(
                 id = 591 ,number = 129, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43362174795398, 35.046901032328606),
-                connexionWith = listOf(PointModel(590,128), PointModel(592,130)),
+                connexionWith = listOf(PointModel(590,128)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 592 ,number = 130, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43370160796048, 35.04692617803812),
-                connexionWith = listOf(PointModel(591,129), PointModel(593,131)),
+                connexionWith = listOf(PointModel(588,126), PointModel(593,131)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 593 ,number = 131, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433793035278995, 35.046940594911575),
-                connexionWith = listOf(PointModel(592,130), PointModel(594,132)),
+                connexionWith = listOf(PointModel(586,124), PointModel(592,130)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 594 ,number = 132, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43390047885178, 35.04695367068052),
-                connexionWith = listOf(PointModel(593,131), PointModel(595,133)),
+                connexionWith = listOf(PointModel(582,120), PointModel(595,133)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 595 ,number = 133, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43403906515364, 35.046970434486866),
-                connexionWith = listOf(PointModel(594,132), PointModel(596,134)),
+                connexionWith = listOf(PointModel(579,117), PointModel(594,132)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 596 ,number = 134, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43407354483293, 35.04696976393461),
-                connexionWith = listOf(PointModel(595,133), PointModel(597,135)),
+                connexionWith = listOf(PointModel(578,116)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 597 ,number = 135, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434197671484654, 35.046984516084194),
-                connexionWith = listOf(PointModel(596,134), PointModel(598,136)),
+                connexionWith = listOf(PointModel(576,114)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 598 ,number = 136, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4341393898329, 35.04686951637268),
-                connexionWith = listOf(PointModel(597,135), PointModel(599,137)),
+                connexionWith = listOf(PointModel(577,115), PointModel(600,138)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 599 ,number = 137, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43410869183677, 35.04686515778303),
-                connexionWith = listOf(PointModel(598,136), PointModel(600,138)),
+                connexionWith = listOf(PointModel(600,138)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 600 ,number = 138, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43413004696647, 35.046866834163666),
-                connexionWith = listOf(PointModel(599,137), PointModel(601,139)),
+                connexionWith = listOf(PointModel(598,136), PointModel(599,137), PointModel(601,139)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 601 ,number = 139, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43413227145866, 35.04682458937168),
-                connexionWith = listOf(PointModel(600,138), PointModel(602,140)),
+                connexionWith = listOf(PointModel(600,138)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 602 ,number = 140, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43408311015918, 35.04683330655098),
-                connexionWith = listOf(PointModel(601,139), PointModel(603,141)),
+                connexionWith = listOf(PointModel(578,116)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 603 ,number = 141, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43403083451707, 35.04683095961809),
-                connexionWith = listOf(PointModel(602,140), PointModel(604,142)),
+                connexionWith = listOf(PointModel(580,118), PointModel(604,142)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 604 ,number = 142, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433912491162566, 35.0468185544014),
-                connexionWith = listOf(PointModel(603,141), PointModel(605,143)),
+                connexionWith = listOf(PointModel(581,119), PointModel(603,141)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 605 ,number = 143, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4337968169407, 35.046807155013084),
-                connexionWith = listOf(PointModel(604,142), PointModel(606,144)),
+                connexionWith = listOf(PointModel(586,124)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 606 ,number = 144, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43375099207997, 35.046800784766674),
-                connexionWith = listOf(PointModel(605,143), PointModel(607,145)),
+                connexionWith = listOf(PointModel(587,125)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 607 ,number = 145, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433705389629, 35.04679474979639),
-                connexionWith = listOf(PointModel(606,144), PointModel(608,146)),
+                connexionWith = listOf(PointModel(588,126)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 608 ,number = 146, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4336508890851, 35.04678871482611),
-                connexionWith = listOf(PointModel(607,145), PointModel(609,147)),
+                connexionWith = listOf(PointModel(589,127)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 609 ,number = 147, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43423103881244, 35.04619427025318),
-                connexionWith = listOf(PointModel(608,146), PointModel(610,148)),
+                connexionWith = listOf(PointModel(610,148), PointModel(614,152)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1854,19 +1854,19 @@ object NavGraphOld {
             NavModel(
                 id = 612 ,number = 150, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43428754077085, 35.04615772515535),
-                connexionWith = listOf(PointModel(611,149), PointModel(613,151)),
+                connexionWith = listOf(PointModel(611,149), PointModel(613,151), PointModel(671,209)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 613 ,number = 151, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43432068559123, 35.0461570546031),
-                connexionWith = listOf(PointModel(612,150), PointModel(614,152)),
+                connexionWith = listOf(PointModel(612,150)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 614 ,number = 152, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43425840000486, 35.04619795829058),
-                connexionWith = listOf(PointModel(613,151), PointModel(615,153)),
+                connexionWith = listOf(PointModel(609,147), PointModel(615,153), PointModel(617,155)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1884,13 +1884,13 @@ object NavGraphOld {
             NavModel(
                 id = 617 ,number = 155, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43425884490217, 35.04623785614967),
-                connexionWith = listOf(PointModel(616,154), PointModel(618,156)),
+                connexionWith = listOf(PointModel(614,152), PointModel(616,154), PointModel(618,156), PointModel(622,160)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 618 ,number = 156, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4342537285828, 35.04641655832529),
-                connexionWith = listOf(PointModel(617,155), PointModel(619,157)),
+                connexionWith = listOf(PointModel(617,155), PointModel(619,157), PointModel(621,159)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1908,67 +1908,67 @@ object NavGraphOld {
             NavModel(
                 id = 621 ,number = 159, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43428398159421, 35.04642225801945),
-                connexionWith = listOf(PointModel(620,158), PointModel(622,160)),
+                connexionWith = listOf(PointModel(618,156), PointModel(620,158)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 622 ,number = 160, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43422903677339, 35.04623919725418),
-                connexionWith = listOf(PointModel(621,159), PointModel(623,161)),
+                connexionWith = listOf(PointModel(617,155), PointModel(623,161), PointModel(646,184)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 623 ,number = 161, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43416786331997, 35.04622980952263),
-                connexionWith = listOf(PointModel(622,160), PointModel(624,162)),
+                connexionWith = listOf(PointModel(622,160), PointModel(624,162), PointModel(645,183)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 624 ,number = 162, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43413872248535, 35.046230144798756),
-                connexionWith = listOf(PointModel(623,161), PointModel(625,163)),
+                connexionWith = listOf(PointModel(623,161), PointModel(625,163), PointModel(644,182), PointModel(647,185)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 625 ,number = 163, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434104687748956, 35.04622679203749),
-                connexionWith = listOf(PointModel(624,162), PointModel(626,164)),
+                connexionWith = listOf(PointModel(624,162), PointModel(626,164), PointModel(643,181), PointModel(648,186)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 626 ,number = 164, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43407243258557, 35.046221762895584),
-                connexionWith = listOf(PointModel(625,163), PointModel(627,165)),
+                connexionWith = listOf(PointModel(625,163), PointModel(627,165), PointModel(642,180), PointModel(649,187)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 627 ,number = 165, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434022158979765, 35.04621606320143),
-                connexionWith = listOf(PointModel(626,164), PointModel(628,166)),
+                connexionWith = listOf(PointModel(626,164), PointModel(628,166), PointModel(650,188)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 628 ,number = 166, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433964989376406, 35.04621271044016),
-                connexionWith = listOf(PointModel(627,165), PointModel(629,167)),
+                connexionWith = listOf(PointModel(627,165), PointModel(629,167), PointModel(641,179)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 629 ,number = 167, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43393807292609, 35.046210028231144),
-                connexionWith = listOf(PointModel(628,166), PointModel(630,168)),
+                connexionWith = listOf(PointModel(628,166), PointModel(630,168), PointModel(631,169)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 630 ,number = 168, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433882905280896, 35.046202316880226),
-                connexionWith = listOf(PointModel(629,167), PointModel(631,169)),
+                connexionWith = listOf(PointModel(629,167)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 631 ,number = 169, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.433938295376144, 35.046244226396084),
-                connexionWith = listOf(PointModel(630,168), PointModel(632,170)),
+                connexionWith = listOf(PointModel(629,167), PointModel(632,170)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -1980,25 +1980,25 @@ object NavGraphOld {
             NavModel(
                 id = 633 ,number = 171, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43388223792999, 35.04628714174032),
-                connexionWith = listOf(PointModel(632,170), PointModel(634,172)),
+                connexionWith = listOf(PointModel(632,170), PointModel(634,172), PointModel(635,173)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 634 ,number = 172, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43393607087549, 35.04629384726286),
-                connexionWith = listOf(PointModel(633,171), PointModel(635,173)),
+                connexionWith = listOf(PointModel(633,171)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 635 ,number = 173, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43368047510188, 35.04627037793398),
-                connexionWith = listOf(PointModel(634,172), PointModel(636,174)),
+                connexionWith = listOf(PointModel(633,171), PointModel(636,174)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 636 ,number = 174, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43367958529713, 35.04618387669325),
-                connexionWith = listOf(PointModel(635,173), PointModel(637,175)),
+                connexionWith = listOf(PointModel(635,173), PointModel(637,175), PointModel(639,177)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2010,85 +2010,85 @@ object NavGraphOld {
             NavModel(
                 id = 638 ,number = 176, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43364555025319, 35.04627641290426),
-                connexionWith = listOf(PointModel(637,175), PointModel(639,177)),
+                connexionWith = listOf(PointModel(637,175)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 639 ,number = 177, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43368603638133, 35.046135261654854),
-                connexionWith = listOf(PointModel(638,176), PointModel(640,178)),
+                connexionWith = listOf(PointModel(636,174), PointModel(640,178)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 640 ,number = 178, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43365200134169, 35.046135261654854),
-                connexionWith = listOf(PointModel(639,177), PointModel(641,179)),
+                connexionWith = listOf(PointModel(639,177)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 641 ,number = 179, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43396543427629, 35.046142637729645),
-                connexionWith = listOf(PointModel(640,178), PointModel(642,180)),
+                connexionWith = listOf(PointModel(628,166)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 642 ,number = 180, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434074657080274, 35.04615135490894),
-                connexionWith = listOf(PointModel(641,179), PointModel(643,181)),
+                connexionWith = listOf(PointModel(626,164)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 643 ,number = 181, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434106467343575, 35.04615738987923),
-                connexionWith = listOf(PointModel(642,180), PointModel(644,182)),
+                connexionWith = listOf(PointModel(625,163)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 644 ,number = 182, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43414005718044, 35.046146996319294),
-                connexionWith = listOf(PointModel(643,181), PointModel(645,183)),
+                connexionWith = listOf(PointModel(624,162)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 645 ,number = 183, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434169198014274, 35.04615135490894),
-                connexionWith = listOf(PointModel(644,182), PointModel(646,184)),
+                connexionWith = listOf(PointModel(623,161)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 646 ,number = 184, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43422814697823, 35.04629887640476),
-                connexionWith = listOf(PointModel(645,183), PointModel(647,185)),
+                connexionWith = listOf(PointModel(622,160)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 647 ,number = 185, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43413382860309, 35.0462881475687),
-                connexionWith = listOf(PointModel(646,184), PointModel(648,186)),
+                connexionWith = listOf(PointModel(624,162)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 648 ,number = 186, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434100016312776, 35.04632335156202),
-                connexionWith = listOf(PointModel(647,185), PointModel(649,187)),
+                connexionWith = listOf(PointModel(625,163)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 649 ,number = 187, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43406753869692, 35.04628378897905),
-                connexionWith = listOf(PointModel(648,186), PointModel(650,188)),
+                connexionWith = listOf(PointModel(626,164)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 650 ,number = 188, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43401526303881, 35.04629720002413),
-                connexionWith = listOf(PointModel(649,187), PointModel(651,189)),
+                connexionWith = listOf(PointModel(627,165)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 651 ,number = 189, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43425061430121, 35.0455042719841),
-                connexionWith = listOf(PointModel(650,188), PointModel(652,190)),
+                connexionWith = listOf(PointModel(652,190), PointModel(654,192)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2100,25 +2100,25 @@ object NavGraphOld {
             NavModel(
                 id = 653 ,number = 191, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43428909791053, 35.04546571522951),
-                connexionWith = listOf(PointModel(652,190), PointModel(654,192)),
+                connexionWith = listOf(PointModel(652,190)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 654 ,number = 192, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43428887546202, 35.04551064223051),
-                connexionWith = listOf(PointModel(653,191), PointModel(655,193)),
+                connexionWith = listOf(PointModel(651,189), PointModel(655,193), PointModel(656,194)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 655 ,number = 193, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43431912845247, 35.04551365971565),
-                connexionWith = listOf(PointModel(654,192), PointModel(656,194)),
+                connexionWith = listOf(PointModel(654,192)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 656 ,number = 194, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434286206079626, 35.04555858671665),
-                connexionWith = listOf(PointModel(655,193), PointModel(657,195)),
+                connexionWith = listOf(PointModel(654,192), PointModel(657,195), PointModel(660,198), PointModel(667,205)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2136,55 +2136,55 @@ object NavGraphOld {
             NavModel(
                 id = 659 ,number = 197, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4343544977347, 35.04551365971565),
-                connexionWith = listOf(PointModel(658,196), PointModel(660,198)),
+                connexionWith = listOf(PointModel(658,196)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 660 ,number = 198, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434283091800026, 35.045655481517315),
-                connexionWith = listOf(PointModel(659,197), PointModel(661,199)),
+                connexionWith = listOf(PointModel(656,194), PointModel(661,199), PointModel(662,200)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 661 ,number = 199, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434322020281535, 35.045657493174076),
-                connexionWith = listOf(PointModel(660,198), PointModel(662,200)),
+                connexionWith = listOf(PointModel(660,198)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 662 ,number = 200, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43427619589449, 35.04583049565554),
-                connexionWith = listOf(PointModel(661,199), PointModel(663,201)),
+                connexionWith = listOf(PointModel(660,198), PointModel(663,201), PointModel(666,204)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 663 ,number = 201, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.4343055590987, 35.04583418369293),
-                connexionWith = listOf(PointModel(662,200), PointModel(664,202)),
+                connexionWith = listOf(PointModel(662,200), PointModel(664,202), PointModel(665,203)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 664 ,number = 202, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43430711623785, 35.04569906741381),
-                connexionWith = listOf(PointModel(663,201), PointModel(665,203)),
+                connexionWith = listOf(PointModel(663,201)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 665 ,number = 203, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43430044278402, 35.04596997052431),
-                connexionWith = listOf(PointModel(664,202), PointModel(666,204)),
+                connexionWith = listOf(PointModel(663,201)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 666 ,number = 204, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.434268632642144, 35.045968629419804),
-                connexionWith = listOf(PointModel(665,203), PointModel(667,205)),
+                connexionWith = listOf(PointModel(662,200)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 667 ,number = 205, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43425840000486, 35.04555590450764),
-                connexionWith = listOf(PointModel(666,204), PointModel(668,206)),
+                connexionWith = listOf(PointModel(656,194), PointModel(668,206), PointModel(670,208)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2196,19 +2196,19 @@ object NavGraphOld {
             NavModel(
                 id = 669 ,number = 207, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43420011842277, 35.04548046737909),
-                connexionWith = listOf(PointModel(668,206), PointModel(670,208)),
+                connexionWith = listOf(PointModel(668,206)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 670 ,number = 208, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43425484082621, 35.045620277523994),
-                connexionWith = listOf(PointModel(669,207), PointModel(671,209)),
+                connexionWith = listOf(PointModel(667,205)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 671 ,number = 209, name = null, description = null, locationIndex = OLD, floorIndex = 1,
                 location = LatLng(48.43428820811644, 35.046118162572384),
-                connexionWith = listOf(PointModel(670,208), PointModel(672,210)),
+                connexionWith = listOf(PointModel(612,150)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
         )
@@ -2218,91 +2218,91 @@ object NavGraphOld {
             NavModel(
                 id = 829 ,number = 1, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43411847960567, 35.048349760472775),
-                connexionWith = listOf(PointModel(828,0), PointModel(830,2)),
+                connexionWith = listOf(PointModel(830,2)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 830 ,number = 2, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434171644953764, 35.0483537837863),
-                connexionWith = listOf(PointModel(829,1), PointModel(831,3)),
+                connexionWith = listOf(PointModel(829,1), PointModel(831,3), PointModel(869,41)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 831 ,number = 3, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4341654163803, 35.04839938133955),
-                connexionWith = listOf(PointModel(830,2), PointModel(832,4)),
+                connexionWith = listOf(PointModel(830,2), PointModel(832,4), PointModel(833,5), PointModel(858,30)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 832 ,number = 4, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43419566944431, 35.04840474575758),
-                connexionWith = listOf(PointModel(831,3), PointModel(833,5)),
+                connexionWith = listOf(PointModel(831,3), PointModel(859,31)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 833 ,number = 5, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434107802039506, 35.04839636385441),
-                connexionWith = listOf(PointModel(832,4), PointModel(834,6)),
+                connexionWith = listOf(PointModel(832,4), PointModel(834,6), PointModel(856,28)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 834 ,number = 6, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43407243258557, 35.04839301109314),
-                connexionWith = listOf(PointModel(833,5), PointModel(835,7)),
+                connexionWith = listOf(PointModel(833,5), PointModel(835,7), PointModel(855,27), PointModel(860,32)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 835 ,number = 7, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434046628440136, 35.04838764667511),
-                connexionWith = listOf(PointModel(834,6), PointModel(836,8)),
+                connexionWith = listOf(PointModel(834,6), PointModel(836,8), PointModel(854,26), PointModel(861,33)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 836 ,number = 8, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43401548548851, 35.04838764667511),
-                connexionWith = listOf(PointModel(835,7), PointModel(837,9)),
+                connexionWith = listOf(PointModel(835,7), PointModel(837,9), PointModel(853,25), PointModel(862,34)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 837 ,number = 9, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43398634456651, 35.04838362336159),
-                connexionWith = listOf(PointModel(836,8), PointModel(838,10)),
+                connexionWith = listOf(PointModel(836,8), PointModel(838,10), PointModel(852,24), PointModel(863,35)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 838 ,number = 10, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43396143017718, 35.04837825894356),
-                connexionWith = listOf(PointModel(837,9), PointModel(839,11)),
+                connexionWith = listOf(PointModel(837,9), PointModel(839,11), PointModel(864,36)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 839 ,number = 11, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43395408932799, 35.048377588391304),
-                connexionWith = listOf(PointModel(838,10), PointModel(840,12)),
+                connexionWith = listOf(PointModel(838,10), PointModel(840,12), PointModel(851,23)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 840 ,number = 12, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43393006472325, 35.04837457090616),
-                connexionWith = listOf(PointModel(839,11), PointModel(841,13)),
+                connexionWith = listOf(PointModel(839,11), PointModel(841,13), PointModel(865,37)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 841 ,number = 13, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43388179302937, 35.048373229801655),
-                connexionWith = listOf(PointModel(840,12), PointModel(842,14)),
+                connexionWith = listOf(PointModel(840,12), PointModel(842,14), PointModel(849,21)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 842 ,number = 14, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43386911336023, 35.0483725592494),
-                connexionWith = listOf(PointModel(841,13), PointModel(843,15)),
+                connexionWith = listOf(PointModel(841,13), PointModel(843,15), PointModel(866,38)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 843 ,number = 15, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43383886010181, 35.04836820065975),
-                connexionWith = listOf(PointModel(842,14), PointModel(844,16)),
+                connexionWith = listOf(PointModel(842,14), PointModel(844,16), PointModel(867,39)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2314,169 +2314,169 @@ object NavGraphOld {
             NavModel(
                 id = 845 ,number = 17, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43378035558772, 35.048364512622356),
-                connexionWith = listOf(PointModel(844,16), PointModel(846,18)),
+                connexionWith = listOf(PointModel(844,16), PointModel(846,18), PointModel(868,40)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 846 ,number = 18, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433773904515505, 35.04845637828112),
-                connexionWith = listOf(PointModel(845,17), PointModel(847,19)),
+                connexionWith = listOf(PointModel(845,17)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 847 ,number = 19, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43380482516455, 35.04843860864639),
-                connexionWith = listOf(PointModel(846,18), PointModel(848,20)),
+                connexionWith = listOf(PointModel(844,16)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 848 ,number = 20, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43383218658648, 35.04843760281801),
-                connexionWith = listOf(PointModel(847,19), PointModel(849,21)),
+                connexionWith = listOf(PointModel(843,15)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 849 ,number = 21, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43387778892367, 35.04846040159464),
-                connexionWith = listOf(PointModel(848,20), PointModel(850,22)),
+                connexionWith = listOf(PointModel(841,13), PointModel(850,22)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 850 ,number = 22, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433924058570284, 35.04846643656492),
-                connexionWith = listOf(PointModel(849,21), PointModel(851,23)),
+                connexionWith = listOf(PointModel(849,21)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 851 ,number = 23, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43395208727803, 35.048458725214005),
-                connexionWith = listOf(PointModel(850,22), PointModel(852,24)),
+                connexionWith = listOf(PointModel(839,11)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 852 ,number = 24, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4339825629189, 35.04845671355724),
-                connexionWith = listOf(PointModel(851,23), PointModel(853,25)),
+                connexionWith = listOf(PointModel(837,9)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 853 ,number = 25, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434013705890706, 35.04845704883337),
-                connexionWith = listOf(PointModel(852,24), PointModel(854,26)),
+                connexionWith = listOf(PointModel(836,8)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 854 ,number = 26, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4340470733393, 35.04843592643738),
-                connexionWith = listOf(PointModel(853,25), PointModel(855,27)),
+                connexionWith = listOf(PointModel(835,7), PointModel(855,27)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 855 ,number = 27, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4340722101361, 35.04843592643738),
-                connexionWith = listOf(PointModel(854,26), PointModel(856,28)),
+                connexionWith = listOf(PointModel(834,6), PointModel(854,26)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 856 ,number = 28, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434100461211465, 35.04848387092352),
-                connexionWith = listOf(PointModel(855,27), PointModel(857,29)),
+                connexionWith = listOf(PointModel(833,5), PointModel(857,29)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 857 ,number = 29, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43413293880628, 35.048486553132534),
-                connexionWith = listOf(PointModel(856,28), PointModel(858,30)),
+                connexionWith = listOf(PointModel(856,28)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 858 ,number = 30, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434163191889596, 35.04846978932619),
-                connexionWith = listOf(PointModel(857,29), PointModel(859,31)),
+                connexionWith = listOf(PointModel(831,3)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 859 ,number = 31, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43419589189322, 35.04846911877394),
-                connexionWith = listOf(PointModel(858,30), PointModel(860,32)),
+                connexionWith = listOf(PointModel(832,4)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 860 ,number = 32, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434078216271544, 35.048328302800655),
-                connexionWith = listOf(PointModel(859,31), PointModel(861,33)),
+                connexionWith = listOf(PointModel(834,6)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 861 ,number = 33, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43405063253253, 35.048325285315514),
-                connexionWith = listOf(PointModel(860,32), PointModel(862,34)),
+                connexionWith = listOf(PointModel(835,7)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 862 ,number = 34, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434017265086275, 35.04831925034523),
-                connexionWith = listOf(PointModel(861,33), PointModel(863,35)),
+                connexionWith = listOf(PointModel(836,8)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 863 ,number = 35, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4339876792656, 35.04831522703171),
-                connexionWith = listOf(PointModel(862,34), PointModel(864,36)),
+                connexionWith = listOf(PointModel(837,9)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 864 ,number = 36, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43396187507711, 35.0483138859272),
-                connexionWith = listOf(PointModel(863,35), PointModel(865,37)),
+                connexionWith = listOf(PointModel(838,10)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 865 ,number = 37, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433933179024514, 35.04830986261368),
-                connexionWith = listOf(PointModel(864,36), PointModel(866,38)),
+                connexionWith = listOf(PointModel(840,12)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 866 ,number = 38, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43387222766523, 35.048304833471775),
-                connexionWith = listOf(PointModel(865,37), PointModel(867,39)),
+                connexionWith = listOf(PointModel(842,14)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 867 ,number = 39, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433839305002806, 35.048300474882126),
-                connexionWith = listOf(PointModel(866,38), PointModel(868,40)),
+                connexionWith = listOf(PointModel(843,15)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 868 ,number = 40, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4337816902922, 35.04829477518797),
-                connexionWith = listOf(PointModel(867,39), PointModel(869,41)),
+                connexionWith = listOf(PointModel(845,17)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 869 ,number = 41, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43418076536354, 35.04810903221369),
-                connexionWith = listOf(PointModel(868,40), PointModel(870,42)),
+                connexionWith = listOf(PointModel(830,2), PointModel(870,42), PointModel(888,60)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 870 ,number = 42, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43418766128203, 35.04797223955393),
-                connexionWith = listOf(PointModel(869,41), PointModel(871,43)),
+                connexionWith = listOf(PointModel(869,41), PointModel(871,43), PointModel(886,58)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 871 ,number = 43, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43419900617819, 35.04767920821905),
-                connexionWith = listOf(PointModel(870,42), PointModel(872,44)),
+                connexionWith = listOf(PointModel(870,42), PointModel(872,44), PointModel(882,54)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 872 ,number = 44, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43420323270749, 35.047589018940926),
-                connexionWith = listOf(PointModel(871,43), PointModel(873,45)),
+                connexionWith = listOf(PointModel(871,43), PointModel(873,45), PointModel(891,63), PointModel(892,64)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2494,61 +2494,61 @@ object NavGraphOld {
             NavModel(
                 id = 875 ,number = 47, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43426284897785, 35.047552809119225),
-                connexionWith = listOf(PointModel(874,46), PointModel(876,48)),
+                connexionWith = listOf(PointModel(874,46), PointModel(876,48), PointModel(877,49)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 876 ,number = 48, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43426351632377, 35.04759170114994),
-                connexionWith = listOf(PointModel(875,47), PointModel(877,49)),
+                connexionWith = listOf(PointModel(875,47)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 877 ,number = 49, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43432113048798, 35.04755984991789),
-                connexionWith = listOf(PointModel(876,48), PointModel(878,50)),
+                connexionWith = listOf(PointModel(875,47), PointModel(878,50), PointModel(879,51)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 878 ,number = 50, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43432068559123, 35.04759840667248),
-                connexionWith = listOf(PointModel(877,49), PointModel(879,51)),
+                connexionWith = listOf(PointModel(877,49)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 879 ,number = 51, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434412556691726, 35.04756923764944),
-                connexionWith = listOf(PointModel(878,50), PointModel(880,52)),
+                connexionWith = listOf(PointModel(877,49), PointModel(880,52)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 880 ,number = 52, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434412556691726, 35.04760108888149),
-                connexionWith = listOf(PointModel(879,51), PointModel(881,53)),
+                connexionWith = listOf(PointModel(879,51)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 881 ,number = 53, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43422970411974, 35.047640316188335),
-                connexionWith = listOf(PointModel(880,52), PointModel(882,54)),
+                connexionWith = listOf(PointModel(882,54)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 882 ,number = 54, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434228814324605, 35.04768054932356),
-                connexionWith = listOf(PointModel(881,53), PointModel(883,55)),
+                connexionWith = listOf(PointModel(871,43), PointModel(881,53), PointModel(883,55)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 883 ,number = 55, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434227257183046, 35.04772949963808),
-                connexionWith = listOf(PointModel(882,54), PointModel(884,56)),
+                connexionWith = listOf(PointModel(882,54)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 884 ,number = 56, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434233485748955, 35.04779018461704),
-                connexionWith = listOf(PointModel(883,55), PointModel(885,57)),
+                connexionWith = listOf(PointModel(885,57)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2560,139 +2560,139 @@ object NavGraphOld {
             NavModel(
                 id = 886 ,number = 58, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434221028616406, 35.04797626286745),
-                connexionWith = listOf(PointModel(885,57), PointModel(887,59)),
+                connexionWith = listOf(PointModel(870,42), PointModel(885,57)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 887 ,number = 59, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43421635719091, 35.04804365336895),
-                connexionWith = listOf(PointModel(886,58), PointModel(888,60)),
+                connexionWith = listOf(PointModel(888,60)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 888 ,number = 60, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43421524494669, 35.04811238497496),
-                connexionWith = listOf(PointModel(887,59), PointModel(889,61)),
+                connexionWith = listOf(PointModel(869,41), PointModel(887,59), PointModel(889,61)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 889 ,number = 61, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434212130662736, 35.04816468805075),
-                connexionWith = listOf(PointModel(888,60), PointModel(890,62)),
+                connexionWith = listOf(PointModel(888,60)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 890 ,number = 62, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434204344951965, 35.04753939807415),
-                connexionWith = listOf(PointModel(889,61), PointModel(891,63)),
+                connexionWith = listOf(PointModel(872,44), PointModel(891,63), PointModel(929,101)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 891 ,number = 63, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43415451637489, 35.0475350394845),
-                connexionWith = listOf(PointModel(890,62), PointModel(892,64)),
+                connexionWith = listOf(PointModel(890,62)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 892 ,number = 64, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43416764087093, 35.04758533090353),
-                connexionWith = listOf(PointModel(891,63), PointModel(893,65)),
+                connexionWith = listOf(PointModel(891,63), PointModel(893,65), PointModel(894,66)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 893 ,number = 65, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434164971482176, 35.04764802753925),
-                connexionWith = listOf(PointModel(892,64), PointModel(894,66)),
+                connexionWith = listOf(PointModel(892,64)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 894 ,number = 66, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43411291837358, 35.0475799664855),
-                connexionWith = listOf(PointModel(893,65), PointModel(895,67)),
+                connexionWith = listOf(PointModel(892,64), PointModel(895,67), PointModel(896,68)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 895 ,number = 67, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43411336327216, 35.04750519990921),
-                connexionWith = listOf(PointModel(894,66), PointModel(896,68)),
+                connexionWith = listOf(PointModel(894,66)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 896 ,number = 68, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434085334653396, 35.047580637037754),
-                connexionWith = listOf(PointModel(895,67), PointModel(897,69)),
+                connexionWith = listOf(PointModel(894,66), PointModel(897,69), PointModel(898,70)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 897 ,number = 69, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43408555710281, 35.04749748855829),
-                connexionWith = listOf(PointModel(896,68), PointModel(898,70)),
+                connexionWith = listOf(PointModel(896,68)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 898 ,number = 70, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43404863048636, 35.04757594317198),
-                connexionWith = listOf(PointModel(897,69), PointModel(899,71)),
+                connexionWith = listOf(PointModel(896,68), PointModel(899,71), PointModel(918,90), PointModel(919,91)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 899 ,number = 71, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4340021385034, 35.047570914030075),
-                connexionWith = listOf(PointModel(898,70), PointModel(900,72)),
+                connexionWith = listOf(PointModel(898,70), PointModel(900,72), PointModel(917,89), PointModel(920,92)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 900 ,number = 72, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433886242035335, 35.04755951464176),
-                connexionWith = listOf(PointModel(899,71), PointModel(901,73)),
+                connexionWith = listOf(PointModel(899,71), PointModel(901,73), PointModel(916,88), PointModel(921,93)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 901 ,number = 73, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433842196859125, 35.047554820775986),
-                connexionWith = listOf(PointModel(900,72), PointModel(902,74)),
+                connexionWith = listOf(PointModel(900,72), PointModel(902,74), PointModel(915,87), PointModel(922,94)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 902 ,number = 74, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43381416809077, 35.04755314439535),
-                connexionWith = listOf(PointModel(901,73), PointModel(903,75)),
+                connexionWith = listOf(PointModel(901,73), PointModel(903,75), PointModel(914,86)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 903 ,number = 75, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4337928128283, 35.047551803290844),
-                connexionWith = listOf(PointModel(902,74), PointModel(904,76)),
+                connexionWith = listOf(PointModel(902,74), PointModel(904,76), PointModel(923,95)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 904 ,number = 76, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433760779917755, 35.04754811525345),
-                connexionWith = listOf(PointModel(903,75), PointModel(905,77)),
+                connexionWith = listOf(PointModel(903,75), PointModel(905,77), PointModel(924,96)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 905 ,number = 77, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433735198064994, 35.04754476249218),
-                connexionWith = listOf(PointModel(904,76), PointModel(906,78)),
+                connexionWith = listOf(PointModel(904,76), PointModel(906,78), PointModel(925,97)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 906 ,number = 78, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43370338756924, 35.04754073917866),
-                connexionWith = listOf(PointModel(905,77), PointModel(907,79)),
+                connexionWith = listOf(PointModel(905,77), PointModel(907,79), PointModel(913,85), PointModel(926,98)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 907 ,number = 79, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433677360785154, 35.04754174500704),
-                connexionWith = listOf(PointModel(906,78), PointModel(908,80)),
+                connexionWith = listOf(PointModel(906,78), PointModel(908,80), PointModel(912,84), PointModel(927,99)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 908 ,number = 80, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43362864394837, 35.04753638058901),
-                connexionWith = listOf(PointModel(907,79), PointModel(909,81)),
+                connexionWith = listOf(PointModel(907,79), PointModel(909,81), PointModel(911,83), PointModel(928,100)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2704,181 +2704,181 @@ object NavGraphOld {
             NavModel(
                 id = 910 ,number = 82, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43359060474195, 35.04762925207615),
-                connexionWith = listOf(PointModel(909,81), PointModel(911,83)),
+                connexionWith = listOf(PointModel(909,81)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 911 ,number = 83, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43362463982272, 35.04760477691889),
-                connexionWith = listOf(PointModel(910,82), PointModel(912,84)),
+                connexionWith = listOf(PointModel(908,80)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 912 ,number = 84, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43367469137065, 35.04760880023241),
-                connexionWith = listOf(PointModel(911,83), PointModel(913,85)),
+                connexionWith = listOf(PointModel(907,79)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 913 ,number = 85, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43370138550938, 35.047612488269806),
-                connexionWith = listOf(PointModel(912,84), PointModel(914,86)),
+                connexionWith = listOf(PointModel(906,78), PointModel(914,86)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 914 ,number = 86, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433811276232824, 35.04761952906847),
-                connexionWith = listOf(PointModel(913,85), PointModel(915,87)),
+                connexionWith = listOf(PointModel(902,74), PointModel(913,85)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 915 ,number = 87, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433843754012464, 35.04762288182974),
-                connexionWith = listOf(PointModel(914,86), PointModel(916,88)),
+                connexionWith = listOf(PointModel(901,73)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 916 ,number = 88, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433884462432985, 35.04762556403875),
-                connexionWith = listOf(PointModel(915,87), PointModel(917,89)),
+                connexionWith = listOf(PointModel(900,72), PointModel(917,89)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 917 ,number = 89, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43399991400557, 35.047635957598686),
-                connexionWith = listOf(PointModel(916,88), PointModel(918,90)),
+                connexionWith = listOf(PointModel(899,71), PointModel(916,88)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 918 ,number = 90, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43404418149461, 35.04764266312122),
-                connexionWith = listOf(PointModel(917,89), PointModel(919,91)),
+                connexionWith = listOf(PointModel(898,70)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 919 ,number = 91, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434052412129034, 35.04750318825245),
-                connexionWith = listOf(PointModel(918,90), PointModel(920,92)),
+                connexionWith = listOf(PointModel(898,70)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 920 ,number = 92, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43400614259931, 35.047497153282166),
-                connexionWith = listOf(PointModel(919,91), PointModel(921,93)),
+                connexionWith = listOf(PointModel(899,71), PointModel(921,93)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 921 ,number = 93, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433891135941444, 35.04748709499836),
-                connexionWith = listOf(PointModel(920,92), PointModel(922,94)),
+                connexionWith = listOf(PointModel(900,72), PointModel(920,92)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 922 ,number = 94, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43384108460671, 35.047484412789345),
-                connexionWith = listOf(PointModel(921,93), PointModel(923,95)),
+                connexionWith = listOf(PointModel(901,73)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 923 ,number = 95, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43379459243386, 35.04748072475195),
-                connexionWith = listOf(PointModel(922,94), PointModel(924,96)),
+                connexionWith = listOf(PointModel(903,75), PointModel(924,96)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 924 ,number = 96, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433765228934334, 35.04747938364744),
-                connexionWith = listOf(PointModel(923,95), PointModel(925,97)),
+                connexionWith = listOf(PointModel(904,76), PointModel(923,95)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 925 ,number = 97, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43373564296689, 35.04749648272991),
-                connexionWith = listOf(PointModel(924,96), PointModel(926,98)),
+                connexionWith = listOf(PointModel(905,77), PointModel(926,98)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 926 ,number = 98, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43370405492249, 35.047495141625404),
-                connexionWith = listOf(PointModel(925,97), PointModel(927,99)),
+                connexionWith = listOf(PointModel(906,78), PointModel(925,97)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 927 ,number = 99, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43367647098032, 35.04747066646814),
-                connexionWith = listOf(PointModel(926,98), PointModel(928,100)),
+                connexionWith = listOf(PointModel(907,79)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 928 ,number = 100, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43362842149694, 35.04747200757265),
-                connexionWith = listOf(PointModel(927,99), PointModel(929,101)),
+                connexionWith = listOf(PointModel(908,80)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 929 ,number = 101, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43420968372518, 35.047456584870815),
-                connexionWith = listOf(PointModel(928,100), PointModel(930,102)),
+                connexionWith = listOf(PointModel(890,62), PointModel(930,102), PointModel(959,131)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 930 ,number = 102, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43421168576499, 35.04736237227917),
-                connexionWith = listOf(PointModel(929,101), PointModel(931,103)),
+                connexionWith = listOf(PointModel(929,101), PointModel(931,103), PointModel(957,129)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 931 ,number = 103, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434212130662736, 35.04731845110655),
-                connexionWith = listOf(PointModel(930,102), PointModel(932,104)),
+                connexionWith = listOf(PointModel(930,102), PointModel(932,104), PointModel(956,128)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 932 ,number = 104, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43421947147462, 35.04722557961941),
-                connexionWith = listOf(PointModel(931,103), PointModel(933,105)),
+                connexionWith = listOf(PointModel(931,103), PointModel(933,105), PointModel(954,126)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 933 ,number = 105, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4342234755534, 35.047123320400715),
-                connexionWith = listOf(PointModel(932,104), PointModel(934,106)),
+                connexionWith = listOf(PointModel(932,104), PointModel(950,122), PointModel(952,124)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 934 ,number = 106, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43422747963186, 35.04700228571892),
-                connexionWith = listOf(PointModel(933,105), PointModel(935,107)),
+                connexionWith = listOf(PointModel(950,122), PointModel(935,107), PointModel(947,119)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 935 ,number = 107, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43422859187582, 35.04695735871792),
-                connexionWith = listOf(PointModel(934,106), PointModel(936,108)),
+                connexionWith = listOf(PointModel(934,106), PointModel(936,108), PointModel(946,118)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 936 ,number = 108, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43423170615876, 35.046915113925934),
-                connexionWith = listOf(PointModel(935,107), PointModel(937,109)),
+                connexionWith = listOf(PointModel(935,107), PointModel(937,109), PointModel(939,111), PointModel(960,132)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 937 ,number = 109, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43423281840263, 35.04686113446951),
-                connexionWith = listOf(PointModel(936,108), PointModel(938,110)),
+                connexionWith = listOf(PointModel(936,108), PointModel(938,110), PointModel(984,156)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 938 ,number = 110, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43418343475146, 35.046856105327606),
-                connexionWith = listOf(PointModel(937,109), PointModel(939,111)),
+                connexionWith = listOf(PointModel(937,109)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 939 ,number = 111, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43429109994724, 35.04691544920206),
-                connexionWith = listOf(PointModel(938,110), PointModel(940,112)),
+                connexionWith = listOf(PointModel(936,108), PointModel(940,112), PointModel(942,114)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2890,43 +2890,43 @@ object NavGraphOld {
             NavModel(
                 id = 941 ,number = 113, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43437918948315, 35.04688963294029),
-                connexionWith = listOf(PointModel(940,112), PointModel(942,114)),
+                connexionWith = listOf(PointModel(940,112), PointModel(942,114), PointModel(944,116)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 942 ,number = 114, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43437918948315, 35.04693120718002),
-                connexionWith = listOf(PointModel(941,113), PointModel(943,115)),
+                connexionWith = listOf(PointModel(939,111), PointModel(941,113), PointModel(943,115)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 943 ,number = 115, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43442946273569, 35.04693657159805),
-                connexionWith = listOf(PointModel(942,114), PointModel(944,116)),
+                connexionWith = listOf(PointModel(942,114)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 944 ,number = 116, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43438430578987, 35.04687085747719),
-                connexionWith = listOf(PointModel(943,115), PointModel(945,117)),
+                connexionWith = listOf(PointModel(941,113), PointModel(945,117)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 945 ,number = 117, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43442345664175, 35.04687488079071),
-                connexionWith = listOf(PointModel(944,116), PointModel(946,118)),
+                connexionWith = listOf(PointModel(944,116)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 946 ,number = 118, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425751021021, 35.046962052583694),
-                connexionWith = listOf(PointModel(945,117), PointModel(947,119)),
+                connexionWith = listOf(PointModel(935,107), PointModel(947,119)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 947 ,number = 119, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425728776158, 35.04700563848019),
-                connexionWith = listOf(PointModel(946,118), PointModel(948,120)),
+                connexionWith = listOf(PointModel(934,106), PointModel(946,118), PointModel(948,120)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -2938,295 +2938,295 @@ object NavGraphOld {
             NavModel(
                 id = 949 ,number = 121, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43427708568878, 35.04704017192125),
-                connexionWith = listOf(PointModel(948,120), PointModel(950,122)),
+                connexionWith = listOf(PointModel(948,120)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 950 ,number = 122, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434225700041466, 35.04706531763077),
-                connexionWith = listOf(PointModel(949,121), PointModel(951,123)),
+                connexionWith = listOf(PointModel(933,105), PointModel(934,106), PointModel(951,123)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 951 ,number = 123, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43426929998798, 35.04707135260105),
-                connexionWith = listOf(PointModel(950,122), PointModel(952,124)),
+                connexionWith = listOf(PointModel(950,122)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 952 ,number = 124, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43426462856694, 35.047130696475506),
-                connexionWith = listOf(PointModel(951,123), PointModel(953,125)),
+                connexionWith = listOf(PointModel(933,105)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 953 ,number = 125, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425261633939, 35.047179982066154),
-                connexionWith = listOf(PointModel(952,124), PointModel(954,126)),
+                connexionWith = listOf(PointModel(954,126)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 954 ,number = 126, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4342510591986, 35.04722993820906),
-                connexionWith = listOf(PointModel(953,125), PointModel(955,127)),
+                connexionWith = listOf(PointModel(932,104), PointModel(953,125), PointModel(955,127)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 955 ,number = 127, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434250169403825, 35.047272853553295),
-                connexionWith = listOf(PointModel(954,126), PointModel(956,128)),
+                connexionWith = listOf(PointModel(954,126)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 956 ,number = 128, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425617551822, 35.047322139143944),
-                connexionWith = listOf(PointModel(955,127), PointModel(957,129)),
+                connexionWith = listOf(PointModel(931,103)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 957 ,number = 129, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43424705512198, 35.04736639559269),
-                connexionWith = listOf(PointModel(956,128), PointModel(958,130)),
+                connexionWith = listOf(PointModel(930,102), PointModel(958,130)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 958 ,number = 130, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43424661022456, 35.047412663698196),
-                connexionWith = listOf(PointModel(957,129), PointModel(959,131)),
+                connexionWith = listOf(PointModel(957,129)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 959 ,number = 131, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4342510591986, 35.04745692014694),
-                connexionWith = listOf(PointModel(958,130), PointModel(960,132)),
+                connexionWith = listOf(PointModel(929,101)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 960 ,number = 132, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43414183677381, 35.04690673202276),
-                connexionWith = listOf(PointModel(959,131), PointModel(961,133)),
+                connexionWith = listOf(PointModel(936,108), PointModel(961,133), PointModel(977,149), PointModel(978,150)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 961 ,number = 133, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43407576932758, 35.04689935594797),
-                connexionWith = listOf(PointModel(960,132), PointModel(962,134)),
+                connexionWith = listOf(PointModel(960,132), PointModel(962,134), PointModel(976,148), PointModel(979,151)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 962 ,number = 134, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434040622300955, 35.04689533263445),
-                connexionWith = listOf(PointModel(961,133), PointModel(963,135)),
+                connexionWith = listOf(PointModel(961,133), PointModel(963,135), PointModel(975,147)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 963 ,number = 135, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434024161026954, 35.04689533263445),
-                connexionWith = listOf(PointModel(962,134), PointModel(964,136)),
+                connexionWith = listOf(PointModel(962,134), PointModel(964,136), PointModel(980,152)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 964 ,number = 136, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43397677922204, 35.04688695073128),
-                connexionWith = listOf(PointModel(963,135), PointModel(965,137)),
+                connexionWith = listOf(PointModel(963,135), PointModel(965,137), PointModel(981,153)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 965 ,number = 137, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433908264609094, 35.04688326269388),
-                connexionWith = listOf(PointModel(964,136), PointModel(966,138)),
+                connexionWith = listOf(PointModel(964,136), PointModel(966,138), PointModel(974,146), PointModel(982,154)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 966 ,number = 138, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43386155004733, 35.046878568828106),
-                connexionWith = listOf(PointModel(965,137), PointModel(967,139)),
+                connexionWith = listOf(PointModel(965,137), PointModel(967,139), PointModel(973,145), PointModel(983,155)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 967 ,number = 139, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43379236792689, 35.046872198581696),
-                connexionWith = listOf(PointModel(966,138), PointModel(968,140)),
+                connexionWith = listOf(PointModel(966,138), PointModel(968,140), PointModel(972,144), PointModel(984,156)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 968 ,number = 140, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43370449982466, 35.04686247557402),
-                connexionWith = listOf(PointModel(967,139), PointModel(969,141)),
+                connexionWith = listOf(PointModel(967,139), PointModel(969,141), PointModel(971,143), PointModel(985,157)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 969 ,number = 141, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43365177889036, 35.046858452260494),
-                connexionWith = listOf(PointModel(968,140), PointModel(970,142)),
+                connexionWith = listOf(PointModel(968,140), PointModel(970,142), PointModel(986,158)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 970 ,number = 142, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43364955437718, 35.04692316055298),
-                connexionWith = listOf(PointModel(969,141), PointModel(971,143)),
+                connexionWith = listOf(PointModel(969,141)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 971 ,number = 143, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433698493645046, 35.04692818969488),
-                connexionWith = listOf(PointModel(970,142), PointModel(972,144)),
+                connexionWith = listOf(PointModel(968,140), PointModel(972,144)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 972 ,number = 144, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43379592713796, 35.046935230493546),
-                connexionWith = listOf(PointModel(971,143), PointModel(973,145)),
+                connexionWith = listOf(PointModel(967,139), PointModel(971,143)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 973 ,number = 145, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433856878588784, 35.046990886330605),
-                connexionWith = listOf(PointModel(972,144), PointModel(974,146)),
+                connexionWith = listOf(PointModel(966,138)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 974 ,number = 146, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433903815605085, 35.04695702344179),
-                connexionWith = listOf(PointModel(973,145), PointModel(975,147)),
+                connexionWith = listOf(PointModel(965,137)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 975 ,number = 147, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4340386202544, 35.04696473479271),
-                connexionWith = listOf(PointModel(974,146), PointModel(976,148)),
+                connexionWith = listOf(PointModel(962,134)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 976 ,number = 148, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434075546878105, 35.04696775227785),
-                connexionWith = listOf(PointModel(975,147), PointModel(977,149)),
+                connexionWith = listOf(PointModel(961,133)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 977 ,number = 149, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434142281672166, 35.04697144031525),
-                connexionWith = listOf(PointModel(976,148), PointModel(978,150)),
+                connexionWith = listOf(PointModel(960,132)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 978 ,number = 150, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434142281672166, 35.04683464765549),
-                connexionWith = listOf(PointModel(977,149), PointModel(979,151)),
+                connexionWith = listOf(PointModel(960,132)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 979 ,number = 151, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43407777137266, 35.04682928323746),
-                connexionWith = listOf(PointModel(978,150), PointModel(980,152)),
+                connexionWith = listOf(PointModel(961,133)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 980 ,number = 152, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434030167168096, 35.04682391881943),
-                connexionWith = listOf(PointModel(979,151), PointModel(981,153)),
+                connexionWith = listOf(PointModel(963,135), PointModel(981,153)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 981 ,number = 153, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43397944862067, 35.046820901334286),
-                connexionWith = listOf(PointModel(980,152), PointModel(982,154)),
+                connexionWith = listOf(PointModel(964,136), PointModel(980,152), PointModel(982,154)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 982 ,number = 154, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43390893195969, 35.04681218415499),
-                connexionWith = listOf(PointModel(981,153), PointModel(983,155)),
+                connexionWith = listOf(PointModel(965,137), PointModel(981,153)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 983 ,number = 155, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43386421945201, 35.04680950194597),
-                connexionWith = listOf(PointModel(982,154), PointModel(984,156)),
+                connexionWith = listOf(PointModel(966,138)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 984 ,number = 156, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43379192302551, 35.046803802251816),
-                connexionWith = listOf(PointModel(983,155), PointModel(985,157)),
+                connexionWith = listOf(PointModel(967,139)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 985 ,number = 157, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433707169237586, 35.046792067587376),
-                connexionWith = listOf(PointModel(984,156), PointModel(986,158)),
+                connexionWith = listOf(PointModel(968,140)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 986 ,number = 158, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433649999279815, 35.046787708997726),
-                connexionWith = listOf(PointModel(985,157), PointModel(987,159)),
+                connexionWith = listOf(PointModel(969,141)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 987 ,number = 159, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434238824519085, 35.04677463322878),
-                connexionWith = listOf(PointModel(986,158), PointModel(988,160)),
+                connexionWith = listOf(PointModel(937,109), PointModel(986,158), PointModel(988,160), PointModel(1010,182)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 988 ,number = 160, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43424416328869, 35.04663247615099),
-                connexionWith = listOf(PointModel(987,159), PointModel(989,161)),
+                connexionWith = listOf(PointModel(987,159), PointModel(989,161), PointModel(1009,181)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 989 ,number = 161, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43424972450641, 35.04654161632061),
-                connexionWith = listOf(PointModel(988,160), PointModel(990,162)),
+                connexionWith = listOf(PointModel(988,160), PointModel(990,162), PointModel(1008,180)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 990 ,number = 162, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425039185251, 35.04649870097637),
-                connexionWith = listOf(PointModel(989,161), PointModel(991,163)),
+                connexionWith = listOf(PointModel(989,161), PointModel(991,163), PointModel(1007,179)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 991 ,number = 163, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425306123676, 35.046456791460514),
-                connexionWith = listOf(PointModel(990,162), PointModel(992,164)),
+                connexionWith = listOf(PointModel(990,162), PointModel(992,164), PointModel(1006,178)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 992 ,number = 164, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425306123676, 35.04641119390726),
-                connexionWith = listOf(PointModel(991,163), PointModel(993,165)),
+                connexionWith = listOf(PointModel(991,163), PointModel(993,165), PointModel(1004,176)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 993 ,number = 165, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425906735083, 35.046281442046165),
-                connexionWith = listOf(PointModel(992,164), PointModel(994,166)),
+                connexionWith = listOf(PointModel(992,164), PointModel(994,166), PointModel(1003,175)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 994 ,number = 166, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434260624491415, 35.04623617976904),
-                connexionWith = listOf(PointModel(993,165), PointModel(995,167)),
+                connexionWith = listOf(PointModel(993,165), PointModel(995,167), PointModel(997,169), PointModel(1011,183)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 995 ,number = 167, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434259734696795, 35.04618689417839),
-                connexionWith = listOf(PointModel(994,166), PointModel(996,168)),
+                connexionWith = listOf(PointModel(994,166), PointModel(996,168), PointModel(1047,219)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 996 ,number = 168, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43421035107181, 35.04618287086487),
-                connexionWith = listOf(PointModel(995,167), PointModel(997,169)),
+                connexionWith = listOf(PointModel(995,167)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 997 ,number = 169, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434288653013496, 35.04623752087355),
-                connexionWith = listOf(PointModel(996,168), PointModel(998,170)),
+                connexionWith = listOf(PointModel(994,166), PointModel(998,170), PointModel(1000,172)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -3238,13 +3238,13 @@ object NavGraphOld {
             NavModel(
                 id = 999 ,number = 171, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434350716114494, 35.04617180675268),
-                connexionWith = listOf(PointModel(998,170), PointModel(1000,172)),
+                connexionWith = listOf(PointModel(998,170)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1000 ,number = 172, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43436940176448, 35.04624389111996),
-                connexionWith = listOf(PointModel(999,171), PointModel(1001,173)),
+                connexionWith = listOf(PointModel(997,169), PointModel(1001,173)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -3256,139 +3256,139 @@ object NavGraphOld {
             NavModel(
                 id = 1002 ,number = 174, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43443546882892, 35.04619024693966),
-                connexionWith = listOf(PointModel(1001,173), PointModel(1003,175)),
+                connexionWith = listOf(PointModel(1001,173)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1003 ,number = 175, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434301110129454, 35.046285800635815),
-                connexionWith = listOf(PointModel(1002,174), PointModel(1004,176)),
+                connexionWith = listOf(PointModel(993,165)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1004 ,number = 176, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434281979557255, 35.046413876116276),
-                connexionWith = listOf(PointModel(1003,175), PointModel(1005,177)),
+                connexionWith = listOf(PointModel(992,164), PointModel(1005,177)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1005 ,number = 177, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434283314248574, 35.04635252058506),
-                connexionWith = listOf(PointModel(1004,176), PointModel(1006,178)),
+                connexionWith = listOf(PointModel(1004,176)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1006 ,number = 178, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43429043260168, 35.04646047949791),
-                connexionWith = listOf(PointModel(1005,177), PointModel(1007,179)),
+                connexionWith = listOf(PointModel(991,163)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1007 ,number = 179, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434288653013496, 35.04650607705116),
-                connexionWith = listOf(PointModel(1006,178), PointModel(1008,180)),
+                connexionWith = listOf(PointModel(990,162)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1008 ,number = 180, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43428798566791, 35.04654932767153),
-                connexionWith = listOf(PointModel(1007,179), PointModel(1009,181)),
+                connexionWith = listOf(PointModel(989,161)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1009 ,number = 181, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43428375914566, 35.04663549363613),
-                connexionWith = listOf(PointModel(1008,180), PointModel(1010,182)),
+                connexionWith = listOf(PointModel(988,160)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1010 ,number = 182, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43427508365156, 35.04677664488554),
-                connexionWith = listOf(PointModel(1009,181), PointModel(1011,183)),
+                connexionWith = listOf(PointModel(987,159)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1011 ,number = 183, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43422125106522, 35.04623617976904),
-                connexionWith = listOf(PointModel(1010,182), PointModel(1012,184)),
+                connexionWith = listOf(PointModel(994,166), PointModel(1012,184), PointModel(1036,208)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1012 ,number = 184, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43417587148535, 35.04622980952263),
-                connexionWith = listOf(PointModel(1011,183), PointModel(1013,185)),
+                connexionWith = listOf(PointModel(1011,183), PointModel(1013,185), PointModel(1037,209)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1013 ,number = 185, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43416808576903, 35.046234503388405),
-                connexionWith = listOf(PointModel(1012,184), PointModel(1014,186)),
+                connexionWith = listOf(PointModel(1012,184), PointModel(1014,186), PointModel(1035,207)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1014 ,number = 186, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43414205922301, 35.04622410982847),
-                connexionWith = listOf(PointModel(1013,185), PointModel(1015,187)),
+                connexionWith = listOf(PointModel(1013,185), PointModel(1015,187), PointModel(1038,210)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1015 ,number = 187, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43410335305295, 35.04622042179108),
-                connexionWith = listOf(PointModel(1014,186), PointModel(1016,188)),
+                connexionWith = listOf(PointModel(1014,186), PointModel(1016,188), PointModel(1033,205), PointModel(1039,211)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1016 ,number = 188, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434061310110685, 35.046216398477554),
-                connexionWith = listOf(PointModel(1015,187), PointModel(1017,189)),
+                connexionWith = listOf(PointModel(1015,187), PointModel(1017,189), PointModel(1032,204), PointModel(1040,212)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1017 ,number = 189, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43394318927726, 35.046206675469875),
-                connexionWith = listOf(PointModel(1016,188), PointModel(1018,190)),
+                connexionWith = listOf(PointModel(1016,188), PointModel(1018,190), PointModel(1031,203), PointModel(1041,213)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1018 ,number = 190, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43390136865269, 35.04620499908924),
-                connexionWith = listOf(PointModel(1017,189), PointModel(1019,191)),
+                connexionWith = listOf(PointModel(1017,189), PointModel(1019,191), PointModel(1030,202), PointModel(1042,214)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1019 ,number = 191, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43386911336023, 35.046201311051846),
-                connexionWith = listOf(PointModel(1018,190), PointModel(1020,192)),
+                connexionWith = listOf(PointModel(1018,190), PointModel(1020,192), PointModel(1029,201)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1020 ,number = 192, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43384931527403, 35.04619996994734),
-                connexionWith = listOf(PointModel(1019,191), PointModel(1021,193)),
+                connexionWith = listOf(PointModel(1019,191), PointModel(1021,193), PointModel(1043,215)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1021 ,number = 193, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433818617102645, 35.046195946633816),
-                connexionWith = listOf(PointModel(1020,192), PointModel(1022,194)),
+                connexionWith = listOf(PointModel(1020,192), PointModel(1022,194), PointModel(1044,216)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1022 ,number = 194, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4337583329585, 35.04619091749191),
-                connexionWith = listOf(PointModel(1021,193), PointModel(1023,195)),
+                connexionWith = listOf(PointModel(1021,193), PointModel(1023,195), PointModel(1028,200)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1023 ,number = 195, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43373430826119, 35.046187564730644),
-                connexionWith = listOf(PointModel(1022,194), PointModel(1024,196)),
+                connexionWith = listOf(PointModel(1022,194), PointModel(1024,196), PointModel(1027,199), PointModel(1045,217)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1024 ,number = 196, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433687148637134, 35.04618354141712),
-                connexionWith = listOf(PointModel(1023,195), PointModel(1025,197)),
+                connexionWith = listOf(PointModel(1023,195), PointModel(1025,197), PointModel(1046,218)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -3400,205 +3400,205 @@ object NavGraphOld {
             NavModel(
                 id = 1026 ,number = 198, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433646884961206, 35.04627272486687),
-                connexionWith = listOf(PointModel(1025,197), PointModel(1027,199)),
+                connexionWith = listOf(PointModel(1025,197)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1027 ,number = 199, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4337320837516, 35.04625964909792),
-                connexionWith = listOf(PointModel(1026,198), PointModel(1028,200)),
+                connexionWith = listOf(PointModel(1023,195)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1028 ,number = 200, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43375900031105, 35.046262331306934),
-                connexionWith = listOf(PointModel(1027,199), PointModel(1029,201)),
+                connexionWith = listOf(PointModel(1022,194)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1029 ,number = 201, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43386688885655, 35.04627037793398),
-                connexionWith = listOf(PointModel(1028,200), PointModel(1030,202)),
+                connexionWith = listOf(PointModel(1019,191)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1030 ,number = 202, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433899589050874, 35.0462744012475),
-                connexionWith = listOf(PointModel(1029,201), PointModel(1031,203)),
+                connexionWith = listOf(PointModel(1018,190)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1031 ,number = 203, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43394229947709, 35.04628010094166),
-                connexionWith = listOf(PointModel(1030,202), PointModel(1032,204)),
+                connexionWith = listOf(PointModel(1017,189), PointModel(1032,204)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1032 ,number = 204, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43405552642278, 35.0462918356061),
-                connexionWith = listOf(PointModel(1031,203), PointModel(1033,205)),
+                connexionWith = listOf(PointModel(1016,188), PointModel(1031,203)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1033 ,number = 205, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434100906110174, 35.04629451781511),
-                connexionWith = listOf(PointModel(1032,204), PointModel(1034,206)),
+                connexionWith = listOf(PointModel(1015,187)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1034 ,number = 206, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43414005718044, 35.04632133990526),
-                connexionWith = listOf(PointModel(1033,205), PointModel(1035,207)),
+                connexionWith = listOf(PointModel(1035,207)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1035 ,number = 207, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43416586127843, 35.04632402211428),
-                connexionWith = listOf(PointModel(1034,206), PointModel(1036,208)),
+                connexionWith = listOf(PointModel(1013,185), PointModel(1034,206), PointModel(1036,208)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1036 ,number = 208, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43421791433278, 35.046323016285896),
-                connexionWith = listOf(PointModel(1035,207), PointModel(1037,209)),
+                connexionWith = listOf(PointModel(1011,183), PointModel(1035,207)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1037 ,number = 209, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43417831842451, 35.04614431411028),
-                connexionWith = listOf(PointModel(1036,208), PointModel(1038,210)),
+                connexionWith = listOf(PointModel(1012,184)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1038 ,number = 210, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4341438388163, 35.046143643558025),
-                connexionWith = listOf(PointModel(1037,209), PointModel(1039,211)),
+                connexionWith = listOf(PointModel(1014,186)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1039 ,number = 211, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43410624489425, 35.0461657717824),
-                connexionWith = listOf(PointModel(1038,210), PointModel(1040,212)),
+                connexionWith = listOf(PointModel(1015,187)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1040 ,number = 212, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434060420312605, 35.046160742640495),
-                connexionWith = listOf(PointModel(1039,211), PointModel(1041,213)),
+                connexionWith = listOf(PointModel(1016,188), PointModel(1041,213)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1041 ,number = 213, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43394474642749, 35.0461483374238),
-                connexionWith = listOf(PointModel(1040,212), PointModel(1042,214)),
+                connexionWith = listOf(PointModel(1017,189), PointModel(1040,212)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1042 ,number = 214, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43389691964805, 35.04614531993866),
-                connexionWith = listOf(PointModel(1041,213), PointModel(1043,215)),
+                connexionWith = listOf(PointModel(1018,190)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1043 ,number = 215, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43384998262537, 35.04615470767021),
-                connexionWith = listOf(PointModel(1042,214), PointModel(1044,216)),
+                connexionWith = listOf(PointModel(1020,192), PointModel(1044,216)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1044 ,number = 216, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43382150896016, 35.04615269601345),
-                connexionWith = listOf(PointModel(1043,215), PointModel(1045,217)),
+                connexionWith = listOf(PointModel(1021,193), PointModel(1043,215)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1045 ,number = 217, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43373475316308, 35.04611346870661),
-                connexionWith = listOf(PointModel(1044,216), PointModel(1046,218)),
+                connexionWith = listOf(PointModel(1023,195)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1046 ,number = 218, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.433688928246376, 35.04611447453499),
-                connexionWith = listOf(PointModel(1045,217), PointModel(1047,219)),
+                connexionWith = listOf(PointModel(1024,196)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1047 ,number = 219, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43426707550183, 35.04608999937773),
-                connexionWith = listOf(PointModel(1046,218), PointModel(1048,220)),
+                connexionWith = listOf(PointModel(995,167), PointModel(1048,220), PointModel(1082,254)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1048 ,number = 220, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434268187744905, 35.04605010151863),
-                connexionWith = listOf(PointModel(1047,219), PointModel(1049,221)),
+                connexionWith = listOf(PointModel(1047,219), PointModel(1049,221), PointModel(1081,253)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1049 ,number = 221, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434271969371245, 35.04596594721079),
-                connexionWith = listOf(PointModel(1048,220), PointModel(1050,222)),
+                connexionWith = listOf(PointModel(1048,220), PointModel(1050,222), PointModel(1079,251)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1050 ,number = 222, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4342768632402, 35.045863687992096),
-                connexionWith = listOf(PointModel(1049,221), PointModel(1051,223)),
+                connexionWith = listOf(PointModel(1049,221), PointModel(1051,223), PointModel(1077,249)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1051 ,number = 223, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434280422417324, 35.04577785730362),
-                connexionWith = listOf(PointModel(1050,222), PointModel(1052,224)),
+                connexionWith = listOf(PointModel(1050,222), PointModel(1052,224), PointModel(1076,248)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1052 ,number = 224, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434282202005804, 35.045731253921986),
-                connexionWith = listOf(PointModel(1051,223), PointModel(1053,225)),
+                connexionWith = listOf(PointModel(1051,223), PointModel(1053,225), PointModel(1075,247)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1053 ,number = 225, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43428464893985, 35.04568900913),
-                connexionWith = listOf(PointModel(1052,224), PointModel(1054,226)),
+                connexionWith = listOf(PointModel(1052,224), PointModel(1054,226), PointModel(1074,246)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1054 ,number = 226, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434285093836934, 35.04564609378576),
-                connexionWith = listOf(PointModel(1053,225), PointModel(1055,227)),
+                connexionWith = listOf(PointModel(1053,225), PointModel(1055,227), PointModel(1073,245)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1055 ,number = 227, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43428709587377, 35.04560116678476),
-                connexionWith = listOf(PointModel(1054,226), PointModel(1056,228)),
+                connexionWith = listOf(PointModel(1054,226), PointModel(1056,228), PointModel(1072,244)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1056 ,number = 228, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434288653013496, 35.045557245612144),
-                connexionWith = listOf(PointModel(1055,227), PointModel(1057,229)),
+                connexionWith = listOf(PointModel(1055,227), PointModel(1057,229), PointModel(1064,236), PointModel(1065,237)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1057 ,number = 229, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425906735083, 35.045558251440525),
-                connexionWith = listOf(PointModel(1056,228), PointModel(1058,230)),
+                connexionWith = listOf(PointModel(1056,228), PointModel(1058,230), PointModel(1059,231)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1058 ,number = 230, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43425306123676, 35.045615918934345),
-                connexionWith = listOf(PointModel(1057,229), PointModel(1059,231)),
+                connexionWith = listOf(PointModel(1057,229)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1059 ,number = 231, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43419700413787, 35.045547522604465),
-                connexionWith = listOf(PointModel(1058,230), PointModel(1060,232)),
+                connexionWith = listOf(PointModel(1057,229), PointModel(1060,232), PointModel(1062,234)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -3610,19 +3610,19 @@ object NavGraphOld {
             NavModel(
                 id = 1061 ,number = 233, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434169198014274, 35.04547577351332),
-                connexionWith = listOf(PointModel(1060,232), PointModel(1062,234)),
+                connexionWith = listOf(PointModel(1060,232)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1062 ,number = 234, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43419945107601, 35.045478120446205),
-                connexionWith = listOf(PointModel(1061,233), PointModel(1063,235)),
+                connexionWith = listOf(PointModel(1059,231)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1063 ,number = 235, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43424638777586, 35.045502595603466),
-                connexionWith = listOf(PointModel(1062,234), PointModel(1064,236)),
+                connexionWith = listOf(PointModel(1064,236)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
@@ -3634,109 +3634,109 @@ object NavGraphOld {
             NavModel(
                 id = 1065 ,number = 237, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43434671204576, 35.045562610030174),
-                connexionWith = listOf(PointModel(1064,236), PointModel(1066,238)),
+                connexionWith = listOf(PointModel(1056,228), PointModel(1066,238), PointModel(1069,241)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1066 ,number = 238, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43435004876972, 35.04552472382784),
-                connexionWith = listOf(PointModel(1065,237), PointModel(1067,239)),
+                connexionWith = listOf(PointModel(1065,237), PointModel(1067,239), PointModel(1068,240)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1067 ,number = 239, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43432113048798, 35.04552137106657),
-                connexionWith = listOf(PointModel(1066,238), PointModel(1068,240)),
+                connexionWith = listOf(PointModel(1066,238)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1068 ,number = 240, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43438163641252, 35.045527406036854),
-                connexionWith = listOf(PointModel(1067,239), PointModel(1069,241)),
+                connexionWith = listOf(PointModel(1066,238)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1069 ,number = 241, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434406550595774, 35.04556529223919),
-                connexionWith = listOf(PointModel(1068,240), PointModel(1070,242)),
+                connexionWith = listOf(PointModel(1065,237), PointModel(1070,242), PointModel(1071,243)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1070 ,number = 242, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434447481013216, 35.04556931555271),
-                connexionWith = listOf(PointModel(1069,241), PointModel(1071,243)),
+                connexionWith = listOf(PointModel(1069,241)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1071 ,number = 243, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4344067730438, 35.0455129891634),
-                connexionWith = listOf(PointModel(1070,242), PointModel(1072,244)),
+                connexionWith = listOf(PointModel(1069,241)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1072 ,number = 244, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43431712641691, 35.04560586065054),
-                connexionWith = listOf(PointModel(1071,243), PointModel(1073,245)),
+                connexionWith = listOf(PointModel(1055,227), PointModel(1073,245)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1073 ,number = 245, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.4343162366233, 35.0456477701664),
-                connexionWith = listOf(PointModel(1072,244), PointModel(1074,246)),
+                connexionWith = listOf(PointModel(1054,226), PointModel(1072,244), PointModel(1074,246)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1074 ,number = 246, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43431556927807, 35.04569102078676),
-                connexionWith = listOf(PointModel(1073,245), PointModel(1075,247)),
+                connexionWith = listOf(PointModel(1053,225), PointModel(1073,245)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1075 ,number = 247, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434315791726476, 35.045734606683254),
-                connexionWith = listOf(PointModel(1074,246), PointModel(1076,248)),
+                connexionWith = listOf(PointModel(1052,224)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1076 ,number = 248, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43431912845247, 35.04578221589327),
-                connexionWith = listOf(PointModel(1075,247), PointModel(1077,249)),
+                connexionWith = listOf(PointModel(1051,223)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1077 ,number = 249, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434314901932844, 35.04586637020111),
-                connexionWith = listOf(PointModel(1076,248), PointModel(1078,250)),
+                connexionWith = listOf(PointModel(1050,222)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1078 ,number = 250, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434304446856416, 35.04591163247824),
-                connexionWith = listOf(PointModel(1077,249), PointModel(1079,251)),
+                connexionWith = listOf(PointModel(1079,251)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1079 ,number = 251, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43430489175335, 35.045967288315296),
-                connexionWith = listOf(PointModel(1078,250), PointModel(1080,252)),
+                connexionWith = listOf(PointModel(1049,221), PointModel(1078,250)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1080 ,number = 252, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434301777474865, 35.04601489752531),
-                connexionWith = listOf(PointModel(1079,251), PointModel(1081,253)),
+                connexionWith = listOf(PointModel(1081,253)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1081 ,number = 253, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.434300220335544, 35.04605244845152),
-                connexionWith = listOf(PointModel(1080,252), PointModel(1082,254)),
+                connexionWith = listOf(PointModel(1048,220), PointModel(1080,252)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 1082 ,number = 254, name = null, description = null, locationIndex = OLD, floorIndex = 2,
                 location = LatLng(48.43429821829922, 35.046092346310616),
-                connexionWith = listOf(PointModel(1081,253), PointModel(1083,255)),
+                connexionWith = listOf(PointModel(1047,219)),
                 connexionFloor = null, connectedLocIndex = OLD, locked = false
             ),
         )
