@@ -91,8 +91,11 @@ fun NavigationScreen( navHostController: NavHostController,
                 CameraUpdateFactory.newCameraPosition(movedCameraPosition), Constants.DURATION_ANIM) } }
     clickers.add { viewModel.rememberLastCameraPosition(cameraPositionState.position)
         navHostController.navigate(ScheduleViewer.route) }
-    clickers.add { viewModel.rememberLastCameraPosition(cameraPositionState.position)
-        navHostController.navigate(SettingsScreen.route) }
+    clickers.add {
+        viewModel.makeTestRoad()
+        viewModel.rememberLastCameraPosition(cameraPositionState.position)
+        navHostController.navigate(SettingsScreen.route)
+    }
 
     var navigationOpen by remember { mutableStateOf(false) }
     var navigate by remember { mutableStateOf(false) }

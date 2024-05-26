@@ -13,6 +13,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.Constants
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphList
 import com.example.interactivemap.logic.model.navigation.graph.NavGraphNew
 import com.example.interactivemap.logic.model.navigation.graph.NavGraphOld
 import com.example.interactivemap.logic.model.navigation.graph.NavGraphSk
@@ -51,6 +52,11 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
 
     fun disableLoadingState(){
         _loading.value = false
+    }
+
+    fun makeTestRoad(){
+        val path = GoogleMapUtil.dijkstra(NavGraphList.nawGraphList, 1, 154)
+        Log.d("ROAD","Маршрут: $path")
     }
 
     fun rememberLastCameraPosition(position: CameraPosition){

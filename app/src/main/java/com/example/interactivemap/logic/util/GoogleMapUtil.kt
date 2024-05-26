@@ -6,7 +6,12 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphNew
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphOld
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphSk
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphYard
 import com.example.interactivemap.logic.model.navigation.models.NavModel
+import com.example.interactivemap.logic.model.navigation.models.NavObjects
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
@@ -16,7 +21,7 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 object GoogleMapUtil {
-    const val EARTH_RADIUS = 6371 // Радіус Землі в кілометрах
+    const val EARTH_RADIUS = 6371e3 // Радіус Землі в кілометрах
     fun drawableToBitmapDescriptor(context: Context, drawableId: Int): BitmapDescriptor {
         val drawableResource: Drawable? = ContextCompat.getDrawable(context, drawableId)
         drawableResource ?. let { drawable ->
@@ -43,8 +48,8 @@ object GoogleMapUtil {
 
         locations.forEach { location ->
             val distance = distanceBetweenPoints(
-                location.location.latitude, location.location.longitude,
-                targetLocation.latitude, targetLocation.longitude
+                location.location,
+                targetLocation
             )
 
             if (distance < shortestDistance) {
@@ -55,15 +60,66 @@ object GoogleMapUtil {
         return nearestLocation
     }
 
-    private fun distanceBetweenPoints(
-        lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
-        val latDistance = Math.toRadians(lat2 - lat1)
-        val lonDistance = Math.toRadians(lon2 - lon1)
-        val a = (sin(latDistance / 2) * sin(latDistance / 2)
-                + (cos(Math.toRadians(lat1)) * cos(Math.toRadians(lat2))
-                * sin(lonDistance / 2) * sin(lonDistance / 2)))
+    private fun distanceBetweenPoints(point1: LatLng, point2: LatLng): Double {
+        val lat1 = Math.toRadians(point1.latitude)
+        val lat2 = Math.toRadians(point2.latitude)
+        val deltaLat = Math.toRadians(point2.latitude - point1.latitude)
+        val deltaLon = Math.toRadians(point2.longitude - point1.longitude)
+
+        val a = sin(deltaLat / 2) * sin(deltaLat / 2) +
+                cos(lat1) * cos(lat2) *
+                sin(deltaLon / 2) * sin(deltaLon / 2)
         val c = 2 * atan2(sqrt(a), sqrt(1 - a))
-        return EARTH_RADIUS * c * 1000
+
+        return EARTH_RADIUS * c
+    }
+
+    fun dijkstra(navGraphs: List<List<NavModel>>, startId: Int, endId: Int): List<Int> {
+        val distances = mutableMapOf<Int, Double>()
+        val previous = mutableMapOf<Int, Int?>()
+        val unvisited = navGraphs.flatten().map { it.id }.toMutableSet()
+
+        navGraphs.flatten().forEach {
+            distances[it.id] = Double.MAX_VALUE
+            previous[it.id] = null
+        }
+
+        distances[startId] = 0.0
+
+        while (unvisited.isNotEmpty()) {
+            val current = unvisited.minByOrNull { distances[it]!! } ?: break
+            if (current == endId) break
+
+            unvisited.remove(current)
+
+            val currentNode = navGraphs.flatten().find { it.id == current } ?: continue
+            currentNode.connexionWith.forEach { neighbor ->
+                val neighborNode = navGraphs.flatten().find { it.id == neighbor.id } ?: return@forEach
+                val alt = distances[current]!! + distanceBetweenPoints(currentNode.location, neighborNode.location)
+                if (alt < distances[neighbor.id]!!) {
+                    distances[neighbor.id] = alt
+                    previous[neighbor.id] = current
+                }
+            }
+
+            currentNode.connexionFloor?.forEach { floorConnection ->
+                val neighborNode = navGraphs.flatten().find { it.id == floorConnection.point.id } ?: return@forEach
+                val alt = distances[current]!! + distanceBetweenPoints(currentNode.location, neighborNode.location)
+                if (alt < distances[floorConnection.point.id]!!) {
+                    distances[floorConnection.point.id] = alt
+                    previous[floorConnection.point.id] = current
+                }
+            }
+        }
+
+        val path = mutableListOf<Int>()
+        var currentNode: Int? = endId
+        while (currentNode != null) {
+            path.add(currentNode)
+            currentNode = previous[currentNode]
+        }
+
+        return if (path.size == 1 && path[0] != startId) emptyList() else path.reversed()
     }
 
     fun getMapStyleWithoutLabels(): String {
