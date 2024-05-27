@@ -12,6 +12,7 @@ import com.example.interactivemap.logic.model.navigation.graph.NavGraphSk
 import com.example.interactivemap.logic.model.navigation.graph.NavGraphYard
 import com.example.interactivemap.logic.model.navigation.models.NavModel
 import com.example.interactivemap.logic.model.navigation.models.NavObjects
+import com.example.interactivemap.logic.model.navigation.models.RoadElementModel
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
@@ -74,7 +75,7 @@ object GoogleMapUtil {
         return EARTH_RADIUS * c
     }
 
-    fun dijkstra(navGraphs: List<List<NavModel>>, startId: Int, endId: Int): List<Int> {
+    fun dijkstra(navGraphs: List<List<NavModel>>, startId: Int, endId: Int): List<RoadElementModel> {
         val distances = mutableMapOf<Int, Double>()
         val previous = mutableMapOf<Int, Int?>()
         val unvisited = navGraphs.flatten().map { it.id }.toMutableSet()
@@ -119,7 +120,14 @@ object GoogleMapUtil {
             currentNode = previous[currentNode]
         }
 
-        return if (path.size == 1 && path[0] != startId) emptyList() else path.reversed()
+        return if (path.size == 1 && path[0] != startId) {
+            emptyList()
+        } else {
+            path.reversed().map { id ->
+                val node = navGraphs.flatten().find { it.id == id }!!
+                RoadElementModel(id, node.location, node.floorIndex, node.locationIndex)
+            }
+        }
     }
 
     fun getMapStyleWithoutLabels(): String {

@@ -14,7 +14,7 @@ object NavGraphYard {
             NavModel(
                 id = 1 ,number = 1, name = null, description = null, locationIndex = YARD, floorIndex = 1,
                 location = LatLng(48.43780944629653, 35.04951652139425),
-                connexionWith = listOf(PointModel(2,2)),
+                connexionWith = listOf(PointModel(2,2), PointModel(37,37), PointModel(68,68)),
                 connexionFloor = null, connectedLocIndex = YARD, locked = false
             ),
             NavModel(
