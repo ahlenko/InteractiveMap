@@ -2,6 +2,7 @@ package com.example.interactivemap.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -58,10 +59,18 @@ fun InteractiveMapTheme(darkTheme: Boolean = isSystemInDarkTheme(),
 
     val view = LocalView.current
 
-    if (!view.isInEditMode) { SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.onBackground.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme } }
+    if (!view.isInEditMode) {
+        SideEffect {
+            val context = view.context
+            if (context is Activity) {
+                val window = context.window
+                window.statusBarColor = colorScheme.onBackground.toArgb()
+                WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            } else {
+                Log.e("InteractiveMapTheme", "Context is not an Activity")
+            }
+        }
+    }
 
     MaterialTheme(
         colorScheme = colorScheme,

@@ -152,8 +152,9 @@ fun NavigationScreen( navHostController: NavHostController,
         navHostController.navigate(ScheduleViewer.route)
     }
     clickers.add {
-        viewModel.rememberLastCameraPosition(cameraPositionState.position)
-        navHostController.navigate(SettingsScreen.route)
+        viewModel.makeTestRoad()
+//        viewModel.rememberLastCameraPosition(cameraPositionState.position)
+//        navHostController.navigate(SettingsScreen.route)
     }
 
     var navigationState by remember { mutableIntStateOf(0) }
@@ -169,7 +170,7 @@ fun NavigationScreen( navHostController: NavHostController,
     clickersMapController.add {  }
     clickersMapController.add {  }
 
-    var floor = remember { mutableIntStateOf(1) }
+    val floor = remember { mutableIntStateOf(1) }
     val maxFloor = remember { mutableIntStateOf(5) }
     val minFloor = remember { mutableIntStateOf(0) }
 

@@ -21,6 +21,7 @@ import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.FirebaseApp
 import com.jakewharton.threetenabp.AndroidThreeTen
 
 class ThisApplication: Application(){
@@ -35,9 +36,10 @@ class ThisApplication: Application(){
     var darkThemeSelected by mutableStateOf(false)
 
     override fun onCreate() { super.onCreate()
+        AndroidThreeTen.init(this)
+        FirebaseApp.initializeApp(this)
         loadSettingsHelper(this, this.packageName)
         darkThemeSelected = SharedPreferencesRepository.darkThemeSelected
-        AndroidThreeTen.init(this)
         lastCameraPosition = CameraPosition.Builder().target(
             Constants.baseLocation).zoom(Constants.ZOOM_BASE).build()
         instance = this

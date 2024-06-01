@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.location.Location
+import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
@@ -34,13 +35,16 @@ import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_
 import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_LOCATION_PROVIDERS_STATE_GPS_OFF
 import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_LOCATION_PROVIDERS_STATE_GPS_ON
 import com.example.interactivemap.logic.service.LocationServiceConstants.ACTION
+import com.example.interactivemap.logic.util.FirebaseEventUtil
 import com.example.interactivemap.logic.util.GoogleMapUtil
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class NavigationViewModel(application: Application): AndroidViewModel(application)  {
     var loadingMapComponent by mutableStateOf(true)
@@ -113,36 +117,60 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
         _mapSelectionEnable = true
     }
 
-    fun makeRoad(startPoint: Int, endPoint: Int){
-        clearRoad()
+    fun makeTestRoad() {
+        viewModelScope.launch {
+            val randomPoint1 = Random.nextInt(1, 1782 + 1)
+            val randomPoint2 = Random.nextInt(1, 1782 + 1)
 
-//        val startTime = System.nanoTime()
-//        val path = GoogleMapUtil.dijkstra(NavGraphList.nawGraphList, 1, 1756)
-//
-//        saverMultiFloorRoad = GoogleMapUtil.toMultiLocationRoad(path)
-//
-//        val endTime = System.nanoTime()
-//        val duration = endTime - startTime
-//
-//        Log.d("ROAD", "Маршрут: $path")
-//        Log.d("ROAD", "Маршрут мультирівневий: $saverMultiFloorRoad")
-//        Log.d("TIME", "Час виконання: ${duration / 1000000} мс")
+            makeRoad(randomPoint1, randomPoint2)
+            delay(2000L)
 
-//        val startTime = System.nanoTime()
-        val path = GoogleMapUtil.aStar(NavGraphList.nawGraphList, startPoint, endPoint)
-        saverMultiFloorRoad = GoogleMapUtil.toMultiLocationRoad(path)
-
-//        val endTime = System.nanoTime()
-//        val duration = endTime - startTime
-//
-//        Log.d("ROAD", "Маршрут A*: $path")
-//        Log.d("ROAD", "Маршрут мультирівневий A*: $saverMultiFloorRoad")
-//        Log.d("TIME", "Час виконання A*: ${duration / 1000000} мс")
-
-        if (saverMultiFloorRoad.isNotEmpty()){
-            rebuildRoadByFloor(saverMultiFloorRoad.first().first().floor)
+            makeTestRoad()
         }
     }
+
+    private fun makeRoad(startPoint: Int, endPoint: Int){
+        Log.d("ROAD", "Маршрут: $startPoint - $endPoint")
+        val startTime = System.nanoTime()
+        val path = GoogleMapUtil.dijkstra(NavGraphList.nawGraphList, startPoint, endPoint)
+
+        val endTime = System.nanoTime()
+        val duration = endTime - startTime
+
+        Log.d("ROAD", "Маршрут: ${getPathIds(path)}")
+        Log.d("TIME", "Час виконання: ${duration / 1000000} мс")
+
+        val startTime2 = System.nanoTime()
+        val path2 = GoogleMapUtil.aStar(NavGraphList.nawGraphList, startPoint, endPoint)
+
+        val endTime2 = System.nanoTime()
+        val duration2 = endTime2 - startTime2
+
+        Log.d("ROAD", "Маршрут A*: ${getPathIds(path2)}")
+        Log.d("TIME", "Час виконання A*: ${duration2 / 1000000} мс")
+
+
+        val bundle = Bundle().apply {
+            putString("road_path", "$startPoint - $endPoint")
+            putString("dijkstra_time", "${duration / 1000000}")
+            putBoolean("dijkstra_path_found", path.isNotEmpty())
+            putString("a_star_time", "${duration2 / 1000000}")
+            putBoolean("a_star_path_found", path2.isNotEmpty())
+        }
+        FirebaseEventUtil.logCustomEvent(getApplication<ThisApplication>(), "road_build", bundle)
+    }
+
+    private fun getPathIds(path: List<RoadElementModel>): String {
+        return path.joinToString(separator = ",") { it.id.toString() }
+    }
+
+//  clearRoad()
+
+//saverMultiFloorRoad = GoogleMapUtil.toMultiLocationRoad(path)
+
+//        if (saverMultiFloorRoad.isNotEmpty()){
+//            rebuildRoadByFloor(saverMultiFloorRoad.first().first().floor)
+//        }
 
     fun rememberLastCameraPosition(position: CameraPosition){
         ThisApplication.getInstance().setLastCameraState(position)
