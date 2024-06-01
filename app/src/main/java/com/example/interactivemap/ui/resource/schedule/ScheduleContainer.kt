@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
 import com.example.interactivemap.ui.screens.schedule.DefScheduleViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
@@ -21,7 +22,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun ScheduleContainer(scheduleDataList: ScheduleDay, viewerViewModel: DefScheduleViewModel) {
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Top,

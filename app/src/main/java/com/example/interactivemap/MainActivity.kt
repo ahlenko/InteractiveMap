@@ -12,6 +12,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
@@ -21,7 +25,6 @@ import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 class MainActivity : ComponentActivity() {
-    private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
     private val ifFirstStart = true
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,10 +54,11 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            InteractiveMapTheme {}
+            InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected){
                 Box (Modifier.fillMaxSize()
-                        .background(MaterialTheme.colorScheme.background))
+                    .background(MaterialTheme.colorScheme.background))
                 AppNavigationGraph(rememberNavController())
+            }
         }
     }
 

@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.resource.button.DefaultButton
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
@@ -33,7 +34,7 @@ fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes:
                        onDismiss: () -> Unit, onConfirm: () -> Unit){
     val borderRadius = 15.dp
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Dialog(onDismissRequest = { onDismiss() },
             properties = DialogProperties(usePlatformDefaultWidth = false)) {
             Card(modifier = Modifier.fillMaxWidth().padding(16.dp),

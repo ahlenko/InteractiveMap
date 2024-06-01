@@ -17,11 +17,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun DropDownRowButton (text: String){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly

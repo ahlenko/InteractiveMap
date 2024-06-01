@@ -10,13 +10,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
-fun SwitchRowButton (state: Boolean, onChanged:()->Unit){
-    InteractiveMapTheme {
-        Switch(checked = state, onCheckedChange = {onChanged()},
+fun SwitchRowButton (state: Boolean, onChanged: ()->Unit){
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
+        Switch(checked = state, onCheckedChange = {
+            onChanged() },
             colors = SwitchDefaults.colors(
                 checkedTrackColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 uncheckedTrackColor = MaterialTheme.colorScheme.onPrimaryContainer,

@@ -29,6 +29,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -36,17 +38,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
+import com.example.interactivemap.logic.model.navigation.models.NavModel
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun SearchHeader (entered: MutableState<String>, leftImgId: Int, rightImgId: Int, searchResult: MutableState<ArrayList<String>>,
-                  onClickRight : () -> Unit, onChange: () -> Unit, onSelected:() -> Unit){
+fun SearchHeader (leftImgId: Int, searchResult: ArrayList<NavModel>,  rightImgId: Int,
+                   onChange: (String) -> Unit, onSelected:(NavModel) -> Unit){
 
     var isTextFieldActive by remember { mutableStateOf(false) }
+    var entered by remember { mutableStateOf("") }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Column (modifier = Modifier.fillMaxWidth().padding(15.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally){
@@ -70,9 +77,9 @@ fun SearchHeader (entered: MutableState<String>, leftImgId: Int, rightImgId: Int
                             modifier = Modifier.size(30.dp)
                         )
 
-                        BasicTextField(value = entered.value,
-                            onValueChange = { entered.value = it
-                                if (entered.value.length > 2)onChange()
+                        BasicTextField(value = entered,
+                            onValueChange = { entered = it
+                                if (entered.length > 1) onChange(entered)
                             },
                             textStyle = MaterialTheme.typography.displaySmall.copy(color = MaterialTheme.colorScheme.onBackground,
                                 textAlign = TextAlign.Center, fontWeight = FontWeight.Medium
@@ -81,7 +88,7 @@ fun SearchHeader (entered: MutableState<String>, leftImgId: Int, rightImgId: Int
 
                         Icon(painter = painterResource(id = rightImgId), contentDescription = null,
                             tint = MaterialTheme.colorScheme.onBackground,
-                            modifier = Modifier.size(30.dp).clickable { onClickRight() }
+                            modifier = Modifier.size(30.dp)
                         )
                     }
                 }
@@ -104,13 +111,17 @@ fun SearchHeader (entered: MutableState<String>, leftImgId: Int, rightImgId: Int
                             verticalArrangement = Arrangement.Top,
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            if (searchResult.value.isEmpty()){
+                            if (searchResult.isEmpty()){
                                 item { SearchResultEmpty(value = stringResource(
-                                    id = if (entered.value.isEmpty()) R.string.search_request else R.string.search_no_result) )
+                                    id = if (entered.isEmpty()) R.string.search_request else R.string.search_no_result) )
                                 }
                             }
-                            items(searchResult.value.size) {
-                                    item -> SearchResultElement(searchResult.value[item]){ onSelected() }
+                            items(searchResult.size) {
+                                item -> SearchResultElement(searchResult[item]){ entered = ""
+                                isTextFieldActive = false
+                                keyboardController?.hide()
+                                focusManager.clearFocus()
+                                onSelected(it) }
                             }
                         }
                     }
@@ -133,36 +144,20 @@ fun SearchResultEmpty(value: String){
 }
 
 @Composable
-fun SearchResultElement(value: String, onClick: () -> Unit){
-    InteractiveMapTheme {
+fun SearchResultElement(value: NavModel, onClick: (NavModel) -> Unit){
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Box(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp, horizontal = 5.dp)
-            .clip(RoundedCornerShape(5.dp)).clickable { onClick() }){
+            .clip(RoundedCornerShape(5.dp)).clickable { onClick(value) }){
             Row (modifier =  Modifier.padding(horizontal = 3.dp, vertical = 2.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically){
 
-                Text(modifier = Modifier.fillMaxWidth(), text = value,
+
+                Text(modifier = Modifier.fillMaxWidth(), text = value.name ?: value.id.toString(),
                     style = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onBackground,
                         fontWeight = FontWeight.Medium), softWrap = false)
+
             }
         }
     }
-}
-
-@SuppressLint("MutableCollectionMutableState")
-@Preview
-@Composable
-fun SearchHeaderPreview(){
-    val searchRes =  remember { mutableStateOf(
-        arrayListOf(
-        "Новий. к: ауд. 3227", "Новий. к: ауд. 3228",
-        "Новий. к: ауд. 3229", "Новий. к: ауд. 3230",
-        "Старий. к: ауд. 365"
-    )) }
-
-    searchRes.value.clear()
-
-    SearchHeader(
-        remember { mutableStateOf("") }, leftImgId = R.drawable.ic_search, searchResult = searchRes,
-        rightImgId = R.drawable.ic_account, onClickRight = {}, onChange = {}){}
 }

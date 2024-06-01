@@ -31,6 +31,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.navigation.NavigationScreen
 import com.example.interactivemap.logic.navigation.ScheduleEditor
 import com.example.interactivemap.logic.navigation.ScheduleViewer
@@ -56,7 +57,7 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
     if (scheduleViewerViewModel.showSheet) { LessonViewDialog(scheduleViewerViewModel.selectedData,
         scheduleViewerViewModel.lessonDescription, scheduleViewerViewModel) { scheduleViewerViewModel.showSheet = false } }
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         NavigateToNextScreen(navHostController, scheduleViewerViewModel)
         Scaffold (containerColor = MaterialTheme.colorScheme.background) { _ ->
             Column(

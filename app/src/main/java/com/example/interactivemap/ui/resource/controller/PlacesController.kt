@@ -24,13 +24,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
 fun PlacesController(placeType: MutableState<Int>,  coroutineScope: CoroutineScope, onChange: () -> Unit){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Box(modifier = Modifier.clip(RoundedCornerShape(15.dp))
                 .background(MaterialTheme.colorScheme.onPrimaryContainer).fillMaxSize()){
             Column (modifier = Modifier.fillMaxSize()

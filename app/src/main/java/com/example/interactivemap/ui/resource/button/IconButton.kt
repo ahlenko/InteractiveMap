@@ -19,18 +19,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.interactivemap.ThisApplication
+import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 
 @Composable
 fun IconButton (buttonColor: Color, imageResourceId: Int, radius : Dp,
                    iconColor: Color, size: Dp, onClick: () -> Unit ){
-    Box(modifier = Modifier.clip(RoundedCornerShape(radius)).fillMaxSize()
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
+        Box(modifier = Modifier.clip(RoundedCornerShape(radius)).fillMaxSize()
             .clickable { onClick() }) {
-        Box(modifier = Modifier.background(buttonColor).fillMaxSize(),
-            contentAlignment = Alignment.Center){
-            Icon(painterResource(id = imageResourceId),
-                contentDescription = null, tint = iconColor,
-                modifier = Modifier.size(size))
+            Box(
+                modifier = Modifier.background(buttonColor).fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    painterResource(id = imageResourceId),
+                    contentDescription = null, tint = iconColor,
+                    modifier = Modifier.size(size)
+                )
+            }
         }
     }
 }

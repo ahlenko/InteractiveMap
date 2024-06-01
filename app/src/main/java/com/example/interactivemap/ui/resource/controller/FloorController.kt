@@ -26,11 +26,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun FloorController(floor: MutableState<Int>, maxFloor: MutableState<Int>, minFloor: MutableState<Int>){
-    InteractiveMapTheme {
+fun FloorController(floor: MutableState<Int>, maxFloor: MutableState<Int>, minFloor: MutableState<Int>, onFloorChange: () -> Unit){
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Box(
             modifier = Modifier.clip(RoundedCornerShape(15.dp))
                 .background(MaterialTheme.colorScheme.onPrimaryContainer)
@@ -44,7 +45,8 @@ fun FloorController(floor: MutableState<Int>, maxFloor: MutableState<Int>, minFl
                     tint = MaterialTheme.colorScheme.onBackground.copy(
                         alpha = if(floor.value != maxFloor.value) 1f else 0.5f),
                     modifier = Modifier.weight(1f).clickable
-                        { if (floor.value != maxFloor.value) floor.value += 1 }
+                        { if (floor.value != maxFloor.value) floor.value += 1
+                            onFloorChange()}
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -62,15 +64,10 @@ fun FloorController(floor: MutableState<Int>, maxFloor: MutableState<Int>, minFl
                     tint = MaterialTheme.colorScheme.onBackground.copy(
                         alpha = if(floor.value != minFloor.value) 1f else 0.5f),
                     modifier = Modifier.weight(1f).clickable
-                        { if (floor.value != minFloor.value) floor.value -= 1 }
+                        { if (floor.value != minFloor.value) floor.value -= 1
+                            onFloorChange()}
                 )
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun FloorControllerPreview(){
-    FloorController(remember { mutableIntStateOf(1) }, remember { mutableIntStateOf(-1) }, remember { mutableIntStateOf(5) })
 }

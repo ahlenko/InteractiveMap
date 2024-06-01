@@ -117,4 +117,6 @@
     <string name="tutor">Викладач</string>
     <string name="search_request">Введіть пошуковий запит…</string>
     <string name="search_no_result">Пошук не дав результатів</string>
+    <string name="loading">Завантаження мапи</string>
+    <string name="pleaseWaiting">Будьласка зачекайте...</string>
 </resources>

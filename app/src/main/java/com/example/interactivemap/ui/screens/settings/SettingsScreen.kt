@@ -19,6 +19,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -29,9 +32,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.navigation.AppOnboard
 import com.example.interactivemap.logic.navigation.NavigationScreen
 import com.example.interactivemap.logic.navigation.ScheduleViewer
+import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.resource.button.DropDownRowButton
 import com.example.interactivemap.ui.resource.button.SwitchRowButton
 import com.example.interactivemap.ui.resource.fields.IconTextRow
@@ -53,7 +58,7 @@ fun SettingsScreen(navHostController: NavHostController,
     val languageSelected by settingsViewModel.languageSelected.collectAsState()
     val languageDialogState = rememberUseCaseState()
 
-    if (!isSystemInDarkTheme()){
+    if (!ThisApplication.getInstance().darkThemeSelected){
         MaterialTheme{
             ListDialog(
                 state = languageDialogState,
@@ -65,7 +70,7 @@ fun SettingsScreen(navHostController: NavHostController,
             )
         }
     } else {
-        InteractiveMapTheme{
+        InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected){
             ListDialog(
                 state = languageDialogState,
                 selection = ListSelection.Single( showRadioButtons = true,
@@ -79,7 +84,7 @@ fun SettingsScreen(navHostController: NavHostController,
 
     val spacerInterval = 4.dp
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Scaffold (containerColor = MaterialTheme.colorScheme.background) { _ ->
             Column(
                 modifier = Modifier
@@ -89,7 +94,9 @@ fun SettingsScreen(navHostController: NavHostController,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
                 Box(
-                    modifier = Modifier.height(50.dp).fillMaxWidth()
+                    modifier = Modifier
+                        .height(50.dp)
+                        .fillMaxWidth()
                         .then(
                             ShadowMaterial.CustomShadow.createModifier
                                 (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
@@ -145,7 +152,8 @@ fun SettingsScreen(navHostController: NavHostController,
 
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth().height(50.dp)
+                        .fillMaxWidth()
+                        .height(50.dp)
                         .clickable { settingsViewModel.onSystemThemeChanged() },
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly
@@ -156,8 +164,10 @@ fun SettingsScreen(navHostController: NavHostController,
                             tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
-                    SwitchRowButton(state = settingsViewModel.darkThemeSelected)
-                    { settingsViewModel.onSystemThemeChanged() }
+                    SwitchRowButton(state = settingsViewModel.darkThemeSelected) {
+                        ThisApplication.getInstance().darkThemeSelected = !settingsViewModel.darkThemeSelected
+                        settingsViewModel.onSystemThemeChanged()
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(spacerInterval))

@@ -116,4 +116,6 @@
     <string name="tutor">Teacher</string>
     <string name="search_request">Enter search query…</string>
     <string name="search_no_result">No results found</string>
+    <string name="loading">Завантаження мапи</string>
+    <string name="pleaseWaiting">Будьласка зачекайте...</string>
 </resources>

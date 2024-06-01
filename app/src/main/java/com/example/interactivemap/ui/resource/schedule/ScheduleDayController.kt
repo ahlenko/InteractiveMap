@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.screens.schedule.DefScheduleViewModel
 import com.example.interactivemap.ui.screens.schedule.viewer.ScheduleViewerViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
@@ -39,7 +40,7 @@ import java.time.LocalDate
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ScheduleDayController (viewerViewModel: DefScheduleViewModel) {
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         val selectedDate = remember { mutableStateOf<LocalDate?>(LocalDate.now()) }
 
         val selectedDateRange = remember {

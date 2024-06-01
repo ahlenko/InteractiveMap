@@ -27,13 +27,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCenter: ArrayList<() -> Unit>){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = SharedPreferencesRepository.darkThemeSelected) {
         Column(modifier = Modifier.clip(RoundedCornerShape(15.dp))
             .background(MaterialTheme.colorScheme.onPrimaryContainer)) {
             Row (modifier = Modifier.padding(12.dp)){

@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.navigation.ScheduleViewer
 import com.example.interactivemap.logic.navigation.SettingsScreen
 import com.example.interactivemap.ui.dialogs.ConfirmationDialog
@@ -75,7 +76,7 @@ fun ScheduleEditorScreen(navHostController: NavHostController,
     { scheduleEditorViewModel.showDeleteAgree = false
         scheduleEditorViewModel.onDeleteElement() }}
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Scaffold (containerColor = MaterialTheme.colorScheme.background) { _ ->
             ReturnBack(navHostController, scheduleEditorViewModel)
             Column(

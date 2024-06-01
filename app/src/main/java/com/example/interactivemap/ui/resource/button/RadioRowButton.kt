@@ -18,11 +18,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun RadioRowButton (checked: Boolean, textId: Int, onClick: () -> Unit){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Row (verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Absolute.Left,
             modifier = Modifier.clickable {onClick()}){

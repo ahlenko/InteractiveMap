@@ -23,26 +23,31 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun DefaultButton (buttonColor: Color, textString: String, radius : Dp,
                    textStyle: TextStyle, onClick: () -> Unit
-){
+) {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected){
     Box(
-        modifier = Modifier.clip(RoundedCornerShape(radius)).clickable { onClick() }){
-        Box(modifier = Modifier.background(buttonColor).fillMaxSize(),
-            contentAlignment = Alignment.Center){
+        modifier = Modifier.clip(RoundedCornerShape(radius)).clickable { onClick() }) {
+        Box(
+            modifier = Modifier.background(buttonColor).fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
             Text(text = textString, style = textStyle)
         }
     }
+}
 }
 
 
 @Preview
 @Composable
 fun DefaultButtonPreview(){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         DefaultButton(
             buttonColor = MaterialTheme.colorScheme.onBackground,
             textString = stringResource(id = R.string.skip), 50.dp,

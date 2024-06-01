@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Unnamed1" pattern="src[Interactive_Map*]:*..*||src[Interactive_Map.app]:*..*||src[Interactive_Map.app]:RoadElementModel||src[Interactive_Map.app]:PointModel" />
+</component>

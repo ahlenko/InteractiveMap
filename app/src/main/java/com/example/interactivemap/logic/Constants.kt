@@ -5,7 +5,8 @@ import com.google.android.gms.maps.model.LatLng
 
 object Constants {
     const val DURATION_ANIM = 600               // Тривалість анімації
-    const val DURATION_ANIM_ON_MOVEMENT = 10    // Тривалість анімації в русі
+    const val DURATION_ANIM_ON_MOVEMENT = 700    // Тривалість анімації в русі
+    const val DURATION_ANIM_ON_MOVEMENT_TO_POI = 640    // Тривалість анімації в русі до точки
 
     // Мінімальне допустиме віддалення камери
     const val ZOOM_MIN = 15f

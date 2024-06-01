@@ -6,5 +6,6 @@ data class RoadElementModel(
     val id: Int,
     val location: LatLng,
     val floor: Int,
-    val locationIndex: Int
+    val locationIndex: Int,
+    var locked: Boolean
 )

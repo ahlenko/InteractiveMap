@@ -24,24 +24,37 @@ import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.example.interactivemap.ThisApplication
+import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun PhoneField(text: MutableState<String>, textStyle: TextStyle) {
-    Box(modifier = Modifier.fillMaxSize().border(2.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(10.dp))) {
-        BasicTextField(
-            modifier = Modifier.align(Alignment.Center).padding(horizontal = 12.dp).fillMaxWidth(),
-            value = text.value, onValueChange = { newValue -> text.value = newValue.take(AutoVisualTransformation.inputMaxLength).filter { it.isDigit() } },
-            textStyle = textStyle,
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done
-            ), singleLine = true,
-            visualTransformation = AutoVisualTransformation(
-                mask = AutoVisualTransformation.MASK,
-                maskCharInput = AutoVisualTransformation.MASK_CHAR,
-                enableCursorMove = false
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
+        Box(
+            modifier = Modifier.fillMaxSize()
+                .border(2.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(10.dp))
+        ) {
+            BasicTextField(
+                modifier = Modifier.align(Alignment.Center).padding(horizontal = 12.dp)
+                    .fillMaxWidth(),
+                value = text.value,
+                onValueChange = { newValue ->
+                    text.value = newValue.take(AutoVisualTransformation.inputMaxLength)
+                        .filter { it.isDigit() }
+                },
+                textStyle = textStyle,
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Done
+                ),
+                singleLine = true,
+                visualTransformation = AutoVisualTransformation(
+                    mask = AutoVisualTransformation.MASK,
+                    maskCharInput = AutoVisualTransformation.MASK_CHAR,
+                    enableCursorMove = false
+                )
             )
-        )
+        }
     }
 }
 

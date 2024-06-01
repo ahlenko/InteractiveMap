@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.resource.button.DefaultButton
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
@@ -34,7 +35,7 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun OnboardingFragmentThird(onClick: () -> Unit){ val borderRadius = 15.dp
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Scaffold (containerColor = MaterialTheme.colorScheme.background){ _ ->
             Column (modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,

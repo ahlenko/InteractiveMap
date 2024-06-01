@@ -12,13 +12,13 @@ object NavGraphYard {
     val navGraphYard: List<NavModel> by lazy {
         listOf(
             NavModel(
-                id = 1 ,number = 1, name = null, description = null, locationIndex = YARD, floorIndex = 1,
+                id = 1 ,number = 1, name = "Вхід", description = "Початкова точка", locationIndex = YARD, floorIndex = 1,
                 location = LatLng(48.43780944629653, 35.04951652139425),
                 connexionWith = listOf(PointModel(2,2), PointModel(37,37), PointModel(68,68)),
                 connexionFloor = null, connectedLocIndex = YARD, locked = false
             ),
             NavModel(
-                id = 2 ,number = 2, name = null, description = null, locationIndex = YARD, floorIndex = 1,
+                id = 2 ,number = 2, name = "Точка", description = "Друга точка", locationIndex = YARD, floorIndex = 1,
                 location = LatLng(48.43818513443262, 35.04870280623436),
                 connexionWith = listOf(PointModel(1,1), PointModel(3,3)),
                 connexionFloor = null, connectedLocIndex = YARD, locked = false
@@ -39,7 +39,7 @@ object NavGraphYard {
                 id = 5 ,number = 5, name = null, description = null, locationIndex = YARD, floorIndex = 1,
                 location = LatLng(48.435373745338985, 35.046337097883224),
                 connexionWith = listOf(PointModel(4,4)),
-                connexionFloor = null, connectedLocIndex = YARD, locked = false
+                connexionFloor = listOf(FloorModel(1, PointModel(187, 1))), connectedLocIndex = NEW, locked = false
             ),
             NavModel(
                 id = 6 ,number = 6, name = null, description = null, locationIndex = YARD, floorIndex = 1,
@@ -933,7 +933,7 @@ object NavGraphYard {
                 id = 154 ,number = 154, name = null, description = null, locationIndex = YARD, floorIndex = 1,
                 location = LatLng(48.43440343632355, 35.04831355065107),
                 connexionWith = listOf(PointModel(111,111)),
-                connexionFloor = null, connectedLocIndex = YARD, locked = false
+                connexionFloor = listOf(FloorModel(1, PointModel(463, 1))), connectedLocIndex = OLD, locked = false
             ),
             NavModel(
                 id = 155 ,number = 155, name = null, description = null, locationIndex = YARD, floorIndex = 1,
@@ -951,7 +951,7 @@ object NavGraphYard {
                 id = 157 ,number = 157, name = null, description = null, locationIndex = YARD, floorIndex = 1,
                 location = LatLng(48.43644079692597, 35.04768759012222),
                 connexionWith = listOf(PointModel(156,156)),
-                connexionFloor = null, connectedLocIndex = YARD, locked = false
+                connexionFloor = listOf(FloorModel(1, PointModel(158, 1))), connectedLocIndex = SK, locked = false
             ),
         )
     }

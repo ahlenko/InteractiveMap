@@ -25,6 +25,32 @@ object NavGraphList {
         )
     }
 
+    fun findFirstFourMatchesByName(name: String): List<NavModel> {
+        val matches = mutableListOf<NavModel>()
+
+        for (navList in this.nawGraphList) {
+            for (navModel in navList) {
+                if (navModel.name != null){
+                    if (navModel.name.startsWith(name, ignoreCase = true) ) {
+                        matches.add(navModel)
+                        if (matches.size == 4) {
+                            return matches
+                        }
+                    }
+                } else {
+                    if ( navModel.id.toString().startsWith(name)) {
+                        matches.add(navModel)
+                        if (matches.size == 4) {
+                            return matches
+                        }
+                    }
+                }
+            }
+        }
+
+        return matches
+    }
+
     private fun getNavGraph(locationIndex: Int, floorIndex: Int): List<NavModel> {
         return when (locationIndex) {
             NavObjects.YARD -> when (floorIndex) {

@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.navigation.NavigationScreen
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.resource.status.ScreenProgressBoll
@@ -51,7 +52,7 @@ fun ApplicationOnboarding(navHostController: NavHostController){
 
     val pagerState = rememberPagerState(pageCount = {onboardingScreens.size})
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Scaffold (containerColor = MaterialTheme.colorScheme.background) { _ ->
             Box(Modifier.fillMaxSize()) {
                 Box(

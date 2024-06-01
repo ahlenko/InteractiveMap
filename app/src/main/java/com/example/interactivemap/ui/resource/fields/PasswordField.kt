@@ -18,11 +18,12 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun PasswordField (text: MutableState<String>, textStyle: TextStyle){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Box(modifier = Modifier.fillMaxSize()
             .border(2.dp, MaterialTheme.colorScheme.onBackground, RoundedCornerShape(10.dp))
         ) {

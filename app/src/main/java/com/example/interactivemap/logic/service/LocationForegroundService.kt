@@ -73,7 +73,7 @@ class LocationForegroundService : Service() {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             setLocationGpsListener()
-            setLocationNetworkListener()
+            //setLocationNetworkListener()
         }
     }
 
@@ -87,37 +87,38 @@ class LocationForegroundService : Service() {
                     }
                 }
 
-                override fun onProviderEnabled() {}
+                override fun onProviderEnabled() {
+                }
 
                 override fun onProviderDisabled() {}
             })
     }
 
-    private fun setLocationNetworkListener() {
-        LocationHelperNetwork().startListeningUserLocation(
-            this, object : MyLocationNetworkListener {
-                override fun onLocationChanged(location: Location?) {
-                    location?.let {
-                        locationFromNetwork = location
-                        sendLocationToBroadcast()
-                    }
-                }
-
-                override fun onProviderEnabled() {
-                    sendBroadcastLocationStatus(
-                        BROADCAST_LOCATION_PROVIDERS_STATE,
-                        BROADCAST_LOCATION_PROVIDERS_STATE_NET_ON
-                    )
-                }
-
-                override fun onProviderDisabled() {
-                    sendBroadcastLocationStatus(
-                        BROADCAST_LOCATION_PROVIDERS_STATE,
-                        BROADCAST_LOCATION_PROVIDERS_STATE_NET_OFF
-                    )
-                }
-            })
-    }
+//    private fun setLocationNetworkListener() {
+//        LocationHelperNetwork().startListeningUserLocation(
+//            this, object : MyLocationNetworkListener {
+//                override fun onLocationChanged(location: Location?) {
+//                    location?.let {
+//                        locationFromNetwork = location
+//                        sendLocationToBroadcast()
+//                    }
+//                }
+//
+//                override fun onProviderEnabled() {
+//                    sendBroadcastLocationStatus(
+//                        BROADCAST_LOCATION_PROVIDERS_STATE,
+//                        BROADCAST_LOCATION_PROVIDERS_STATE_NET_ON
+//                    )
+//                }
+//
+//                override fun onProviderDisabled() {
+//                    sendBroadcastLocationStatus(
+//                        BROADCAST_LOCATION_PROVIDERS_STATE,
+//                        BROADCAST_LOCATION_PROVIDERS_STATE_NET_OFF
+//                    )
+//                }
+//            })
+//    }
 
     @Synchronized
     private fun sendLocationToBroadcast() {

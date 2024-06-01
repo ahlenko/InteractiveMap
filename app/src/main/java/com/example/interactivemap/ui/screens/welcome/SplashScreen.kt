@@ -36,6 +36,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.navigation.AppOnboard
 import com.example.interactivemap.logic.navigation.NavigationScreen
 import com.example.interactivemap.logic.navigation.ScheduleEditor
@@ -52,7 +53,7 @@ import com.google.accompanist.permissions.rememberMultiplePermissionsState
 @Composable
 fun SplashScreen(navHostController: NavHostController){
     NavigateToNextScreen(navHostController)
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Scaffold (containerColor = MaterialTheme.colorScheme.background){ _ ->
             Column (Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.Center,

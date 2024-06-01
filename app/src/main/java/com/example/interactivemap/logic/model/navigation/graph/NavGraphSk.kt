@@ -15,7 +15,7 @@ object NavGraphSk {
                 id = 158 ,number = 1, name = null, description = null, locationIndex = SK, floorIndex = 1,
                 location = LatLng(48.436441241804175, 35.04768658429384),
                 connexionWith = listOf(PointModel(159,2)),
-                connexionFloor = null, connectedLocIndex = SK, locked = false
+                connexionFloor = listOf(FloorModel(1, PointModel(157, 157))), connectedLocIndex = YARD, locked = false
             ),
             NavModel(
                 id = 159 ,number = 2, name = null, description = null, locationIndex = SK, floorIndex = 1,
@@ -63,7 +63,7 @@ object NavGraphSk {
                 id = 166 ,number = 9, name = null, description = null, locationIndex = SK, floorIndex = 1,
                 location = LatLng(48.43633936459334, 35.047581642866135),
                 connexionWith = listOf(PointModel(164,7)),
-                connexionFloor = null, connectedLocIndex = SK, locked = false
+                connexionFloor = listOf(FloorModel(2, PointModel(186, 15))), connectedLocIndex = SK, locked = false
             ),
             NavModel(
                 id = 167 ,number = 10, name = null, description = null, locationIndex = SK, floorIndex = 1,
@@ -93,7 +93,7 @@ object NavGraphSk {
                 id = 171 ,number = 14, name = null, description = null, locationIndex = SK, floorIndex = 1,
                 location = LatLng(48.436564472917226, 35.04778649657965),
                 connexionWith = listOf(PointModel(168,11)),
-                connexionFloor = null, connectedLocIndex = SK, locked = false
+                connexionFloor = listOf(FloorModel(2, PointModel(172, 1))), connectedLocIndex = SK, locked = false
             ),
 
         )
@@ -103,8 +103,8 @@ object NavGraphSk {
             NavModel(
                 id = 172 ,number = 1, name = null, description = null, locationIndex = SK, floorIndex = 2,
                 location = LatLng(48.436564250478646, 35.047786831855774),
-                connexionWith = listOf(PointModel(173,2)),
-                connexionFloor = null, connectedLocIndex = SK, locked = false
+                connexionWith = listOf(PointModel(171,2)),
+                connexionFloor = listOf(FloorModel(1, PointModel(171, 14))), connectedLocIndex = SK, locked = false
             ),
             NavModel(
                 id = 173 ,number = 2, name = null, description = null, locationIndex = SK, floorIndex = 2,
@@ -188,7 +188,7 @@ object NavGraphSk {
                 id = 186 ,number = 15, name = null, description = null, locationIndex = SK, floorIndex = 2,
                 location = LatLng(48.43632824261472, 35.04757694900036),
                 connexionWith = listOf(PointModel(183,12)),
-                connexionFloor = null, connectedLocIndex = SK, locked = false
+                connexionFloor = listOf(FloorModel(1, PointModel(166, 9))), connectedLocIndex = SK, locked = false
             ),
         )
     }

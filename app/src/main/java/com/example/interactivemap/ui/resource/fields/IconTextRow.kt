@@ -18,11 +18,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun IconTextRow (imageId: Int, textId: Int, tint: Color){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -38,7 +39,7 @@ fun IconTextRow (imageId: Int, textId: Int, tint: Color){
             Text(
                 text = stringResource(id = textId),
                 style = MaterialTheme.typography.headlineSmall
-                    .copy(color = if (MaterialTheme.colorScheme.onBackground != tint) tint
+                    .copy(color = if (MaterialTheme.colorScheme.onPrimary != tint) tint
                     else MaterialTheme.colorScheme.onPrimary)
             )
         }

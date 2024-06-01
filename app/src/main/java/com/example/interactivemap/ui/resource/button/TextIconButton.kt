@@ -26,12 +26,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun TextIconButton (text: String, textStyle: TextStyle, buttonColor: Color, imageResourceId: Int,
                     radius : Dp, iconColor: Color, onClick: () -> Unit ){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Box(modifier = Modifier
             .clip(RoundedCornerShape(radius))
             .clickable { onClick() }) {
@@ -51,7 +52,7 @@ fun TextIconButton (text: String, textStyle: TextStyle, buttonColor: Color, imag
 @Preview
 @Composable
 fun TextIconButtonPreview(){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         TextIconButton(
             buttonColor = MaterialTheme.colorScheme.onBackground,
             text = stringResource(id = R.string.skip), radius = 50.dp,

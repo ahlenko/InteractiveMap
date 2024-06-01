@@ -39,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.ui.resource.button.DefaultButton
 import com.example.interactivemap.ui.resource.button.IconButton
@@ -64,7 +65,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, viewMo
     val link = remember { mutableStateOf(lessonData.link) }
     val locationIndex = remember { mutableStateOf(lessonData.locationIndex.toString()) }
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         val borderRadius = 15.dp
         ModalBottomSheet(
             containerColor = Color.Transparent,

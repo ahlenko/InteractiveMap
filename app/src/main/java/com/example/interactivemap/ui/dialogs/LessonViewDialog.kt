@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.ui.resource.button.DefaultButton
 import com.example.interactivemap.ui.resource.fields.ViewField
@@ -45,7 +46,7 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 fun LessonViewDialog(lessonData: LessonData, lessonDescription: String, viewModel: DefScheduleViewModel, onDismiss: () -> Unit) {
     val modalBottomSheetState = rememberModalBottomSheetState()
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         val borderRadius = 15.dp
         ModalBottomSheet(
             containerColor = Color.Transparent,

@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.Lesson
 import com.example.interactivemap.ui.screens.schedule.DefScheduleViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
@@ -32,7 +33,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 @Composable
 fun ScheduleGroupRow (lesson: Lesson, viewModel: DefScheduleViewModel){
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Column (modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally){
@@ -66,7 +67,7 @@ fun ScheduleGroupRow (lesson: Lesson, viewModel: DefScheduleViewModel){
                         .weight(1f)
                         .pointerInput(Unit) {
                             detectTapGestures(
-                                onDoubleTap = {
+                                onTap = {
                                     viewModel.onItemClick(lesson.index, 0)
                                 },
                                 onLongPress  = {
@@ -94,7 +95,7 @@ fun ScheduleGroupRow (lesson: Lesson, viewModel: DefScheduleViewModel){
                             .weight(1f)
                             .pointerInput(Unit) {
                                 detectTapGestures(
-                                    onDoubleTap = {
+                                    onTap = {
                                         viewModel.onItemClick(lesson.index, 1)
                                     },
                                     onLongPress = {
