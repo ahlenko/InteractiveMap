@@ -82,6 +82,10 @@ class DescriptorRepository (application: Application){
         mapOf(
             USER_MARKER  to GoogleMapUtil.drawableToBitmapDescriptor(application, R.drawable.trip_pointer),
             LOCATION_MARKER  to GoogleMapUtil.drawableToBitmapDescriptor(application, R.drawable.map_pointer),
+            DOWN_MARKER  to GoogleMapUtil.drawableToBitmapDescriptor(application, R.drawable.map_pointer_down),
+            UP_MARKER  to GoogleMapUtil.drawableToBitmapDescriptor(application, R.drawable.map_pointer_up),
+            FINISH_MARKER  to GoogleMapUtil.drawableToBitmapDescriptor(application, R.drawable.map_pointer_finish),
+            ENTER_MARKER  to GoogleMapUtil.drawableToBitmapDescriptor(application, R.drawable.map_pointer_enter),
         )
     }
 
@@ -102,5 +106,9 @@ class DescriptorRepository (application: Application){
 
         const val USER_MARKER = "userMarker"
         const val LOCATION_MARKER = "locationMarker"
+        const val FINISH_MARKER = "finishMarker"
+        const val UP_MARKER = "upMarker"
+        const val DOWN_MARKER = "downMarker"
+        const val ENTER_MARKER = "enterMarker"
     }
 }

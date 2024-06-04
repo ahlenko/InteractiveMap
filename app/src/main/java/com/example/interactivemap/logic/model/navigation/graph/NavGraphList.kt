@@ -51,6 +51,10 @@ object NavGraphList {
         return matches
     }
 
+    fun getElementById(id:Int): NavModel{
+        return nawGraphList.flatten().filter { it.id == id }.toList().first()
+    }
+
     private fun getNavGraph(locationIndex: Int, floorIndex: Int): List<NavModel> {
         return when (locationIndex) {
             NavObjects.YARD -> when (floorIndex) {

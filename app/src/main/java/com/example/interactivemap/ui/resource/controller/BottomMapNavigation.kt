@@ -60,7 +60,8 @@ fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCente
                     horizontalAlignment = Alignment.CenterHorizontally){
 
                     Text(modifier = Modifier.fillMaxWidth(), text = "Початкова точка",
-                        style = MaterialTheme.typography.headlineMedium.copy(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                        style = MaterialTheme.typography.headlineMedium.copy(
+                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
                             textAlign = TextAlign.Left, fontWeight = FontWeight.Medium
                         ))
 
@@ -78,18 +79,24 @@ fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCente
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceEvenly){
                             Icon(modifier = Modifier.padding(start = 7.dp).size(32.dp),
-                                painter = painterResource(id = R.drawable.ic_start_place), contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
+                                painter = painterResource(id = R.drawable.ic_start_place),
+                                contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
                             Text(modifier = Modifier.weight(1f),
-                                text = locationStart, style = MaterialTheme.typography.headlineLarge.copy(color = MaterialTheme.colorScheme.onBackground,
+                                text = locationStart, style = MaterialTheme.typography.headlineLarge.copy(
+                                    color = MaterialTheme.colorScheme.onBackground,
                                     textAlign = TextAlign.Center, fontWeight = FontWeight.Medium
                                 ))
+                            Icon(modifier = Modifier.padding(start = 7.dp).size(32.dp),
+                                painter = painterResource(id = R.drawable.ic_transparent),
+                                contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
                         }
                     }
 
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(modifier = Modifier.fillMaxWidth(), text = "Кінцева точка",
-                        style = MaterialTheme.typography.headlineMedium.copy(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                        style = MaterialTheme.typography.headlineMedium.copy(
+                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
                             textAlign = TextAlign.Left, fontWeight = FontWeight.Medium
                         ))
 
@@ -107,11 +114,16 @@ fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCente
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceEvenly){
                             Icon(modifier = Modifier.padding(start = 7.dp).size(32.dp),
-                                painter = painterResource(id = R.drawable.ic_finish_place), contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
+                                painter = painterResource(id = R.drawable.ic_finish_place),
+                                contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
                             Text(modifier = Modifier.weight(1f),
-                                text = locationEnd, style = MaterialTheme.typography.headlineLarge.copy(color = MaterialTheme.colorScheme.onBackground,
+                                text = locationEnd, style = MaterialTheme.typography.headlineLarge.copy(
+                                    color = MaterialTheme.colorScheme.onBackground,
                                     textAlign = TextAlign.Center, fontWeight = FontWeight.Medium
                                 ))
+                            Icon(modifier = Modifier.padding(start = 7.dp).size(32.dp),
+                                painter = painterResource(id = R.drawable.ic_transparent),
+                                contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
                         }
                     }
                 }
@@ -129,14 +141,4 @@ fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCente
             Spacer(modifier = Modifier.height(15.dp))
         }
     }
-}
-
-@Preview
-@Composable
-fun BottomMapNavigationPreview(){
-    val clickersCenter: ArrayList<() -> Unit> = ArrayList()
-    clickersCenter.add { /* обробник 1 */ }
-    clickersCenter.add { /* обробник 2 */ }
-    clickersCenter.add { /* обробник 3 */ }
-    BottomMapNavigation(locationStart ="Моє місцезнаходження", locationEnd ="СК: Легка атлетика", onClickCenter = clickersCenter)
 }

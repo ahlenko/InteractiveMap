@@ -1,6 +1,7 @@
 package com.example.interactivemap.ui.screens.navigation
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionContext
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -57,6 +59,7 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.GroundOverlay
@@ -80,23 +83,26 @@ fun NavigationScreen( navHostController: NavHostController,
 ) {
     val cameraPositionState =
         rememberCameraPositionState { position = ThisApplication.getInstance().lastCameraPosition }
-    val startLocationMarkerState =
-        rememberMarkerState("startMarker", Constants.baseCameraPosition.target)
-    val endLocationMarkerState =
-        rememberMarkerState("endMarker", Constants.baseCameraPosition.target)
-    val userLocationMarkerState =
-        rememberMarkerState("userMarker", Constants.baseCameraPosition.target)
-    val middleLocationMarkerState =
-        rememberMarkerState("middleMarker", Constants.baseCameraPosition.target)
+
     val movedCameraPosition by viewModel.movedCameraPosition.collectAsState()
     val locationMarkerShown by viewModel.locationMarkerShown.collectAsState()
     val googleMapRoad by viewModel.googleMapRoad.collectAsState()
-    val foundNearestPoint by viewModel.foundNearestPoint.collectAsState()
+    val foundNearestPointEnd by viewModel.foundNearestPointEnd.collectAsState()
+    val foundNearestPointStart by viewModel.foundNearestPointStart.collectAsState()
     val movementState by viewModel.movementState.collectAsState()
     val searchResults by viewModel.searchResults.collectAsState()
     val loading by viewModel.loading.collectAsState()
+    val floorView by viewModel.floor.collectAsState()
 
-    var nearestMarkerTitle by remember {mutableStateOf<String?>(null) }
+    val startLocationMarkerState =
+        rememberMarkerState("startMarker", foundNearestPointStart.location)
+    val endLocationMarkerState =
+        rememberMarkerState("endMarker", foundNearestPointEnd.location)
+    val userLocationMarkerState =
+        rememberMarkerState("userMarker", movedCameraPosition.target)
+
+    var startMarkerTitle by remember {mutableStateOf<String?>(null) }
+    var endMarkerTitle by remember {mutableStateOf<String?>(null) }
 
     if (viewModel.activateGPSDialogShown  && !viewModel.loadingMapComponent && !viewModel.dialogGPSBeShown) {
         InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
@@ -134,8 +140,7 @@ fun NavigationScreen( navHostController: NavHostController,
         coroutineScope.launch {
             cameraPositionState.animate(
                 CameraUpdateFactory.newCameraPosition(
-                    Constants.baseCameraPosition
-                ), Constants.DURATION_ANIM
+                    Constants.baseCameraPosition), Constants.DURATION_ANIM
             )
         }
     }
@@ -152,9 +157,8 @@ fun NavigationScreen( navHostController: NavHostController,
         navHostController.navigate(ScheduleViewer.route)
     }
     clickers.add {
-        viewModel.makeTestRoad()
-//        viewModel.rememberLastCameraPosition(cameraPositionState.position)
-//        navHostController.navigate(SettingsScreen.route)
+        viewModel.rememberLastCameraPosition(cameraPositionState.position)
+        navHostController.navigate(SettingsScreen.route)
     }
 
     var navigationState by remember { mutableIntStateOf(0) }
@@ -162,13 +166,31 @@ fun NavigationScreen( navHostController: NavHostController,
 
     val clickersCenter: ArrayList<() -> Unit> = ArrayList()
     clickersCenter.add { navigationState = 1 }
-    clickersCenter.add { navigationState = 0 }
-    clickersCenter.add { navigationState = 0 }
+    clickersCenter.add {
+        viewModel.startMarkerStateVisible = false
+        viewModel.endMarkerStateVisible = false
+        viewModel.clearRoad()
+        navigationState = 0
+    }
+    clickersCenter.add {
+        if (viewModel.nextSegmentExist())
+            viewModel.makeSegmentRoad(true)
+        else{
+            viewModel.startMarkerStateVisible = false
+            viewModel.endMarkerStateVisible = false
+            viewModel.clearRoad()
+            navigationState = 0
+        }
+    }
 
     val clickersMapController: ArrayList<() -> Unit> = ArrayList()
-    clickersMapController.add {  }
-    clickersMapController.add {  }
-    clickersMapController.add {  }
+    clickersMapController.add { viewModel.isEndPointSelectable = false }
+    clickersMapController.add { viewModel.isEndPointSelectable = true }
+    clickersMapController.add {navigationState = 2
+        if (viewModel.startMarkerStateVisible && viewModel.endMarkerStateVisible) viewModel.makeSegmentRoad(false)
+        else viewModel.showCreateRoadError()
+
+    }
 
     val floor = remember { mutableIntStateOf(1) }
     val maxFloor = remember { mutableIntStateOf(5) }
@@ -184,26 +206,77 @@ fun NavigationScreen( navHostController: NavHostController,
         }
     }
 
-    LaunchedEffect(foundNearestPoint) {
-
-        startLocationMarkerState.position = foundNearestPoint.location
-        nearestMarkerTitle = foundNearestPoint.name
-        viewModel.locationMarkerStateVisible = true
-        if (foundNearestPoint.location != LatLng(0.0, 0.0)) {
-            floor.intValue = foundNearestPoint.floorIndex
-        cameraPositionState.animate(
-            CameraUpdateFactory.newCameraPosition(CameraPosition.Builder().target(
-                foundNearestPoint.location).zoom(18f).bearing(15f).build()),
-            Constants.DURATION_ANIM_ON_MOVEMENT_TO_POI
-        )}
-        if (nearestMarkerTitle != null) {
+    LaunchedEffect(foundNearestPointStart) {
+        startLocationMarkerState.position = foundNearestPointStart.location
+        startMarkerTitle = foundNearestPointStart.name
+        if (foundNearestPointStart.location != LatLng(0.0, 0.0)) {
+            viewModel.startMarkerStateVisible = true
+            floor.intValue = foundNearestPointStart.floorIndex
+            if(navigationState == 2) return@LaunchedEffect
+            if (viewModel.endMarkerStateVisible) {
+                viewModel.makeFullRoad()
+            } else { cameraPositionState.animate(
+                    CameraUpdateFactory.newCameraPosition(
+                        CameraPosition.Builder().target(
+                            foundNearestPointStart.location
+                        ).zoom(18f).bearing(15f).build()
+                    ), Constants.DURATION_ANIM_ON_MOVEMENT_TO_POI
+                )
+            }
+        }
+        if (startMarkerTitle != null) {
             startLocationMarkerState.showInfoWindow()
         }
     }
 
+    LaunchedEffect(foundNearestPointEnd) {
+        endLocationMarkerState.position = foundNearestPointEnd.location
+        endMarkerTitle = foundNearestPointEnd.name
+
+        if (foundNearestPointEnd.location != LatLng(0.0, 0.0)) {
+            viewModel.endMarkerStateVisible = true
+            floor.intValue = foundNearestPointEnd.floorIndex
+            if(navigationState == 2) return@LaunchedEffect
+            if (viewModel.endMarkerStateVisible) {
+                viewModel.makeFullRoad()
+            } else { cameraPositionState.animate(
+                    CameraUpdateFactory.newCameraPosition(
+                        CameraPosition.Builder().target(
+                            foundNearestPointEnd.location
+                        ).zoom(18f).bearing(15f).build()
+                    ), Constants.DURATION_ANIM_ON_MOVEMENT_TO_POI
+                )
+            }
+        }
+        if (endMarkerTitle != null) {
+            endLocationMarkerState.showInfoWindow()
+        }
+
+    }
+
     LaunchedEffect(floor.intValue) {
-        if (googleMapRoad.isNotEmpty()) viewModel.rebuildRoadByFloor(floor.intValue)
+        if (navigationState != 2)
         viewModel.disableMovementObserver()
+    }
+
+    LaunchedEffect(floorView) {
+        floor.intValue = floorView
+    }
+
+    LaunchedEffect(googleMapRoad) {
+        if (googleMapRoad.isNotEmpty()) {
+            val boundsBuilder = LatLngBounds.builder()
+
+            boundsBuilder.include(googleMapRoad.first())
+            boundsBuilder.include(googleMapRoad.last())
+
+            val bounds = boundsBuilder.build()
+            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 100)
+
+            cameraPositionState.animate(cameraUpdate,
+                Constants.DURATION_ANIM_ON_MOVEMENT
+            )
+        }
     }
 
     InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
@@ -212,35 +285,56 @@ fun NavigationScreen( navHostController: NavHostController,
                 cameraPositionState = cameraPositionState,
                 properties = MapProperties(
                     minZoomPreference = Constants.ZOOM_MIN,
-                    mapStyleOptions = MapStyleOptions(if (ThisApplication.getInstance().darkThemeSelected)  getMapStyleDarkTheme() else getMapStyleWithoutLabels())),
+                    mapStyleOptions = MapStyleOptions(
+                        if (ThisApplication.getInstance().darkThemeSelected) getMapStyleDarkTheme()
+                        else getMapStyleWithoutLabels())),
                 uiSettings = MapUiSettings(zoomControlsEnabled = false),
                 onMapLoaded = { viewModel.disableLoadingState()},
                 onMapClick = { latLng ->
-                    viewModel.locationMarkerStateVisible = false
                     viewModel.disableMovementObserver()
                     viewModel.findLocationByLatLng(latLng, floor = floor.intValue)
                 }
             ) {
                 if (!loading) {
+                    if (googleMapRoad.isNotEmpty()) {
+                        Polyline(points = googleMapRoad,
+                            color = MaterialTheme.colorScheme.onError.copy(alpha = 0.82f))
+                    }
+                    
                     Marker(
                         visible = locationMarkerShown, anchor = Offset(0.5f,0.4f), state = userLocationMarkerState,
                         icon = ThisApplication.getInstance().bitmapDescriptorsMarkers[DescriptorRepository.USER_MARKER]
                     )
 
-                    Marker(title = nearestMarkerTitle,
-                        icon = ThisApplication.getInstance().bitmapDescriptorsMarkers[DescriptorRepository.LOCATION_MARKER],
-                        state = startLocationMarkerState, visible = viewModel.locationMarkerStateVisible,
-                        onInfoWindowClick = {
-                            nearestMarkerTitle =
-                                if (nearestMarkerTitle == foundNearestPoint.name)
-                                { foundNearestPoint.description } else foundNearestPoint.name
-                        }
-                    )
+                    if (viewModel.startMarkerStateVisible) {
+                        Marker(title = startMarkerTitle,
+                            icon = ThisApplication.getInstance().bitmapDescriptorsMarkers[viewModel.startMarkerType],
+                            state = startLocationMarkerState,
+                            onInfoWindowClick = {
+                                startMarkerTitle =
+                                    if (startMarkerTitle == foundNearestPointStart.name) {
+                                        foundNearestPointStart.description
+                                    } else foundNearestPointStart.name
+                            }
+                        )
+                    }
+
+                    if (viewModel.endMarkerStateVisible) {
+                        Marker(title = endMarkerTitle,
+                            icon = ThisApplication.getInstance().bitmapDescriptorsMarkers[viewModel.endMarkerType],
+                            state = endLocationMarkerState,
+                            onInfoWindowClick = {
+                                endMarkerTitle = if (endMarkerTitle == foundNearestPointEnd.name) {
+                                    foundNearestPointEnd.description
+                                } else foundNearestPointEnd.name
+                            }
+                        )
+                    }
 
                     Polygon(
                         points = Constants.mapRedZone, holes = listOf(Constants.mapBorder),
-                        fillColor = MaterialTheme.colorScheme.onError.copy(alpha = 0.20f),
-                        strokeColor = MaterialTheme.colorScheme.onError, strokeWidth = 5f
+                        fillColor = MaterialTheme.colorScheme.onError.copy(alpha = 0.16f),
+                        strokeColor = MaterialTheme.colorScheme.onError.copy(alpha = 0.60f), strokeWidth = 4f
                     )
 
                     // Background
@@ -316,137 +410,116 @@ fun NavigationScreen( navHostController: NavHostController,
                 }
             }
 
-            Column(
-                modifier = Modifier.fillMaxSize(),
+            Column(modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
                 if (navigationState != 2){
-                    SearchHeader(
-                        leftImgId = R.drawable.ic_search,
-                        searchResult = searchResults,
-                        rightImgId = R.drawable.ic_transparent,
+                    SearchHeader(leftImgId = R.drawable.ic_search,
+                        searchResult = searchResults, rightImgId = R.drawable.ic_transparent,
                         onChange = { viewModel.onSearchEnter(it) }) { viewModel.onSearchSelect(it) }
                 }
 
                 if (navigationState == 2) {
-                    Box(
-                        modifier = Modifier
-                            .padding(15.dp)
-                            .fillMaxWidth()
-                    ) {
+                    Box(modifier = Modifier.padding(15.dp).fillMaxWidth()) {
                         HeaderMapNavigation(
-                            locationStart = "Новий. к: ауд. 3227",
-                            locationEnd = "СК: Легка атлетика"
+                            locationStart = startMarkerTitle ?: foundNearestPointStart.id.toString(),
+                            locationEnd = endMarkerTitle ?: foundNearestPointEnd.id.toString()
                         )
                     }
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Row(
-                    modifier = Modifier
-                        .padding(horizontal = 15.dp)
-                        .height(140.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .width(46.dp)
-                            .fillMaxHeight()
-                            .then(
-                                ShadowMaterial.CustomShadow.createModifier
-                                    (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                            )
-                            .then(
-                                ShadowMaterial.CustomReShadow.createModifier
-                                    (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                            )
-                            .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
+                if (navigationState != 2) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 15.dp).height(140.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        PlacesController(placeType = camPosition, coroutineScope = coroutineScope) {
-                            viewModel.disableMovementObserver()
-                            coroutineScope.launch {
-                                when (camPosition.intValue) {
-                                    0 -> {
-                                        if (floor.intValue != 1 || floor.intValue != 2) floor.intValue =
-                                            1
-                                        cameraPositionState.animate(
-                                            CameraUpdateFactory.newCameraPosition(
-                                                Constants.skCameraPosition
-                                            ), Constants.DURATION_ANIM
-                                        )
-                                    }
+                        Box(
+                            modifier = Modifier.width(46.dp).fillMaxHeight()
+                                .then(ShadowMaterial.CustomShadow.createModifier
+                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
+                                .then(ShadowMaterial.CustomReShadow.createModifier
+                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
+                                .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
+                        ) {
+                            PlacesController(
+                                placeType = camPosition,
+                                coroutineScope = coroutineScope
+                            ) {
+                                viewModel.disableMovementObserver()
+                                coroutineScope.launch {
+                                    when (camPosition.intValue) {
+                                        0 -> {
+                                            if (floor.intValue != 1 || floor.intValue != 2) floor.intValue =
+                                                1
+                                            cameraPositionState.animate(
+                                                CameraUpdateFactory.newCameraPosition(
+                                                    Constants.skCameraPosition
+                                                ), Constants.DURATION_ANIM
+                                            )
+                                        }
 
-                                    1 -> {
-                                        if (floor.intValue == 5 || floor.intValue == 0) floor.intValue =
-                                            1
-                                        cameraPositionState.animate(
-                                            CameraUpdateFactory.newCameraPosition(
-                                                Constants.newCameraPosition
-                                            ), Constants.DURATION_ANIM
-                                        )
-                                    }
+                                        1 -> {
+                                            if (floor.intValue == 5 || floor.intValue == 0) floor.intValue =
+                                                1
+                                            cameraPositionState.animate(
+                                                CameraUpdateFactory.newCameraPosition(
+                                                    Constants.newCameraPosition
+                                                ), Constants.DURATION_ANIM
+                                            )
+                                        }
 
-                                    2 -> {
-                                        cameraPositionState.animate(
-                                            CameraUpdateFactory.newCameraPosition(
-                                                Constants.oldCameraPosition
-                                            ), Constants.DURATION_ANIM
-                                        )
+                                        2 -> {
+                                            cameraPositionState.animate(
+                                                CameraUpdateFactory.newCameraPosition(
+                                                    Constants.oldCameraPosition
+                                                ), Constants.DURATION_ANIM
+                                            )
+                                        }
                                     }
                                 }
                             }
                         }
+
+                        Spacer(modifier = Modifier.weight(1f))
+
+
+                        Box(
+                            modifier = Modifier.width(46.dp).fillMaxHeight()
+                                .then(ShadowMaterial.CustomShadow.createModifier
+                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
+                                .then(ShadowMaterial.CustomReShadow.createModifier
+                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
+                                .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
+                        ) {
+                            FloorController(floor, maxFloor, minFloor
+                            ) { if (navigationState ==0 ) viewModel.endMarkerStateVisible = false }
+                        }
                     }
-
-                    Spacer(modifier = Modifier.weight(1f))
-
-                    Box(
-                        modifier = Modifier
-                            .width(46.dp)
-                            .fillMaxHeight()
-                            .then(
-                                ShadowMaterial.CustomShadow.createModifier
-                                    (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                            )
-                            .then(
-                                ShadowMaterial.CustomReShadow.createModifier
-                                    (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                            )
-                            .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
-                    ) { FloorController(floor, maxFloor, minFloor){viewModel.locationMarkerStateVisible = false} }
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
 
                 if(navigationState == 1){
-                    Box(modifier = Modifier
-                        .padding(horizontal = 15.dp)
-                        .padding(bottom = 15.dp)
-                        .then(
-                            ShadowMaterial.CustomShadow.createModifier
-                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                        )
-                        .then(
-                            ShadowMaterial.CustomReShadow.createModifier
-                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                        )
+                    Box(modifier = Modifier.padding(horizontal = 15.dp).padding(bottom = 15.dp)
+                        .then(ShadowMaterial.CustomShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
+                        .then(ShadowMaterial.CustomReShadow.createModifier
+                                (5.dp, MaterialTheme.colorScheme.onTertiaryContainer))
                         .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
                     ) {
                         BottomMapNavigation(
-                            locationStart = "", locationEnd = "",
+                            locationStart = startMarkerTitle ?: foundNearestPointStart.id.toString(),
+                            locationEnd = endMarkerTitle ?: foundNearestPointEnd.id.toString(),
                             onClickCenter = clickersMapController
                         )
                     }
                 }
 
-                BottomNavigation(
-                    state = navigationState,
-                    clickers,
-                    clickersCenter
-                )
+                BottomNavigation(state = navigationState, clickers, clickersCenter)
             }
         }
     }

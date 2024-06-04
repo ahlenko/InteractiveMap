@@ -35,7 +35,6 @@ import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_
 import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_LOCATION_PROVIDERS_STATE_GPS_OFF
 import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_LOCATION_PROVIDERS_STATE_GPS_ON
 import com.example.interactivemap.logic.service.LocationServiceConstants.ACTION
-import com.example.interactivemap.logic.util.FirebaseEventUtil
 import com.example.interactivemap.logic.util.GoogleMapUtil
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -51,8 +50,12 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     private var broadcastReceiver: BroadcastReceiver? = null
     private val _movementState = MutableStateFlow(false)
     val movementState = _movementState.asStateFlow()
+
     private val _loading = MutableStateFlow(true)
     val loading = _loading.asStateFlow()
+
+    private val _floor = MutableStateFlow(0)
+    val floor = _floor.asStateFlow()
 
     private val _locationMarkerShown = MutableStateFlow(false)
     val locationMarkerShown = _locationMarkerShown.asStateFlow()
@@ -60,17 +63,10 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     private val _searchResults = MutableStateFlow(arrayListOf<NavModel>())
     val searchResults = _searchResults.asStateFlow()
 
-    private val _foundNearestPoint = MutableStateFlow(
-        NavModel(0, 0, null, null,
-            LatLng(0.0,0.0), 0,
-            0, listOf(), listOf(), 0,
-            false))
-    val foundNearestPoint = _foundNearestPoint.asStateFlow()
-
     private val _movedCameraPosition = MutableStateFlow(Constants.baseCameraPosition)
     val movedCameraPosition = _movedCameraPosition.asStateFlow()
 
-    private var saverMultiFloorRoad: List<List<RoadElementModel>> = listOf(listOf())
+    private var savedMultiFloorRoad: List<List<RoadElementModel>> = listOf(listOf())
 
     private val _googleMapRoad = MutableStateFlow(listOf<LatLng>())
     val googleMapRoad = _googleMapRoad.asStateFlow()
@@ -84,13 +80,33 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     val descriptorRepository = getApplication<ThisApplication>().descriptorRepository
 
     var navigationEventDialogShown by mutableStateOf(false)
-    var locationMarkerStateVisible by mutableStateOf(false)
+
     private var _navigationEventDialogData = MutableStateFlow(NavigationEventModel(0,0,0))
     val navigationEventDialogData = _navigationEventDialogData.asStateFlow()
     private var _navigationEventType = 0
 
     private var _observablePointLatLng = LatLng(0.0, 0.0)
     private var _observableMultiRoadListIndex = 0
+
+    var startMarkerType by mutableStateOf(DescriptorRepository.LOCATION_MARKER)
+    var startMarkerStateVisible by mutableStateOf(false)
+    private val _foundNearestPointStart = MutableStateFlow(
+        NavModel(0, 0, null, null,
+            LatLng(0.0,0.0), 0,
+            0, listOf(), listOf(), 0,
+            false))
+    val foundNearestPointStart = _foundNearestPointStart.asStateFlow()
+
+    var endMarkerType by mutableStateOf(DescriptorRepository.FINISH_MARKER)
+    var endMarkerStateVisible by mutableStateOf(false)
+    private val _foundNearestPointEnd = MutableStateFlow(
+        NavModel(0, 0, null, null,
+            LatLng(0.0,0.0), 0,
+            0, listOf(), listOf(), 0,
+            false))
+    val foundNearestPointEnd = _foundNearestPointEnd.asStateFlow()
+
+    var isEndPointSelectable by mutableStateOf(true)
 
     init {
         setBroadcastReceiver()
@@ -104,73 +120,67 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
         _loading.value = false
     }
 
-    fun rebuildRoadByFloor(floor: Int) {
-        _googleMapRoad.value = listOf()
-        val multiFloorRoad = saverMultiFloorRoad
-        val floorRoad = multiFloorRoad.flatten().filter { it.floor == floor }.map { it.location }
-        _googleMapRoad.value = floorRoad
-    }
-
-    private fun clearRoad(){
-        saverMultiFloorRoad = listOf(listOf())
+    fun clearRoad(){
+        _observableMultiRoadListIndex = 0
+        startMarkerType = DescriptorRepository.LOCATION_MARKER
+        endMarkerType = DescriptorRepository.FINISH_MARKER
+        savedMultiFloorRoad = listOf(listOf())
         _googleMapRoad.value = listOf()
         _mapSelectionEnable = true
     }
 
-    fun makeTestRoad() {
-        viewModelScope.launch {
-            val randomPoint1 = Random.nextInt(1, 1782 + 1)
-            val randomPoint2 = Random.nextInt(1, 1782 + 1)
+    fun makeFullRoad() {
+        clearRoad()
+        val path = GoogleMapUtil.aStar(NavGraphList.nawGraphList,
+            _foundNearestPointStart.value.id, _foundNearestPointEnd.value.id)
+        savedMultiFloorRoad = GoogleMapUtil.toMultiLocationRoad(path)
+        _googleMapRoad.value =  path.map { it.location }
+    }
 
-            makeRoad(randomPoint1, randomPoint2)
-            delay(2000L)
+    fun nextSegmentExist(): Boolean {
+        return savedMultiFloorRoad.size -1 != _observableMultiRoadListIndex
+    }
 
-            makeTestRoad()
+    fun makeSegmentRoad(nextRoad: Boolean) {
+        _googleMapRoad.value = listOf()
+        _mapSelectionEnable = false
+        if (nextRoad && savedMultiFloorRoad.size > _observableMultiRoadListIndex) _observableMultiRoadListIndex++
+        _googleMapRoad.value = savedMultiFloorRoad[_observableMultiRoadListIndex].map { it.location }
+        val firstPoint = savedMultiFloorRoad[_observableMultiRoadListIndex].first()
+        val lastPoint = savedMultiFloorRoad[_observableMultiRoadListIndex].last()
+        _foundNearestPointStart.value = NavGraphList.getElementById(firstPoint.id)
+        _foundNearestPointEnd.value = NavGraphList.getElementById(lastPoint.id)
+
+        _floor.value = lastPoint.floor
+
+        startMarkerStateVisible = false
+        endMarkerStateVisible = false
+
+        if (_observableMultiRoadListIndex > 0) {
+            if (firstPoint.floor != savedMultiFloorRoad[
+                    _observableMultiRoadListIndex].last().floor) {
+                startMarkerType = if (firstPoint.floor > savedMultiFloorRoad[
+                        _observableMultiRoadListIndex - 1].last().floor)
+                    DescriptorRepository.UP_MARKER else DescriptorRepository.DOWN_MARKER
+            } else if (firstPoint.locationIndex != savedMultiFloorRoad[
+                    _observableMultiRoadListIndex - 1].last().locationIndex
+            ) startMarkerType = DescriptorRepository.ENTER_MARKER
         }
+
+        if (savedMultiFloorRoad.size -1 != _observableMultiRoadListIndex) {
+            if (lastPoint.floor != savedMultiFloorRoad[
+                    _observableMultiRoadListIndex + 1].last().floor) {
+                endMarkerType = if (lastPoint.floor > savedMultiFloorRoad[
+                        _observableMultiRoadListIndex + 1].last().floor) {
+                    DescriptorRepository.DOWN_MARKER } else DescriptorRepository.UP_MARKER
+            } else if (lastPoint.locationIndex != savedMultiFloorRoad[
+                    _observableMultiRoadListIndex + 1].last().locationIndex)
+                endMarkerType = DescriptorRepository.ENTER_MARKER
+        } else endMarkerType = DescriptorRepository.FINISH_MARKER
+
+        startMarkerStateVisible = true
+        endMarkerStateVisible = true
     }
-
-    private fun makeRoad(startPoint: Int, endPoint: Int){
-        Log.d("ROAD", "Маршрут: $startPoint - $endPoint")
-        val startTime = System.nanoTime()
-        val path = GoogleMapUtil.dijkstra(NavGraphList.nawGraphList, startPoint, endPoint)
-
-        val endTime = System.nanoTime()
-        val duration = endTime - startTime
-
-        Log.d("ROAD", "Маршрут: ${getPathIds(path)}")
-        Log.d("TIME", "Час виконання: ${duration / 1000000} мс")
-
-        val startTime2 = System.nanoTime()
-        val path2 = GoogleMapUtil.aStar(NavGraphList.nawGraphList, startPoint, endPoint)
-
-        val endTime2 = System.nanoTime()
-        val duration2 = endTime2 - startTime2
-
-        Log.d("ROAD", "Маршрут A*: ${getPathIds(path2)}")
-        Log.d("TIME", "Час виконання A*: ${duration2 / 1000000} мс")
-
-
-        val bundle = Bundle().apply {
-            putString("road_path", "$startPoint - $endPoint")
-            putString("dijkstra_time", "${duration / 1000000}")
-            putBoolean("dijkstra_path_found", path.isNotEmpty())
-            putString("a_star_time", "${duration2 / 1000000}")
-            putBoolean("a_star_path_found", path2.isNotEmpty())
-        }
-        FirebaseEventUtil.logCustomEvent(getApplication<ThisApplication>(), "road_build", bundle)
-    }
-
-    private fun getPathIds(path: List<RoadElementModel>): String {
-        return path.joinToString(separator = ",") { it.id.toString() }
-    }
-
-//  clearRoad()
-
-//saverMultiFloorRoad = GoogleMapUtil.toMultiLocationRoad(path)
-
-//        if (saverMultiFloorRoad.isNotEmpty()){
-//            rebuildRoadByFloor(saverMultiFloorRoad.first().first().floor)
-//        }
 
     fun rememberLastCameraPosition(position: CameraPosition){
         ThisApplication.getInstance().setLastCameraState(position)
@@ -244,6 +254,9 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     fun findLocationByLatLng(latLng: LatLng, floor: Int) {
         if (!_mapSelectionEnable) return
 
+        startMarkerStateVisible = isEndPointSelectable
+        endMarkerStateVisible = !isEndPointSelectable
+
         val resultList: ArrayList<NavModel?> = arrayListOf(
             GoogleMapUtil.findNearestLocation(NavGraphYard.navGraphYard, latLng))
 
@@ -263,7 +276,10 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
         }
 
         val result = GoogleMapUtil.findNearestLocation(resultList.filterNotNull().toList(), latLng)
-        if (result != null){ _foundNearestPoint.value = result }
+        if (result != null){
+            if (isEndPointSelectable) _foundNearestPointEnd.value = result
+            else  _foundNearestPointStart.value = result
+        }
     }
 
     fun openGPSSettings() {
@@ -280,6 +296,14 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
 
     fun onSearchSelect(selectedElement: NavModel) {
         _searchResults.value.clear()
-        _foundNearestPoint.value = selectedElement
+        if (isEndPointSelectable) _foundNearestPointEnd.value = selectedElement
+        else  _foundNearestPointStart.value = selectedElement
     }
+
+    fun showCreateRoadError() {
+        Toast.makeText(getApplication(), "Точки для прокладання маршруту не обрано", Toast.LENGTH_SHORT).show()
+    }
+
+
+
 }
