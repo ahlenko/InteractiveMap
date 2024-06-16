@@ -218,7 +218,7 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onDateSelected(date: LocalDate) {
         currentDay = date.dayOfWeek.value
-        this.dayOfWeek.value = _dayArray[currentDay]
+        this.dayOfWeek.value = _dayArray[if (currentDay == 7) 0 else currentDay]
     }
 
     override fun getDayNumberByIndex(index: Int): String {

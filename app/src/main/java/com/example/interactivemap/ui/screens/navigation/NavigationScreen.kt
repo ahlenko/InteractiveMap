@@ -1,7 +1,6 @@
 package com.example.interactivemap.ui.screens.navigation
 
 import android.annotation.SuppressLint
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,7 +16,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionContext
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -30,15 +28,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.Constants
-import com.example.interactivemap.logic.model.navigation.models.NavModel
 import com.example.interactivemap.logic.navigation.ScheduleViewer
 import com.example.interactivemap.logic.navigation.SettingsScreen
 import com.example.interactivemap.logic.repository.DescriptorRepository
@@ -93,6 +88,7 @@ fun NavigationScreen( navHostController: NavHostController,
     val searchResults by viewModel.searchResults.collectAsState()
     val loading by viewModel.loading.collectAsState()
     val floorView by viewModel.floor.collectAsState()
+    val myLocationEnable by viewModel.myLocationEnable.collectAsState()
 
     val startLocationMarkerState =
         rememberMarkerState("startMarker", foundNearestPointStart.location)
@@ -103,6 +99,13 @@ fun NavigationScreen( navHostController: NavHostController,
 
     var startMarkerTitle by remember {mutableStateOf<String?>(null) }
     var endMarkerTitle by remember {mutableStateOf<String?>(null) }
+
+    var navigationState by remember { mutableIntStateOf(0) }
+    val camPosition = remember { mutableIntStateOf(1) }
+
+    val floor = remember { mutableIntStateOf(1) }
+    val maxFloor = remember { mutableIntStateOf(5) }
+    val minFloor = remember { mutableIntStateOf(0) }
 
     if (viewModel.activateGPSDialogShown  && !viewModel.loadingMapComponent && !viewModel.dialogGPSBeShown) {
         InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
@@ -122,6 +125,8 @@ fun NavigationScreen( navHostController: NavHostController,
     }
 
     if (viewModel.navigationEventDialogShown) {
+        viewModel.updateSelectablePoint(false)
+        viewModel.updateSelectablePoint(true)
         InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
             NavigationDialog(
                 viewModel.navigationEventDialogData.collectAsState()){}
@@ -129,44 +134,40 @@ fun NavigationScreen( navHostController: NavHostController,
     }
 
     if (viewModel.loadingMapComponent) {
+        viewModel.updateSelectablePoint(false)
+        viewModel.updateSelectablePoint(true)
         InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
             LoadingDialog()
         }
     }
 
     val clickers: ArrayList<() -> Unit> = ArrayList()
-    clickers.add {
-        viewModel.disableMovementObserver()
+    clickers.add { viewModel.disableMovementObserver()
         coroutineScope.launch {
-            cameraPositionState.animate(
-                CameraUpdateFactory.newCameraPosition(
-                    Constants.baseCameraPosition), Constants.DURATION_ANIM
-            )
-        }
+            cameraPositionState.animate(CameraUpdateFactory.newCameraPosition(
+                    Constants.baseCameraPosition), Constants.DURATION_ANIM) }
     }
-    clickers.add {
-        viewModel.setMovementObserver()
-        coroutineScope.launch {
-            cameraPositionState.animate(
-                CameraUpdateFactory.newCameraPosition(movedCameraPosition), Constants.DURATION_ANIM
-            )
-        }
+    clickers.add { viewModel.setMovementObserver()
+        coroutineScope.launch { cameraPositionState.animate(
+                CameraUpdateFactory.newCameraPosition(movedCameraPosition), Constants.DURATION_ANIM) }
     }
-    clickers.add {
-        viewModel.rememberLastCameraPosition(cameraPositionState.position)
+    clickers.add { viewModel.rememberLastCameraPosition(cameraPositionState.position)
         navHostController.navigate(ScheduleViewer.route)
     }
-    clickers.add {
-        viewModel.rememberLastCameraPosition(cameraPositionState.position)
+    clickers.add { viewModel.rememberLastCameraPosition(cameraPositionState.position)
         navHostController.navigate(SettingsScreen.route)
     }
 
-    var navigationState by remember { mutableIntStateOf(0) }
-    val camPosition = remember { mutableIntStateOf(1) }
+
 
     val clickersCenter: ArrayList<() -> Unit> = ArrayList()
-    clickersCenter.add { navigationState = 1 }
     clickersCenter.add {
+        viewModel.foundMyLocation(floor.intValue)
+        navigationState = 1
+    }
+    clickersCenter.add {
+        viewModel.updateSelectablePoint(false)
+        viewModel.updateSelectablePoint(true)
         viewModel.startMarkerStateVisible = false
         viewModel.endMarkerStateVisible = false
         viewModel.clearRoad()
@@ -176,6 +177,8 @@ fun NavigationScreen( navHostController: NavHostController,
         if (viewModel.nextSegmentExist())
             viewModel.makeSegmentRoad(true)
         else{
+            viewModel.updateSelectablePoint(false)
+            viewModel.updateSelectablePoint(true)
             viewModel.startMarkerStateVisible = false
             viewModel.endMarkerStateVisible = false
             viewModel.clearRoad()
@@ -184,17 +187,13 @@ fun NavigationScreen( navHostController: NavHostController,
     }
 
     val clickersMapController: ArrayList<() -> Unit> = ArrayList()
-    clickersMapController.add { viewModel.isEndPointSelectable = false }
-    clickersMapController.add { viewModel.isEndPointSelectable = true }
+    clickersMapController.add { viewModel.updateSelectablePoint(false) }
+    clickersMapController.add { viewModel.updateSelectablePoint(true) }
     clickersMapController.add {navigationState = 2
         if (viewModel.startMarkerStateVisible && viewModel.endMarkerStateVisible) viewModel.makeSegmentRoad(false)
         else viewModel.showCreateRoadError()
 
     }
-
-    val floor = remember { mutableIntStateOf(1) }
-    val maxFloor = remember { mutableIntStateOf(5) }
-    val minFloor = remember { mutableIntStateOf(0) }
 
     LaunchedEffect(movedCameraPosition) {
         userLocationMarkerState.position = movedCameraPosition.target
@@ -514,7 +513,9 @@ fun NavigationScreen( navHostController: NavHostController,
                         BottomMapNavigation(
                             locationStart = startMarkerTitle ?: foundNearestPointStart.id.toString(),
                             locationEnd = endMarkerTitle ?: foundNearestPointEnd.id.toString(),
-                            onClickCenter = clickersMapController
+                            onClickCenter = clickersMapController,
+                            myLocationEnable = myLocationEnable,
+                            isEndPointSelectable = viewModel.isEndPointSelectable
                         )
                     }
                 }

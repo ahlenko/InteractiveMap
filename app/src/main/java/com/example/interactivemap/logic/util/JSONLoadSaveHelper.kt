@@ -63,9 +63,9 @@ object JSONLoadSaveHelper {
         try {
             uri?.let { fileUri ->
                 contentResolver.openOutputStream(fileUri)?.use { outputStream ->
-                    val json = JSONObject()
-                    json.put("days", data)
-                    val resString = json.toString().replace("\\","")
+                    val savedString = "{\"days\":$data}"
+
+                    val resString = savedString.replace("\\","")
                     outputStream.write(resString.toByteArray())
                 }
             }

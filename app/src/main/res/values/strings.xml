@@ -116,6 +116,17 @@
     <string name="tutor">Teacher</string>
     <string name="search_request">Enter search query…</string>
     <string name="search_no_result">No results found</string>
-    <string name="loading">Завантаження мапи</string>
-    <string name="pleaseWaiting">Будьласка зачекайте...</string>
+    <string name="loading">Loading map</string>
+    <string name="pleaseWaiting">Please wait…</string>
+    <string name="all_fields_mast_be_filled">All mandatory fields must be filled</string>
+
+    <string name="find_road">Find road >></string>
+    <string name="start_point">Start point</string>
+    <string name="end_point">End point</string>
+    <string name="select_point">Select point</string>
+    <string name="your_location">Your location</string>
+    <string name="confirm_it">Confirm</string>
+    <string name="points_to_create_road_not_selected">Points to create the road are not selected</string>
+
+
 </resources>

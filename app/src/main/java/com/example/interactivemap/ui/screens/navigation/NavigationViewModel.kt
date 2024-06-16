@@ -6,14 +6,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.location.Location
-import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.widget.Toast
-import androidx.compose.runtime.CompositionContext
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -38,12 +34,9 @@ import com.example.interactivemap.logic.service.LocationServiceConstants.ACTION
 import com.example.interactivemap.logic.util.GoogleMapUtil
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 class NavigationViewModel(application: Application): AndroidViewModel(application)  {
     var loadingMapComponent by mutableStateOf(true)
@@ -54,11 +47,14 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     private val _loading = MutableStateFlow(true)
     val loading = _loading.asStateFlow()
 
-    private val _floor = MutableStateFlow(0)
+    private val _floor = MutableStateFlow(1)
     val floor = _floor.asStateFlow()
 
     private val _locationMarkerShown = MutableStateFlow(false)
     val locationMarkerShown = _locationMarkerShown.asStateFlow()
+
+    private val _myLocationEnable = MutableStateFlow(false)
+    val myLocationEnable = _myLocationEnable.asStateFlow()
 
     private val _searchResults = MutableStateFlow(arrayListOf<NavModel>())
     val searchResults = _searchResults.asStateFlow()
@@ -90,23 +86,15 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
 
     var startMarkerType by mutableStateOf(DescriptorRepository.LOCATION_MARKER)
     var startMarkerStateVisible by mutableStateOf(false)
-    private val _foundNearestPointStart = MutableStateFlow(
-        NavModel(0, 0, null, null,
-            LatLng(0.0,0.0), 0,
-            0, listOf(), listOf(), 0,
-            false))
+    private val _foundNearestPointStart = MutableStateFlow(Constants.defaultNavModel)
     val foundNearestPointStart = _foundNearestPointStart.asStateFlow()
 
     var endMarkerType by mutableStateOf(DescriptorRepository.FINISH_MARKER)
     var endMarkerStateVisible by mutableStateOf(false)
-    private val _foundNearestPointEnd = MutableStateFlow(
-        NavModel(0, 0, null, null,
-            LatLng(0.0,0.0), 0,
-            0, listOf(), listOf(), 0,
-            false))
+    private val _foundNearestPointEnd = MutableStateFlow(Constants.defaultNavModel)
     val foundNearestPointEnd = _foundNearestPointEnd.asStateFlow()
 
-    var isEndPointSelectable by mutableStateOf(true)
+     var isEndPointSelectable by mutableStateOf(true)
 
     init {
         setBroadcastReceiver()
@@ -301,9 +289,28 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     }
 
     fun showCreateRoadError() {
-        Toast.makeText(getApplication(), "Точки для прокладання маршруту не обрано", Toast.LENGTH_SHORT).show()
+        Toast.makeText(getApplication(), R.string.points_to_create_road_not_selected, Toast.LENGTH_SHORT).show()
     }
 
+    fun updateSelectablePoint(isEndPointSelectable: Boolean) {
+        this.isEndPointSelectable = isEndPointSelectable
+        if (isEndPointSelectable) _foundNearestPointEnd.value = Constants.defaultNavModel
+        else {_foundNearestPointStart.value = Constants.defaultNavModel
+            _myLocationEnable.value = false
+        }
+    }
 
-
+    fun foundMyLocation(floor: Int) {
+        if (_locationMarkerShown.value) {
+            updateSelectablePoint (false)
+            findLocationByLatLng (_movedCameraPosition.value.target ,floor)
+            if (GoogleMapUtil.distanceBetweenPoints(_movedCameraPosition.value.target, _foundNearestPointStart.value.location) <= 200){
+                isEndPointSelectable = true
+                _myLocationEnable.value = true
+            } else {
+                updateSelectablePoint (false)
+                _myLocationEnable.value = false
+            }
+        } else _myLocationEnable.value = false
+    }
 }

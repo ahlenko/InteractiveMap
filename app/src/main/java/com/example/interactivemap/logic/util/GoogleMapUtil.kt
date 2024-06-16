@@ -75,62 +75,6 @@ object GoogleMapUtil {
         return EARTH_RADIUS * c
     }
 
-    fun dijkstra(navGraphs: List<List<NavModel>>, startId: Int, endId: Int): List<RoadElementModel> {
-        val distances = mutableMapOf<Int, Double>()
-        val previous = mutableMapOf<Int, Int?>()
-        val unvisited = navGraphs.flatten().map { it.id }.toMutableSet()
-
-        navGraphs.flatten().forEach {
-            distances[it.id] = Double.MAX_VALUE
-            previous[it.id] = null
-        }
-
-        distances[startId] = 0.0
-
-        while (unvisited.isNotEmpty()) {
-            val current = unvisited.minByOrNull { distances[it]!! } ?: break
-            if (current == endId) break
-
-            unvisited.remove(current)
-
-            val currentNode = navGraphs.flatten().find { it.id == current } ?: continue
-            currentNode.connexionWith.forEach { neighbor ->
-                val neighborNode = navGraphs.flatten().find { it.id == neighbor.id } ?: return@forEach
-                val alt = distances[current]!! + distanceBetweenPoints(currentNode.location, neighborNode.location)
-                if (alt < distances[neighbor.id]!!) {
-                    distances[neighbor.id] = alt
-                    previous[neighbor.id] = current
-                }
-            }
-
-            currentNode.connexionFloor?.forEach { floorConnection ->
-                val neighborNode = navGraphs.flatten().find { it.id == floorConnection.point.id } ?: return@forEach
-                val alt = distances[current]!! + distanceBetweenPoints(currentNode.location, neighborNode.location)
-                if (alt < distances[floorConnection.point.id]!!) {
-                    distances[floorConnection.point.id] = alt
-                    previous[floorConnection.point.id] = current
-                }
-            }
-        }
-
-        val path = mutableListOf<Int>()
-        var currentNode: Int? = endId
-        while (currentNode != null) {
-            path.add(currentNode)
-            currentNode = previous[currentNode]
-        }
-
-        return if (path.size == 1 && path[0] != startId) {
-            emptyList()
-        } else {
-            path.reversed()
-                .map { id ->
-                val node = navGraphs.flatten().find { it.id == id }!!
-                RoadElementModel(id, node.location, node.floorIndex, node.locationIndex, false)
-            }
-        }
-    }
-
     private fun heuristic(current: LatLng, goal: LatLng): Double {
         return distanceBetweenPoints(current, goal)
     }

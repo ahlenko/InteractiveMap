@@ -338,8 +338,8 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, viewMo
                                 )
                             ) {
                                 if (viewModel.checkFields(
-                                        locationIndex.value,
-                                        link.value,
+                                        tutor.value,
+                                        name.value
                                     )
                                 ) {
                                     viewModel.onDataChanged(
@@ -353,7 +353,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, viewMo
                                 } else {
                                     Toast.makeText(
                                         context,
-                                        "Усі поля мають бути заповненими",
+                                        R.string.all_fields_mast_be_filled,
                                         Toast.LENGTH_LONG
                                     ).show()
                                 }

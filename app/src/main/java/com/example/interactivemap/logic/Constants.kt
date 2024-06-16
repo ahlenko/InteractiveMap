@@ -1,5 +1,6 @@
 package com.example.interactivemap.logic
 
+import com.example.interactivemap.logic.model.navigation.models.NavModel
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 
@@ -49,6 +50,11 @@ object Constants {
         CameraPosition.Builder().target(newLocation).zoom(ZOOM_NEW).bearing(
             BEARING_NEW - 40f).build()
     }
+
+    val defaultNavModel = NavModel(0, 0, null, null,
+        LatLng(0.0,0.0), 0,
+        0, listOf(), listOf(), 0,
+        false)
 
     val mapBorder: List<LatLng> by lazy {
         listOf( // Межі території покритої інтерактивною областю
