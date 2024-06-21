@@ -288,7 +288,7 @@ fun NavigationScreen( navHostController: NavHostController,
                         if (ThisApplication.getInstance().darkThemeSelected) getMapStyleDarkTheme()
                         else getMapStyleWithoutLabels())),
                 uiSettings = MapUiSettings(zoomControlsEnabled = false),
-                onMapLoaded = { viewModel.disableLoadingState()},
+                onMapLoaded = { viewModel.disableLoadingState() },
                 onMapClick = { latLng ->
                     viewModel.disableMovementObserver()
                     viewModel.findLocationByLatLng(latLng, floor = floor.intValue)

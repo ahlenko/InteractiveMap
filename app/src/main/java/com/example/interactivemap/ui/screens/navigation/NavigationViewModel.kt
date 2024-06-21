@@ -100,12 +100,22 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
         setBroadcastReceiver()
         viewModelScope.launch {
             descriptorRepository.loadDescriptors(application)
+            checkNeedNavigateAfterScheduleClick()
             loadingMapComponent = false
         }
     }
 
     fun disableLoadingState(){
         _loading.value = false
+
+    }
+
+    private fun checkNeedNavigateAfterScheduleClick(){
+        if (ThisApplication.getInstance().isNeedNavigateAfterClickSchedule()){
+            ThisApplication.getInstance().setNeedNavigateAfterClickSchedule(false)
+            val pointIndex = ThisApplication.getInstance().getNavigationEndPointIndex()
+            _foundNearestPointEnd.value = NavGraphList.getElementById(pointIndex)
+        }
     }
 
     fun clearRoad(){

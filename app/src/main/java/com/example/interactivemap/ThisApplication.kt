@@ -29,6 +29,9 @@ class ThisApplication: Application(){
     private var fromMassage: Boolean = false
     private var lastKnownLocation: Location? = null
     lateinit var lastCameraPosition: CameraPosition
+    private var needNavigateAfterClickSchedule = false
+    private var navigationEndPointIndex = 0
+
     val descriptorRepository: DescriptorRepository by lazy {
         DescriptorRepository(this) }
     var isGpsOn = true
@@ -43,6 +46,22 @@ class ThisApplication: Application(){
         lastCameraPosition = CameraPosition.Builder().target(
             Constants.baseLocation).zoom(Constants.ZOOM_BASE).build()
         instance = this
+    }
+
+    fun setNavigationEndPointIndex(param: Int){
+        this.navigationEndPointIndex = param
+    }
+
+    fun getNavigationEndPointIndex(): Int {
+        return navigationEndPointIndex
+    }
+
+    fun setNeedNavigateAfterClickSchedule(param: Boolean){
+        this.needNavigateAfterClickSchedule = param
+    }
+
+    fun isNeedNavigateAfterClickSchedule(): Boolean {
+        return needNavigateAfterClickSchedule
     }
 
     fun setFromMassage(param: Boolean){

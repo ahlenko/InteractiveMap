@@ -16,10 +16,13 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
+import com.example.interactivemap.logic.Constants
 import com.example.interactivemap.logic.model.datamodel.Lesson
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
 import com.example.interactivemap.logic.model.datamodel.ScheduleResponse
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphList
+import com.example.interactivemap.logic.model.navigation.models.NavModel
 import com.example.interactivemap.logic.network.ApiFactory
 import com.example.interactivemap.logic.network.ApiService
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
@@ -54,10 +57,18 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     var deleteEnable by mutableStateOf(false)
     var editEnable by mutableStateOf(false)
 
+    var isTextFieldActive by mutableStateOf(false)
+
     private val _dayArray = getApplication<Application>()
         .resources.getStringArray(R.array.day_variant)
     private val _weekTypesArray2 = getApplication<Application>()
         .resources.getStringArray(R.array.week_types2)
+
+    private val _searchResults = MutableStateFlow(arrayListOf<NavModel>())
+    val searchResults = _searchResults.asStateFlow()
+
+    private val _foundNearestPoint = MutableStateFlow(Constants.defaultNavModel)
+    val foundNearestPoint = _foundNearestPoint.asStateFlow()
 
     var currentDay by mutableIntStateOf(0)
     var scheduleType by mutableIntStateOf(0)
@@ -72,9 +83,22 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     private lateinit var _link: String
     private lateinit var _route: String
 
+    private val locationIndex = 0
+
     init {
         fetchScheduleApiBaseUrl()
         loadSelectedOptions()
+    }
+
+    fun onSearchEnter(searchRequest: String) {
+        _searchResults.value.clear()
+        val searchRes = NavGraphList.findFirstFourMatchesByName(searchRequest)
+        _searchResults.value.addAll(searchRes)
+    }
+
+    fun onSearchSelect(selectedElement: NavModel) {
+        _searchResults.value.clear()
+        _foundNearestPoint.value = selectedElement
     }
 
     private fun fetchScheduleApiBaseUrl(){
@@ -163,7 +187,7 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
         showSheet = true
     }
 
-    fun onDataChanged(locationIndex: String, link: String, lidLink: String, tutor: String, name: String) { clearSelection()
+    fun onDataChanged(link: String, lidLink: String, tutor: String, name: String) { clearSelection()
         _scheduleData.value[currentDay].lessons[_selectedId].lessonData[_selectedType] = LessonData(name, tutor, locationIndex.toInt(), link, lidLink, selected = true)
         SharedPreferencesRepository.reserveSchedule = _scheduleData.value
         if (_scheduleData.value[currentDay].lessons[_selectedId].lessonData.size < 2){ addDoubleEnable = true }

@@ -18,6 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -38,7 +40,6 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.resource.schedule.ScheduleContainer
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
-import kotlinx.coroutines.delay
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @RequiresApi(Build.VERSION_CODES.O)
@@ -46,11 +47,13 @@ import kotlinx.coroutines.delay
 fun ScheduleEditorScreen(navHostController: NavHostController,
     scheduleEditorViewModel: ScheduleEditorViewModel = viewModel(
         factory = ScheduleEditorViewModel.factory)){
+    val foundNearestPoint by scheduleEditorViewModel.foundNearestPoint.collectAsState()
     val scheduleData = scheduleEditorViewModel.scheduleData.collectAsState()
 
     if (scheduleEditorViewModel.showSheet) {
         LessonEditorDialog(scheduleEditorViewModel.selectedData,
-        scheduleEditorViewModel.lessonDescription, scheduleEditorViewModel)
+        scheduleEditorViewModel.lessonDescription, scheduleEditorViewModel.isTextFieldActive,
+            remember{mutableStateOf(foundNearestPoint.name ?: foundNearestPoint.id.toString())}, scheduleEditorViewModel, {scheduleEditorViewModel.onSearchSelect(it)})
     { scheduleEditorViewModel.showSheet = false } }
 
     if (scheduleEditorViewModel.showReserveInfo) { ConfirmationDialog(
