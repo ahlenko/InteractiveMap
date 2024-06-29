@@ -15,7 +15,6 @@ android {
         versionCode = 3
         versionName = "3.0"
 
-        resValue("string", "google_maps_key", System.getenv("MAPS_API_KEY") ?: "")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -52,34 +51,11 @@ android {
     }
 }
 
-val generateSecretsXml by tasks.registering {
-    doLast {
-        val apiKey = System.getenv("MAPS_API_KEY") ?: ""
-        val secretsXmlDir = layout.buildDirectory.dir("generated/res/values").get().asFile
-        val secretsXmlFile = secretsXmlDir.resolve("secrets.xml")
-        if (!secretsXmlDir.exists()) {
-            secretsXmlDir.mkdirs()
-        }
-        secretsXmlFile.writeText("""
-            <?xml version="1.0" encoding="utf-8"?>
-            <resources>
-                <string name="google_maps_key" translatable="false">$apiKey</string>
-            </resources>
-        """.trimIndent())
-    }
-}
-
-tasks.named("preBuild").configure {
-    dependsOn(generateSecretsXml)
-}
-
-android.sourceSets["main"].res.srcDirs("src/main/res", layout.buildDirectory.dir("generated/res").get().asFile)
-
 dependencies {
     // Default dependency
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.2")
-    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("androidx.activity:activity-compose:1.9.0")
     implementation(platform("androidx.compose:compose-bom:2024.06.00"))
     implementation("androidx.compose.ui:ui")
@@ -88,10 +64,10 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.navigation:navigation-runtime-ktx:2.7.7")
     implementation("androidx.navigation:navigation-compose:2.7.7")
-    implementation("com.google.android.gms:play-services-measurement-api:22.0.2")
+    implementation("com.google.android.gms:play-services-measurement-api:22.0.1")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2024.06.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
@@ -113,7 +89,7 @@ dependencies {
 
     // Google maps dependency
     implementation ("com.google.maps.android:maps-compose:2.11.5")
-    implementation ("com.google.android.gms:play-services-maps:19.0.0")
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
 
     // Retrofit dependency
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
