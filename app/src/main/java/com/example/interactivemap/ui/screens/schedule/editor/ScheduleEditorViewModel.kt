@@ -2,6 +2,7 @@ package com.example.interactivemap.ui.screens.schedule.editor
 
 import android.app.Application
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -11,18 +12,26 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
-import com.example.interactivemap.logic.database.AppDatabase
+import com.example.interactivemap.logic.Constants
 import com.example.interactivemap.logic.model.datamodel.Lesson
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
+import com.example.interactivemap.logic.model.datamodel.ScheduleResponse
+import com.example.interactivemap.logic.model.navigation.graph.NavGraphList
+import com.example.interactivemap.logic.model.navigation.models.NavModel
+import com.example.interactivemap.logic.network.ApiFactory
+import com.example.interactivemap.logic.network.ApiService
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.screens.schedule.DefScheduleViewModel
-import com.example.interactivemap.ui.screens.schedule.viewer.ScheduleViewerViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDate
 import java.util.Calendar
 
@@ -36,6 +45,8 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     private val _toBackScreen = MutableStateFlow(false)
     val toBackScreen = _toBackScreen.asStateFlow()
 
+    private var apiService: ApiService? = null
+
     var showSheet by mutableStateOf(false)
     var showReserveInfo by mutableStateOf(false)
     var showReserveCopy by mutableStateOf(false)
@@ -46,10 +57,18 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     var deleteEnable by mutableStateOf(false)
     var editEnable by mutableStateOf(false)
 
+    var isTextFieldActive by mutableStateOf(false)
+
     private val _dayArray = getApplication<Application>()
         .resources.getStringArray(R.array.day_variant)
     private val _weekTypesArray2 = getApplication<Application>()
         .resources.getStringArray(R.array.week_types2)
+
+    private val _searchResults = MutableStateFlow(arrayListOf<NavModel>())
+    val searchResults = _searchResults.asStateFlow()
+
+    private val _foundNearestPoint = MutableStateFlow(Constants.defaultNavModel)
+    val foundNearestPoint = _foundNearestPoint.asStateFlow()
 
     var currentDay by mutableIntStateOf(0)
     var scheduleType by mutableIntStateOf(0)
@@ -61,19 +80,99 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     private var _selectedId = 0
     private var _selectedType = 0
 
+    private lateinit var _link: String
+    private lateinit var _route: String
+
+    private val locationIndex = 0
+
     init {
-        loadScheduleData()
+        fetchScheduleApiBaseUrl()
         loadSelectedOptions()
     }
 
+    fun onSearchEnter(searchRequest: String) {
+        _searchResults.value.clear()
+        val searchRes = NavGraphList.findFirstFourMatchesByName(searchRequest)
+        _searchResults.value.addAll(searchRes)
+    }
+
+    fun onSearchSelect(selectedElement: NavModel) {
+        _searchResults.value.clear()
+        _foundNearestPoint.value = selectedElement
+    }
+
+    private fun fetchScheduleApiBaseUrl(){
+        if (ThisApplication.getInstance().isFromMassage() && SharedPreferencesRepository.linkList?.isNotEmpty() == true){
+            if (SharedPreferencesRepository.linkList != null){
+                _link = SharedPreferencesRepository.linkList!![0]
+                val startIndex = _link.indexOf("://") + "://".length
+                val endIndex = _link.indexOf("/", startIndex)
+                _link = _link.substring(0, endIndex)
+                SharedPreferencesRepository.baseUrl = _link
+                _route = SharedPreferencesRepository.linkList!![0].replace("$_link/stud/", "")
+                fetchScheduleApiData()
+            }
+        } else  loadScheduleData()
+    }
+
+    private fun fillEmptyItems() {
+        _scheduleData.value = arrayListOf()
+        for (dayIndex in 0 until 7) {
+            val lessons = ArrayList<Lesson>()
+            for (lessonIndex in 0 until 6) {
+                val emptyLessonData = LessonData("", "", 0, "", "", false)
+                val lesson = Lesson(lessonIndex, arrayListOf(emptyLessonData))
+                lessons.add(lesson)
+            }
+            _scheduleData.value.add(ScheduleDay(dayIndex, lessons))
+        }
+    }
+
+    private fun fetchScheduleApiData(){ fillEmptyItems()
+        apiService = ApiFactory.getApiService(_link)
+        viewModelScope.launch {
+            var remoteSchedule: List<ScheduleResponse>
+            withContext(Dispatchers.IO) {
+                remoteSchedule = apiService?.getSchedule("$_route/23/1")!!
+            }
+            withContext(Dispatchers.Main) {
+                var prevData: ScheduleResponse? = null
+                remoteSchedule.forEach {
+                    val tempLesson = _scheduleData.value[it.day].lessons[it.lesson-1].lessonData.toMutableList()
+                    if (it.week == "чис") {
+                        tempLesson[0].tutor = it.pib
+                        tempLesson[0].name = it.lessonName
+                    } else {
+                        if (prevData != null) {
+                            if (!(prevData!!.day == it.day && prevData!!.lesson == it.lesson)){
+                                val emptyLessonData = LessonData("", "", 0, "", "", false)
+                                tempLesson.add(emptyLessonData)
+                                tempLesson[1].tutor = it.pib
+                                tempLesson[1].name = it.lessonName
+                            }
+                        } else {
+                            val emptyLessonData = LessonData("", "", 0, "", "", false)
+                            tempLesson.add(emptyLessonData)
+                            tempLesson[1].tutor = it.pib
+                            tempLesson[1].name = it.lessonName
+                        }
+                    }
+                    _scheduleData.value[it.day].lessons[it.lesson-1].lessonData = tempLesson as ArrayList<LessonData>
+                    prevData = it
+                }
+            }
+        }
+    }
+
     fun onDeleteButtonClick(){
-        showDeleteAgree = true
+       showDeleteAgree = true
     }
 
     fun onDoubleButtonClick(){ clearSelection()
         addDoubleEnable = false
         _selectedType = 1
-        _scheduleData.value[currentDay].lessons[_selectedId].lessonData.add(_clearItem)
+        val emptyLessonData = LessonData("", "", 0, "", "", false)
+        _scheduleData.value[currentDay].lessons[_selectedId].lessonData.add(emptyLessonData)
         _scheduleData.value[currentDay].lessons[_selectedId].lessonData[_selectedType].selected = true
         lessonDescription = _dayArray[currentDay] + ", " +  getDayNumberByIndex(_selectedId) + " пара, " + _weekTypesArray2[_selectedType]
         selectedData = _scheduleData.value[currentDay].lessons[_selectedId].lessonData[_selectedType]
@@ -88,7 +187,7 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
         showSheet = true
     }
 
-    fun onDataChanged(locationIndex: String, link: String, lidLink: String, tutor: String, name: String) { clearSelection()
+    fun onDataChanged(link: String, lidLink: String, tutor: String, name: String) { clearSelection()
         _scheduleData.value[currentDay].lessons[_selectedId].lessonData[_selectedType] = LessonData(name, tutor, locationIndex.toInt(), link, lidLink, selected = true)
         SharedPreferencesRepository.reserveSchedule = _scheduleData.value
         if (_scheduleData.value[currentDay].lessons[_selectedId].lessonData.size < 2){ addDoubleEnable = true }
@@ -112,11 +211,13 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     }
 
     private fun loadScheduleData() {
-        if (SharedPreferencesRepository.scheduleType == 2)
-            _scheduleData.value = SharedPreferencesRepository.reserveSchedule!!
-        else { _scheduleData.value = SharedPreferencesRepository.mainSchedule!!
-            if (SharedPreferencesRepository.reserveSchedule != null) showReserveCopy = true
-        }
+        if (!ThisApplication.getInstance().isFromMassage()){
+            if (SharedPreferencesRepository.scheduleType == 2)
+                _scheduleData.value = SharedPreferencesRepository.reserveSchedule!!
+            else { _scheduleData.value = SharedPreferencesRepository.mainSchedule!!
+                if (SharedPreferencesRepository.reserveSchedule != null) showReserveCopy = true
+            }
+        } else ThisApplication.getInstance().setFromMassage(false)
     }
 
     fun onRecoverDismiss(){
@@ -131,7 +232,8 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
         _toBackScreen.value = true
     }
 
-    fun onSaveClick() { clearSelection()
+    fun onSaveClick() {
+        clearSelection()
         SharedPreferencesRepository.reserveSchedule = null
         SharedPreferencesRepository.mainSchedule = _scheduleData.value
         _toBackScreen.value = true
@@ -140,7 +242,7 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onDateSelected(date: LocalDate) {
         currentDay = date.dayOfWeek.value
-        this.dayOfWeek.value = _dayArray[currentDay]
+        this.dayOfWeek.value = _dayArray[if (currentDay == 7) 0 else currentDay]
     }
 
     override fun getDayNumberByIndex(index: Int): String {
@@ -191,8 +293,8 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
         addDoubleEnable = false
     }
 
-    fun checkFields(locationIndex: String, link: String, lidLink: String, tutor: String, name: String): Boolean {
-        return locationIndex.isNotEmpty() && link.isNotEmpty() && lidLink.isNotEmpty() && tutor.isNotEmpty() && name.isNotEmpty();
+    fun checkFields(tutor: String, name: String): Boolean {
+        return tutor.isNotEmpty() && name.isNotEmpty();
     }
 
     companion object{

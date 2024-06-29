@@ -23,12 +23,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun DefaultHeader (titleId: Int, leftImgId: Int, rightImgId: Int,
                    onClickLeft : () -> Unit, onClickRight : () -> Unit){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Box(
             modifier = Modifier.clip(RoundedCornerShape(15.dp)).fillMaxSize()
                 .background(MaterialTheme.colorScheme.onPrimaryContainer)

@@ -19,11 +19,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun ScheduleRow (title: String, tutor: String, place: String, isSelected: Boolean){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Box(modifier = Modifier.padding(3.dp).clip(RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.onBackground.copy(alpha = if (isSelected) 0.3f else 0f))){
             Column (modifier = Modifier.fillMaxSize().padding(horizontal = 6.dp),

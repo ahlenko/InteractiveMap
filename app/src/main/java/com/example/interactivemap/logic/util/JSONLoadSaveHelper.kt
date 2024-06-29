@@ -5,9 +5,12 @@ import android.content.Context
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.Lesson
 import com.example.interactivemap.logic.model.datamodel.LessonData
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONException
@@ -43,7 +46,7 @@ object JSONLoadSaveHelper {
         }
     }
 
-    suspend fun writeJsonToFileInDocumentsDirectory(context: Context, data: String) {
+     fun writeJsonToFileInDocumentsDirectory(context: Context, data: String) {
         val timeStamp = SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.getDefault()).format(Date())
         val fileName = "schedule_$timeStamp.json"
 
@@ -60,9 +63,9 @@ object JSONLoadSaveHelper {
         try {
             uri?.let { fileUri ->
                 contentResolver.openOutputStream(fileUri)?.use { outputStream ->
-                    val json = JSONObject()
-                    json.put("days", data)
-                    val resString = json.toString().replace("\\","")
+                    val savedString = "{\"days\":$data}"
+
+                    val resString = savedString.replace("\\","")
                     outputStream.write(resString.toByteArray())
                 }
             }
@@ -112,5 +115,25 @@ object JSONLoadSaveHelper {
             e.printStackTrace()
         }
         return returnArray
+    }
+
+    fun loadStringList(key: String): List<String>? {
+
+        val serializedList = SharedPreferencesHelper.loadString(key)
+        return if (serializedList != null) {
+            try {
+                Gson().fromJson(serializedList, object : TypeToken<List<String>>() {}.type) as List<String>
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
+            }
+        } else {
+            null
+        }
+    }
+
+    fun saveStringList(key: String, stringList: List<String>?) {
+        val serializedList = Gson().toJson(stringList)
+        SharedPreferencesHelper.saveString(key, serializedList)
     }
 }

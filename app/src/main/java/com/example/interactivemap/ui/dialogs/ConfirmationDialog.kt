@@ -23,17 +23,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.resource.button.DefaultButton
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes: Int,
+fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes: Int, reverseColors: Boolean,
                        onDismiss: () -> Unit, onConfirm: () -> Unit){
     val borderRadius = 15.dp
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Dialog(onDismissRequest = { onDismiss() },
             properties = DialogProperties(usePlatformDefaultWidth = false)) {
             Card(modifier = Modifier.fillMaxWidth().padding(16.dp),
@@ -67,7 +68,7 @@ fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes:
                                 ShadowMaterial.CustomReShadow.createModifier
                                 (borderRadius, MaterialTheme.colorScheme.onTertiaryContainer))
                         ) {
-                            DefaultButton(buttonColor = MaterialTheme.colorScheme.onBackground,
+                            DefaultButton(buttonColor = if (reverseColors) MaterialTheme.colorScheme.onError else MaterialTheme.colorScheme.onBackground,
                                 textString = stringResource(id = dismissRes), borderRadius,
                                 textStyle = MaterialTheme.typography.labelMedium.copy(
                                     color = MaterialTheme.colorScheme.background, fontWeight = FontWeight.Light)
@@ -84,7 +85,7 @@ fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes:
                                 ShadowMaterial.CustomReShadow.createModifier
                                 (borderRadius, MaterialTheme.colorScheme.onTertiaryContainer))
                         ) {
-                            DefaultButton(buttonColor = MaterialTheme.colorScheme.onError,
+                            DefaultButton(buttonColor = if (reverseColors) MaterialTheme.colorScheme.onBackground else MaterialTheme.colorScheme.onError,
                                 textString = stringResource(id = confirmRes), borderRadius,
                                 textStyle = MaterialTheme.typography.labelMedium.copy(
                                     color = MaterialTheme.colorScheme.background, fontWeight = FontWeight.Light)

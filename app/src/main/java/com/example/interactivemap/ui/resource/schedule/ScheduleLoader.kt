@@ -27,6 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.ScheduleDay
 import com.example.interactivemap.logic.util.JSONLoadSaveHelper
 import com.example.interactivemap.ui.resource.button.TextIconButton
@@ -47,7 +48,7 @@ fun ScheduleLoader(viewerViewModel: ScheduleViewerViewModel){
     val context = LocalContext.current
     val borderRadius = 18.dp
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Column (modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally){

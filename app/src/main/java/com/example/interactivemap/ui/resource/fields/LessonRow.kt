@@ -23,11 +23,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
 fun LessonRow (text: String){
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Box(modifier = Modifier.fillMaxWidth()
             .padding(vertical = 4.dp, horizontal = 5.dp).clip(RoundedCornerShape(5.dp))){
             Text(modifier = Modifier.padding(horizontal = 3.dp, vertical = 2.dp).fillMaxWidth(), text = text, style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Light), softWrap = false)

@@ -2,12 +2,17 @@ package com.example.interactivemap.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -29,18 +34,18 @@ private val LightColorScheme = lightColorScheme(
 )
 
 private val DarkColorScheme = darkColorScheme(
-    background = AppColorsLight.background,
-    onBackground = AppColorsLight.onBackground,
-    onTertiary = AppColorsLight.onTertiary,
-    tertiaryContainer = AppColorsLight.shadow,
-    onTertiaryContainer = AppColorsLight.reShadow,
-    onPrimary = AppColorsLight.onPrimary,
-    onPrimaryContainer = AppColorsLight.mountainGray,
-    onSecondary = AppColorsLight.gray,
-    onSecondaryContainer = AppColorsLight.mountainGray100,
-    onError = AppColorsLight.red,
-    onErrorContainer = AppColorsLight.pink,
-    surfaceDim = AppColorsLight.dark
+    background = AppColorsDark.background,
+    onBackground = AppColorsDark.onBackground,
+    onTertiary = AppColorsDark.onTertiary,
+    tertiaryContainer = AppColorsDark.shadow,
+    onTertiaryContainer = AppColorsDark.reShadow,
+    onPrimary = AppColorsDark.onPrimary,
+    onPrimaryContainer = AppColorsDark.mountainGray,
+    onSecondary = AppColorsDark.gray,
+    onSecondaryContainer = AppColorsDark.mountainGray100,
+    onError = AppColorsDark.red,
+    onErrorContainer = AppColorsDark.pink,
+    surfaceDim = AppColorsDark.dark
 )
 
 @Composable
@@ -54,10 +59,18 @@ fun InteractiveMapTheme(darkTheme: Boolean = isSystemInDarkTheme(),
 
     val view = LocalView.current
 
-    if (!view.isInEditMode) { SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.onBackground.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme } }
+    if (!view.isInEditMode) {
+        SideEffect {
+            val context = view.context
+            if (context is Activity) {
+                val window = context.window
+                window.statusBarColor = colorScheme.onBackground.toArgb()
+                WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            } else {
+                Log.e("InteractiveMapTheme", "Context is not an Activity")
+            }
+        }
+    }
 
     MaterialTheme(
         colorScheme = colorScheme,

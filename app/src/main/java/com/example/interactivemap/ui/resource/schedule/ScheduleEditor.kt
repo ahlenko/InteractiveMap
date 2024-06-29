@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.resource.button.IconButton
 import com.example.interactivemap.ui.resource.button.TextIconButton
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
@@ -33,7 +34,7 @@ import com.example.interactivemap.ui.theme.InteractiveMapTheme
 fun ScheduleEditor(viewerViewModel: ScheduleEditorViewModel){
     val borderRadius = 18.dp
 
-    InteractiveMapTheme {
+    InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Column (modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally){

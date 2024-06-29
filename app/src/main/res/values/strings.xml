@@ -1,222 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Interactive Map</string>
-    <string name="un_name">UN оf SCIENCE AND TECHNOLOGY</string>
+    <string name="un_name">UN of SCIENCE AND TECHNOLOGY</string>
     <string name="app_description">INTERACTIVE MAP</string>
     <string name="un_site">www.ust.edu.ua</string>
-    <string name="navigation">Навігація</string>
-    <string name="skip">Пропустити</string>
-    <string name="navigation_description">Інтерактивна навігація багаторівневою мапою навчального закладу з використанням GPS</string>
-    <string name="navigation_description_full">\t\t\tНавігація дозволяє створити порівневий маршрут від власного місцезнаходження до конкретного кабінету навчального закладу.\n\t\t\tПереключення між рівнями мапи забезпечується за рахунок дій користувача що виключає можливість довільних розпізнавань за місцезнаходженням та спонтанного перемикання між “поверхами” на мапі.\n\t\t\tДодаток забезпечує безшовну навігації між окремими порівневими мапами кожного з корпусів навчального закладу.</string>
-    <string name="go_to_application">Перейти у застосунок</string>
-    <string name="distant_description_full">\t\t\tПісля опціонального переходу користувача на дистанційний режим передбачений в додатку доступний функціонал обмежується до перегляду розкладу, додаткової інформації про заплановані заняття та перегляду облікового запису та облікових записів інших користувачів.\n\t\t\tПри довгому натисненні у режимі дистанційного навчання на елемент розкладу додаток забезпечує перехід за посиланням на лекцію замість побудови маршруту до завчасно визначеного кабінету.</string>
-    <string name="distant_description">Свідоме обмеження функціоналу додатку задля спрощення навігації у режимі дистанційного навчання</string>
-    <string name="distant">Дистанційний режим</string>
-    <string name="schedule_description_full">\t\t\tСтворення розкладу в межах додатку забезпечує простий перехід до побудови маршруту до кабінету навчального закладу в якому заплановано відповідне заняття.\n\t\t\tЗбереження та відновлення розкладу забезпечує легку передачу розкладу занять від користувача до користувача за рахунок збереження та читання даних у структурований JSON файл.\n\t\t\tВідповідний групі студента розклад також занять можна знайти та завантажити на сайті навчального закладу.</string>
-    <string name="schedule_description">Створення та редагування розкладу занять студента/викладача</string>
-    <string name="schedule_lessons">Розклад занять</string>
-    <string name="translation_description_full">\t\t\tДодаток дозволяє увімкнути трансляцію геолокації лише для обраних користувачів та налаштувати інтервал оновлення даних як для вхідних, так і для вихідних даних про місцезнаходження.\n\t\t\tЗаблоковані користувачі не мають жодного доступу до персональних даних та даних про місцезнаходження.</string>
-    <string name="register_account">Зареєструвати аккаунт</string>
-    <string name="translation_description">Трансляція геоданих забезпечує можливість відображення координат інших користувачів на інтерактивній мапі</string>
-    <string name="translation">Трансляція геоданих</string>
-    <string name="information_description_full">\t\t\tКористувачів у додатку розділено на дві категорії: студентів та викладачів.\n\t\t\tРозділ перегляду списку користувачів дозволяє переглядати як окремі категорії так і фільтрувати відображуваний список за відобрахуваним статусом і окремо відображати заблокованих та закріплених користувачів.\n\t\t\tВ межах розширеного перегляду відображаються контактні дані, предмети (у випадку викладача) та група (у випадку спудента).</string>
-    <string name="information_description">Перегляд контактних даних зареєстрованих користувачів з можливістю закріплення облікових записів</string>
-    <string name="information">Інформативність</string>
-    <string name="activity_description_full">\t\t\tЗареєстрований аккаунт викладача/студента забезпечує інших користувачів базовою контактною інформацією: номер телефону що можна приховати та Email.\n\t\t\tРозділ предметів дозволяє редагувати список дисциплін що викладається викладачем, а у випадку користувачів-студентів - переглядати даний список.\n\t\t\tНалаштування відображуваного у випадку “Невидимості” дозволяє повністю приховати обліковий запис з пошукової видачі.</string>
-    <string name="activity_description">"Обліковий запис забезпечує можливість управління відображуваним статусом та приховування персональних даних "</string>
-    <string name="activity">Активність та доступність</string>
+    <string name="navigation">Navigation</string>
+    <string name="skip">Skip</string>
+    <string name="navigation_description">Interactive navigation with a multi-level map of the educational institution using GPS</string>
+    <string name="navigation_description_full">\t\t\tNavigation allows creating a level-by-level route from your location to a specific room in the educational institution. \t\t\tSwitching between map levels is controlled by user actions, preventing arbitrary location recognitions and spontaneous floor switching on the map. \t\t\tThe app ensures seamless navigation between individual level maps of each building of the educational institution.</string>
+    <string name="go_to_application">Go to the application</string>
+    <string name="distant_description_full">\t\t\tAfter optionally switching to the remote mode provided in the app, the available functionality is limited to viewing the schedule, additional information about planned classes, and viewing your account and other users\' accounts. \t\t\tLong-pressing an element in the schedule in remote learning mode will navigate to the lecture link instead of building a route to the pre-defined room.</string>
+    <string name="distant_description">Conscious limitation of app functionality to simplify navigation in remote learning mode</string>
+    <string name="distant">Remote mode</string>
+    <string name="schedule_description_full">\t\t\tCreating a schedule within the app ensures an easy transition to building a route to the room where the class is scheduled. \t\t\tSaving and restoring the schedule allows easy transfer of the schedule between users by saving and reading data into a structured JSON file. \t\t\tThe schedule corresponding to the student\'s group can also be found and downloaded from the educational institution\'s website.</string>
+    <string name="schedule_description">Creating and editing the student/teacher schedule</string>
+    <string name="schedule_lessons">Class Schedule</string>
 
-    <string name="settings">Налаштування</string>
-    <string name="general">Загальні</string>
-    <string name="language">Мова</string>
-    <string name="dark_theme">Темна тема</string>
-    <string name="online_education">Дистанційне навчання</string>
-    <string name="view_demo">Переглянути демо</string>
-    <string name="geolocation">Геолокація</string>
-    <string name="translation_geo">Трансляція геолокації</string>
-    <string name="point_view">Відображення</string>
-    <string name="update_interval">Інтервал оновлення</string>
-    <string name="to_main_page">До головної сторінки</string>
+    <string name="settings">Settings</string>
+    <string name="general">General</string>
+    <string name="language">Language</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="online_education">Remote learning</string>
+    <string name="view_demo">View demo</string>
+    <string name="to_main_page">To main page</string>
     <string name="version">Version: 1.0.37 (93)</string>
 
-    <string name="account">Аккаунт</string>
-    <string name="user_not_auth">Користувача\nне авторизовано</string>
-    <string name="you_might">ви можете</string>
-    <string name="enter">Увійти</string>
-    <string name="or">або</string>
-    <string name="register">Зареєструватись</string>
-    <string name="authorization_preview">Переваги авторизації >></string>
+    <string name="save">Save</string>
+    <string name="load">Restore</string>
+    <string name="create_schedule">Create schedule</string>
+    <string name="edit_schedule">Edit schedule</string>
 
-    <string name="enter_description">Введіть дані для входу</string>
-    <string name="enter_title">Вхід</string>
-    <string name="email">Email</string>
-    <string name="password">Пароль</string>
-    <string name="return_back">Повернутись</string>
+    <string name="change">Change</string>
+    <string name="signifier">Signifier</string>
+    <string name="save_schedule">Save schedule</string>
+    <string name="save_changes">Apply changes</string>
+    <string name="add_read_data">Add read data</string>
 
-    <string name="save">Зберегти</string>
-    <string name="load">Відновити</string>
-    <string name="create_schedule">Створити розклад занять</string>
-    <string name="edit_schedule">Внести зміни до розкладу</string>
+    <string name="create">Create</string>
+    <string name="edit">Edit</string>
+    <string name="recover">Data recovery</string>
 
-    <string name="change">Змінити</string>
-    <string name="signifier">Знамен..</string>
-    <string name="save_schedule">Зберегти розклад</string>
-    <string name="save_changes">Застосувати зміни</string>
-    <string name="add_read_data">Додати зчитані дані</string>
+    <string name="dismiss">Cancel</string>
 
-    <string name="create">Створення</string>
-    <string name="edit">Редагування</string>
-    <string name="recover">Відновлення даних</string>
-
-    <string name="active">Активні</string>
-    <string name="not_at_place">Не на місці</string>
-    <string name="all_tutors">Всі викладачі</string>
-    <string name="clipped">Закріплені</string>
-
-    <string name="all_students">Всі студенти</string>
-    <string name="blocked">Заблоковані</string>
-    <string name="students">Студенти</string>
-    <string name="tutors">Викладачі</string>
-
-    <string name="registration">Реєстрація</string>
-    <string name="base_info">Базова інформація </string>
-    <string name="photo">Фото</string>
-    <string name="first_name">Ім’я</string>
-    <string name="last_name">Прізвище</string>
-    <string name="middle_name">По батькові</string>
-    <string name="identity_data">Ідентифікуючі дані</string>
-    <string name="phone_num">Телефон</string>
-    <string name="reg_num">Реєстрц. №</string>
-    <string name="student_num">№ студ. кв.</string>
-    <string name="date_to_enter">Дані для входу</string>
-
-    <string name="change_phone">Зміна номеру телефону</string>
-    <string name="old_phone">Старий номер</string>
-    <string name="new_phone">Новий номер</string>
-    <string name="change_email">Зміна Email</string>
-    <string name="old_email">Старий логін</string>
-    <string name="new_email">Новий логін</string>
-    <string name="change_password">Зміна паролю</string>
-    <string name="old_password">Старий пароль</string>
-    <string name="new_password">Новий пароль</string>
-    <string name="dismiss">Скасувати</string>
-
-    <string name="lesson_data">Дані заняття</string>
-    <string name="place_data">Розміщення</string>
-    <string name="lesson">Предмет</string>
-    <string name="tutor_">Викладач</string>
+    <string name="lesson_data">Class data</string>
+    <string name="place_data">Location</string>
+    <string name="lesson">Subject</string>
+    <string name="tutor_">Teacher</string>
     <string name="lider">LIDER</string>
-    <string name="kab">Кабінет</string>
-    <string name="link">Посилання</string>
-    <string name="specified_lesson">пара</string>
-    <string name="close_viewer">Завершити перегляд</string>
+    <string name="kab">Room</string>
+    <string name="link">Link</string>
+    <string name="specified_lesson">Class</string>
+    <string name="close_viewer">Close viewer</string>
 
-    <string name="online">Онлайн</string>
-    <string name="not_disturb">Не турбувати</string>
-    <string name="invisible">Невидимість</string>
-    <string name="display_status">Відображуваний статус:</string>
+    <string name="confirm">Apply</string>
+    <string name="close">Hide</string>
+    <string name="week">-th Week,</string>
 
-    <string name="add_lessons">Предмет що додається</string>
-    <string name="view_lessons">Перегляд предметів</string>
-    <string name="select_lesson">Вибір предметів</string>
-    <string name="confirm">Застосувати</string>
-    <string name="close">Приховати</string>
-    <string name="week">-й Тиждень, </string>
+    <string name="onEditDismiss">Exiting edit mode without saving changes will save the entered data to a backup database. You can restore them during the next schedule editing.</string>
+    <string name="onFindReserveCopy">A backup schedule copy has been found. You can restore previously made schedule changes or start editing from scratch by deleting them.</string>
+    <string name="onDeleteLesson">Do you really want to delete this lecture from the schedule? Confirm or cancel this action:</string>
 
-    <string name="block_user">Заблокувати</string>
-    <string name="block_user_text">Після блокування даний користувач не зможе бачити інформацію про вас у загальному списку користувачів</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="info">Information</string>
+    <string name="exit">Exit</string>
+    <string name="restore">Restore</string>
+    <string name="delete">Delete</string>
 
-    <string name="delete_account_text">Ви дійсно хочете видалити аккаунт? Підтвердіть або скасуйте дану дію:</string>
-    <string name="exit_account">Ви дійсно хочете вийти з аккаунту? Підтвердіть або скасуйте дану дію:</string>
+    <string name="permission">Make sure you have granted location access permission</string>
+    <string name="permission_description">To continue working, grant the app permission to access location services</string>
+    <string name="permission_grant">Grant</string>
+    <string name="permission_denied">Deny</string>
+    <string name="permission_check">Check</string>
 
-    <string name="onEditDismiss">Вийшовши з режиму редагування без збереження змін заповнені дані буде збережено до резервної БД. Ви зможете відновити їх при наступному внесенні змін до розкладу занять</string>
-    <string name="onFindReserveCopy">Виявлено резервну копію розкладу, ви можете відновити раніше внесені до розкладу зміни або почати редагування з початку видаливши їх</string>
-    <string name="onDeleteLesson">Ви дійсно хочете видалити дану лекцію з розкладу? Підтвердіть або скасуйте дану дію:</string>
+    <string name="location_not_found">Location not recognized yet, please wait</string>
 
-    <string name="confirmation">Підтвердження</string>
-    <string name="info">Інформація</string>
-    <string name="exit">Вихід</string>
-    <string name="restore">Відновити</string>
-    <string name="delete">Видалити</string>
+    <string name="sk">SC</string>
+    <string name="s">S</string>
+    <string name="n">N</string>
 
-    <string name="sk">СК</string>
-    <string name="s">С</string>
-    <string name="n">Н</string>
+    <string name="save_success">Schedule saved in the documents folder</string>
+    <string name="save_file_error">Error saving schedule</string>
+    <string name="translation_error">File decoding error</string>
 
+    <string name="schedule">Schedule</string>
+    <string name="schedule_not_exist">Schedule not created yet</string>
+    <string name="schedule_not_exist_text">After creating or restoring, the student/teacher schedule will be displayed on this page</string>
+    <string name="schedule_not_exist_description">To simplify route building on the university\'s interactive map, it is recommended to create or restore the schedule from a .json file</string>
 
-    <string name="save_success">Розклад збережено в теку документів</string>
-    <string name="save_file_error">Помилка збереження розкладу занять</string>
-    <string name="translation_error">Помилка декодування файлу</string>
-    <string name="reg_rules">Умови використання >></string>
-    <string name="reg_rules_description"><![CDATA[Натискаючи <Зареєструватись> ви погоджуєтесь з\nумовами використання персональних даних]]></string>
-
-
-
-    <string name="schedule">Розклад</string>
-    <string name="schedule_not_exist">Розклад занять\nне створено</string>
-    <string name="schedule_not_exist_text">Після створення чи відновлення на даній сторіці\nбуде відображатись розклад занять студента/викладача</string>
-    <string name="schedule_not_exist_description">Для того щоб спростити побудову\nмаршрутів на інтерактивній мапі університету\nрекомндовано створити розклад або відновити\nйого з файлу .json</string>
-
-
-    <string name="default_language">Українська</string>
+    <string name="default_language">Ukrainian</string>
     <string-array name="language_variant">
-        <item>Українська</item>
+        <item>Ukrainian</item>
         <item>English</item>
     </string-array>
 
     <string-array name="day_variant">
-        <item>Неділя</item>
-        <item>Понеділок</item>
-        <item>Вівторок</item>
-        <item>Середа</item>
-        <item>Четвер</item>
-        <item>П\'ятниця</item>
-        <item>Субота</item>
-    </string-array>
-
-    <string-array name="day_mini_variant">
-        <item>Нд</item>
-        <item>Пн</item>
-        <item>Вт</item>
-        <item>Ср</item>
-        <item>Чт</item>
-        <item>Пт</item>
-        <item>Сб</item>
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
     </string-array>
 
     <string-array name="week_types">
-        <item>Чисельник</item>
-        <item>Знаменник</item>
+        <item>Numerator</item>
+        <item>Denominator</item>
     </string-array>
 
     <string-array name="week_types2">
-        <item>чисельник</item>
-        <item>знаменник</item>
+        <item>numerator</item>
+        <item>denominator</item>
     </string-array>
 
-    <string name="distance"> м.</string>
-    <string name="time"> с.</string>
-    <string name="users_list"><![CDATA[Список користувачів >]]></string>
-    <string name="phone_number">Зміна номеру телефону</string>
-    <string name="hide_number">Приховати номер</string>
-    <string name="reset_email">Зміна email</string>
-    <string name="group">Група</string>
-    <string name="reset_password">Зміна паролю</string>
-    <string name="delete_account">Видалити аккаунт</string>
-    <string name="lessons">Предмети</string>
-    <string name="user">Користувач</string>
-    <string name="users">Користувачі</string>
-    <string name="role">Роль</string>
-    <string name="student">Студент</string>
-    <string name="tutor">Викладач</string>
-    <string name="phone">Телефон</string>
-    <string name="clip">Закріпити</string>
-    <string name="block">Заблокувати</string>
-    <string name="search_on_map">Знайти на мапі</string>
+    <string name="tutor">Teacher</string>
+    <string name="search_request">Enter search query…</string>
+    <string name="search_no_result">No results found</string>
+    <string name="loading">Loading map</string>
+    <string name="pleaseWaiting">Please wait…</string>
+    <string name="all_fields_mast_be_filled">All mandatory fields must be filled</string>
 
-    <string name="search_request">Введіть пошуковий запит…</string>
-    <string name="search_no_result">Пошук не дав результатів</string>
-
-    <string name="empty"> </string>
-
-
+    <string name="find_road">Find road >></string>
+    <string name="start_point">Start point</string>
+    <string name="end_point">End point</string>
+    <string name="select_point">Select point</string>
+    <string name="your_location">Your location</string>
+    <string name="confirm_it">Confirm</string>
+    <string name="points_to_create_road_not_selected">Points to create the road are not selected</string>
 </resources>

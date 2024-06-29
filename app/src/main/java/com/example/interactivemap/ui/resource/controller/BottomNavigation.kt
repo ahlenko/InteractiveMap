@@ -2,6 +2,7 @@ package com.example.interactivemap.ui.resource.controller
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -26,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
+import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.resource.button.IconButton
 import com.example.interactivemap.ui.resource.material.CustomShape
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
@@ -33,9 +35,9 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReSh
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun BottomNavigation(state: MutableState<Int>, clickers: ArrayList<() -> Unit>, onClickCenter: ArrayList<() -> Unit>){
-    InteractiveMapTheme {
-        when(state.value){
+fun BottomNavigation(state: Int, clickers: ArrayList<() -> Unit>, onClickCenter: ArrayList<() -> Unit>){
+    InteractiveMapTheme(darkTheme = SharedPreferencesRepository.darkThemeSelected) {
+        when(state){
             0 -> {
                 Box(modifier = Modifier.fillMaxWidth()){
                     Box(modifier = Modifier.align(Alignment.BottomCenter).height(66.dp).fillMaxWidth()
@@ -71,7 +73,7 @@ fun BottomNavigation(state: MutableState<Int>, clickers: ArrayList<() -> Unit>, 
                                     }
                                 }
 
-                                Spacer(modifier = Modifier.weight(0.52f))
+                                Spacer(modifier = Modifier.weight(0.50f))
 
                                 Row (modifier = Modifier.weight(1f),
                                     verticalAlignment = Alignment.CenterVertically,
@@ -95,15 +97,14 @@ fun BottomNavigation(state: MutableState<Int>, clickers: ArrayList<() -> Unit>, 
                     }
 
                     Box(modifier = Modifier.padding(bottom = 5.dp, start = 3.dp).align(Alignment.Center)){
-                        Image(modifier = Modifier.height(125.dp).width(90.dp),
+                        Image(modifier = Modifier.height(125.dp).width(90.dp).clickable { onClickCenter[state]() },
                             painter = painterResource(id = R.drawable.button_create_route), contentDescription = null
                         )
                         Box(modifier = Modifier.align(Alignment.TopCenter).
-                        padding(top = 28.dp, end = 3.dp).size(40.dp)){
+                        padding(top = 28.dp, end = 3.dp).size(40.dp).clickable { onClickCenter[state]()}){
                             IconButton(buttonColor = Color.Transparent, size = 40.dp,
                                 imageResourceId = R.drawable.ic_navigate, radius = 15.dp,
-                                iconColor = MaterialTheme.colorScheme.surfaceDim)
-                            { onClickCenter[state.value]() }
+                                iconColor = MaterialTheme.colorScheme.surfaceDim) { onClickCenter[state]() }
                         }
                     }
                 }
@@ -137,10 +138,10 @@ fun BottomNavigation(state: MutableState<Int>, clickers: ArrayList<() -> Unit>, 
 
                         Box(modifier = Modifier.weight(1f)){
                             IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                                imageResourceId = if(state.value == 1) R.drawable.ic_hide else
+                                imageResourceId = if(state == 1) R.drawable.ic_hide else
                                     R.drawable.ic_route_final, radius = 15.dp,
                                 iconColor = MaterialTheme.colorScheme.onBackground)
-                            { onClickCenter[state.value]() }
+                            { onClickCenter[state]() }
                         }
 
                         Box(modifier = Modifier.weight(1f)){
@@ -164,21 +165,3 @@ fun BottomNavigation(state: MutableState<Int>, clickers: ArrayList<() -> Unit>, 
     }
 }
 
-@Preview
-@Composable
-fun BottomNavigationPreview(){
-    val clickers: ArrayList<() -> Unit> = ArrayList()
-    clickers.add { /* обробник 1 */ }
-    clickers.add { /* обробник 2 */ }
-    clickers.add { /* обробник 3 */ }
-    clickers.add { /* обробник 4 */ }
-
-    val clickersCenter: ArrayList<() -> Unit> = ArrayList()
-    clickersCenter.add { /* обробник 1 */ }
-    clickersCenter.add { /* обробник 2 */ }
-    clickersCenter.add { /* обробник 3 */ }
-
-    BottomNavigation(state = remember {
-        mutableIntStateOf(0)
-    }, clickers,  clickersCenter)
-}

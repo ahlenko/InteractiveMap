@@ -37,12 +37,6 @@ object SharedPreferencesRepository {
             saveBoolean(SharedPreferencesHelper.ONLINE_EDUCATION, onlineEducationSelected)
         }
 
-    var translationGeoOn: Boolean
-        get() = loadBoolean(SharedPreferencesHelper.TRANSLATION_STATE)
-        set(translationGeoOn) {
-            saveBoolean(SharedPreferencesHelper.TRANSLATION_STATE, translationGeoOn)
-        }
-
     var isSecondEnter: Boolean
         get() = loadBoolean(SharedPreferencesHelper.SECOND_ENTER)
         set(isSecondEnter) {
@@ -65,33 +59,15 @@ object SharedPreferencesRepository {
             saveString(SCHEDULE_RESERVE, convertScheduleListToJson(reserveSchedule))
         }
 
-    var locationList: String?
-        get() = loadString(SharedPreferencesHelper.MAP_LOCATION)
-        set(locationList) {
-            saveString(SharedPreferencesHelper.MAP_LOCATION, locationList)
+    var baseUrl: String?
+        get() = loadString(SharedPreferencesHelper.BASE_URL_KEY)
+        set(baseUrl) {
+            saveString(SharedPreferencesHelper.BASE_URL_KEY, baseUrl)
         }
 
-    var authToken: String?
-        get() = loadString(SharedPreferencesHelper.AUTH_TOKEN)
-        set(authToken) {
-            saveString(SharedPreferencesHelper.AUTH_TOKEN, authToken)
-        }
-
-    var navigationGraph: String?
-        get() = loadString(SharedPreferencesHelper.NAVIGATION_GRAPH)
-        set(navigationGraph) {
-            saveString(SharedPreferencesHelper.NAVIGATION_GRAPH, navigationGraph)
-        }
-
-    var geoTranslationDistance: Int
-        get() = loadInt(SharedPreferencesHelper.TRANSLATION_DISTANCE)
-        set(geoTranslationDistance) {
-            saveInt(SharedPreferencesHelper.TRANSLATION_DISTANCE, geoTranslationDistance)
-        }
-
-    var geoUpdateInterval: Int
-        get() = loadInt(SharedPreferencesHelper.UPDATE_INTERVAL)
-        set(geoUpdateInterval) {
-            saveInt(SharedPreferencesHelper.UPDATE_INTERVAL, geoUpdateInterval)
+    var linkList: List<String>?
+        get() = JSONLoadSaveHelper.loadStringList(SharedPreferencesHelper.LINK_LIST)
+        set(value) {
+            JSONLoadSaveHelper.saveStringList(SharedPreferencesHelper.LINK_LIST, value)
         }
 }
