@@ -41,9 +41,6 @@ class LocationForegroundService : Service() {
         )
 
         checkIsLocationProviderAvailable()
-        startLocationUpdates()
-        startCheckStatus()
-
         return START_NOT_STICKY
     }
 
@@ -59,6 +56,9 @@ class LocationForegroundService : Service() {
     private fun checkIsLocationProviderAvailable() {
         if (!isLocationProviderAvailable()) {
             // TODO send message
+        } else {
+            startLocationUpdates()
+            startCheckStatus()
         }
     }
 
@@ -72,8 +72,9 @@ class LocationForegroundService : Service() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            setLocationGpsListener()
-            //setLocationNetworkListener()
+            if (isLocationGPSProviderAvailable())
+                setLocationGpsListener()
+            else setLocationNetworkListener()
         }
     }
 
@@ -94,31 +95,31 @@ class LocationForegroundService : Service() {
             })
     }
 
-//    private fun setLocationNetworkListener() {
-//        LocationHelperNetwork().startListeningUserLocation(
-//            this, object : MyLocationNetworkListener {
-//                override fun onLocationChanged(location: Location?) {
-//                    location?.let {
-//                        locationFromNetwork = location
-//                        sendLocationToBroadcast()
-//                    }
-//                }
-//
-//                override fun onProviderEnabled() {
-//                    sendBroadcastLocationStatus(
-//                        BROADCAST_LOCATION_PROVIDERS_STATE,
-//                        BROADCAST_LOCATION_PROVIDERS_STATE_NET_ON
-//                    )
-//                }
-//
-//                override fun onProviderDisabled() {
-//                    sendBroadcastLocationStatus(
-//                        BROADCAST_LOCATION_PROVIDERS_STATE,
-//                        BROADCAST_LOCATION_PROVIDERS_STATE_NET_OFF
-//                    )
-//                }
-//            })
-//    }
+    private fun setLocationNetworkListener() {
+        LocationHelperNetwork().startListeningUserLocation(
+            this, object : MyLocationNetworkListener {
+                override fun onLocationChanged(location: Location?) {
+                    location?.let {
+                        locationFromNetwork = location
+                        sendLocationToBroadcast()
+                    }
+                }
+
+                override fun onProviderEnabled() {
+                    sendBroadcastLocationStatus(
+                        BROADCAST_LOCATION_PROVIDERS_STATE,
+                        BROADCAST_LOCATION_PROVIDERS_STATE_NET_ON
+                    )
+                }
+
+                override fun onProviderDisabled() {
+                    sendBroadcastLocationStatus(
+                        BROADCAST_LOCATION_PROVIDERS_STATE,
+                        BROADCAST_LOCATION_PROVIDERS_STATE_NET_OFF
+                    )
+                }
+            })
+    }
 
     @Synchronized
     private fun sendLocationToBroadcast() {
@@ -184,8 +185,13 @@ class LocationForegroundService : Service() {
 
     private fun isLocationProviderAvailable(): Boolean {
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
-        return locationManager != null && (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) ||
-                locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+        return locationManager != null && (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))
+    }
+
+    private fun isLocationGPSProviderAvailable(): Boolean {
+        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+        return locationManager != null && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
 
     private fun sendBroadcastLocationStatus(key: Int, value: Int) {
