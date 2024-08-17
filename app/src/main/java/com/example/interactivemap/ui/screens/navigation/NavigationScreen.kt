@@ -191,7 +191,15 @@ fun NavigationScreen( navHostController: NavHostController,
     clickersMapController.add { viewModel.updateSelectablePoint(false) }
     clickersMapController.add { viewModel.updateSelectablePoint(true) }
     clickersMapController.add {navigationState = 2
-        if (viewModel.startMarkerStateVisible && viewModel.endMarkerStateVisible) viewModel.makeSegmentRoad(false)
+        if (viewModel.startMarkerStateVisible && viewModel.endMarkerStateVisible) {
+            try {
+                viewModel.makeSegmentRoad(false)
+            } catch (e :Exception){
+                e.printStackTrace()
+                viewModel.showCreateRoadError()
+            }
+        }
+
         else viewModel.showCreateRoadError()
 
     }
