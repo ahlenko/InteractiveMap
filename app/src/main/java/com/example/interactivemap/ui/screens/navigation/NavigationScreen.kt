@@ -176,7 +176,12 @@ fun NavigationScreen( navHostController: NavHostController,
     }
     clickersCenter.add {
         if (viewModel.nextSegmentExist())
-            viewModel.makeSegmentRoad(true)
+            try {
+                viewModel.makeSegmentRoad(false)
+            } catch (e :Exception){
+                e.printStackTrace()
+                viewModel.showCreateRoadError()
+            }
         else{
             viewModel.updateSelectablePoint(false)
             viewModel.updateSelectablePoint(true)
@@ -190,17 +195,16 @@ fun NavigationScreen( navHostController: NavHostController,
     val clickersMapController: ArrayList<() -> Unit> = ArrayList()
     clickersMapController.add { viewModel.updateSelectablePoint(false) }
     clickersMapController.add { viewModel.updateSelectablePoint(true) }
-    clickersMapController.add {navigationState = 2
+    clickersMapController.add {
         if (viewModel.startMarkerStateVisible && viewModel.endMarkerStateVisible) {
             try {
                 viewModel.makeSegmentRoad(false)
+                navigationState = 2
             } catch (e :Exception){
                 e.printStackTrace()
                 viewModel.showCreateRoadError()
             }
-        }
-
-        else viewModel.showCreateRoadError()
+        } else viewModel.showCreateRoadError()
 
     }
 
