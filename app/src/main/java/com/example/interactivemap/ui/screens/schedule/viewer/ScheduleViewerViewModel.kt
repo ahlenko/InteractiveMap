@@ -122,8 +122,8 @@ class ScheduleViewerViewModel(application: Application, override var dayOfWeek: 
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onDateSelected(date: LocalDate) {
-        currentDay = date.dayOfWeek.value
-        this.dayOfWeek.value = _dayArray[if (currentDay == 7) 0 else currentDay]
+        currentDay = if (date.dayOfWeek.value == 7) 0 else  date.dayOfWeek.value
+        this.dayOfWeek.value = _dayArray[currentDay]
     }
 
     override fun getDayNumberByIndex(index: Int): String {

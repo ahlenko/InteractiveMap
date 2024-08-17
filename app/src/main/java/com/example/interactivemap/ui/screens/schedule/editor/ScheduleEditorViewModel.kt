@@ -188,7 +188,7 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
     }
 
     fun onDataChanged(link: String, lidLink: String, tutor: String, name: String) { clearSelection()
-        _scheduleData.value[currentDay].lessons[_selectedId].lessonData[_selectedType] = LessonData(name, tutor, locationIndex.toInt(), link, lidLink, selected = true)
+        _scheduleData.value[currentDay].lessons[_selectedId].lessonData[_selectedType] = LessonData(name, tutor, locationIndex, link, lidLink, selected = true)
         SharedPreferencesRepository.reserveSchedule = _scheduleData.value
         if (_scheduleData.value[currentDay].lessons[_selectedId].lessonData.size < 2){ addDoubleEnable = true }
         areUpdate = !areUpdate
@@ -241,8 +241,8 @@ class ScheduleEditorViewModel(application: Application, override var dayOfWeek: 
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onDateSelected(date: LocalDate) {
-        currentDay = date.dayOfWeek.value
-        this.dayOfWeek.value = _dayArray[if (currentDay == 7) 0 else currentDay]
+        currentDay = if (date.dayOfWeek.value == 7) 0 else date.dayOfWeek.value
+        this.dayOfWeek.value = _dayArray[currentDay]
     }
 
     override fun getDayNumberByIndex(index: Int): String {
