@@ -1,6 +1,7 @@
 package com.example.interactivemap
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.location.Location
 import android.util.Log
@@ -12,12 +13,14 @@ import com.example.interactivemap.logic.repository.DescriptorRepository
 import com.example.interactivemap.logic.service.LocationForegroundService
 import com.example.interactivemap.logic.util.SharedPreferencesHelper.loadSettingsHelper
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
+import com.example.interactivemap.ui.translations.Translation
 import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapsSdkInitializedCallback
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.firebase.FirebaseApp
 import com.jakewharton.threetenabp.AndroidThreeTen
+import java.util.Locale
 
 class ThisApplication: Application(), OnMapsSdkInitializedCallback{
 
@@ -36,8 +39,11 @@ class ThisApplication: Application(), OnMapsSdkInitializedCallback{
     override fun onCreate() { super.onCreate()
         MapsInitializer.initialize(applicationContext, MapsInitializer.Renderer.LATEST, this)
         AndroidThreeTen.init(this)
+        Translation.initialize(this)
+
         FirebaseApp.initializeApp(this)
         loadSettingsHelper(this, this.packageName)
+        setInitialLanguage()
         darkThemeSelected = SharedPreferencesRepository.darkThemeSelected
         lastCameraPosition = CameraPosition.Builder().target(
             Constants.baseLocation).zoom(Constants.ZOOM_BASE).build()
@@ -102,6 +108,46 @@ class ThisApplication: Application(), OnMapsSdkInitializedCallback{
                 "The legacy version of the renderer is used."
             )
         }
+    }
+
+    private fun setInitialLanguage() {
+        val currentLang = getCurrentAppLang()
+        setAppLang(currentLang)
+    }
+
+    private fun getCurrentAppLang(): String {
+        return when (SharedPreferencesRepository.languageType) {
+            0 -> "ua"
+            1 -> "en"
+            else -> {
+                val defaultLang = "ua"
+                SharedPreferencesRepository.languageType =  0
+                defaultLang
+            }
+        }
+    }
+
+    private fun setAppLang(lang: String) {
+        val locale = when (lang) {
+            "ua" -> Locale("uk", "UA")
+            "en" -> Locale("en", "US")
+            else -> Locale("uk", "UA")
+        }
+
+        Locale.setDefault(locale)
+        val resources = resources
+        val config = resources.configuration
+        config.setLocale(locale)
+        config.setLayoutDirection(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
+    fun changeAppLanguage() {
+        val currentLang = getCurrentAppLang()
+        setAppLang(currentLang)
+        val intent = packageManager.getLaunchIntentForPackage(packageName)
+        intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     companion object {

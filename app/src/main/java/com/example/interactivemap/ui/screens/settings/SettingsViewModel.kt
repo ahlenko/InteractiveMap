@@ -14,6 +14,7 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
+import com.example.interactivemap.ui.translations.Translation
 import com.maxkeppeler.sheets.list.models.ListOption
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -62,10 +63,17 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
 
 
     fun onLanguageChanged(option: ListOption) {
+        var langChanged = false
+        if ( _languageSelected.value != option.titleText){
+            langChanged = true
+        }
+
         _languageSelected.value = option.titleText
         SharedPreferencesRepository.languageType = _languageList
             .value.indexOfFirst { it.titleText == option.titleText }
         insertListOptions()
+
+        if (langChanged) getApplication<ThisApplication>().changeAppLanguage()
     }
 
     fun openUrlInBrowser() {

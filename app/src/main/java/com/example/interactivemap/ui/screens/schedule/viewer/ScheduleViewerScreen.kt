@@ -46,6 +46,7 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReSh
 import com.example.interactivemap.ui.resource.schedule.ScheduleContainer
 import com.example.interactivemap.ui.screens.welcome.SplashScreenViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Translation
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @RequiresApi(Build.VERSION_CODES.O)
@@ -128,7 +129,7 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
                             Spacer(modifier = Modifier.height(55.dp))
 
                             Text(
-                                text = stringResource(id = R.string.schedule_not_exist),
+                                text = Translation.scheduleNotExist,
                                 Modifier.fillMaxWidth(),
                                 style = MaterialTheme.typography.headlineLarge
                                     .copy(
