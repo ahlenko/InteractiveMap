@@ -32,6 +32,7 @@ import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_
 import com.example.interactivemap.logic.service.LocationBroadcastData.BROADCAST_LOCATION_PROVIDERS_STATE_GPS_ON
 import com.example.interactivemap.logic.service.LocationServiceConstants.ACTION
 import com.example.interactivemap.logic.util.GoogleMapUtil
+import com.example.interactivemap.ui.translations.Tr
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -77,7 +78,7 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
 
     var navigationEventDialogShown by mutableStateOf(false)
 
-    private var _navigationEventDialogData = MutableStateFlow(NavigationEventModel(0,0,0))
+    private var _navigationEventDialogData = MutableStateFlow(NavigationEventModel("","",""))
     val navigationEventDialogData = _navigationEventDialogData.asStateFlow()
     private var _navigationEventType = 0
 
@@ -188,7 +189,7 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
         if (activateGPSDialogShown) dialogGPSBeShown = false
         _movementState.value = true
         if (_movedCameraPosition.value == Constants.baseCameraPosition && broadcastReceiver != null) { _movementState.value = false
-            Toast.makeText(getApplication(), getApplication<ThisApplication>().getText(R.string.location_not_found), Toast.LENGTH_SHORT).show()
+            Toast.makeText(getApplication(), Tr.location_not_found, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -299,7 +300,7 @@ class NavigationViewModel(application: Application): AndroidViewModel(applicatio
     }
 
     fun showCreateRoadError() {
-        Toast.makeText(getApplication(), R.string.points_to_create_road_not_selected, Toast.LENGTH_SHORT).show()
+        Toast.makeText(getApplication(), Tr.points_to_create_road_not_selected, Toast.LENGTH_SHORT).show()
     }
 
     fun updateSelectablePoint(isEndPointSelectable: Boolean) {

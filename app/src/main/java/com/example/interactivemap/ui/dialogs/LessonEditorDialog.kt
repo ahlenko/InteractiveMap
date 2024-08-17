@@ -39,7 +39,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
@@ -55,6 +54,7 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.screens.schedule.editor.ScheduleEditorViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -102,8 +102,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             if (searchResults.isEmpty()){
-                                item { SearchResultEmpty(value = stringResource(
-                                    id = if (entered.isEmpty()) R.string.search_request else R.string.search_no_result) )
+                                item { SearchResultEmpty(value = if (entered.isEmpty()) Tr.search_request else Tr.search_no_result)
                                 }
                             }
                             items(searchResults.size) {
@@ -148,7 +147,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Text(
-                        text = stringResource(id = R.string.lesson_data),
+                        text = Tr.lesson_data,
                         style = MaterialTheme.typography.headlineMedium
                     )
 
@@ -162,7 +161,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Row (modifier = Modifier.weight(1f)){
-                            Text(text = stringResource(R.string.lesson),
+                            Text(text = Tr.lesson,
                                 style = MaterialTheme.typography.headlineSmall
                                     .copy(color = MaterialTheme.colorScheme.onPrimary)
                             )
@@ -196,7 +195,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Row (modifier = Modifier.weight(1f)){
-                            Text(text = stringResource(R.string.tutor_),
+                            Text(text = Tr.tutor_,
                                 style = MaterialTheme.typography.headlineSmall
                                     .copy(color = MaterialTheme.colorScheme.onPrimary)
                             )
@@ -226,7 +225,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                     Spacer(modifier = Modifier.height(6.dp))
 
                     Text(
-                        text = stringResource(id = R.string.place_data),
+                        text = Tr.place_data,
                         style = MaterialTheme.typography.headlineMedium
                     )
 
@@ -241,7 +240,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                     ) {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.lider),
+                            text = Tr.lider,
                             style = MaterialTheme.typography.headlineSmall
                                 .copy(color = MaterialTheme.colorScheme.onPrimary)
                         )
@@ -267,7 +266,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                     ) {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.kab),
+                            text = Tr.kab,
                             style = MaterialTheme.typography.headlineSmall
                                 .copy(color = MaterialTheme.colorScheme.onPrimary)
                         )
@@ -293,7 +292,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                     ) {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.link),
+                            text = Tr.link,
                             style = MaterialTheme.typography.headlineSmall
                                 .copy(color = MaterialTheme.colorScheme.onPrimary)
                         )
@@ -374,7 +373,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                                 imageResourceId = R.drawable.ic_save,
                                 iconColor = MaterialTheme.colorScheme.background,
                                 buttonColor = MaterialTheme.colorScheme.onBackground,
-                                text = stringResource(id = R.string.save), radius = borderRadius,
+                                text = Tr.save, radius = borderRadius,
                                 textStyle = MaterialTheme.typography.headlineLarge.copy(
                                     color = MaterialTheme.colorScheme.background,
                                     fontWeight = FontWeight.Light
@@ -395,7 +394,7 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                                 } else {
                                     Toast.makeText(
                                         context,
-                                        R.string.all_fields_mast_be_filled,
+                                        Tr.all_fields_mast_be_filled,
                                         Toast.LENGTH_LONG
                                     ).show()
                                 }

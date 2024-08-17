@@ -18,12 +18,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @Composable
 fun LoadingDialog(){
@@ -38,12 +38,12 @@ fun LoadingDialog(){
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally ){
 
-                    Text(text = stringResource(id = R.string.loading), style = MaterialTheme.typography
+                    Text(text = Tr.loading, style = MaterialTheme.typography
                         .headlineMedium.copy(color = MaterialTheme.colorScheme.onPrimary))
 
                     Spacer(modifier = Modifier.height(18.dp))
 
-                    Text(text = stringResource(id = R.string.pleaseWaiting), style = MaterialTheme.typography
+                    Text(text = Tr.pleaseWaiting, style = MaterialTheme.typography
                         .headlineMedium.copy(color = MaterialTheme.colorScheme.onPrimary))
 
                     Spacer(modifier = Modifier.height(18.dp))

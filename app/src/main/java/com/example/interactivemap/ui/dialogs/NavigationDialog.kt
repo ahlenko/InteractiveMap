@@ -16,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -46,12 +45,12 @@ fun NavigationDialog(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally ){
 
-                    Text(text = stringResource(id = textRes.value.title), style = MaterialTheme.typography
+                    Text(text = textRes.value.title, style = MaterialTheme.typography
                         .headlineMedium.copy(color = MaterialTheme.colorScheme.onPrimary))
 
                     Spacer(modifier = Modifier.height(18.dp))
 
-                    Text(text = stringResource(id =  textRes.value.description), textAlign = TextAlign.Center,
+                    Text(text = textRes.value.description, textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.headlineSmall.copy(color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f)),
                         modifier = Modifier.fillMaxWidth().padding(horizontal = 5.dp)
                     )
@@ -65,7 +64,7 @@ fun NavigationDialog(
                             (borderRadius, MaterialTheme.colorScheme.onTertiaryContainer))
                     ) {
                         DefaultButton(buttonColor =  MaterialTheme.colorScheme.onBackground,
-                            textString = stringResource(id =  textRes.value.buttonText), borderRadius,
+                            textString = textRes.value.buttonText, borderRadius,
                             textStyle = MaterialTheme.typography.labelMedium.copy(
                                 color = MaterialTheme.colorScheme.background, fontWeight = FontWeight.Light)
                         ) { onConfirm() }

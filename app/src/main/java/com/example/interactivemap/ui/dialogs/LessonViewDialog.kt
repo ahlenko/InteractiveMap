@@ -27,7 +27,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -40,6 +39,7 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.screens.schedule.DefScheduleViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -81,7 +81,7 @@ fun LessonViewDialog(lessonData: LessonData, lessonDescription: String, viewMode
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Text(
-                        text = stringResource(id = R.string.lesson_data),
+                        text = Tr.lesson_data,
                         style = MaterialTheme.typography.headlineMedium
                     )
 
@@ -96,7 +96,7 @@ fun LessonViewDialog(lessonData: LessonData, lessonDescription: String, viewMode
                     ) {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.lesson),
+                            text = Tr.lesson,
                             style = MaterialTheme.typography.headlineSmall
                                 .copy(color = MaterialTheme.colorScheme.onPrimary)
                         )
@@ -124,7 +124,7 @@ fun LessonViewDialog(lessonData: LessonData, lessonDescription: String, viewMode
                     ) {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.tutor_),
+                            text =Tr.tutor_,
                             style = MaterialTheme.typography.headlineSmall
                                 .copy(color = MaterialTheme.colorScheme.onPrimary)
                         )
@@ -146,7 +146,7 @@ fun LessonViewDialog(lessonData: LessonData, lessonDescription: String, viewMode
                     Spacer(modifier = Modifier.height(6.dp))
 
                     Text(
-                        text = stringResource(id = R.string.place_data),
+                        text = Tr.place_data,
                         style = MaterialTheme.typography.headlineMedium
                     )
 
@@ -161,7 +161,7 @@ fun LessonViewDialog(lessonData: LessonData, lessonDescription: String, viewMode
                     ) {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.lider),
+                            text = Tr.lider,
                             style = MaterialTheme.typography.headlineSmall
                                 .copy(color = MaterialTheme.colorScheme.onPrimary)
                         )
@@ -188,7 +188,7 @@ fun LessonViewDialog(lessonData: LessonData, lessonDescription: String, viewMode
                     ) {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.kab),
+                            text = Tr.kab,
                             style = MaterialTheme.typography.headlineSmall
                                 .copy(color = MaterialTheme.colorScheme.onPrimary)
                         )
@@ -216,7 +216,7 @@ fun LessonViewDialog(lessonData: LessonData, lessonDescription: String, viewMode
                     ) {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = stringResource(R.string.link),
+                            text = Tr.link,
                             style = MaterialTheme.typography.headlineSmall
                                 .copy(color = MaterialTheme.colorScheme.onPrimary)
                         )
@@ -251,7 +251,7 @@ fun LessonViewDialog(lessonData: LessonData, lessonDescription: String, viewMode
                     ) {
                         DefaultButton(
                             buttonColor = MaterialTheme.colorScheme.onBackground,
-                            textString = stringResource(id = R.string.close_viewer), borderRadius,
+                            textString = Tr.close_viewer, borderRadius,
                             textStyle = MaterialTheme.typography.headlineLarge.copy(
                                 color = MaterialTheme.colorScheme.background,
                                 fontWeight = FontWeight.Light

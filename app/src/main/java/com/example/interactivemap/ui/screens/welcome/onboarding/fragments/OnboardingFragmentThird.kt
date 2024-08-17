@@ -20,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,6 +30,7 @@ import com.example.interactivemap.ui.resource.button.DefaultButton
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -47,7 +47,7 @@ fun OnboardingFragmentThird(onClick: () -> Unit){ val borderRadius = 15.dp
                     modifier = Modifier.padding(12.dp).padding(top = 12.dp).fillMaxWidth()
                 ) {
                     Text(
-                        stringResource(id = R.string.distant), modifier = Modifier,
+                        Tr.distant, modifier = Modifier,
                         style = MaterialTheme.typography.headlineLarge.copy(
                             color = MaterialTheme.colorScheme.onBackground,
                             fontWeight = FontWeight.Light, textAlign = TextAlign.Left
@@ -142,7 +142,7 @@ fun OnboardingFragmentThird(onClick: () -> Unit){ val borderRadius = 15.dp
                     verticalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Text(
-                        stringResource(id = R.string.distant_description),
+                        Tr.distant_description,
                         modifier = Modifier.padding(horizontal = 20.dp),
                         style = MaterialTheme.typography.headlineMedium.copy(
                             color = MaterialTheme.colorScheme.onBackground,
@@ -151,7 +151,7 @@ fun OnboardingFragmentThird(onClick: () -> Unit){ val borderRadius = 15.dp
                     )
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        stringResource(id = R.string.distant_description_full),
+                        Tr.distant_description_full,
                         modifier = Modifier.padding(horizontal = 20.dp),
                         style = MaterialTheme.typography.titleSmall.copy(
                             color = MaterialTheme.colorScheme.onPrimary,
@@ -173,7 +173,7 @@ fun OnboardingFragmentThird(onClick: () -> Unit){ val borderRadius = 15.dp
                     ) {
                         DefaultButton(
                             buttonColor = MaterialTheme.colorScheme.onBackground,
-                            textString = stringResource(id = R.string.go_to_application),
+                            textString = Tr.go_to_application,
                             borderRadius,
                             textStyle = MaterialTheme.typography.headlineLarge.copy(
                                 color = MaterialTheme.colorScheme.background,

@@ -17,7 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -30,7 +29,7 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReSh
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes: Int, reverseColors: Boolean,
+fun ConfirmationDialog(titleRes: String, textRes: String, dismissRes: String, confirmRes: String, reverseColors: Boolean,
                        onDismiss: () -> Unit, onConfirm: () -> Unit){
     val borderRadius = 15.dp
 
@@ -45,12 +44,12 @@ fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes:
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally ){
 
-                    Text(text = stringResource(id = titleRes), style = MaterialTheme.typography
+                    Text(text =  titleRes, style = MaterialTheme.typography
                         .headlineMedium.copy(color = MaterialTheme.colorScheme.onPrimary))
 
                     Spacer(modifier = Modifier.height(18.dp))
 
-                    Text(text = stringResource(id = textRes), textAlign = TextAlign.Center,
+                    Text(text = textRes, textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.headlineSmall.copy(color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f)),
                         modifier = Modifier.fillMaxWidth().padding(horizontal = 5.dp)
                     )
@@ -69,7 +68,7 @@ fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes:
                                 (borderRadius, MaterialTheme.colorScheme.onTertiaryContainer))
                         ) {
                             DefaultButton(buttonColor = if (reverseColors) MaterialTheme.colorScheme.onError else MaterialTheme.colorScheme.onBackground,
-                                textString = stringResource(id = dismissRes), borderRadius,
+                                textString =  dismissRes, borderRadius,
                                 textStyle = MaterialTheme.typography.labelMedium.copy(
                                     color = MaterialTheme.colorScheme.background, fontWeight = FontWeight.Light)
                             ) { onDismiss() }
@@ -86,7 +85,7 @@ fun ConfirmationDialog(titleRes: Int, textRes: Int, dismissRes: Int, confirmRes:
                                 (borderRadius, MaterialTheme.colorScheme.onTertiaryContainer))
                         ) {
                             DefaultButton(buttonColor = if (reverseColors) MaterialTheme.colorScheme.onBackground else MaterialTheme.colorScheme.onError,
-                                textString = stringResource(id = confirmRes), borderRadius,
+                                textString =  confirmRes, borderRadius,
                                 textStyle = MaterialTheme.typography.labelMedium.copy(
                                     color = MaterialTheme.colorScheme.background, fontWeight = FontWeight.Light)
                             ) { onConfirm() }

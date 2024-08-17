@@ -24,10 +24,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -44,6 +44,7 @@ import com.example.interactivemap.ui.resource.header.DefaultHeader
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
 import com.maxkeppeler.sheets.list.ListDialog
 import com.maxkeppeler.sheets.list.models.ListSelection
@@ -106,7 +107,7 @@ fun SettingsScreen(navHostController: NavHostController,
                                 (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
                         )
                 ) {
-                    DefaultHeader(titleId = R.string.settings, leftImgId = R.drawable.ic_prew_page,
+                    DefaultHeader(titleId = Tr.settings, leftImgId = R.drawable.ic_prew_page,
                         rightImgId = R.drawable.ic_schedule_mini, onClickLeft = {
                             navHostController.navigate(
                                 if (!settingsViewModel.onlineEducation)
@@ -121,7 +122,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 Spacer(modifier = Modifier.height(15.dp))
 
                 Text(
-                    text = stringResource(id = R.string.general), Modifier.fillMaxWidth(),
+                    text = Tr.general, Modifier.fillMaxWidth(),
                     style = MaterialTheme.typography.headlineMedium
                         .copy(
                             color = MaterialTheme.colorScheme.onPrimary,
@@ -141,7 +142,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 ) {
                     Box(modifier = Modifier.weight(1f)) {
                         IconTextRow(
-                            imageId = R.drawable.ic_language, textId = R.string.language,
+                            imageId = R.drawable.ic_language, textId = Tr.language,
                             tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
@@ -160,7 +161,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 ) {
                     Box(modifier = Modifier.weight(1f)) {
                         IconTextRow(
-                            imageId = R.drawable.ic_theme, textId = R.string.dark_theme,
+                            imageId = R.drawable.ic_theme, textId = Tr.dark_theme,
                             tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
@@ -182,7 +183,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 ) {
                     Box(modifier = Modifier.weight(1f)) {
                         IconTextRow(
-                            imageId = R.drawable.ic_distant, textId = R.string.online_education,
+                            imageId = R.drawable.ic_distant, textId = Tr.online_education,
                             tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
@@ -202,7 +203,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 ) {
                     Box(modifier = Modifier.weight(1f)) {
                         IconTextRow(
-                            imageId = R.drawable.ic_demo, textId = R.string.view_demo,
+                            imageId = R.drawable.ic_demo, textId = Tr.view_demo,
                             tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
@@ -217,7 +218,7 @@ fun SettingsScreen(navHostController: NavHostController,
 
                 Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                     Text(
-                        text = stringResource(id = R.string.to_main_page),
+                        text = Tr.to_main_page,
                         Modifier.clickable {
                             settingsViewModel.openUrlInBrowser()
                         },
@@ -232,7 +233,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Text(
-                    text = stringResource(id = R.string.version), Modifier.fillMaxWidth(),
+                    text = Tr.version, Modifier.fillMaxWidth(),
                     style = MaterialTheme.typography.headlineSmall
                         .copy(
                             color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.6f),

@@ -22,7 +22,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -40,6 +39,7 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.resource.schedule.ScheduleContainer
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @RequiresApi(Build.VERSION_CODES.O)
@@ -57,15 +57,15 @@ fun ScheduleEditorScreen(navHostController: NavHostController,
     { scheduleEditorViewModel.showSheet = false } }
 
     if (scheduleEditorViewModel.showReserveInfo) { ConfirmationDialog(
-        titleRes = R.string.info, textRes = R.string.onEditDismiss,
-        dismissRes = R.string.dismiss, confirmRes = R.string.exit, reverseColors = false,
+        titleRes = Tr.info, textRes = Tr.onEditDismiss,
+        dismissRes = Tr.dismiss, confirmRes = Tr.exit, reverseColors = false,
         onDismiss = { scheduleEditorViewModel.showReserveInfo = false })
     { scheduleEditorViewModel.showReserveInfo = false
         scheduleEditorViewModel.onMoveOut() }}
 
     if (scheduleEditorViewModel.showReserveCopy) { ConfirmationDialog(
-        titleRes = R.string.info, textRes = R.string.onFindReserveCopy,
-        dismissRes = R.string.restore, confirmRes = R.string.delete, reverseColors = false,
+        titleRes = Tr.info, textRes = Tr.onFindReserveCopy,
+        dismissRes = Tr.restore, confirmRes = Tr.delete, reverseColors = false,
         onDismiss = { scheduleEditorViewModel.showReserveCopy = false
             scheduleEditorViewModel.onRecoverAgree() })
     { scheduleEditorViewModel.showReserveCopy = false
@@ -73,8 +73,8 @@ fun ScheduleEditorScreen(navHostController: NavHostController,
 
 
     if (scheduleEditorViewModel.showDeleteAgree) { ConfirmationDialog(
-        titleRes = R.string.confirmation, textRes = R.string.onDeleteLesson,
-        dismissRes = R.string.dismiss, confirmRes = R.string.delete, reverseColors = false,
+        titleRes = Tr.confirmation, textRes = Tr.onDeleteLesson,
+        dismissRes = Tr.dismiss, confirmRes = Tr.delete, reverseColors = false,
         onDismiss = { scheduleEditorViewModel.showDeleteAgree = false })
     { scheduleEditorViewModel.showDeleteAgree = false
         scheduleEditorViewModel.onDeleteElement() }}
@@ -98,7 +98,7 @@ fun ScheduleEditorScreen(navHostController: NavHostController,
                                 (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
                         )
                 ) {
-                    DefaultHeader(titleId = R.string.schedule, leftImgId = R.drawable.ic_prew_page,
+                    DefaultHeader(titleId = Tr.schedule, leftImgId = R.drawable.ic_prew_page,
                         rightImgId = R.drawable.ic_settings, onClickLeft = {
                             navHostController.navigate(ScheduleViewer.route) { popUpTo(0) }
                         }, onClickRight = {
@@ -110,13 +110,12 @@ fun ScheduleEditorScreen(navHostController: NavHostController,
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = stringResource(
-                        id = when (scheduleEditorViewModel.scheduleType) {
-                            0 -> R.string.create
-                            1 -> R.string.edit
-                            else -> R.string.recover
+                    text = when (scheduleEditorViewModel.scheduleType) {
+                            0 -> Tr.create
+                            1 -> Tr.edit
+                            else -> Tr.recover
                         }
-                    ), Modifier.fillMaxWidth(),
+                    , Modifier.fillMaxWidth(),
                     style = MaterialTheme.typography.headlineMedium
                         .copy(
                             color = MaterialTheme.colorScheme.onPrimary,

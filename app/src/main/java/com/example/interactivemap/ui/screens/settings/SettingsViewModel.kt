@@ -1,20 +1,15 @@
 package com.example.interactivemap.ui.screens.settings
 
 import android.app.Application
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
-import com.example.interactivemap.ui.translations.Translation
 import com.maxkeppeler.sheets.list.models.ListOption
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

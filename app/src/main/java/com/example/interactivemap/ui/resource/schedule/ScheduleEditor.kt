@@ -17,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
@@ -29,6 +28,7 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReSh
 import com.example.interactivemap.ui.screens.schedule.editor.ScheduleEditorViewModel
 import com.example.interactivemap.ui.screens.schedule.viewer.ScheduleViewerViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @Composable
 fun ScheduleEditor(viewerViewModel: ScheduleEditorViewModel){
@@ -64,7 +64,7 @@ fun ScheduleEditor(viewerViewModel: ScheduleEditorViewModel){
                 ){
                     TextIconButton(
                         buttonColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                        text = stringResource(id = R.string.signifier), radius = borderRadius,
+                        text = Tr.signifier, radius = borderRadius,
                         imageResourceId = R.drawable.ic_next_mini,
                         iconColor = MaterialTheme.colorScheme.onBackground,
                         textStyle = MaterialTheme.typography.headlineLarge.copy(
@@ -83,7 +83,7 @@ fun ScheduleEditor(viewerViewModel: ScheduleEditorViewModel){
                 ){
                     TextIconButton(
                         buttonColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                        text = stringResource(id = R.string.change), radius = borderRadius,
+                        text = Tr.change, radius = borderRadius,
                         imageResourceId = R.drawable.ic_edit,
                         iconColor = MaterialTheme.colorScheme.onBackground,
                         textStyle = MaterialTheme.typography.headlineLarge.copy(
@@ -102,11 +102,11 @@ fun ScheduleEditor(viewerViewModel: ScheduleEditorViewModel){
             ){
                 TextIconButton(
                     buttonColor = MaterialTheme.colorScheme.onBackground,
-                    text = stringResource(when (viewerViewModel.scheduleType) {
-                        0 -> R.string.save_schedule
-                        1 -> R.string.save_changes
-                        else -> R.string.add_read_data
-                    }), radius = borderRadius,
+                    text = when (viewerViewModel.scheduleType) {
+                        0 -> Tr.save_schedule
+                        1 -> Tr.save_changes
+                        else -> Tr.add_read_data
+                    }, radius = borderRadius,
                     imageResourceId = R.drawable.ic_save,
                     iconColor = MaterialTheme.colorScheme.background,
                     textStyle = MaterialTheme.typography.headlineLarge.copy(

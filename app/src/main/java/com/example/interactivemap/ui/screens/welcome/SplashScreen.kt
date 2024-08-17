@@ -28,7 +28,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,6 +42,7 @@ import com.example.interactivemap.logic.navigation.ScheduleEditor
 import com.example.interactivemap.logic.navigation.ScheduleViewer
 import com.example.interactivemap.ui.dialogs.ConfirmationDialog
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.MultiplePermissionsState
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
@@ -69,17 +69,17 @@ fun SplashScreen(navHostController: NavHostController){
                     Icon(painter = painterResource(id = R.drawable.ic_logo),
                         tint = MaterialTheme.colorScheme.onBackground,
                         modifier = Modifier.size(175.dp), contentDescription = null)
-                    Text(stringResource(id = R.string.un_name),
+                    Text(Tr.un_name,
                         style = MaterialTheme.typography.titleLarge.copy(
                             MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Normal),
                         modifier = Modifier.padding(top = 10.dp))
-                    Text(stringResource(id = R.string.app_description),
+                    Text(Tr.app_description,
                         style = MaterialTheme.typography.titleMedium.copy(
                             MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Normal),
                         modifier = Modifier.padding(top = 20.dp))
                 }
 
-                Text(stringResource(id = R.string.un_site),
+                Text(Tr.un_site,
                     style = MaterialTheme.typography.titleMedium.copy(
                         MaterialTheme.colorScheme.onBackground, fontWeight = FontWeight.Normal),
                     modifier = Modifier.padding(vertical = 10.dp))
@@ -106,8 +106,8 @@ fun NavigateToNextScreen(navController: NavHostController,
     )
 
     if (splashViewModel.permissionGrantedDialogShown) { ConfirmationDialog(
-        titleRes = R.string.permission, textRes = R.string.permission_description,
-        dismissRes = R.string.permission_denied, confirmRes = if (!afterGrant) R.string.permission_grant else R.string.permission_check,
+        titleRes = Tr.permission, textRes = Tr.permission_description,
+        dismissRes = Tr.permission_denied, confirmRes = if (!afterGrant) Tr.permission_grant else Tr.permission_check,
         reverseColors = true,
         onDismiss = {
             splashViewModel.permissionGrantedDialogShown = false

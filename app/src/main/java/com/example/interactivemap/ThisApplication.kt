@@ -13,7 +13,7 @@ import com.example.interactivemap.logic.repository.DescriptorRepository
 import com.example.interactivemap.logic.service.LocationForegroundService
 import com.example.interactivemap.logic.util.SharedPreferencesHelper.loadSettingsHelper
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
-import com.example.interactivemap.ui.translations.Translation
+import com.example.interactivemap.ui.translations.Tr
 import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapsSdkInitializedCallback
 import com.google.android.gms.maps.model.BitmapDescriptor
@@ -39,7 +39,7 @@ class ThisApplication: Application(), OnMapsSdkInitializedCallback{
     override fun onCreate() { super.onCreate()
         MapsInitializer.initialize(applicationContext, MapsInitializer.Renderer.LATEST, this)
         AndroidThreeTen.init(this)
-        Translation.initialize(this)
+        Tr.initialize(this)
 
         FirebaseApp.initializeApp(this)
         loadSettingsHelper(this, this.packageName)

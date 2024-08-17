@@ -15,7 +15,6 @@
     <string name="schedule_description_full">\t\t\tCreating a schedule within the app ensures an easy transition to building a route to the room where the class is scheduled. \t\t\tSaving and restoring the schedule allows easy transfer of the schedule between users by saving and reading data into a structured JSON file. \t\t\tThe schedule corresponding to the student\'s group can also be found and downloaded from the educational institution\'s website.</string>
     <string name="schedule_description">Creating and editing the student/teacher schedule</string>
     <string name="schedule_lessons">Class Schedule</string>
-
     <string name="settings">Settings</string>
     <string name="general">General</string>
     <string name="language">Language</string>
@@ -24,24 +23,19 @@
     <string name="view_demo">View demo</string>
     <string name="to_main_page">To main page</string>
     <string name="version">Version: 1.0.37 (93)</string>
-
     <string name="save">Save</string>
     <string name="load">Restore</string>
     <string name="create_schedule">Create schedule</string>
     <string name="edit_schedule">Edit schedule</string>
-
     <string name="change">Change</string>
     <string name="signifier">Signifier</string>
     <string name="save_schedule">Save schedule</string>
     <string name="save_changes">Apply changes</string>
     <string name="add_read_data">Add read data</string>
-
     <string name="create">Create</string>
     <string name="edit">Edit</string>
     <string name="recover">Data recovery</string>
-
     <string name="dismiss">Cancel</string>
-
     <string name="lesson_data">Class data</string>
     <string name="place_data">Location</string>
     <string name="lesson">Subject</string>
@@ -51,43 +45,48 @@
     <string name="link">Link</string>
     <string name="specified_lesson">Class</string>
     <string name="close_viewer">Close viewer</string>
-
     <string name="confirm">Apply</string>
     <string name="close">Hide</string>
     <string name="week">-th Week,</string>
-
     <string name="onEditDismiss">Exiting edit mode without saving changes will save the entered data to a backup database. You can restore them during the next schedule editing.</string>
     <string name="onFindReserveCopy">A backup schedule copy has been found. You can restore previously made schedule changes or start editing from scratch by deleting them.</string>
     <string name="onDeleteLesson">Do you really want to delete this lecture from the schedule? Confirm or cancel this action:</string>
-
     <string name="confirmation">Confirmation</string>
     <string name="info">Information</string>
     <string name="exit">Exit</string>
     <string name="restore">Restore</string>
     <string name="delete">Delete</string>
-
     <string name="permission">Make sure you have granted location access permission</string>
     <string name="permission_description">To continue working, grant the app permission to access location services</string>
     <string name="permission_grant">Grant</string>
     <string name="permission_denied">Deny</string>
     <string name="permission_check">Check</string>
-
     <string name="location_not_found">Location not recognized yet, please wait</string>
-
     <string name="sk">SC</string>
     <string name="s">S</string>
     <string name="n">N</string>
-
     <string name="save_success">Schedule saved in the documents folder</string>
     <string name="save_file_error">Error saving schedule</string>
     <string name="translation_error">File decoding error</string>
-
     <string name="schedule">Schedule</string>
     <string name="schedule_not_exist">Schedule not created yet</string>
     <string name="schedule_not_exist_text">After creating or restoring, the student/teacher schedule will be displayed on this page</string>
     <string name="schedule_not_exist_description">To simplify route building on the university\'s interactive map, it is recommended to create or restore the schedule from a .json file</string>
+    <string name="default_language">Ukrainian</string>    <string name="tutor">Teacher</string>
+    <string name="search_request">Enter search query…</string>
+    <string name="search_no_result">No results found</string>
+    <string name="loading">Loading map</string>
+    <string name="pleaseWaiting">Please wait…</string>
+    <string name="all_fields_mast_be_filled">All mandatory fields must be filled</string>
+    <string name="find_road">Find road >></string>
+    <string name="start_point">Start point</string>
+    <string name="end_point">End point</string>
+    <string name="select_point">Select point</string>
+    <string name="your_location">Your location</string>
+    <string name="confirm_it">Confirm</string>
+    <string name="points_to_create_road_not_selected">Points to create the road are not selected</string>
 
-    <string name="default_language">Ukrainian</string>
+
     <string-array name="language_variant">
         <item>Ukrainian</item>
         <item>English</item>
@@ -112,19 +111,4 @@
         <item>numerator</item>
         <item>denominator</item>
     </string-array>
-
-    <string name="tutor">Teacher</string>
-    <string name="search_request">Enter search query…</string>
-    <string name="search_no_result">No results found</string>
-    <string name="loading">Loading map</string>
-    <string name="pleaseWaiting">Please wait…</string>
-    <string name="all_fields_mast_be_filled">All mandatory fields must be filled</string>
-
-    <string name="find_road">Find road >></string>
-    <string name="start_point">Start point</string>
-    <string name="end_point">End point</string>
-    <string name="select_point">Select point</string>
-    <string name="your_location">Your location</string>
-    <string name="confirm_it">Confirm</string>
-    <string name="points_to_create_road_not_selected">Points to create the road are not selected</string>
 </resources>

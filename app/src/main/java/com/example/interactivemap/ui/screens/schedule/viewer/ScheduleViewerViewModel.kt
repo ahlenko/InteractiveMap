@@ -26,6 +26,7 @@ import com.example.interactivemap.logic.util.DateUtil.getWeeksFromStartOfSchoolY
 import com.example.interactivemap.logic.util.JSONLoadSaveHelper
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.screens.schedule.DefScheduleViewModel
+import com.example.interactivemap.ui.translations.Tr
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -68,7 +69,7 @@ class ScheduleViewerViewModel(application: Application, override var dayOfWeek: 
         val calendar = Calendar.getInstance()
         val weeksFromStartOfSchoolYear = getWeeksFromStartOfSchoolYear()
         val delType = weeksFromStartOfSchoolYear % 2
-        dayDescription = "$weeksFromStartOfSchoolYear" + getApplication<Application>().resources.getString(R.string.week) +
+        dayDescription = "$weeksFromStartOfSchoolYear" + Tr.week +
                 if(delType.toInt() == 0) _weekTypesArray[0] else _weekTypesArray[1]
         currentDay = calendar.get(Calendar.DAY_OF_WEEK) - 1
         this.dayOfWeek.value = _dayArray[currentDay]
@@ -96,18 +97,15 @@ class ScheduleViewerViewModel(application: Application, override var dayOfWeek: 
         if (schedule.isNotEmpty()){
             SharedPreferencesRepository.reserveSchedule = schedule
             goToEditScreen(false)
-        } else Toast.makeText(getApplication(), getApplication<Application>()
-            .resources.getText(R.string.translation_error), Toast.LENGTH_LONG).show()
+        } else Toast.makeText(getApplication(), Tr.translation_error, Toast.LENGTH_LONG).show()
     }
 
     fun onSaveJsonClick(){
         viewModelScope.launch {
             if (SharedPreferencesRepository.mainScheduleSTR != null){
                 JSONLoadSaveHelper.writeJsonToFileInDocumentsDirectory(getApplication(), SharedPreferencesRepository.mainScheduleSTR!!)
-                Toast.makeText(getApplication(), getApplication<Application>()
-                    .resources.getText(R.string.save_success), Toast.LENGTH_LONG).show()
-            } else Toast.makeText(getApplication(), getApplication<Application>()
-                .resources.getText(R.string.save_file_error), Toast.LENGTH_LONG).show()
+                Toast.makeText(getApplication(), Tr.save_success, Toast.LENGTH_LONG).show()
+            } else Toast.makeText(getApplication(), Tr.save_file_error, Toast.LENGTH_LONG).show()
         }
     }
 

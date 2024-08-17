@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @Composable
 fun TextIconButton (text: String, textStyle: TextStyle, buttonColor: Color, imageResourceId: Int,
@@ -55,7 +55,7 @@ fun TextIconButtonPreview(){
     InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         TextIconButton(
             buttonColor = MaterialTheme.colorScheme.onBackground,
-            text = stringResource(id = R.string.skip), radius = 50.dp,
+            text = Tr.skip, radius = 50.dp,
             imageResourceId = R.drawable.ic_demo,
             iconColor = MaterialTheme.colorScheme.background,
             textStyle = MaterialTheme.typography.titleLarge.copy(

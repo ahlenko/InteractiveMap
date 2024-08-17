@@ -20,7 +20,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
@@ -28,6 +27,7 @@ import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.model.datamodel.Lesson
 import com.example.interactivemap.ui.screens.schedule.DefScheduleViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
@@ -77,7 +77,7 @@ fun ScheduleGroupRow (lesson: Lesson, viewModel: DefScheduleViewModel){
                         }){
                         ScheduleRow (lesson.lessonData[0].name, tutor =
                             if (lesson.lessonData[0].tutor != "") {
-                                stringResource(id = R.string.tutor) + ": " + lesson.lessonData[0].tutor
+                                Tr.tutor_ + ": " + lesson.lessonData[0].tutor
                             } else "",
                             if (lesson.lessonData[0].link != "") {
                                 if (viewModel.onlineEducation.value) "Дистанційне заняття"
@@ -105,7 +105,7 @@ fun ScheduleGroupRow (lesson: Lesson, viewModel: DefScheduleViewModel){
                             }){
                             ScheduleRow (lesson.lessonData[1].name, tutor =
                             if (lesson.lessonData[1].tutor != "") {
-                                stringResource(id = R.string.tutor) + ": " + lesson.lessonData[1].tutor
+                                Tr.tutor_ + ": " + lesson.lessonData[1].tutor
                             } else "",
                                 if (lesson.lessonData[1].link != "") {
                                     if (viewModel.onlineEducation.value) "Дистанційне заняття"

@@ -22,7 +22,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,6 +32,7 @@ import com.example.interactivemap.ui.resource.button.IconButton
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -51,7 +51,7 @@ fun OnboardingFragmentSecond(){
                     modifier = Modifier.padding(12.dp).padding(top = 12.dp).fillMaxWidth()
                 ) {
                     Text(
-                        stringResource(id = R.string.schedule_lessons), modifier = Modifier,
+                        Tr.schedule_lessons, modifier = Modifier,
                         style = MaterialTheme.typography.headlineLarge.copy(
                             color = MaterialTheme.colorScheme.onBackground,
                             fontWeight = FontWeight.Light, textAlign = TextAlign.Left
@@ -126,7 +126,7 @@ fun OnboardingFragmentSecond(){
                     verticalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Text(
-                        stringResource(id = R.string.schedule_description),
+                        Tr.schedule_description,
                         modifier = Modifier.padding(horizontal = 20.dp),
                         style = MaterialTheme.typography.headlineMedium.copy(
                             color = MaterialTheme.colorScheme.onBackground,
@@ -135,7 +135,7 @@ fun OnboardingFragmentSecond(){
                     )
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        stringResource(id = R.string.schedule_description_full),
+                        Tr.schedule_description_full,
                         modifier = Modifier.padding(horizontal = 20.dp),
                         style = MaterialTheme.typography.titleSmall.copy(
                             color = MaterialTheme.colorScheme.onPrimary,

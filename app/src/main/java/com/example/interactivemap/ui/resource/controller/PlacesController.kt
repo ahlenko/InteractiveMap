@@ -19,13 +19,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -39,7 +39,7 @@ fun PlacesController(placeType: MutableState<Int>,  coroutineScope: CoroutineSco
                 verticalArrangement = Arrangement.SpaceEvenly,
                 horizontalAlignment = Alignment.CenterHorizontally){
 
-                Text(text = stringResource(id = R.string.sk),
+                Text(text = Tr.sk,
                     style = MaterialTheme.typography.bodyMedium.copy(
                         color = MaterialTheme.colorScheme.onBackground.copy(
                             alpha = if(placeType.value == 0) 1f else 0.5f),
@@ -53,7 +53,7 @@ fun PlacesController(placeType: MutableState<Int>,  coroutineScope: CoroutineSco
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                Text(text = stringResource(id = R.string.n),
+                Text(text = Tr.n,
                     style = MaterialTheme.typography.bodyMedium.copy(
                         color = MaterialTheme.colorScheme.onBackground.copy(
                             alpha = if(placeType.value == 1) 1f else 0.5f),
@@ -67,7 +67,7 @@ fun PlacesController(placeType: MutableState<Int>,  coroutineScope: CoroutineSco
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                Text(text = stringResource(id = R.string.s),
+                Text(text = Tr.s,
                     style = MaterialTheme.typography.bodyMedium.copy(
                         color = MaterialTheme.colorScheme.onBackground.copy(
                             alpha = if(placeType.value == 2) 1f else 0.5f),

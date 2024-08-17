@@ -32,7 +32,6 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,6 +42,7 @@ import com.example.interactivemap.logic.model.navigation.models.NavModel
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @Composable
 fun SearchHeader (leftImgId: Int, searchResult: ArrayList<NavModel>,  rightImgId: Int,
@@ -112,8 +112,8 @@ fun SearchHeader (leftImgId: Int, searchResult: ArrayList<NavModel>,  rightImgId
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             if (searchResult.isEmpty()){
-                                item { SearchResultEmpty(value = stringResource(
-                                    id = if (entered.isEmpty()) R.string.search_request else R.string.search_no_result) )
+                                item { SearchResultEmpty(value =
+                                     if (entered.isEmpty()) Tr.search_request else Tr.search_no_result)
                                 }
                             }
                             items(searchResult.size) {

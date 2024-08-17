@@ -91,7 +91,7 @@
     <string name="default_language">Українська</string>
     <string-array name="language_variant">
         <item>Українська</item>
-        <item>English</item>
+        <item>Англійська</item>
     </string-array>
 
     <string-array name="day_variant">
@@ -121,9 +121,9 @@
     <string name="pleaseWaiting">Будь-ласка зачекайте…</string>
     <string name="all_fields_mast_be_filled">Усі обовʼязкові поля мають бути заповнені</string>
 
-    <string name="find_road">Завантаження мапи</string>
-    <string name="start_point">Кінцева точка</string>
-    <string name="end_point">Знайти маршрут >></string>
+    <string name="find_road">Знайти маршрут >></string>
+    <string name="start_point">Початкова точка</string>
+    <string name="end_point">Кінцева точка</string>
 
     <string name="select_point">Оберіть точку</string>
     <string name="your_location">Ваше місцезнаходження</string>

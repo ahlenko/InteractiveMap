@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,6 +33,7 @@ import com.example.interactivemap.logic.util.SharedPreferencesRepository
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @Composable
 fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCenter: ArrayList<() -> Unit>, myLocationEnable: Boolean, isEndPointSelectable:Boolean){
@@ -77,7 +77,7 @@ fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCente
                     verticalArrangement = Arrangement.SpaceEvenly,
                     horizontalAlignment = Alignment.CenterHorizontally){
 
-                    Text(modifier = Modifier.fillMaxWidth(), text = stringResource(R.string.start_point),
+                    Text(modifier = Modifier.fillMaxWidth(), text = Tr.start_point,
                         style = MaterialTheme.typography.headlineMedium.copy(
                             color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
                             textAlign = TextAlign.Left, fontWeight = FontWeight.Medium
@@ -122,7 +122,7 @@ fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCente
                                 painter = painterResource(id = R.drawable.ic_start_place),
                                 contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
                             Text(modifier = Modifier.weight(1f),
-                                text = if (locationStart == "0") if (!isEndPointSelectable) stringResource(id = R.string.select_point) else "----" else if (myLocationEnable) stringResource(id = R.string.your_location) else locationStart, style = MaterialTheme.typography.headlineLarge.copy(
+                                text = if (locationStart == "0") if (!isEndPointSelectable) Tr.select_point else "----" else if (myLocationEnable) Tr.your_location else locationStart, style = MaterialTheme.typography.headlineLarge.copy(
                                     color = MaterialTheme.colorScheme.onBackground,
                                     textAlign = TextAlign.Center, fontWeight = FontWeight.Medium))
                             Icon(modifier = Modifier
@@ -135,7 +135,7 @@ fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCente
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    Text(modifier = Modifier.fillMaxWidth(), text = stringResource(id = R.string.end_point),
+                    Text(modifier = Modifier.fillMaxWidth(), text = Tr.end_point,
                         style = MaterialTheme.typography.headlineMedium.copy(
                             color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
                             textAlign = TextAlign.Left, fontWeight = FontWeight.Medium
@@ -170,7 +170,7 @@ fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCente
                                 painter = painterResource(id = R.drawable.ic_finish_place),
                                 contentDescription = null, tint = MaterialTheme.colorScheme.onBackground)
                             Text(modifier = Modifier.weight(1f),
-                                text = if (locationEnd == "0") if (isEndPointSelectable) stringResource(id = R.string.select_point) else "----" else locationEnd, style = MaterialTheme.typography.headlineLarge.copy(
+                                text = if (locationEnd == "0") if (isEndPointSelectable) Tr.select_point else "----" else locationEnd, style = MaterialTheme.typography.headlineLarge.copy(
                                     color = MaterialTheme.colorScheme.onBackground,
                                     textAlign = TextAlign.Center, fontWeight = FontWeight.Medium))
                             Icon(modifier = Modifier
@@ -192,7 +192,7 @@ fun BottomMapNavigation(locationStart: String, locationEnd: String, onClickCente
                 }){
                 Text(modifier = Modifier
                     .align(Alignment.Center)
-                    .padding(horizontal = 10.dp), text = stringResource(R.string.find_road),
+                    .padding(horizontal = 10.dp), text = Tr.find_road,
                     style = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onBackground,
                         textAlign = TextAlign.Center, fontWeight = FontWeight.Medium
                     ))

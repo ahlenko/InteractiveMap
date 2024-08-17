@@ -22,7 +22,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -46,7 +45,7 @@ import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReSh
 import com.example.interactivemap.ui.resource.schedule.ScheduleContainer
 import com.example.interactivemap.ui.screens.welcome.SplashScreenViewModel
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
-import com.example.interactivemap.ui.translations.Translation
+import com.example.interactivemap.ui.translations.Tr
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @RequiresApi(Build.VERSION_CODES.O)
@@ -78,7 +77,7 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
                         )
                 ) {
 
-                    DefaultHeader(titleId = R.string.schedule, leftImgId = R.drawable.ic_prew_page,
+                    DefaultHeader(titleId = Tr.schedule, leftImgId = R.drawable.ic_prew_page,
                         rightImgId = R.drawable.ic_settings, onClickLeft = {
                             SharedPreferencesRepository.onlineEducationSelected = false
                             navHostController.navigate(NavigationScreen.route) { popUpTo(0) }
@@ -129,7 +128,7 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
                             Spacer(modifier = Modifier.height(55.dp))
 
                             Text(
-                                text = Translation.scheduleNotExist,
+                                text = Tr.schedule_not_exist,
                                 Modifier.fillMaxWidth(),
                                 style = MaterialTheme.typography.headlineLarge
                                     .copy(
@@ -142,7 +141,7 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
                             Spacer(modifier = Modifier.height(15.dp))
 
                             Text(
-                                text = stringResource(id = R.string.schedule_not_exist_text),
+                                text = Tr.schedule_not_exist_text,
                                 Modifier.fillMaxWidth(),
                                 style = MaterialTheme.typography.titleSmall
                                     .copy(
@@ -155,7 +154,7 @@ fun ScheduleViewerScreen(navHostController: NavHostController,
                             Spacer(modifier = Modifier.weight(1f))
 
                             Text(
-                                text = stringResource(id = R.string.schedule_not_exist_description),
+                                text = Tr.schedule_not_exist_description,
                                 Modifier.fillMaxWidth(),
                                 style = MaterialTheme.typography.titleSmall
                                     .copy(

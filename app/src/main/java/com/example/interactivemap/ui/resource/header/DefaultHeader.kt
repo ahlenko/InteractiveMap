@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,9 +24,10 @@ import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 @Composable
-fun DefaultHeader (titleId: Int, leftImgId: Int, rightImgId: Int,
+fun DefaultHeader (titleId: String, leftImgId: Int, rightImgId: Int,
                    onClickLeft : () -> Unit, onClickRight : () -> Unit){
     InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Box(
@@ -44,7 +44,7 @@ fun DefaultHeader (titleId: Int, leftImgId: Int, rightImgId: Int,
                     modifier = Modifier.size(30.dp).clickable { onClickLeft() }
                 )
 
-                Text(text = stringResource(id = titleId), Modifier.weight(1f),
+                Text(text = titleId, Modifier.weight(1f),
                     style = MaterialTheme.typography.displaySmall.copy(color = MaterialTheme.colorScheme.onBackground,
                         textAlign = TextAlign.Center, fontWeight = FontWeight.Medium
                     )
@@ -62,7 +62,7 @@ fun DefaultHeader (titleId: Int, leftImgId: Int, rightImgId: Int,
 @Preview
 @Composable
 fun DefaultHeaderPreview(){
-    DefaultHeader(titleId = R.string.skip, leftImgId = R.drawable.ic_search,
+    DefaultHeader(titleId = Tr.skip, leftImgId = R.drawable.ic_search,
         rightImgId = R.drawable.ic_account, onClickLeft = {}, onClickRight = {})
 }
 

@@ -19,7 +19,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,6 +34,7 @@ import com.example.interactivemap.ui.screens.welcome.onboarding.fragments.Onboar
 import com.example.interactivemap.ui.screens.welcome.onboarding.fragments.OnboardingFragmentSecond
 import com.example.interactivemap.ui.screens.welcome.onboarding.fragments.OnboardingFragmentThird
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -73,7 +73,7 @@ fun ApplicationOnboarding(navHostController: NavHostController){
                 contentAlignment = Alignment.TopEnd
             ) {
                 Text(
-                    stringResource(id = R.string.skip), modifier = Modifier.clickable {
+                    Tr.skip, modifier = Modifier.clickable {
                         SharedPreferencesRepository.isSecondEnter = true
                         navHostController.navigate(NavigationScreen.route) { popUpTo(0) }
                     }, style = MaterialTheme.typography.headlineSmall.copy(

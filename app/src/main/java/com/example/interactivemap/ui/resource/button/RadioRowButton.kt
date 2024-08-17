@@ -14,7 +14,6 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.interactivemap.R
@@ -22,7 +21,7 @@ import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun RadioRowButton (checked: Boolean, textId: Int, onClick: () -> Unit){
+fun RadioRowButton (checked: Boolean, textId: String, onClick: () -> Unit){
     InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Row (verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Absolute.Left,
@@ -36,7 +35,7 @@ fun RadioRowButton (checked: Boolean, textId: Int, onClick: () -> Unit){
             )
 
             Text( modifier = Modifier.padding(horizontal = 10.dp).weight(1f),
-                text = stringResource(id = textId),
+                text = textId,
                 style = MaterialTheme.typography.titleSmall
                     .copy(color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f))
             )

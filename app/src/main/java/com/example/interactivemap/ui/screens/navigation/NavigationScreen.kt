@@ -51,6 +51,7 @@ import com.example.interactivemap.ui.resource.header.SearchHeader
 import com.example.interactivemap.ui.resource.material.ShadowMaterial
 import com.example.interactivemap.ui.resource.material.ShadowMaterial.CustomReShadow.createModifier
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
+import com.example.interactivemap.ui.translations.Tr
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -110,9 +111,9 @@ fun NavigationScreen( navHostController: NavHostController,
     if (viewModel.activateGPSDialogShown  && !viewModel.loadingMapComponent && !viewModel.dialogGPSBeShown) {
         InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
             ConfirmationDialog(
-                titleRes = R.string.permission,
-                textRes = R.string.permission_description,
-                dismissRes = R.string.permission_denied, confirmRes = R.string.permission_grant,
+                titleRes = Tr.permission,
+                textRes = Tr.permission_description,
+                dismissRes = Tr.permission_denied, confirmRes = Tr.permission_grant,
                 reverseColors = true,
                 onDismiss = {
                     viewModel.dialogGPSBeShown = true
