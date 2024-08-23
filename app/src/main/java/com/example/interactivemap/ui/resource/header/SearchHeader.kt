@@ -78,10 +78,17 @@ fun SearchHeader (leftImgId: Int, searchResult: ArrayList<NavModel>,  rightImgId
                         )
 
                         BasicTextField(value = entered,
-                            onValueChange = { entered = it
-                                if (entered.length > 1) onChange(entered)
+                            onValueChange = {
+                                if (it.length <= 14) {
+                                    entered = it
+                                    onChange(entered)
+                                } else if (entered.length > it.length) { // Handle deletion
+                                    entered = it
+                                    onChange(entered)
+                                }
                             },
-                            maxLines = 1,
+
+                            singleLine = true,
                             textStyle = MaterialTheme.typography.displaySmall.copy(color = MaterialTheme.colorScheme.onBackground,
                                 textAlign = TextAlign.Center, fontWeight = FontWeight.Medium
                             ), modifier = Modifier.weight(1f).onFocusChanged { isTextFieldActive = it.isFocused }
