@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -36,7 +38,7 @@ import com.example.interactivemap.ui.translations.Tr
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun OnboardingFragmentSecond(){
+fun OnboardingFragmentSecond(onClick: () -> Unit){
     InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Scaffold (containerColor = MaterialTheme.colorScheme.background) { _ ->
             Column(
@@ -59,99 +61,82 @@ fun OnboardingFragmentSecond(){
                     )
                 }
 
-                Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 8.dp)) {
-                    Box(
-                        modifier = Modifier.align(Alignment.BottomStart)
-                            .padding(bottom = 60.dp, start = 30.dp)
-                            .fillMaxWidth(0.78f).fillMaxHeight(0.38f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_schedule_loader),
-                            modifier = Modifier.rotate(-13f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
-                        )
+                Column (modifier = Modifier
+                    .fillMaxSize().verticalScroll(rememberScrollState())) {
+
+                    Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 8.dp)) {
+                        Box(
+                            modifier = Modifier.align(Alignment.BottomStart)
+                                .padding(bottom = 60.dp, start = 30.dp)
+                                .fillMaxWidth(0.78f).fillMaxHeight(0.38f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_schedule_loader),
+                                modifier = Modifier.rotate(-13f).fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier.align(Alignment.CenterEnd)
+                                .padding(end = 30.dp, bottom = 70.dp)
+                                .fillMaxWidth(0.85f).fillMaxHeight(0.39f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_schedule_sample),
+                                modifier = Modifier.rotate(18.57f).fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier.align(Alignment.TopStart)
+                                .padding(top = 25.dp, start = 25.dp)
+                                .fillMaxWidth(0.80f).fillMaxHeight(0.26f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_schedule_header),
+                                modifier = Modifier.rotate(-17.4f).fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
                     }
 
-                    Box(
-                        modifier = Modifier.align(Alignment.CenterEnd)
-                            .padding(end = 30.dp, bottom = 70.dp)
-                            .fillMaxWidth(0.85f).fillMaxHeight(0.39f)
+                    Column(
+                        modifier = Modifier.fillMaxHeight(0.42f),
+                        verticalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_schedule_sample),
-                            modifier = Modifier.rotate(18.57f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
+                        Text(
+                            Tr.schedule_description,
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            style = MaterialTheme.typography.headlineMedium.copy(
+                                color = MaterialTheme.colorScheme.onBackground,
+                                fontWeight = FontWeight.Light, textAlign = TextAlign.Center
+                            )
                         )
-                    }
-
-                    Box(
-                        modifier = Modifier.align(Alignment.TopStart)
-                            .padding(top = 25.dp, start = 25.dp)
-                            .fillMaxWidth(0.80f).fillMaxHeight(0.26f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_schedule_header),
-                            modifier = Modifier.rotate(-17.4f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Text(
+                            Tr.schedule_description_full,
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                color = MaterialTheme.colorScheme.onPrimary,
+                                fontWeight = FontWeight.Light, textAlign = TextAlign.Justify
+                            )
                         )
-                    }
-                }
-
-                Column(
-                    modifier = Modifier.fillMaxHeight(0.42f),
-                    verticalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text(
-                        Tr.schedule_description,
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        style = MaterialTheme.typography.headlineMedium.copy(
-                            color = MaterialTheme.colorScheme.onBackground,
-                            fontWeight = FontWeight.Light, textAlign = TextAlign.Center
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(20.dp))
-                    Text(
-                        Tr.schedule_description_full,
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        style = MaterialTheme.typography.titleSmall.copy(
-                            color = MaterialTheme.colorScheme.onPrimary,
-                            fontWeight = FontWeight.Light, textAlign = TextAlign.Justify
-                        )
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Box(
-                        modifier = Modifier.padding(bottom = 10.dp).size(60.dp)
-                            .align(Alignment.CenterHorizontally)
-                    ) {
-                        IconButton(
-                            buttonColor = Color.Transparent, size = 60.dp,
-                            imageResourceId = R.drawable.ic_to_next_item, radiusTop = 30.dp, radiusBottom = 30.dp,
-                            iconColor = MaterialTheme.colorScheme.onBackground
-                        ) {}
+                        Spacer(modifier = Modifier.weight(1f))
+                        Box(
+                            modifier = Modifier.padding(bottom = 10.dp).size(60.dp)
+                                .align(Alignment.CenterHorizontally)
+                        ) {
+                            IconButton(
+                                buttonColor = Color.Transparent,
+                                size = 60.dp,
+                                imageResourceId = R.drawable.ic_to_next_item,
+                                radiusTop = 30.dp,
+                                radiusBottom = 30.dp,
+                                iconColor = MaterialTheme.colorScheme.onBackground
+                            ) { onClick() }
+                        }
                     }
                 }
             }
@@ -162,5 +147,5 @@ fun OnboardingFragmentSecond(){
 @Preview
 @Composable
 fun OnboardingFragmentSecondPreview(){
-    OnboardingFragmentSecond()
+    OnboardingFragmentSecond{}
 }

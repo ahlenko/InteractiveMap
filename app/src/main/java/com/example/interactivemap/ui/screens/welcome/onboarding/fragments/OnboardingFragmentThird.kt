@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -55,131 +57,106 @@ fun OnboardingFragmentThird(onClick: () -> Unit){ val borderRadius = 15.dp
                     )
                 }
 
-                Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 10.dp)) {
-                    Box(
-                        modifier = Modifier.align(Alignment.BottomStart)
-                            .padding(bottom = 100.dp, start = 30.dp)
-                            .fillMaxWidth(0.70f).fillMaxHeight(0.10f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_distant_switch),
-                            modifier = Modifier.rotate(-15.76f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
-                        )
-                    }
+                Column (modifier = Modifier
+                    .fillMaxSize().verticalScroll(rememberScrollState())) {
 
-                    Box(
-                        modifier = Modifier.align(Alignment.BottomEnd)
-                            .padding(bottom = 100.dp, end = 45.dp)
-                            .fillMaxWidth(0.80f).fillMaxHeight(0.67f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_schedule_editor),
-                            modifier = Modifier.rotate(22.42f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
-                        )
-                    }
-
-                    Box(
-                        modifier = Modifier.align(Alignment.TopStart)
-                            .padding(top = 35.dp, start = 25.dp)
-                            .fillMaxWidth(0.69f).fillMaxHeight(0.41f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_lesson_editor),
-                            modifier = Modifier.rotate(-9.2f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
-                        )
-                    }
-
-                    Box(
-                        modifier = Modifier.align(Alignment.TopEnd)
-                            .padding(top = 28.dp, end = 10.dp)
-                            .fillMaxWidth(0.703f).fillMaxHeight(0.08f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_schedule_bar),
-                            modifier = Modifier.rotate(15.19f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
-                        )
-                    }
-                }
-
-                Column(
-                    modifier = Modifier.fillMaxHeight(0.42f),
-                    verticalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text(
-                        Tr.distant_description,
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        style = MaterialTheme.typography.headlineMedium.copy(
-                            color = MaterialTheme.colorScheme.onBackground,
-                            fontWeight = FontWeight.Light, textAlign = TextAlign.Center
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(20.dp))
-                    Text(
-                        Tr.distant_description_full,
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        style = MaterialTheme.typography.titleSmall.copy(
-                            color = MaterialTheme.colorScheme.onPrimary,
-                            fontWeight = FontWeight.Light, textAlign = TextAlign.Justify
-                        )
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Box(
-                        modifier = Modifier.height(60.dp).padding(horizontal = 20.dp)
-                            .padding(bottom = 15.dp)
-                            .then(
-                                ShadowMaterial.CustomShadow.createModifier
-                                    (borderRadius, MaterialTheme.colorScheme.tertiaryContainer)
+                    Box(modifier = Modifier.fillMaxSize().weight(1f).padding(top = 10.dp)) {
+                        Box(
+                            modifier = Modifier.align(Alignment.BottomStart)
+                                .padding(bottom = 100.dp, start = 30.dp)
+                                .fillMaxWidth(0.70f).fillMaxHeight(0.10f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_distant_switch),
+                                modifier = Modifier.rotate(-15.76f).fillMaxSize(),
+                                contentDescription = null
                             )
-                            .then(
-                                ShadowMaterial.CustomReShadow.createModifier
-                                    (borderRadius, MaterialTheme.colorScheme.onTertiaryContainer)
+                        }
+
+                        Box(
+                            modifier = Modifier.align(Alignment.BottomEnd)
+                                .padding(bottom = 100.dp, end = 45.dp)
+                                .fillMaxWidth(0.80f).fillMaxHeight(0.67f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_schedule_editor),
+                                modifier = Modifier.rotate(22.42f).fillMaxSize(),
+                                contentDescription = null
                             )
+                        }
+
+                        Box(
+                            modifier = Modifier.align(Alignment.TopStart)
+                                .padding(top = 35.dp, start = 25.dp)
+                                .fillMaxWidth(0.69f).fillMaxHeight(0.41f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_lesson_editor),
+                                modifier = Modifier.rotate(-9.2f).fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier.align(Alignment.TopEnd)
+                                .padding(top = 28.dp, end = 10.dp)
+                                .fillMaxWidth(0.703f).fillMaxHeight(0.08f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_schedule_bar),
+                                modifier = Modifier.rotate(15.19f).fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
+                    }
+
+                    Column(
+                        modifier = Modifier.fillMaxHeight(0.42f),
+                        verticalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        DefaultButton(
-                            buttonColor = MaterialTheme.colorScheme.onBackground,
-                            textString = Tr.go_to_application,
-                            borderRadius,
-                            textStyle = MaterialTheme.typography.headlineLarge.copy(
-                                color = MaterialTheme.colorScheme.background,
-                                fontWeight = FontWeight.Light
+                        Text(
+                            Tr.distant_description,
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            style = MaterialTheme.typography.headlineMedium.copy(
+                                color = MaterialTheme.colorScheme.onBackground,
+                                fontWeight = FontWeight.Light, textAlign = TextAlign.Center
                             )
-                        ) { onClick() }
+                        )
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Text(
+                            Tr.distant_description_full,
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                color = MaterialTheme.colorScheme.onPrimary,
+                                fontWeight = FontWeight.Light, textAlign = TextAlign.Justify
+                            )
+                        )
+                        Spacer(modifier = Modifier.weight(1f))
+                        Box(
+                            modifier = Modifier.height(60.dp).padding(horizontal = 20.dp)
+                                .padding(bottom = 15.dp)
+                                .then(
+                                    ShadowMaterial.CustomShadow.createModifier
+                                        (borderRadius, MaterialTheme.colorScheme.tertiaryContainer)
+                                )
+                                .then(
+                                    ShadowMaterial.CustomReShadow.createModifier
+                                        (
+                                        borderRadius,
+                                        MaterialTheme.colorScheme.onTertiaryContainer
+                                    )
+                                )
+                        ) {
+                            DefaultButton(
+                                buttonColor = MaterialTheme.colorScheme.onBackground,
+                                textString = Tr.go_to_application,
+                                borderRadius,
+                                textStyle = MaterialTheme.typography.headlineLarge.copy(
+                                    color = MaterialTheme.colorScheme.background,
+                                    fontWeight = FontWeight.Light
+                                )
+                            ) { onClick() }
+                        }
                     }
                 }
             }
@@ -190,5 +167,5 @@ fun OnboardingFragmentThird(onClick: () -> Unit){ val borderRadius = 15.dp
 @Preview
 @Composable
 fun OnboardingFragmentThirdPreview(){
-    OnboardingFragmentThird(){}
+    OnboardingFragmentThird{}
 }

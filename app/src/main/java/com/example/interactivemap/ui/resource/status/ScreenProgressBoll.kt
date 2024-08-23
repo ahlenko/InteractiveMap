@@ -23,22 +23,22 @@ import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.ui.theme.InteractiveMapTheme
 
 @Composable
-fun ScreenProgressBoll(state: MutableState<Int>){
+fun ScreenProgressBoll(state: Int){
     InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Column (modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             Box(modifier = Modifier.clip(RoundedCornerShape(100.dp)).fillMaxSize()
-                .background(if (state.value == 0) MaterialTheme.colorScheme.onBackground
+                .background(if (state == 0) MaterialTheme.colorScheme.onBackground
                 else MaterialTheme.colorScheme.onTertiary).weight(1f))
             Spacer(modifier = Modifier.height(15.dp))
             Box(modifier = Modifier.clip(RoundedCornerShape(100.dp)).fillMaxSize()
-                .background(if (state.value == 1) MaterialTheme.colorScheme.onBackground
+                .background(if (state == 1) MaterialTheme.colorScheme.onBackground
                 else MaterialTheme.colorScheme.onTertiary).weight(1f))
             Spacer(modifier = Modifier.height(15.dp))
             Box(modifier = Modifier.clip(RoundedCornerShape(100.dp)).fillMaxSize()
-                .background(if (state.value == 2) MaterialTheme.colorScheme.onBackground
+                .background(if (state == 2) MaterialTheme.colorScheme.onBackground
                 else MaterialTheme.colorScheme.onTertiary).weight(1f))
         }
     }
@@ -48,5 +48,5 @@ fun ScreenProgressBoll(state: MutableState<Int>){
 @Composable
 fun ScreenProgressBollPreview(){
     val state = remember { mutableIntStateOf(1) }
-    ScreenProgressBoll(state)
+    ScreenProgressBoll(0)
 }

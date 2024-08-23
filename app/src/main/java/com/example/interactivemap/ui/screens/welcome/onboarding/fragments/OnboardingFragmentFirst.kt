@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -36,7 +38,7 @@ import com.example.interactivemap.ui.translations.Tr
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun OnboardingFragmentFirst(){
+fun OnboardingFragmentFirst(onClick: () -> Unit){
     InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected) {
         Scaffold (containerColor = MaterialTheme.colorScheme.background) { _ ->
             Column(
@@ -48,7 +50,10 @@ fun OnboardingFragmentFirst(){
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.padding(12.dp).padding(top = 12.dp).fillMaxWidth()
+                    modifier = Modifier
+                        .padding(12.dp)
+                        .padding(top = 12.dp)
+                        .fillMaxWidth()
                 ) {
                     Text(
                         Tr.navigation, modifier = Modifier,
@@ -59,130 +64,133 @@ fun OnboardingFragmentFirst(){
                     )
                 }
 
-                Box(modifier = Modifier.fillMaxSize().weight(1f).padding(20.dp)) {
-                    Box(
-                        modifier = Modifier.align(Alignment.BottomCenter)
-                            .padding(bottom = 50.dp, end = 30.dp, start = 10.dp)
-                            .fillMaxWidth(0.90f).fillMaxHeight(0.60f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_clear_map_sample),
-                            modifier = Modifier.rotate(-26.85f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
-                        )
-                    }
 
-                    Box(
-                        modifier = Modifier.align(Alignment.TopEnd).padding(top = 20.dp, end = 8.dp)
-                            .fillMaxWidth(0.82f).fillMaxHeight(0.43f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_navigation_bar),
-                            modifier = Modifier.rotate(18.6f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
-                        )
-                    }
-
-                    Box(
-                        modifier = Modifier.align(Alignment.BottomStart)
-                            .padding(start = 10.dp, bottom = 40.dp)
-                            .fillMaxWidth(0.50f).fillMaxHeight(0.72f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_road_sample),
-                            modifier = Modifier.rotate(-15.7f).fillMaxSize(),
-                            contentDescription = null
-                        )
-                    }
-
-                    Box(
-                        modifier = Modifier.align(Alignment.BottomEnd)
-                            .padding(end = 80.dp, bottom = 95.dp)
-                            .fillMaxWidth(0.11f).fillMaxHeight(0.27f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_floor_controller),
-                            modifier = Modifier.rotate(46.53f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
-                        )
-                    }
-
-                    Box(
-                        modifier = Modifier.align(Alignment.BottomStart)
-                            .padding(start = 5.dp, bottom = 120.dp)
-                            .fillMaxWidth(0.09f).fillMaxHeight(0.30f)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.img_map_controller),
-                            modifier = Modifier.rotate(-18.65f).fillMaxSize()
-                                .then(
-                                    ShadowMaterial.CustomShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.tertiaryContainer)
-                                )
-                                .then(
-                                    ShadowMaterial.CustomReShadow.createModifier
-                                        (5.dp, MaterialTheme.colorScheme.onTertiaryContainer)
-                                ),
-                            contentDescription = null
-                        )
-                    }
-                }
-
-                Column(
-                    modifier = Modifier.fillMaxHeight(0.42f),
-                    verticalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text(
-                        Tr.navigation_description,
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        style = MaterialTheme.typography.headlineMedium.copy(
-                            color = MaterialTheme.colorScheme.onBackground,
-                            fontWeight = FontWeight.Light, textAlign = TextAlign.Center
-                        )
-                    )
-                    Spacer(modifier = Modifier.height(20.dp))
-                    Text(
-                        Tr.navigation_description_full,
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                        style = MaterialTheme.typography.titleSmall.copy(
-                            color = MaterialTheme.colorScheme.onPrimary,
-                            fontWeight = FontWeight.Light, textAlign = TextAlign.Justify
-                        )
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
+                Column (modifier = Modifier
+                    .fillMaxSize().verticalScroll(rememberScrollState())){
                     Box(
                         modifier = Modifier
-                            .padding(bottom = 10.dp).size(60.dp).align(Alignment.CenterHorizontally)
+                            .fillMaxSize()
+                            .weight(1f)
+                            .padding(20.dp)
                     ) {
-                        IconButton(
-                            buttonColor = Color.Transparent, size = 60.dp,
-                            imageResourceId = R.drawable.ic_to_next_item, radiusTop = 30.dp, radiusBottom = 30.dp,
-                            iconColor = MaterialTheme.colorScheme.onBackground
-                        ) {}
+                        Box(
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .padding(bottom = 50.dp, end = 30.dp, start = 10.dp)
+                                .fillMaxWidth(0.90f)
+                                .fillMaxHeight(0.60f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_clear_map_sample),
+                                modifier = Modifier
+                                    .rotate(-26.85f)
+                                    .fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .align(Alignment.TopEnd)
+                                .padding(top = 20.dp, end = 8.dp)
+                                .fillMaxWidth(0.82f)
+                                .fillMaxHeight(0.43f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_navigation_bar),
+                                modifier = Modifier
+                                    .rotate(18.6f)
+                                    .fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .padding(start = 10.dp, bottom = 40.dp)
+                                .fillMaxWidth(0.50f)
+                                .fillMaxHeight(0.72f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_road_sample),
+                                modifier = Modifier
+                                    .rotate(-15.7f)
+                                    .fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .align(Alignment.BottomEnd)
+                                .padding(end = 80.dp, bottom = 95.dp)
+                                .fillMaxWidth(0.11f)
+                                .fillMaxHeight(0.27f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_floor_controller),
+                                modifier = Modifier
+                                    .rotate(46.53f)
+                                    .fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .padding(start = 5.dp, bottom = 120.dp)
+                                .fillMaxWidth(0.09f)
+                                .fillMaxHeight(0.30f)
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.img_map_controller),
+                                modifier = Modifier
+                                    .rotate(-18.65f)
+                                    .fillMaxSize(),
+                                contentDescription = null
+                            )
+                        }
+                    }
+
+                    Column(
+                        modifier = Modifier.fillMaxHeight(0.42f),
+                        verticalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Text(
+                            Tr.navigation_description,
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            style = MaterialTheme.typography.headlineMedium.copy(
+                                color = MaterialTheme.colorScheme.onBackground,
+                                fontWeight = FontWeight.Light, textAlign = TextAlign.Center
+                            )
+                        )
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Text(
+                            Tr.navigation_description_full,
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                color = MaterialTheme.colorScheme.onPrimary,
+                                fontWeight = FontWeight.Light, textAlign = TextAlign.Justify
+                            )
+                        )
+                        Spacer(modifier = Modifier.weight(1f))
+                        Box(
+                            modifier = Modifier
+                                .padding(bottom = 10.dp)
+                                .size(60.dp)
+                                .align(Alignment.CenterHorizontally)
+                        ) {
+                            IconButton(
+                                buttonColor = Color.Transparent,
+                                size = 60.dp,
+                                imageResourceId = R.drawable.ic_to_next_item,
+                                radiusTop = 30.dp,
+                                radiusBottom = 30.dp,
+                                iconColor = MaterialTheme.colorScheme.onBackground
+                            ) { onClick() }
+                        }
                     }
                 }
             }
@@ -193,5 +201,5 @@ fun OnboardingFragmentFirst(){
 @Preview
 @Composable
 fun OnboardingFragmentFirstPreview(){
-    OnboardingFragmentFirst()
+    OnboardingFragmentFirst{}
 }

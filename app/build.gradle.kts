@@ -32,6 +32,9 @@ android {
     }
 
     buildTypes {
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
+        }
         buildTypes {
             debug {
                 buildConfigField("String", "LOCAL_API_KEY", "\"InteractiveMap_XmqChGp5tPVBVG0t8hP95A4tjIpHJDhPAqQ7eSsijLG93s46EZoV6dFxjRuXVUKndlGsLkDXPcDcstYG0D1DXSmE0OX50ipRq0JGEwXIBG3Ti9Hn7O\"")
