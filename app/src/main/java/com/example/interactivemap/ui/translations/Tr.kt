@@ -58,6 +58,8 @@ object Tr {
         get() = context.getString(R.string.to_main_page)
     val version: String
         get() = context.getString(R.string.version)
+    val version_: String
+        get() = context.getString(R.string.version_)
     val save: String
         get() = context.getString(R.string.save)
     val load: String

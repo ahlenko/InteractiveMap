@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -24,6 +25,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,6 +61,7 @@ fun SettingsScreen(navHostController: NavHostController,
     val languageList by settingsViewModel.languageList.collectAsState()
     val languageSelected by settingsViewModel.languageSelected.collectAsState()
     val languageDialogState = rememberUseCaseState()
+    val context = LocalContext.current
 
     if (!ThisApplication.getInstance().darkThemeSelected){
         MaterialTheme{
@@ -90,12 +94,13 @@ fun SettingsScreen(navHostController: NavHostController,
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(15.dp),
+                    .padding(vertical = 15.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceEvenly
             ) {
                 Box(
                     modifier = Modifier
+                        .padding(horizontal = 15.dp)
                         .height(50.dp)
                         .fillMaxWidth()
                         .then(
@@ -140,13 +145,19 @@ fun SettingsScreen(navHostController: NavHostController,
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Box(modifier = Modifier.weight(1f)) {
+                    Box(modifier = Modifier
+                        .padding(start = 15.dp)
+                        .weight(1f)) {
                         IconTextRow(
                             imageId = R.drawable.ic_language, textId = Tr.language,
                             tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
-                    DropDownRowButton(text = languageSelected)
+                    Box (
+                        modifier = Modifier.padding(end = 15.dp)
+                    ) {
+                        DropDownRowButton(text = languageSelected)
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(spacerInterval))
@@ -159,15 +170,22 @@ fun SettingsScreen(navHostController: NavHostController,
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Box(modifier = Modifier.weight(1f)) {
+                    Box(modifier = Modifier
+                        .padding(start = 15.dp)
+                        .weight(1f)) {
                         IconTextRow(
                             imageId = R.drawable.ic_theme, textId = Tr.dark_theme,
                             tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
-                    SwitchRowButton(state = settingsViewModel.darkThemeSelected) {
-                        ThisApplication.getInstance().darkThemeSelected = !settingsViewModel.darkThemeSelected
-                        settingsViewModel.onSystemThemeChanged()
+                    Box (
+                        modifier = Modifier.padding(end = 15.dp)
+                    ) {
+                        SwitchRowButton(state = settingsViewModel.darkThemeSelected) {
+                            ThisApplication.getInstance().darkThemeSelected =
+                                !settingsViewModel.darkThemeSelected
+                            settingsViewModel.onSystemThemeChanged()
+                        }
                     }
                 }
 
@@ -181,14 +199,21 @@ fun SettingsScreen(navHostController: NavHostController,
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Box(modifier = Modifier.weight(1f)) {
+                    Box(modifier = Modifier
+                        .padding(start = 15.dp)
+                        .weight(1f)) {
                         IconTextRow(
                             imageId = R.drawable.ic_distant, textId = Tr.online_education,
                             tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
-                    SwitchRowButton(state = settingsViewModel.onlineEducation)
-                    { settingsViewModel.onEducationTypeChanged() }
+                    Box (
+                        modifier = Modifier.padding(end = 15.dp)
+                    ){
+                        SwitchRowButton(state = settingsViewModel.onlineEducation)
+                        { settingsViewModel.onEducationTypeChanged() }
+                    }
+
                 }
 
                 Spacer(modifier = Modifier.height(spacerInterval))
@@ -201,7 +226,9 @@ fun SettingsScreen(navHostController: NavHostController,
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Box(modifier = Modifier.weight(1f)) {
+                    Box(modifier = Modifier
+                        .padding(start = 15.dp)
+                        .weight(1f)) {
                         IconTextRow(
                             imageId = R.drawable.ic_demo, textId = Tr.view_demo,
                             tint = MaterialTheme.colorScheme.onBackground
@@ -210,18 +237,22 @@ fun SettingsScreen(navHostController: NavHostController,
                     Text(
                         text = ">>", style = MaterialTheme.typography.headlineLarge
                             .copy(color = MaterialTheme.colorScheme.onPrimary),
-                        modifier = Modifier.padding(end = 8.dp)
+                        modifier = Modifier.padding(end = 23.dp)
                     )
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                Box(
+                    Modifier
+                        .height(50.dp)
+                        .clip(RoundedCornerShape(6.dp))
+                        .clickable {
+                            settingsViewModel.openUrlInBrowser()
+                        }, contentAlignment = Alignment.Center) {
                     Text(
                         text = Tr.to_main_page,
-                        Modifier.clickable {
-                            settingsViewModel.openUrlInBrowser()
-                        },
+modifier = Modifier.padding(horizontal = 14.dp),
                         style = MaterialTheme.typography.headlineMedium
                             .copy(
                                 color = MaterialTheme.colorScheme.onBackground,
@@ -233,7 +264,7 @@ fun SettingsScreen(navHostController: NavHostController,
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Text(
-                    text = Tr.version, Modifier.fillMaxWidth(),
+                    text = settingsViewModel.getAppVersion(context = context) ?: Tr.version, Modifier.fillMaxWidth(),
                     style = MaterialTheme.typography.headlineSmall
                         .copy(
                             color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.6f),

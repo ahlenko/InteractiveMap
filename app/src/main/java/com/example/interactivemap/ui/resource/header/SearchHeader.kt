@@ -81,6 +81,7 @@ fun SearchHeader (leftImgId: Int, searchResult: ArrayList<NavModel>,  rightImgId
                             onValueChange = { entered = it
                                 if (entered.length > 1) onChange(entered)
                             },
+                            maxLines = 1,
                             textStyle = MaterialTheme.typography.displaySmall.copy(color = MaterialTheme.colorScheme.onBackground,
                                 textAlign = TextAlign.Center, fontWeight = FontWeight.Medium
                             ), modifier = Modifier.weight(1f).onFocusChanged { isTextFieldActive = it.isFocused }

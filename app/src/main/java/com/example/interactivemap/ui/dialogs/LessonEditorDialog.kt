@@ -339,7 +339,8 @@ fun LessonEditorDialog(lessonData: LessonData, lessonDescription: String, isText
                         ) {
                             IconButton(
                                 buttonColor = MaterialTheme.colorScheme.onError,
-                                radius = borderRadius,
+                                radiusTop = borderRadius,
+                                radiusBottom = borderRadius,
                                 imageResourceId = R.drawable.ic_trashbox,
                                 size = 28.dp,
                                 iconColor = MaterialTheme.colorScheme.background,

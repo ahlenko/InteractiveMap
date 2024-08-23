@@ -47,7 +47,7 @@ fun ScheduleEditor(viewerViewModel: ScheduleEditorViewModel){
                     .alpha(if (viewerViewModel.deleteEnable) 1f else 0.7f)
                 ){
                     IconButton(
-                        buttonColor = MaterialTheme.colorScheme.onError, radius = borderRadius,
+                        buttonColor = MaterialTheme.colorScheme.onError, radiusTop = borderRadius, radiusBottom = borderRadius,
                         imageResourceId = R.drawable.ic_trashbox, size = 28.dp,
                         iconColor = MaterialTheme.colorScheme.background,
                     ){if (viewerViewModel.deleteEnable) viewerViewModel.onDeleteButtonClick() }

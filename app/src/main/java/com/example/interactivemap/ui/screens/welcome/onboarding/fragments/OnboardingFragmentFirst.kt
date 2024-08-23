@@ -180,7 +180,7 @@ fun OnboardingFragmentFirst(){
                     ) {
                         IconButton(
                             buttonColor = Color.Transparent, size = 60.dp,
-                            imageResourceId = R.drawable.ic_to_next_item, radius = 30.dp,
+                            imageResourceId = R.drawable.ic_to_next_item, radiusTop = 30.dp, radiusBottom = 30.dp,
                             iconColor = MaterialTheme.colorScheme.onBackground
                         ) {}
                     }

@@ -140,8 +140,12 @@ class ScheduleViewerViewModel(application: Application, override var dayOfWeek: 
     override fun onItemClick(itemId: Int, type: Int){
         if (_scheduleData.value[currentDay].lessons[itemId].lessonData[type] != _clearItem){ clearSelection()
             _scheduleData.value[currentDay].lessons[itemId].lessonData[type].selected = true
-            openUrlInBrowser(_scheduleData.value[currentDay].lessons[itemId].lessonData[type].link)
-            areUpdate = !areUpdate
+            try {
+                openUrlInBrowser(_scheduleData.value[currentDay].lessons[itemId].lessonData[type].link)
+                areUpdate = !areUpdate
+            } catch (_:Exception){
+                onItemLongClick(itemId, type)
+            }
         }
     }
     override fun onItemLongClick(itemId: Int, type: Int){
@@ -157,10 +161,14 @@ class ScheduleViewerViewModel(application: Application, override var dayOfWeek: 
         _scheduleData.value.forEach{day -> day.lessons.forEach { elem -> elem.lessonData.forEach{it.selected = false} }}
     }
 
-    override fun openUrlInBrowser(url: String) {
+    override fun openUrlInBrowser(url: String)  {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        getApplication<Application>().startActivity(intent)
+        try {
+            getApplication<Application>().startActivity(intent)
+        } catch (e: Exception){
+            throw e
+        }
     }
 
     companion object{

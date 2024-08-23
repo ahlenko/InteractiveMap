@@ -1,7 +1,9 @@
 package com.example.interactivemap.ui.screens.settings
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -10,6 +12,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.interactivemap.R
 import com.example.interactivemap.ThisApplication
 import com.example.interactivemap.logic.util.SharedPreferencesRepository
+import com.example.interactivemap.ui.translations.Tr
 import com.maxkeppeler.sheets.list.models.ListOption
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -74,7 +77,21 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
     fun openUrlInBrowser() {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(MAIN_PAGE_URL))
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        getApplication<Application>().startActivity(intent)
+        try {
+            getApplication<Application>().startActivity(intent)
+        } catch (e:Exception){
+          throw e
+        }
+    }
+
+    fun getAppVersion(context: Context): String? {
+        return try {
+            val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+            Tr.version_ + " " + packageInfo.versionName + " (" + packageInfo.versionCode + ")"
+        } catch (e: PackageManager.NameNotFoundException) {
+            e.printStackTrace()
+            null
+        }
     }
 
     companion object{

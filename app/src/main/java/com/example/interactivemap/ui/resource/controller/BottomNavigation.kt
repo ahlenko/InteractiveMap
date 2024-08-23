@@ -60,14 +60,14 @@ fun BottomNavigation(state: Int, clickers: ArrayList<() -> Unit>, onClickCenter:
 
                                     Box(modifier = Modifier.weight(1f)){
                                         IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                                            imageResourceId = R.drawable.ic_to_location, radius = 15.dp,
+                                            imageResourceId = R.drawable.ic_to_location, radiusTop = 15.dp, radiusBottom = 0.dp,
                                             iconColor = MaterialTheme.colorScheme.onBackground)
                                         { clickers[0]() }
                                     }
 
                                     Box(modifier = Modifier.weight(1f)){
                                         IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                                            imageResourceId = R.drawable.ic_translation_active, radius = 15.dp,
+                                            imageResourceId = R.drawable.ic_translation_active, radiusTop = 15.dp, radiusBottom = 0.dp,
                                             iconColor = MaterialTheme.colorScheme.onBackground)
                                         { clickers[1]() }
                                     }
@@ -80,14 +80,14 @@ fun BottomNavigation(state: Int, clickers: ArrayList<() -> Unit>, onClickCenter:
                                     horizontalArrangement = Arrangement.SpaceBetween){
                                     Box(modifier = Modifier.weight(1f)){
                                         IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                                            imageResourceId = R.drawable.ic_schedule_mini, radius = 15.dp,
+                                            imageResourceId = R.drawable.ic_schedule_mini, radiusTop = 15.dp, radiusBottom = 0.dp,
                                             iconColor = MaterialTheme.colorScheme.onBackground)
                                         { clickers[2]() }
                                     }
 
                                     Box(modifier = Modifier.weight(1f)){
                                         IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                                            imageResourceId = R.drawable.ic_settings, radius = 15.dp,
+                                            imageResourceId = R.drawable.ic_settings, radiusTop = 15.dp, radiusBottom = 0.dp,
                                             iconColor = MaterialTheme.colorScheme.onBackground)
                                         { clickers[3]() }
                                     }
@@ -103,7 +103,7 @@ fun BottomNavigation(state: Int, clickers: ArrayList<() -> Unit>, onClickCenter:
                         Box(modifier = Modifier.align(Alignment.TopCenter).
                         padding(top = 28.dp, end = 3.dp).size(40.dp).clickable { onClickCenter[state]()}){
                             IconButton(buttonColor = Color.Transparent, size = 40.dp,
-                                imageResourceId = R.drawable.ic_navigate, radius = 15.dp,
+                                imageResourceId = R.drawable.ic_navigate, radiusTop = 15.dp, radiusBottom = 0.dp,
                                 iconColor = MaterialTheme.colorScheme.surfaceDim) { onClickCenter[state]() }
                         }
                     }
@@ -124,14 +124,14 @@ fun BottomNavigation(state: Int, clickers: ArrayList<() -> Unit>, onClickCenter:
                     ) {
                         Box(modifier = Modifier.weight(1f)){
                             IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                                imageResourceId = R.drawable.ic_to_location, radius = 15.dp,
+                                imageResourceId = R.drawable.ic_to_location, radiusTop = 15.dp, radiusBottom = 0.dp,
                                 iconColor = MaterialTheme.colorScheme.onBackground)
                             { clickers[0]() }
                         }
 
                         Box(modifier = Modifier.weight(1f)){
                             IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                                imageResourceId = R.drawable.ic_translation_active, radius = 15.dp,
+                                imageResourceId = R.drawable.ic_translation_active, radiusTop = 15.dp, radiusBottom = 0.dp,
                                 iconColor = MaterialTheme.colorScheme.onBackground)
                             { clickers[1]() }
                         }
@@ -139,21 +139,21 @@ fun BottomNavigation(state: Int, clickers: ArrayList<() -> Unit>, onClickCenter:
                         Box(modifier = Modifier.weight(1f)){
                             IconButton(buttonColor = Color.Transparent, size = 30.dp,
                                 imageResourceId = if(state == 1) R.drawable.ic_hide else
-                                    R.drawable.ic_route_final, radius = 15.dp,
+                                    R.drawable.ic_route_final, radiusTop = 15.dp, radiusBottom = 0.dp,
                                 iconColor = MaterialTheme.colorScheme.onBackground)
                             { onClickCenter[state]() }
                         }
 
                         Box(modifier = Modifier.weight(1f)){
                             IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                                imageResourceId = R.drawable.ic_schedule_mini, radius = 15.dp,
+                                imageResourceId = R.drawable.ic_schedule_mini,radiusTop = 15.dp, radiusBottom = 0.dp,
                                 iconColor = MaterialTheme.colorScheme.onBackground)
                             { clickers[2]() }
                         }
 
                         Box(modifier = Modifier.weight(1f)){
                             IconButton(buttonColor = Color.Transparent, size = 30.dp,
-                                imageResourceId = R.drawable.ic_settings, radius = 15.dp,
+                                imageResourceId = R.drawable.ic_settings, radiusTop = 15.dp, radiusBottom = 0.dp,
                                 iconColor = MaterialTheme.colorScheme.onBackground)
                             { clickers[3]() }
                         }

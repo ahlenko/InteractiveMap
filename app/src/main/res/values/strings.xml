@@ -23,6 +23,7 @@
     <string name="view_demo">View demo</string>
     <string name="to_main_page">To main page</string>
     <string name="version">Version: 1.0.37 (93)</string>
+    <string name="version_">Version: </string>
     <string name="save">Save</string>
     <string name="load">Restore</string>
     <string name="create_schedule">Create schedule</string>
