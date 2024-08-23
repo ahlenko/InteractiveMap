@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class SettingsViewModel(application: Application): AndroidViewModel(application) {
-    private val _stringLanguage = getApplication<Application>()
+    private var _stringLanguage = getApplication<Application>()
         .resources.getStringArray(R.array.language_variant)
     private val _languageList = MutableStateFlow(arrayListOf<ListOption>())
     val languageList = _languageList.asStateFlow()
@@ -42,6 +42,9 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
     }
 
     private fun insertListOptions() {
+        _stringLanguage = getApplication<Application>()
+            .resources.getStringArray(R.array.language_variant)
+        _languageSelected.value = _stringLanguage[SharedPreferencesRepository.languageType]
         _languageList.value.clear()
         _languageList.value = _stringLanguage.map { ListOption(titleText = it,
             selected = it == languageSelected.value) } as ArrayList<ListOption>
@@ -69,9 +72,9 @@ class SettingsViewModel(application: Application): AndroidViewModel(application)
         _languageSelected.value = option.titleText
         SharedPreferencesRepository.languageType = _languageList
             .value.indexOfFirst { it.titleText == option.titleText }
-        insertListOptions()
 
         if (langChanged) getApplication<ThisApplication>().changeAppLanguage()
+        insertListOptions()
     }
 
     fun openUrlInBrowser() {

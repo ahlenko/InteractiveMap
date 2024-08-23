@@ -43,7 +43,7 @@ class ThisApplication: Application(), OnMapsSdkInitializedCallback{
 
         FirebaseApp.initializeApp(this)
         loadSettingsHelper(this, this.packageName)
-        setInitialLanguage()
+
         darkThemeSelected = SharedPreferencesRepository.darkThemeSelected
         lastCameraPosition = CameraPosition.Builder().target(
             Constants.baseLocation).zoom(Constants.ZOOM_BASE).build()
@@ -110,7 +110,7 @@ class ThisApplication: Application(), OnMapsSdkInitializedCallback{
         }
     }
 
-    private fun setInitialLanguage() {
+    public fun setInitialLanguage() {
         val currentLang = getCurrentAppLang()
         setAppLang(currentLang)
     }
@@ -145,9 +145,6 @@ class ThisApplication: Application(), OnMapsSdkInitializedCallback{
     fun changeAppLanguage() {
         val currentLang = getCurrentAppLang()
         setAppLang(currentLang)
-        val intent = packageManager.getLaunchIntentForPackage(packageName)
-        intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
     }
 
     companion object {

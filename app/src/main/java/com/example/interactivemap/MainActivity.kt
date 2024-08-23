@@ -53,6 +53,8 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+        ThisApplication.getInstance().setInitialLanguage()
+
         setContent {
             InteractiveMapTheme(darkTheme = ThisApplication.getInstance().darkThemeSelected){
                 Box (Modifier.fillMaxSize()
