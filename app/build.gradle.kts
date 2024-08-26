@@ -8,13 +8,19 @@ android {
     namespace = "com.example.interactivemap"
     compileSdk = 34
 
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     defaultConfig {
         applicationId = "com.interactive.map.ust.edu"
         minSdk = 24
         //noinspection OldTargetApi
         targetSdk = 34
-        versionCode = 9
-        versionName = "9.0"
+        versionCode = 10
+        versionName = "10.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

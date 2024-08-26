@@ -129,17 +129,18 @@ class ThisApplication: Application(), OnMapsSdkInitializedCallback{
 
     private fun setAppLang(lang: String) {
         val locale = when (lang) {
-            "ua" -> Locale("uk", "UA")
-            "en" -> Locale("en", "US")
-            else -> Locale("uk", "UA")
+            "ua" -> Locale("uk")
+            "en" -> Locale("en")
+            else -> Locale("uk")
         }
 
         Locale.setDefault(locale)
-        val resources = resources
         val config = resources.configuration
         config.setLocale(locale)
         config.setLayoutDirection(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
+
+        val context = createConfigurationContext(config)
+        resources.updateConfiguration(config, context.resources.displayMetrics)
     }
 
     fun changeAppLanguage() {
