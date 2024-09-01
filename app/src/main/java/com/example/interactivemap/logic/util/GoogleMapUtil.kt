@@ -2,16 +2,10 @@ package com.example.interactivemap.logic.util
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
-import com.example.interactivemap.logic.model.navigation.graph.NavGraphNew
-import com.example.interactivemap.logic.model.navigation.graph.NavGraphOld
-import com.example.interactivemap.logic.model.navigation.graph.NavGraphSk
-import com.example.interactivemap.logic.model.navigation.graph.NavGraphYard
 import com.example.interactivemap.logic.model.navigation.models.NavModel
-import com.example.interactivemap.logic.model.navigation.models.NavObjects
 import com.example.interactivemap.logic.model.navigation.models.RoadElementModel
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
@@ -23,6 +17,8 @@ import kotlin.math.sqrt
 
 object GoogleMapUtil {
     const val EARTH_RADIUS = 6371e3 // Радіус Землі в кілометрах
+    private var waypointIdCounter = 1000000
+
     fun drawableToBitmapDescriptor(context: Context, drawableId: Int): BitmapDescriptor {
         val drawableResource: Drawable? = ContextCompat.getDrawable(context, drawableId)
         drawableResource ?. let { drawable ->
@@ -100,7 +96,7 @@ object GoogleMapUtil {
         while (openSet.isNotEmpty()) {
             val current = openSet.minByOrNull { fScore[it] ?: Double.MAX_VALUE } ?: break
             if (current == endId) {
-                return reconstructPath(cameFrom, current, navGraph)
+                return reconstructPath(cameFrom, current, navGraph, 3.0)
             }
 
             openSet.remove(current)
@@ -136,7 +132,12 @@ object GoogleMapUtil {
         return emptyList()
     }
 
-    private fun reconstructPath(cameFrom: Map<Int, Int?>, current: Int, navGraph: List<NavModel>): List<RoadElementModel> {
+    private fun reconstructPath(
+        cameFrom: Map<Int, Int?>,
+        current: Int,
+        navGraph: List<NavModel>,
+        waypointDistance: Double
+    ): List<RoadElementModel> {
         val totalPath = mutableListOf<RoadElementModel>()
         var currentNode: Int? = current
         while (currentNode != null) {
@@ -144,7 +145,42 @@ object GoogleMapUtil {
             totalPath.add(RoadElementModel(node.id, node.location, node.floorIndex, node.locationIndex, node.locked ?: false))
             currentNode = cameFrom[currentNode]
         }
-        return totalPath.reversed()
+        val pathWithWaypoints = mutableListOf<RoadElementModel>()
+        for (i in 0 until totalPath.size - 1) {
+            val start = totalPath[i]
+            val end = totalPath[i + 1]
+            pathWithWaypoints.add(start)
+
+            val distance = distanceBetweenPoints(start.location, end.location)
+            val numWaypoints = (distance / waypointDistance).toInt()
+
+            for (j in 1..numWaypoints) {
+                val waypointLocation = interpolateLocation(start.location, end.location, j.toDouble() / numWaypoints)
+                pathWithWaypoints.add(
+                    RoadElementModel(
+                        id = generateWaypointId(),
+                        location = waypointLocation,
+                        floor = start.floor,
+                        locationIndex = -1,
+                        locked = false
+                    )
+                )
+            }
+        }
+        pathWithWaypoints.add(totalPath.last())
+        return pathWithWaypoints
+    }
+
+    private fun interpolateLocation(start: LatLng, end: LatLng, fraction: Double): LatLng {
+        val lat = start.latitude + fraction * (end.latitude - start.latitude)
+        val lon = start.longitude + fraction * (end.longitude - start.longitude)
+        return LatLng(lat, lon)
+    }
+
+
+
+    private fun generateWaypointId(): Int {
+        return waypointIdCounter++
     }
 
     fun toMultiLocationRoad(singleRoad: List<RoadElementModel>): List<List<RoadElementModel>> {

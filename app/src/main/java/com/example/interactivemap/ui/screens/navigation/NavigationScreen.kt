@@ -450,7 +450,7 @@ fun NavigationScreen( navHostController: NavHostController,
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Box(
-                            modifier = Modifier.width(46.dp).fillMaxHeight()
+                            modifier = Modifier.width(50.dp).fillMaxHeight()
                                 .then(ShadowMaterial.CustomShadow.createModifier
                                         (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
                                 .then(ShadowMaterial.CustomReShadow.createModifier
@@ -500,7 +500,7 @@ fun NavigationScreen( navHostController: NavHostController,
 
 
                         Box(
-                            modifier = Modifier.width(46.dp).fillMaxHeight()
+                            modifier = Modifier.width(50.dp).fillMaxHeight()
                                 .then(ShadowMaterial.CustomShadow.createModifier
                                         (5.dp, MaterialTheme.colorScheme.tertiaryContainer))
                                 .then(ShadowMaterial.CustomReShadow.createModifier
