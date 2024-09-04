@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "190500183847",
+    "project_id": "diit-interactive-map",
+    "storage_bucket": "diit-interactive-map.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190500183847:android:737ff5caddfa0e99431302",
+        "android_client_info": {
+          "package_name": "com.interactive.map.ust.edu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtwsfQbGBFOLL-EcAWqEeV6U3OdlP1Njo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

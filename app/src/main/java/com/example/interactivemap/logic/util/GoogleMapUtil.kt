@@ -16,7 +16,8 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 object GoogleMapUtil {
-    const val EARTH_RADIUS = 6371e3 // Радіус Землі в кілометрах
+    private const val EARTH_RADIUS = 6371e3
+    private const val waypointDistance = 3.0
     private var waypointIdCounter = 1000000
 
     fun drawableToBitmapDescriptor(context: Context, drawableId: Int): BitmapDescriptor {
@@ -96,7 +97,7 @@ object GoogleMapUtil {
         while (openSet.isNotEmpty()) {
             val current = openSet.minByOrNull { fScore[it] ?: Double.MAX_VALUE } ?: break
             if (current == endId) {
-                return reconstructPath(cameFrom, current, navGraph, 3.0)
+                return reconstructPath(cameFrom, current, navGraph)
             }
 
             openSet.remove(current)
@@ -136,7 +137,6 @@ object GoogleMapUtil {
         cameFrom: Map<Int, Int?>,
         current: Int,
         navGraph: List<NavModel>,
-        waypointDistance: Double
     ): List<RoadElementModel> {
         val totalPath = mutableListOf<RoadElementModel>()
         var currentNode: Int? = current

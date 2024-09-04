@@ -2,6 +2,7 @@ package com.example.interactivemap.ui.screens.schedule.viewer
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -162,13 +163,15 @@ class ScheduleViewerViewModel(application: Application, override var dayOfWeek: 
     }
 
     override fun openUrlInBrowser(url: String)  {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        try {
-            getApplication<Application>().startActivity(intent)
-        } catch (e: Exception){
-            throw e
+        if (url.isEmpty()) {
+            throw IllegalArgumentException("URL cannot be empty")
         }
+
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            getApplication<Application>().startActivity(intent)
+        } catch (_: ActivityNotFoundException) { } catch (_: Exception){ }
     }
 
     companion object{
